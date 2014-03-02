@@ -26,7 +26,9 @@ TutorialApplication::TutorialApplication(void)
   : headNode(0),
     mSpeed(0),
     mDirection(Ogre::Vector3::ZERO),
-    vZero(Ogre::Vector3::ZERO)
+    vZero(Ogre::Vector3::ZERO),
+    boing(0),
+    sounding(false)
 {
   mTimer = OGRE_NEW Ogre::Timer();
   mTimer->reset();
@@ -34,8 +36,33 @@ TutorialApplication::TutorialApplication(void)
 //-------------------------------------------------------------------------------------
 TutorialApplication::~TutorialApplication(void)
 {
+  Mix_CloseAudio();
+  SDL_Quit();
 }
+//-------------------------------------------------------------------------------------
+bool TutorialApplication::configure() {
+  bool ret = BaseApplication::configure();
 
+  // Initialize Audio [based on http://www.kekkai.org/roger/sdl/mixer/]
+  /* We're going to be requesting certain things from our audio
+           device, so we set them up beforehand */
+  int audio_rate = 22050;
+  Uint16 audio_format = AUDIO_S16; /* 16-bit stereo */
+  int audio_channels = 2;
+  int audio_buffers = 4096;
+
+  /* This is where we open up our audio device.  Mix_OpenAudio takes
+           as its parameters the audio format we'd /like/ to have. */
+  if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers))
+    std::cout << "Unable to open audio!\n" << std::endl;
+  else
+    sounding = true;
+
+  if (sounding)
+    boing = Mix_LoadWAV("blip.wav");
+
+  return ret;
+}
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
@@ -119,7 +146,41 @@ void TutorialApplication::createScene(void)
   lSun->setPosition(0,1400,0);
   lSun->setAttenuation(2250, 1.0, 0.0000000001, 0.000001);
 }
+//-------------------------------------------------------------------------------------
+bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
+{
+  bool ret = BaseApplication::frameRenderingQueued(evt);
 
+  /********************************************************************
+   * Animation
+   */
+
+  Ogre::Vector3 point = headNode->getPosition();
+  Ogre::Real adjust = 0.0;
+  bool found = false;
+
+  // Given a bounding box, we can easily test each plane in the PlaneList.
+  for (int i = 0; i < 6 && !found; i++) {
+    Ogre::Real dist = boxBound.planes[i].getDistance(ballBound.getCenter());
+    if (dist < 100.01) {
+      mDirection = mDirection.reflect(boxBound.planes[i].normal);
+      adjust = 100.5 - dist;
+      found = true;
+      if (sounding)
+        Mix_PlayChannel(-1, boing, 0);
+    }
+  }
+
+  // Add distance traveled plus collision adjustment, and update position.
+  point = point + (((evt.timeSinceLastFrame * mSpeed) + adjust) * mDirection);
+  ballBound.setCenter(point);
+  headNode->setPosition(point);
+
+  /*******************************************************************/
+
+  return ret;
+}
+//-------------------------------------------------------------------------------------
 
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32

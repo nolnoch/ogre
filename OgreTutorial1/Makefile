@@ -100,7 +100,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_OgreApp_OBJECTS = OgreApp-MinimalOgre.$(OBJEXT)
+am_OgreApp_OBJECTS = OgreApp-BaseApplication.$(OBJEXT) \
+	OgreApp-TutorialApplication.$(OBJEXT)
 OgreApp_OBJECTS = $(am_OgreApp_OBJECTS)
 am__DEPENDENCIES_1 =
 OgreApp_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
@@ -192,13 +193,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/nolnoch/workspace/OgreTutorial1/missing aclocal-1.13
+ACLOCAL = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing aclocal-1.13
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = ar
-AUTOCONF = ${SHELL} /home/nolnoch/workspace/OgreTutorial1/missing autoconf
-AUTOHEADER = ${SHELL} /home/nolnoch/workspace/OgreTutorial1/missing autoheader
-AUTOMAKE = ${SHELL} /home/nolnoch/workspace/OgreTutorial1/missing automake-1.13
+AUTOCONF = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing autoconf
+AUTOHEADER = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing autoheader
+AUTOMAKE = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing automake-1.13
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -235,7 +236,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/nolnoch/workspace/OgreTutorial1/missing makeinfo
+MAKEINFO = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -265,10 +266,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.1
-abs_builddir = /home/nolnoch/workspace/OgreTutorial1
-abs_srcdir = /home/nolnoch/workspace/OgreTutorial1
-abs_top_builddir = /home/nolnoch/workspace/OgreTutorial1
-abs_top_srcdir = /home/nolnoch/workspace/OgreTutorial1
+abs_builddir = /home/nolnoch/git/ogre/OgreTutorial1
+abs_srcdir = /home/nolnoch/git/ogre/OgreTutorial1
+abs_top_builddir = /home/nolnoch/git/ogre/OgreTutorial1
+abs_top_srcdir = /home/nolnoch/git/ogre/OgreTutorial1
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -298,7 +299,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/nolnoch/workspace/OgreTutorial1/install-sh
+install_sh = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -319,9 +320,9 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 ACLOCAL_AMFLAGS = -I m4
-noinst_HEADERS = MinimalOgre.h
+noinst_HEADERS = BaseApplication.h TutorialApplication.h
 OgreApp_CPPFLAGS = -I$(top_srcdir)
-OgreApp_SOURCES = MinimalOgre.cpp
+OgreApp_SOURCES = BaseApplication.cpp TutorialApplication.cpp
 OgreApp_CXXFLAGS = $(OGRE_CFLAGS) $(OIS_CFLAGS)
 OgreApp_LDADD = $(OGRE_LIBS) $(OIS_LIBS) -lSDL -lSDL_mixer
 EXTRA_DIST = buildit makeit
@@ -440,7 +441,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/OgreApp-MinimalOgre.Po
+include ./$(DEPDIR)/OgreApp-BaseApplication.Po
+include ./$(DEPDIR)/OgreApp-TutorialApplication.Po
 
 .cpp.o:
 	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -463,19 +465,33 @@ include ./$(DEPDIR)/OgreApp-MinimalOgre.Po
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(LTCXXCOMPILE) -c -o $@ $<
 
-OgreApp-MinimalOgre.o: MinimalOgre.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-MinimalOgre.o -MD -MP -MF $(DEPDIR)/OgreApp-MinimalOgre.Tpo -c -o OgreApp-MinimalOgre.o `test -f 'MinimalOgre.cpp' || echo '$(srcdir)/'`MinimalOgre.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-MinimalOgre.Tpo $(DEPDIR)/OgreApp-MinimalOgre.Po
-#	$(AM_V_CXX)source='MinimalOgre.cpp' object='OgreApp-MinimalOgre.o' libtool=no \
+OgreApp-BaseApplication.o: BaseApplication.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-BaseApplication.o -MD -MP -MF $(DEPDIR)/OgreApp-BaseApplication.Tpo -c -o OgreApp-BaseApplication.o `test -f 'BaseApplication.cpp' || echo '$(srcdir)/'`BaseApplication.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-BaseApplication.Tpo $(DEPDIR)/OgreApp-BaseApplication.Po
+#	$(AM_V_CXX)source='BaseApplication.cpp' object='OgreApp-BaseApplication.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-MinimalOgre.o `test -f 'MinimalOgre.cpp' || echo '$(srcdir)/'`MinimalOgre.cpp
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-BaseApplication.o `test -f 'BaseApplication.cpp' || echo '$(srcdir)/'`BaseApplication.cpp
 
-OgreApp-MinimalOgre.obj: MinimalOgre.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-MinimalOgre.obj -MD -MP -MF $(DEPDIR)/OgreApp-MinimalOgre.Tpo -c -o OgreApp-MinimalOgre.obj `if test -f 'MinimalOgre.cpp'; then $(CYGPATH_W) 'MinimalOgre.cpp'; else $(CYGPATH_W) '$(srcdir)/MinimalOgre.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-MinimalOgre.Tpo $(DEPDIR)/OgreApp-MinimalOgre.Po
-#	$(AM_V_CXX)source='MinimalOgre.cpp' object='OgreApp-MinimalOgre.obj' libtool=no \
+OgreApp-BaseApplication.obj: BaseApplication.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-BaseApplication.obj -MD -MP -MF $(DEPDIR)/OgreApp-BaseApplication.Tpo -c -o OgreApp-BaseApplication.obj `if test -f 'BaseApplication.cpp'; then $(CYGPATH_W) 'BaseApplication.cpp'; else $(CYGPATH_W) '$(srcdir)/BaseApplication.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-BaseApplication.Tpo $(DEPDIR)/OgreApp-BaseApplication.Po
+#	$(AM_V_CXX)source='BaseApplication.cpp' object='OgreApp-BaseApplication.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-MinimalOgre.obj `if test -f 'MinimalOgre.cpp'; then $(CYGPATH_W) 'MinimalOgre.cpp'; else $(CYGPATH_W) '$(srcdir)/MinimalOgre.cpp'; fi`
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-BaseApplication.obj `if test -f 'BaseApplication.cpp'; then $(CYGPATH_W) 'BaseApplication.cpp'; else $(CYGPATH_W) '$(srcdir)/BaseApplication.cpp'; fi`
+
+OgreApp-TutorialApplication.o: TutorialApplication.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-TutorialApplication.o -MD -MP -MF $(DEPDIR)/OgreApp-TutorialApplication.Tpo -c -o OgreApp-TutorialApplication.o `test -f 'TutorialApplication.cpp' || echo '$(srcdir)/'`TutorialApplication.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-TutorialApplication.Tpo $(DEPDIR)/OgreApp-TutorialApplication.Po
+#	$(AM_V_CXX)source='TutorialApplication.cpp' object='OgreApp-TutorialApplication.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-TutorialApplication.o `test -f 'TutorialApplication.cpp' || echo '$(srcdir)/'`TutorialApplication.cpp
+
+OgreApp-TutorialApplication.obj: TutorialApplication.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-TutorialApplication.obj -MD -MP -MF $(DEPDIR)/OgreApp-TutorialApplication.Tpo -c -o OgreApp-TutorialApplication.obj `if test -f 'TutorialApplication.cpp'; then $(CYGPATH_W) 'TutorialApplication.cpp'; else $(CYGPATH_W) '$(srcdir)/TutorialApplication.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-TutorialApplication.Tpo $(DEPDIR)/OgreApp-TutorialApplication.Po
+#	$(AM_V_CXX)source='TutorialApplication.cpp' object='OgreApp-TutorialApplication.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-TutorialApplication.obj `if test -f 'TutorialApplication.cpp'; then $(CYGPATH_W) 'TutorialApplication.cpp'; else $(CYGPATH_W) '$(srcdir)/TutorialApplication.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

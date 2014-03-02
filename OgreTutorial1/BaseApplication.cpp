@@ -260,31 +260,6 @@ bool BaseApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
   if(mShutDown)
     return false;
 
-  /********************************************************************
-   * Animation
-   *
-
-  Ogre::Vector3 point = headNode->getPosition();
-  Ogre::Real adjust = 0.0;
-  bool found = false;
-
-  // Given a bounding box, we can easily test each plane in the PlaneList.
-  for (int i = 0; i < 6 && !found; i++) {
-    Ogre::Real dist = boxBound.planes[i].getDistance(ballBound.getCenter());
-    if (dist < 100.01) {
-      mDirection = mDirection.reflect(boxBound.planes[i].normal);
-      adjust = 100.5 - dist;
-      found = true;
-    }
-  }
-
-  // Add distance traveled plus collision adjustment, and update position.
-  point = point + (((evt.timeSinceLastFrame * mSpeed) + adjust) * mDirection);
-  ballBound.setCenter(point);
-  headNode->setPosition(point);
-
-  /*******************************************************************/
-
   //Need to capture/update each device
   mKeyboard->capture();
   mMouse->capture();

@@ -19,6 +19,10 @@ This source file is part of the
 
 #include "BaseApplication.h"
 
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
+// #include <bullet/btBulletDynamicsCommon.h>
+
 class TutorialApplication : public BaseApplication
 {
 public:
@@ -30,7 +34,9 @@ public:
   OIS::Mouse * getMouse(void) { return mMouse; }
   OIS::Keyboard * getKeyboard(void) { return mKeyboard; }
 protected:
+  virtual bool configure(void);
   virtual void createScene(void);
+  virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
   Ogre::Timer *mTimer;
   Ogre::SceneNode* headNode;
 
@@ -48,6 +54,8 @@ protected:
   Ogre::Plane wallRight;
 
   Ogre::Vector3 vZero;
+  bool sounding;
+  Mix_Chunk *boing;
 };
 
 #endif // #ifndef __TutorialApplication_h_
