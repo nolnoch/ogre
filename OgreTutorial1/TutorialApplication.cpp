@@ -23,12 +23,20 @@ This source file is part of the
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication(void)
-  : headNode(0),
-    mSpeed(0),
-    mDirection(Ogre::Vector3::ZERO),
-    vZero(Ogre::Vector3::ZERO),
-    boing(0),
-    sounding(false)
+: headNode(0),
+  mSpeed(0),
+  mDirection(Ogre::Vector3::ZERO),
+  vZero(Ogre::Vector3::ZERO),
+  boing(0),
+  sounding(false),
+  currLevel(1),
+  score(0),
+  shotsFired(0),
+  tileCounter(0),
+  globalBall(0),
+  panelLight(0),
+  gameStart(true),
+  animDone(false)
 {
   mTimer = OGRE_NEW Ogre::Timer();
   mTimer->reset();
@@ -58,127 +66,194 @@ bool TutorialApplication::configure() {
   else
     sounding = true;
 
-  if (sounding)
-    boing = Mix_LoadWAV("blip.wav");
+  if (sounding) {
+    boing = Mix_LoadWAV("hit.wav");
+    gong = Mix_LoadWAV("gong.wav");
+    music = Mix_LoadMUS("ambient.wav");
+    Mix_PlayMusic(music, -1);
+  }
+
+  sim = new Simulator(mSceneMgr);
 
   return ret;
 }
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
-  // Create the visible mesh ball with initial velocity.
-  Ogre::Entity* ballMesh = mSceneMgr->createEntity("Ball", "sphere.mesh");
-  ballMesh->setMaterialName("Examples/SphereMappedRustySteel");
-  ballMesh->setCastShadows(true);
-  mDirection = Ogre::Vector3(-0.3, 0.6, -0.9);
-  mSpeed = 300.0f;
-
-  // Create the bounding geometry, used only in collision testing.
-  ballBound = Ogre::Sphere(vZero, 200);
   boxBound = Ogre::PlaneBoundedVolume(Ogre::Plane::NEGATIVE_SIDE);
-  boxBound.planes.push_back(wallBack = Ogre::Plane(Ogre::Vector3::UNIT_Z, -800));
-  boxBound.planes.push_back(wallFront = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Z, -800));
-  boxBound.planes.push_back(wallDown = Ogre::Plane(Ogre::Vector3::UNIT_Y, -800));
-  boxBound.planes.push_back(wallUp = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Y, -800));
-  boxBound.planes.push_back(wallLeft = Ogre::Plane(Ogre::Vector3::UNIT_X, -800));
-  boxBound.planes.push_back(wallRight = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_X, -800));
+  boxBound.planes.push_back(wallBack = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Z, 0));
+  boxBound.planes.push_back(wallFront = Ogre::Plane(Ogre::Vector3::UNIT_Z,0));
+  boxBound.planes.push_back(wallDown = Ogre::Plane(Ogre::Vector3::UNIT_Y,0));
+  boxBound.planes.push_back(wallUp = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Y,0));
+  boxBound.planes.push_back(wallLeft = Ogre::Plane(Ogre::Vector3::UNIT_X, 0));
+  boxBound.planes.push_back(wallRight = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_X,0));
 
   // Use the planes from above to generate new meshes for walls.
   Ogre::MeshManager::getSingleton().createPlane("ground",
       Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallDown,
-      1600, 1600, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
+      WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
   Ogre::Entity* entGround = mSceneMgr->createEntity("GroundEntity", "ground");
-  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entGround);
   entGround->setMaterialName("Custom/texture_blend");
   entGround->setCastShadows(false);
+  Ogre::SceneNode* nodeGround = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+  nodeGround->setPosition(0 , -PLANE_DIST, 0);
+  nodeGround->attachObject(entGround);
 
   Ogre::MeshManager::getSingleton().createPlane("ceiling",
       Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallUp,
-      1600, 1600, 20, 20, true, 1, 2, 2, Ogre::Vector3::UNIT_Z);
+      WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 2, 2, Ogre::Vector3::UNIT_Z);
   Ogre::Entity* entCeiling = mSceneMgr->createEntity("CeilingEntity", "ceiling");
-  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entCeiling);
   entCeiling->setMaterialName("Examples/CloudySky");
   entCeiling->setCastShadows(false);
+  Ogre::SceneNode* nodeCeiling = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+  nodeCeiling->setPosition(0 , PLANE_DIST, 0);
+  nodeCeiling->attachObject(entCeiling);
 
   Ogre::MeshManager::getSingleton().createPlane("back",
       Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallBack,
-      1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+      WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
   Ogre::Entity* entBack = mSceneMgr->createEntity("BackEntity", "back");
-  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entBack);
   entBack->setMaterialName("Examples/Rockwall");
   entBack->setCastShadows(false);
+  Ogre::SceneNode* nodeBack = mSceneMgr->getRootSceneNode()->createChildSceneNode("backNode");
+  nodeBack->setPosition(0 , 0, PLANE_DIST);
+  nodeBack->attachObject(entBack);
 
   Ogre::MeshManager::getSingleton().createPlane("front",
       Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallFront,
-      1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+      WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
   Ogre::Entity* entFront = mSceneMgr->createEntity("FrontEntity", "front");
-  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entFront);
   entFront->setMaterialName("Examples/Rockwall");
   entFront->setCastShadows(false);
+  Ogre::SceneNode* nodeFront = mSceneMgr->getRootSceneNode()->createChildSceneNode("frontNode");
+  nodeFront->setPosition(0 , 0, -PLANE_DIST);
+  nodeFront->attachObject(entFront);
 
   Ogre::MeshManager::getSingleton().createPlane("left",
       Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallLeft,
-      1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+      WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
   Ogre::Entity* entLeft = mSceneMgr->createEntity("LeftEntity", "left");
-  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entLeft);
   entLeft->setMaterialName("Examples/Rockwall");
   entLeft->setCastShadows(false);
+  Ogre::SceneNode* nodeLeft = mSceneMgr->getRootSceneNode()->createChildSceneNode("leftNode");
+  nodeLeft->setPosition(-PLANE_DIST , 0, 0);
+  nodeLeft->attachObject(entLeft);
 
   Ogre::MeshManager::getSingleton().createPlane("right",
       Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallRight,
-      1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+      WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
   Ogre::Entity* entRight = mSceneMgr->createEntity("RightEntity", "right");
-  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entRight);
   entRight->setMaterialName("Examples/Rockwall");
   entRight->setCastShadows(false);
-
-  // Attach the node.
-  headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-  headNode->attachObject(ballMesh);
+  Ogre::SceneNode* nodeRight = mSceneMgr->getRootSceneNode()->createChildSceneNode("rightNode");
+  nodeRight->setPosition(PLANE_DIST, 0, 0);
+  nodeRight->attachObject(entRight);
 
   // Set ambient light
-  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.05, 0.05, 0.05));
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.35, 0.35, 0.35));
 
   // Create a light
   Ogre::Light* lSun = mSceneMgr->createLight("SunLight");
   lSun->setType(Ogre::Light::LT_POINT);
   lSun->setDiffuseColour(0.95, 0.95, 1.00);
   lSun->setPosition(0,1400,0);
-  lSun->setAttenuation(2250, 1.0, 0.0000000001, 0.000001);
+  lSun->setAttenuation(3250, 1.0, 0.0000000001, 0.000001);
+
+  sim->createBounds(PLANE_DIST);
+
+  levelSetup(currLevel);
 }
 //-------------------------------------------------------------------------------------
 bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
   bool ret = BaseApplication::frameRenderingQueued(evt);
 
-  /********************************************************************
-   * Animation
-   */
+  if (paused) {
+    slowdownval += 1/1800.f;
+    Ogre::Entity* tile = tileEntities[0];
+    tile->setMaterialName("Examples/Chrome");
+  } else {
+    Ogre::Entity* tile = tileEntities[0];
+  }
 
-  Ogre::Vector3 point = headNode->getPosition();
-  Ogre::Real adjust = 0.0;
-  bool found = false;
-
-  // Given a bounding box, we can easily test each plane in the PlaneList.
-  for (int i = 0; i < 6 && !found; i++) {
-    Ogre::Real dist = boxBound.planes[i].getDistance(ballBound.getCenter());
-    if (dist < 100.01) {
-      mDirection = mDirection.reflect(boxBound.planes[i].normal);
-      adjust = 100.5 - dist;
-      found = true;
-      if (sounding)
+  if(slowdownval <= 1/60.f) {
+    bool hit = sim->simulateStep(slowdownval);
+    if(hit && !gameDone) {
+      if (sounding) {
         Mix_PlayChannel(-1, boing, 0);
+        std::cout << "Playing impact noise." << std::endl;
+      }
+
+      tileEntities.back()->setMaterialName("Examples/BumpyMetal");
+
+      if(tileEntities.size() > 0) {
+        tileEntities.pop_back();
+        tileSceneNodes.pop_back();
+      }
+      score++;
+
+      if(tileEntities.size() == 0 && !gameDone) {
+        gameDone = true;
+        winTimer = 0;
+        congratsPanel->show();
+
+        for(int i = 0; i < balls.size(); i++) {
+          balls[i]->enableGravity();
+          globalBall->enableGravity();
+          std::cout << "enabling gravity\n";
+        }
+      }
     }
   }
 
-  // Add distance traveled plus collision adjustment, and update position.
-  point = point + (((evt.timeSinceLastFrame * mSpeed) + adjust) * mDirection);
-  ballBound.setCenter(point);
-  headNode->setPosition(point);
+  if (gameDone) {
+    winTimer++;
 
-  /*******************************************************************/
+    if(winTimer > 360) {
+      levelTearDown();
+      levelSetup(currLevel);
+      congratsPanel->hide();
+    }
+  }
+
+  simonSaysAnim();
+
+  if (isCharging) {
+    if(chargeShot < 10000)
+      chargeShot += 80;
+    // std::cout << chargeShot << std::endl;
+  } else
+    chargeShot = 0;
 
   return ret;
+}
+//-------------------------------------------------------------------------------------
+bool TutorialApplication::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id ) {
+  isCharging = false;
+  if(chargeShot >= 1000 && !gameDone) {
+    if(globalBall != NULL) {
+      sim->removeBall(globalBall);
+      // delete globalBall->node;
+    }
+
+    int x = mCamera->getPosition().x;
+    int y = mCamera->getPosition().y;
+    int z = mCamera->getPosition().z;
+
+    Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
+    ballMeshpc->setCastShadows(true);
+
+    Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+    nodepc->attachObject(ballMeshpc);
+    globalBall = new Ball(nodepc, x, y, z, 100);
+    sim->addBall(globalBall);
+    double force = chargeShot;
+    Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
+    globalBall->applyForce(force * direction.x, force * direction.y, force * direction.z);
+    shotsFired++;
+  }
+
+  return BaseApplication::mouseReleased(arg, id);
 }
 //-------------------------------------------------------------------------------------
 

@@ -32,18 +32,14 @@ MinimalOgre::MinimalOgre(void)
     mTrayMgr(0),
     mCameraMan(0),
     mDetailsPanel(0),
+    scorePanel(0),
     mCursorWasVisible(false),
     mShutDown(false),
     mInputManager(0),
     mMouse(0),
     mKeyboard(0),
     mState(0),
-    headNode(0),
-    mSpeed(0),
-    mDirection(Ogre::Vector3::ZERO),
-    vZero(Ogre::Vector3::ZERO),
-    sounding(false),
-    boing(0)
+    vZero(Ogre::Vector3::ZERO)
 {
 	mTimer = OGRE_NEW Ogre::Timer();
 	mTimer->reset();
@@ -84,23 +80,29 @@ bool MinimalOgre::go(void)
 
     // Initialize Audio [based on http://www.kekkai.org/roger/sdl/mixer/]
     /* We're going to be requesting certain things from our audio
-         device, so we set them up beforehand */
+             device, so we set them up beforehand */
     int audio_rate = 22050;
     Uint16 audio_format = AUDIO_S16; /* 16-bit stereo */
     int audio_channels = 2;
     int audio_buffers = 4096;
 
     /* This is where we open up our audio device.  Mix_OpenAudio takes
-         as its parameters the audio format we'd /like/ to have. */
+             as its parameters the audio format we'd /like/ to have. */
     if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers))
       std::cout << "Unable to open audio!\n" << std::endl;
-    else
+    else {
+      std::cout << "Loading audio files.\n" << std::endl;
       sounding = true;
+    }
 
-    if (sounding)
-      boing = Mix_LoadWAV("blip.wav");
+    if (sounding) {
+      boing = Mix_LoadWAV("hit.wav");
+      gong = Mix_LoadWAV("gong.wav");
+      music = Mix_LoadMUS("ambient.wav");
+      Mix_PlayMusic(music, -1);
+    }
 
-//-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
     // setup resources
     // Load resource paths from config file
     Ogre::ConfigFile cf;
@@ -156,14 +158,15 @@ bool MinimalOgre::go(void)
     // create camera
     // Create the camera
     mCamera = mSceneMgr->createCamera("PlayerCam");
+    mCamera->setFOVy(Ogre::Radian(1.50));
 
     // Position it at 500 in Z direction
-    mCamera->setPosition(Ogre::Vector3(0,0,2000));
+    mCamera->setPosition(Ogre::Vector3(2000,0,2000));
     // Look back along -Z
     mCamera->lookAt(vZero);
     mCamera->setNearClipDistance(5);
 
-    mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
+    mCameraMan = new CameraMan(mCamera);   // create a default camera controller
 //-------------------------------------------------------------------------------------
     // create viewports
     // Create one viewport, entire window
@@ -185,85 +188,145 @@ bool MinimalOgre::go(void)
 //-------------------------------------------------------------------------------------
     // Create the scene
 
-    // Create the visible mesh ball with initial velocity.
-    Ogre::Entity* ballMesh = mSceneMgr->createEntity("Ball", "sphere.mesh");
-    ballMesh->setMaterialName("Examples/SphereMappedRustySteel");
-    ballMesh->setCastShadows(true);
-    mDirection = Ogre::Vector3(-0.3, 0.6, -0.9);
-    mSpeed = 300.0f;
-
     // Create the bounding geometry, used only in collision testing.
-    ballBound = Ogre::Sphere(vZero, 200);
+    //ballBound = Ogre::Sphere(vZero, 200);
     boxBound = Ogre::PlaneBoundedVolume(Ogre::Plane::NEGATIVE_SIDE);
-    boxBound.planes.push_back(wallBack = Ogre::Plane(Ogre::Vector3::UNIT_Z, -800));
-    boxBound.planes.push_back(wallFront = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Z, -800));
-    boxBound.planes.push_back(wallDown = Ogre::Plane(Ogre::Vector3::UNIT_Y, -800));
-    boxBound.planes.push_back(wallUp = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Y, -800));
-    boxBound.planes.push_back(wallLeft = Ogre::Plane(Ogre::Vector3::UNIT_X, -800));
-    boxBound.planes.push_back(wallRight = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_X, -800));
+    boxBound.planes.push_back(wallBack = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Z, 0));
+    boxBound.planes.push_back(wallFront = Ogre::Plane(Ogre::Vector3::UNIT_Z,0));
+    boxBound.planes.push_back(wallDown = Ogre::Plane(Ogre::Vector3::UNIT_Y,0));
+    boxBound.planes.push_back(wallUp = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Y,0));
+    boxBound.planes.push_back(wallLeft = Ogre::Plane(Ogre::Vector3::UNIT_X, 0));
+    boxBound.planes.push_back(wallRight = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_X,0));
+
 
     // Use the planes from above to generate new meshes for walls.
     Ogre::MeshManager::getSingleton().createPlane("ground",
         Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallDown,
-        1600, 1600, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
+        WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
     Ogre::Entity* entGround = mSceneMgr->createEntity("GroundEntity", "ground");
-    mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entGround);
     entGround->setMaterialName("Custom/texture_blend");
     entGround->setCastShadows(false);
+    Ogre::SceneNode* nodeGround = mSceneMgr->getRootSceneNode()->createChildSceneNode(); 
+    nodeGround->setPosition(0 , -PLANE_DIST, 0); //1600 / 5 is our tilewidth
+    nodeGround->attachObject(entGround);
+
 
     Ogre::MeshManager::getSingleton().createPlane("ceiling",
         Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallUp,
-        1600, 1600, 20, 20, true, 1, 2, 2, Ogre::Vector3::UNIT_Z);
+        WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 2, 2, Ogre::Vector3::UNIT_Z);
     Ogre::Entity* entCeiling = mSceneMgr->createEntity("CeilingEntity", "ceiling");
-    mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entCeiling);
     entCeiling->setMaterialName("Examples/CloudySky");
     entCeiling->setCastShadows(false);
+    Ogre::SceneNode* nodeCeiling = mSceneMgr->getRootSceneNode()->createChildSceneNode(); 
+    nodeCeiling->setPosition(0 , PLANE_DIST, 0); //1600 / 5 is our tilewidth
+    nodeCeiling->attachObject(entCeiling);
+
+    // mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entCeiling);
+    // entCeiling->setMaterialName("Examples/CloudySky");
+    // entCeiling->setCastShadows(false);
 
     Ogre::MeshManager::getSingleton().createPlane("back",
         Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallBack,
-        1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+        WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
     Ogre::Entity* entBack = mSceneMgr->createEntity("BackEntity", "back");
-    mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entBack);
     entBack->setMaterialName("Examples/Rockwall");
     entBack->setCastShadows(false);
+    Ogre::SceneNode* nodeBack = mSceneMgr->getRootSceneNode()->createChildSceneNode("backNode"); 
+    nodeBack->setPosition(0 , 0, PLANE_DIST); //1600 / 5 is our tilewidth
+    nodeBack->attachObject(entBack);
+
+
+    // mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entBack);
+    // entBack->setMaterialName("Examples/Rockwall");
+    // entBack->setCastShadows(false);
 
     Ogre::MeshManager::getSingleton().createPlane("front",
         Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallFront,
-        1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+        WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
     Ogre::Entity* entFront = mSceneMgr->createEntity("FrontEntity", "front");
-    mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entFront);
     entFront->setMaterialName("Examples/Rockwall");
     entFront->setCastShadows(false);
+    Ogre::SceneNode* nodeFront = mSceneMgr->getRootSceneNode()->createChildSceneNode("frontNode"); 
+    nodeFront->setPosition(0 , 0, -PLANE_DIST); //1600 / 5 is our tilewidth
+    nodeFront->attachObject(entFront);
+
+
+
+    // mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entFront);
+    // entFront->setMaterialName("Examples/Rockwall");
+    // entFront->setCastShadows(false);
 
     Ogre::MeshManager::getSingleton().createPlane("left",
         Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallLeft,
-        1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+        WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
     Ogre::Entity* entLeft = mSceneMgr->createEntity("LeftEntity", "left");
-    mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entLeft);
     entLeft->setMaterialName("Examples/Rockwall");
     entLeft->setCastShadows(false);
+    Ogre::SceneNode* nodeLeft = mSceneMgr->getRootSceneNode()->createChildSceneNode("leftNode"); 
+    nodeLeft->setPosition(-PLANE_DIST , 0, 0); //1600 / 5 is our tilewidth
+    nodeLeft->attachObject(entLeft);
+
+
+    // mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entLeft);
+    // entLeft->setMaterialName("Examples/Rockwall");
+    // entLeft->setCastShadows(false);
 
     Ogre::MeshManager::getSingleton().createPlane("right",
         Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallRight,
-        1600, 1600, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+        WALL_SIZE, WALL_SIZE, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
     Ogre::Entity* entRight = mSceneMgr->createEntity("RightEntity", "right");
-    mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entRight);
     entRight->setMaterialName("Examples/Rockwall");
     entRight->setCastShadows(false);
+    Ogre::SceneNode* nodeRight = mSceneMgr->getRootSceneNode()->createChildSceneNode("rightNode"); 
+    nodeRight->setPosition(PLANE_DIST, 0, 0); //1600 / 5 is our tilewidth
+    nodeRight->attachObject(entRight);
 
-    // Attach the node.
-    headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    headNode->attachObject(ballMesh);
+
+    // mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entRight);
+    // entRight->setMaterialName("Examples/Rockwall");
+    // entRight->setCastShadows(false);
+
+
+
+
+    // Set up simulation/bullet collision objects
+    sim = new Simulator(mSceneMgr);
+    globalBall = NULL;
+    panelLight = NULL;
+
+    sim->addPlaneBound(0, 1, 0, -PLANE_DIST);
+    sim->addPlaneBound(0, -1, 0, -PLANE_DIST);
+    sim->addPlaneBound(1, 0, 0, -PLANE_DIST);
+    sim->addPlaneBound(-1, 0, 0, -PLANE_DIST);
+    sim->addPlaneBound(0, 0, 1, -PLANE_DIST);
+    sim->addPlaneBound(0, 0, -1, -PLANE_DIST);
+
+
+    score = 0;
+    shotsFired = 0;
+
+    tileCounter = 0;
+    // Create the visible mesh ball.
+    // Create tile meshes and collision objects for each tile.
+    currLevel = 1;
+    levelSetup(currLevel);
+
+    // Handles the simonSays initial animation:
+    gameStart = true;
+    animDone = false;
+    currTile = tileEntities.size() - 1; // which tile has to be lit up first
+
+
 
     // Set ambient light
-    mSceneMgr->setAmbientLight(Ogre::ColourValue(0.05, 0.05, 0.05));
+    mSceneMgr->setAmbientLight(Ogre::ColourValue(0.35, 0.35, 0.35));
 
     // Create a light
     Ogre::Light* lSun = mSceneMgr->createLight("SunLight");
     lSun->setType(Ogre::Light::LT_POINT);
     lSun->setDiffuseColour(0.95, 0.95, 1.00);
     lSun->setPosition(0,1400,0);
-    lSun->setAttenuation(2250, 1.0, 0.0000000001, 0.000001);
+    lSun->setAttenuation(3250, 1.0, 0.0000000001, 0.000001);
 //-------------------------------------------------------------------------------------
     //create FrameListener
     Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
@@ -313,12 +376,235 @@ bool MinimalOgre::go(void)
     mDetailsPanel->setParamValue(10, "Solid");
     mDetailsPanel->hide();
 
+    Ogre::StringVector scorelist;
+    scorelist.push_back("Score");
+    scorelist.push_back("Shots Fired");
+    scorelist.push_back("Current Level");
+    scorePanel = mTrayMgr->createParamsPanel(OgreBites::TL_TOPLEFT, "ScorePanel", 200, scorelist);
+
+    congratsPanel = mTrayMgr->createLabel(OgreBites::TL_TOP, "CongratsPanel", "this is dumb", 300);
+    congratsPanel->hide();
+
+    chargePanel = mTrayMgr->createLabel(OgreBites::TL_BOTTOM, "Chargepanel", "|", 300);
+
+    Ogre::OverlayManager& overlayMgr = Ogre::OverlayManager::getSingleton();
+    Ogre::Overlay* overlay = overlayMgr.create("Crosshair");
+
+    Ogre::OverlayContainer* panel = static_cast<Ogre::OverlayContainer*>(
+        overlayMgr.createOverlayElement("Panel", "PanelName"));
+    panel->setPosition(0.488, 0.475);
+    panel->setDimensions(0.025, 0.0375);
+    panel->setMaterialName("Examples/Crosshair");
+    overlay->add2D(panel);
+    overlay->show();
+
+    paused = false;
+    slowdownval = 0.0;
+    gameDone = false;
+    isCharging = false;
+
     mRoot->addFrameListener(this);
 //-------------------------------------------------------------------------------------
     mRoot->startRendering();
 
     return true;
 }
+
+// Set up the level
+//  - attaches textured tiles placed at random locations
+//  to the main SceneNode depending on what level it is.
+void MinimalOgre::levelSetup(int num) {
+    if(num > 50)
+        num = 50;
+    srand(time(0));
+
+    Ogre::Plane wallTile = Ogre::Plane(Ogre::Vector3::UNIT_X, -PLANE_DIST +1);
+
+  
+    // Since each mesh starts at the center of the plane, we need to offset it
+    // to the top right corner of the plane and start counting from there.
+    int offset = WALL_SIZE/2 - TILE_WIDTH/2;
+
+    int x = 0;
+    int y = 0;
+    int z = 0;
+
+    vector<int> randomnumbers;
+    for(int i = 0; i < 50; i++)
+        randomnumbers.push_back(i);
+
+    for(int i = 0; i < num; i++) {
+   
+        std::stringstream ss;
+
+        std::stringstream ssDebug;
+        ss << (i + tileCounter);
+
+        int rn = std::rand() % randomnumbers.size(); // get random tile in list of unused tiles
+        int tileNum = randomnumbers[rn];
+        randomnumbers.erase(randomnumbers.begin() + rn);
+        ssDebug << tileNum;
+        std::cout << "Random number1: " + ssDebug.str() << std::endl;
+        ssDebug.str(std::string());
+
+        int wallTileNum = tileNum % NUM_TILES_WALL; //possible number of tiles per wall.
+        ssDebug << wallTileNum;
+        std::cout << "Random number: " + ssDebug.str() << std::endl;
+        int row = wallTileNum / NUM_TILES_ROW; //5 is the number of tiles per row.
+        int col = wallTileNum % NUM_TILES_ROW;
+
+        ssDebug.str(std::string());
+        ssDebug << row;
+        ssDebug << " ";
+        ssDebug << col;
+
+        std::cout << "Row/col " + ssDebug.str() << std::endl;
+
+        Ogre::SceneNode* node1; //= mSceneMgr->getRootSceneNode()->createChildSceneNode(); 
+        int xsize = 240;
+        int ysize = 240;
+        int zsize = 240;
+
+
+        // left
+        if(tileNum < 25) {
+            // set up x y z units of 0, 1 or -1, which will be used when we setPosition
+            // set up our WallTileLeft or whatever to point to the right direction.
+            wallTile = Ogre::Plane(Ogre::Vector3::UNIT_X, 1);
+            x = 0;
+            y = -1 * (row * TILE_WIDTH) + offset;
+            z = -1 * (col * TILE_WIDTH) + offset;
+            xsize = 10;
+            node1 = mSceneMgr->getSceneNode("leftNode")->createChildSceneNode();
+        }
+
+        // front
+        else if (tileNum < 50) {
+            x = 1 * (col * TILE_WIDTH) - offset;
+            y = -1 * (row * TILE_WIDTH) + offset;
+            z = 0;
+            zsize = 10;
+            wallTile = Ogre::Plane(Ogre::Vector3::UNIT_Z, 1);
+            node1 = mSceneMgr->getSceneNode("frontNode")->createChildSceneNode();
+        }
+
+        // right
+        else if (tileNum < 75) {
+            x = 0;
+            y = -1 * (row * TILE_WIDTH) + offset;
+            z = 1 * (col * TILE_WIDTH) - offset;
+            xsize = 10;
+            wallTile = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_X, 1);
+            node1 = mSceneMgr->getSceneNode("rightNode")->createChildSceneNode();
+        }
+
+        // back
+        else if (tileNum < 100) {
+            x = 1 * (col * TILE_WIDTH) - offset;
+            y = -1 * (row * TILE_WIDTH) + offset;
+            z = 0;
+            zsize = 10;
+            wallTile = Ogre::Plane(Ogre::Vector3::NEGATIVE_UNIT_Z, 1);
+            node1 = mSceneMgr->getSceneNode("backNode")->createChildSceneNode();
+        }
+       
+
+
+
+
+        // Build the entity name based on which tile number it is.
+        std::string str = "tile";
+        str.append(ss.str());
+        std::string entityStr = "tileEntity";
+        entityStr.append(ss.str());
+        std::cout << "tileEntityName: " + entityStr << std::endl;
+
+        Ogre::MeshManager::getSingleton().createPlane(str,
+        Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, wallTile,
+        TILE_WIDTH, TILE_WIDTH, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Y);
+        Ogre::Entity* tile = mSceneMgr->createEntity(entityStr, str);
+        
+        node1->translate(x ,y, z); //1600 / 5 is our tilewidth
+        node1->attachObject(tile);
+        tile->setMaterialName("Examples/Chrome");
+        tile->setCastShadows(false);
+        sim->addTile(node1, xsize, ysize, zsize);
+        tileEntities.push_back(tile);
+        allTileEntities.push_back(tile);
+        tileList.push_back(node1);
+        tileSceneNodes.push_back(node1);
+    }
+    tileCounter += num;
+
+    int it = 1;
+    int numballs = 1;
+    while (numballs < num)
+    {
+        it++;
+        numballs = it * it * it;
+    }
+    ballSetup(it);
+
+    if (sounding)
+	    Mix_PlayChannel(-1, gong, 0);
+}
+
+
+void MinimalOgre::ballSetup(int cubeSize) {
+    // 10, 20
+    float ballSize = 200; //diameter
+    // default size of sphere mesh is 200.
+    float meshSize =  ballSize / 200; //200 is size of the mesh.
+   
+                
+    // ballMeshpc->setCastShadows(true);
+
+    for(int x = 0; x < cubeSize; x++) {
+        for (int y = 0; y < cubeSize; y++) {
+            for(int z = 0; z < cubeSize; z++) {
+                // Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
+                // Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+                // nodepc->attachObject(ballMeshpc);
+                // nodepc->setScale(Ogre::Vector3(meshSize, meshSize, meshSize));
+
+                // Ball* ball = new Ball(nodepc, x * ballSize, y * ballSize, z * ballSize, ballSize/2);
+                // sim->addBall(ball);
+
+                Ogre::Entity* ballMesh = mSceneMgr->createEntity("sphere.mesh");
+                ballMesh->setMaterialName("Examples/SphereMappedRustySteel");
+                ballMesh->setCastShadows(true);
+                // Attach the node.
+                Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+                headNode->attachObject(ballMesh);
+                headNode->setScale(Ogre::Vector3(meshSize, meshSize, meshSize));
+                Ball* ball = new Ball(headNode, x * ballSize, y * ballSize, z * ballSize, ballSize/2);
+                sim->addMainBall(ball);
+                balls.push_back(ball);
+
+
+                //  double force = 4000.0;
+                //  Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
+                //  ball->applyForce(force * direction.x, force * direction.y, force * direction.z);
+            }
+        }
+    }
+}
+
+
+void MinimalOgre::levelTearDown()
+{
+    for(int i = 0; i < balls.size(); i++)
+        sim->removeBall(balls[i]);
+    balls.clear();
+
+    for(int i = 0; i < tileList.size(); i++)
+        mSceneMgr->destroySceneNode(tileList[i]);
+    for(int i = 0; i < allTileEntities.size(); i++)
+        mSceneMgr->destroyEntity(allTileEntities[i]);
+    tileList.clear();
+    allTileEntities.clear();
+}
+
 
 bool MinimalOgre::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
@@ -328,30 +614,111 @@ bool MinimalOgre::frameRenderingQueued(const Ogre::FrameEvent& evt)
     if(mShutDown)
         return false;
 
+    if(paused) {
+        slowdownval += 1/1800.f;
+        Ogre::Entity* tile = tileEntities[0];
+        tile->setMaterialName("Examples/Chrome");
+
+    }
+    else {
+        Ogre::Entity* tile = tileEntities[0];
+    }
+    if(slowdownval <= 1/60.f)
+    {
+        bool hit = sim->simulateStep(slowdownval);
+        if(hit && !gameDone)
+        {
+            if (sounding) {
+              Mix_PlayChannel(-1, boing, 0);
+	      std::cout << "Playing impact noise." << std::endl;
+	    }
+            tileEntities.back()->setMaterialName("Examples/BumpyMetal");
+            if(tileEntities.size() > 0)
+            {
+                tileEntities.pop_back();
+                tileSceneNodes.pop_back();
+            }
+            score++;
+            if(tileEntities.size() == 0 && !gameDone)
+            {
+                gameDone = true;
+                winTimer = 0;
+                congratsPanel->show();
+                for(int i = 0; i < balls.size(); i++)
+                {
+                    balls[i]->enableGravity();
+                    globalBall->enableGravity();
+                    std::cout << "enabling gravity\n";
+                }
+            }
+        }
+    }
+
+
+    // If this is the first time we start the game, lets play the simon says animation
+    if(gameStart) {
+        timer.reset();
+        gameStart = false;
+    }
+
+    if(gameDone)
+    {
+        winTimer++;
+        if(winTimer > 360)
+        {
+            levelTearDown();
+            currLevel++;
+            sim->removeBall(globalBall);
+            globalBall = NULL;
+            levelSetup(currLevel);
+            gameDone = false;
+
+            currTile = tileEntities.size() - 1;
+            animDone = false;
+            timer.reset();
+
+            congratsPanel->hide();
+        }
+    }
+
+    simonSaysAnim();
+
+    if(isCharging) {
+        if(chargeShot < 10000)
+            chargeShot += 80;
+        std::cout << chargeShot << std::endl;
+    }
+    else {
+        chargeShot = 0;
+    }
+
+    // Get collision in each plane (or just front plane for now)
+        // check if collision contact points are within our tile xy (if it's front plane)
+    
+
     /********************************************************************
      * Animation
      */
 
-    Ogre::Vector3 point = headNode->getPosition();
-    Ogre::Real adjust = 0.0;
-    bool found = false;
+    //Ogre::Vector3 point = headNode->getPosition();
+    //Ogre::Real adjust = 0.0;
+    //bool found = false;
 
     // Given a bounding box, we can easily test each plane in the PlaneList.
+    /*
     for (int i = 0; i < 6 && !found; i++) {
       Ogre::Real dist = boxBound.planes[i].getDistance(ballBound.getCenter());
       if (dist < 100.01) {
         mDirection = mDirection.reflect(boxBound.planes[i].normal);
         adjust = 100.5 - dist;
         found = true;
-        if (sounding)
-          Mix_PlayChannel(-1, boing, 0);
       }
-    }
+    } */
 
     // Add distance traveled plus collision adjustment, and update position.
-    point = point + (((evt.timeSinceLastFrame * mSpeed) + adjust) * mDirection);
-    ballBound.setCenter(point);
-    headNode->setPosition(point);
+    //point = point + (((evt.timeSinceLastFrame * mSpeed) + adjust) * mDirection);
+    //ballBound.setCenter(point);
+    //headNode->setPosition(point);
 
     /*******************************************************************/
 
@@ -360,7 +727,7 @@ bool MinimalOgre::frameRenderingQueued(const Ogre::FrameEvent& evt)
     mMouse->capture();
 
     mTrayMgr->frameRenderingQueued(evt);
-
+    
     if (!mTrayMgr->isDialogVisible())
     {
         mCameraMan->frameRenderingQueued(evt);   // if dialog isn't up, then update the camera
@@ -374,10 +741,105 @@ bool MinimalOgre::frameRenderingQueued(const Ogre::FrameEvent& evt)
             mDetailsPanel->setParamValue(6, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().y));
             mDetailsPanel->setParamValue(7, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().z));
         }
+        scorePanel->setParamValue(0, Ogre::StringConverter::toString(score));
+        scorePanel->setParamValue(1, Ogre::StringConverter::toString(shotsFired));
+        scorePanel->setParamValue(2, Ogre::StringConverter::toString(currLevel));
+        std::stringstream grats;
+        grats << "Moving to level ";
+        grats << (currLevel + 1);
+        grats << "...";
+        congratsPanel->setCaption(grats.str());
+
+
+        std::stringstream scharge;
+        scharge << "|";
+        for(int i = 1000; i < chargeShot; i += 160)
+            scharge << "|";
+        chargePanel->setCaption(scharge.str());
     }
 
     return true;
 }
+
+// Lights up the tiles in the tileEntities, from the back of the deque to the front.
+void MinimalOgre::simonSaysAnim() {
+    if(gameDone)
+    {
+        currTile = -2;
+        if(panelLight != NULL)
+        {
+            mSceneMgr->destroyLight(panelLight);
+            panelLight = NULL;
+        }
+        return;
+    }
+    long currTime = timer.getMilliseconds();
+    //   std::cout << currTime << std::endl;
+    int numTiles = tileEntities.size();
+    int startTime = 0; // starts 2 secs into the game.
+    int timePerTile = 1500; // each tile lights up for this duration (2 secs)
+    int waitTime = 100; // waits 500ms between each tile being lit up.
+
+    int animStart = (waitTime + timePerTile) * ((tileEntities.size() - 1) - currTile) + startTime;
+    int animEnd = animStart + timePerTile;
+    if(currTile >= -1) {
+        if(currTime > animStart && currTime <= animEnd)
+        {
+            // Revert previous tile to original texture
+            if(currTile + 1 < tileEntities.size() && currTile >= -1) {
+                tileEntities[currTile + 1]->setMaterialName("Examples/Chrome");
+            }
+            if(currTile >= 0)
+            {
+                tileEntities[currTile]->setMaterialName("Examples/SpaceSky");
+
+                if(panelLight != NULL)
+                    mSceneMgr->destroyLight(panelLight);
+                
+                // Create a light
+                panelLight = mSceneMgr->createLight("Panel");
+                panelLight->setCastShadows(false);
+                panelLight->setType(Ogre::Light::LT_SPOTLIGHT);
+                int x = tileSceneNodes[currTile]->_getDerivedPosition().x;
+                int y = tileSceneNodes[currTile]->_getDerivedPosition().y;
+                int z = tileSceneNodes[currTile]->_getDerivedPosition().z;
+                if (x < 0)
+                    x += 10;
+                else if (x > 0)
+                    x -= 10;
+                if (z < 0)
+                    z += 10;
+                else if (z > 0)
+                    z -= 10;
+                std::cout << "x: " << x << " y: " << y << " z: " << z << "\n";
+                panelLight->setDiffuseColour(0.70, 0.50, 0.30);
+                panelLight->setDirection(x, y, z);
+                panelLight->setPosition(0, 0, 0);
+                panelLight->setSpotlightFalloff(0);
+                panelLight->setAttenuation(4000, 0.0, 0.0001, 0.0000005);
+            }
+            else
+            {
+                mSceneMgr->destroyLight(panelLight);
+                panelLight = NULL;
+            }
+            // moves on to the next tile.
+            currTile--;
+            std::cout << "c: " << currTile << "\n";
+        }
+    }
+    else if (!animDone){
+        if(tileEntities.size() > 0) {
+            tileEntities[0]->setMaterialName("Examples/Chrome");
+            animDone = true;
+            //currTile = tileEntities.size() - 1;
+            //timer.reset();
+        }
+    }
+}
+
+
+
 //-------------------------------------------------------------------------------------
 bool MinimalOgre::keyPressed( const OIS::KeyEvent &arg )
 {
@@ -468,8 +930,41 @@ bool MinimalOgre::keyPressed( const OIS::KeyEvent &arg )
     }
     else if (arg.key == OIS::KC_ESCAPE)
     {
-        mShutDown = true;
+        Mix_FreeMusic(music);
+	mShutDown = true;
     }
+    else if (arg.key == OIS::KC_SPACE)
+    {
+    }
+    else if (arg.key == OIS::KC_P)
+    {
+        paused = !paused;
+        slowdownval = 0.0;
+	if (paused)
+	    Mix_HaltMusic();
+	else
+	    Mix_PlayMusic(music, 0);
+    }
+    else if (arg.key == OIS::KC_M) {
+	sounding = !sounding;
+	if (sounding)
+	    Mix_PlayMusic(music, -1);
+	else
+	    Mix_HaltMusic();
+    }
+    else if (arg.key == OIS::KC_Q)
+    {
+        if(currTile >= -1)
+            tileEntities[currTile+1]->setMaterialName("Examples/Chrome");
+        currTile = tileEntities.size() - 1;
+        timer.reset();
+        animDone = false;
+    }
+
+//    else if(arg.key == OIS::KC_L)
+//    {
+//        gameDone = true;
+//    }
 
     mCameraMan->injectKeyDown(arg);
     return true;
@@ -490,13 +985,44 @@ bool MinimalOgre::mouseMoved( const OIS::MouseEvent& arg )
 
 bool MinimalOgre::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
+    isCharging = true;
+    chargeShot = 0;
+
     if (mTrayMgr->injectMouseDown(arg, id)) return true;
-    mCameraMan->injectMouseDown(arg, id);
+        mCameraMan->injectMouseDown(arg, id);
     return true;
 }
 
 bool MinimalOgre::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
+    isCharging = false;
+    if(chargeShot >= 1000 && !gameDone)
+    {
+        if(globalBall != NULL) {
+            sim->removeBall(globalBall);
+           // delete globalBall->node;
+        }
+        int x = mCamera->getPosition().x;
+        int y = mCamera->getPosition().y;
+        int z = mCamera->getPosition().z;
+
+     
+        Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
+        //ballMeshpc->setMaterialName("Examples/SphereMappedRustySteel");
+        ballMeshpc->setCastShadows(true);
+
+        Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+        nodepc->attachObject(ballMeshpc);
+        //globalBall->setPosition(x, y, z);
+        globalBall = new Ball(nodepc, x, y, z, 100);
+        sim->addBall(globalBall);
+        double force = chargeShot;
+        Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
+        globalBall->applyForce(force * direction.x, force * direction.y, force * direction.z);
+        shotsFired++;
+    }
+
+
     if (mTrayMgr->injectMouseUp(arg, id)) return true;
     mCameraMan->injectMouseUp(arg, id);
     return true;
@@ -566,8 +1092,6 @@ extern "C" {
 #else
         // Create application object
         MinimalOgre app;
-
-        SDL_Init(SDL_INIT_AUDIO);
 
         try {
             app.go();
