@@ -1,10 +1,17 @@
 #include "Simulator.h"
 
 
-Simulator::Simulator(Ogre::SceneManager* sM):
-sceneMgr(sM),
-targethit(false)
+Simulator::Simulator():
+collisionConfiguration(0),
+dispatcher(0),
+broadphase(0),
+solver(0),
+dynamicsWorld(0),
+sceneMgr(0)
 {
+}
+
+void Simulator::initSimulator() {
   collisionConfiguration = new btDefaultCollisionConfiguration();
   dispatcher = new btCollisionDispatcher(collisionConfiguration);
   broadphase = new btDbvtBroadphase();
@@ -12,8 +19,6 @@ targethit(false)
 
   dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
   dynamicsWorld->setGravity(btVector3(0, 0, 0));
-
-  ballManager = new BallManager(sM);
 }
 
 void Simulator::createBounds(const int offset) {
@@ -26,20 +31,11 @@ void Simulator::createBounds(const int offset) {
 }
 
 bool Simulator::simulateStep(double delay) {
-  targethit = false;
+  bool ret = false;
+
   dynamicsWorld->stepSimulation((1/60.f) - delay, 10);
-  if(targethit)
-  {
-    if(tiles.size() > 0)
-    {
-      tiles.pop_back();
-      if(tiles.size() > 0)
-        activetile = tiles.back();
-      else
-        activetile = NULL;
-    }
-  }
-  return targethit;
+
+  return ret;
 }
 
 void Simulator::addPlaneBound(int x, int y, int z, int d) {
@@ -47,25 +43,28 @@ void Simulator::addPlaneBound(int x, int y, int z, int d) {
   btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, -1, 0)));
   btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
   btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
+
   groundRigidBody->setRestitution(1.0);
   groundRigidBody->setCollisionFlags(groundRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
   dynamicsWorld->addRigidBody(groundRigidBody);
 }
 
-void Simulator::addTile(Ogre::SceneNode* node, int xsize, int ysize, int zsize)  {
-  btCollisionShape* groundShape = new btBoxShape(btVector3(xsize, ysize, zsize));
-  btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),
+btRigidBody& Simulator::addBoxShape(Ogre::SceneNode* node, int xsize, int ysize, int zsize)  {
+  btCollisionShape* boxShape = new btBoxShape(btVector3(xsize, ysize, zsize));
+  btDefaultMotionState* boxMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),
       btVector3(node->_getDerivedPosition().x, node->_getDerivedPosition().y, node->_getDerivedPosition().z)));
-  btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
-  btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
-  activetile = groundRigidBody;
-  gContactProcessedCallback = foo;
-  groundRigidBody->setRestitution(1.0);
-  dynamicsWorld->addRigidBody(groundRigidBody);
+  btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, boxMotionState, boxShape, btVector3(0, 0, 0));
+  btRigidBody* boxRigidBody = new btRigidBody(boxRigidBodyCI);
 
-  tiles.push_back(groundRigidBody);
+  boxRigidBody->setRestitution(1.0);
+  boxRigidBody->setCollisionFlags(boxRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+  dynamicsWorld->addRigidBody(boxRigidBody);
+
+  collisionShapes.push_back(boxShape);
+
+  return boxRigidBody;
 }
 
-bool checkRigidBody(btRigidBody* ptr) {
-  return ptr == rigidBody;
+void Simulator::registerCallback(void &func) {
+  gContactProcessedCallback = func;
 }

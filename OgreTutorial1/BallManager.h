@@ -108,6 +108,10 @@ private:
       rigidBody->applyCentralImpulse(btVector3(dx, dy, dz));
     }
 
+    bool checkRigidBody(btRigidBody* ptr) {
+      return ptr == rigidBody;
+    }
+
     btRigidBody* getRigidBody() {
       return rigidBody;
     }

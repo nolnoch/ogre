@@ -4,17 +4,20 @@
 #include "BallManager.h"
 
 
-using std::vector;
+extern ContactProcessedCallback gContactProcessedCallback;
 
+using std::vector;
 
 class Simulator {
 
 public:
-  Simulator(Ogre::SceneManager* sM);
-  ~Simulator();
+  Simulator();
+  virtual ~Simulator();
 
-  void createBounds(const int offset);
-  bool simulateStep(double delay);
+  virtual void initSimulator();
+  virtual bool simulateStep(double delay);
+  virtual btRigidBody& addBoxShape(Ogre::SceneNode* n, int x, int y, int z);
+  virtual void registerCallback(void &func);
 
 private:
   btDefaultCollisionConfiguration* collisionConfiguration;
@@ -26,15 +29,7 @@ private:
   vector<btCollisionShape *> collisionShapes;
 
   Ogre::SceneManager* sceneMgr;
-  vector<Ball*> balls;
-  std::deque<btRigidBody*> tiles;
 
-  BallManager *ballManager;
-
-  static btRigidBody* activetile;
-  static vector<Ball*> mainballs;
-  static bool targethit;
-
-  void addPlaneBound(int x, int y, int z, int d);
-  void addTile(Ogre::SceneNode* node, int xsize, int ysize, int zsize);
+  virtual void addPlaneBound(int x, int y, int z, int d);
+  virtual void createBounds(const int offset);
 };
