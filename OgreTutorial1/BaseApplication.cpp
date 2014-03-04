@@ -85,8 +85,6 @@ void BaseApplication::createCamera(void)
   // Look back along -Z
   mCamera->lookAt(Ogre::Vector3::ZERO);
   mCamera->setNearClipDistance(5);
-
-  mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
 }
 //-------------------------------------------------------------------------------------
 void BaseApplication::createFrameListener(void)

@@ -23,25 +23,25 @@ This source file is part of the
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication(void) :
-  mDirection(Ogre::Vector3::ZERO),
-  vZero(Ogre::Vector3::ZERO),
-  sounding(false),
-  gameStart(true),
-  gameDone(false),
-  animDone(false),
-  isCharging(false),
-  paused(false),
-  currLevel(1),
-  headNode(0),
-  ballMgr(0),
-  sim(0),
-  panelLight(0),
-  scorePanel(0),
-  congratsPanel(0),
-  chargePanel(0),
-  boing(0),
-  music(0),
-  gong(0)
+mDirection(Ogre::Vector3::ZERO),
+vZero(Ogre::Vector3::ZERO),
+sounding(false),
+gameStart(true),
+gameDone(false),
+animDone(false),
+isCharging(false),
+paused(false),
+currLevel(1),
+headNode(0),
+ballMgr(0),
+sim(0),
+panelLight(0),
+scorePanel(0),
+congratsPanel(0),
+chargePanel(0),
+boing(0),
+music(0),
+gong(0)
 {
   mSpeed = score = shotsFired = tileCounter = winTimer = chargeShot =
       slowdownval = currTile = 0;
@@ -85,6 +85,11 @@ bool TutorialApplication::configure() {
   ballMgr = new BallManager(sim);
 
   return ret;
+}
+//-------------------------------------------------------------------------------------
+void TutorialApplication::createCamera(void) {
+  BaseApplication::createCamera();
+  mCameraMan = new CameraMan(mCamera);
 }
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
@@ -231,6 +236,50 @@ bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
     chargeShot = 0;
 
   return ret;
+}
+//-------------------------------------------------------------------------------------
+bool TutorialApplication::keyPressed( const OIS::KeyEvent &arg ) {
+  if (arg.key == OIS::KC_ESCAPE)
+  {
+    Mix_FreeMusic(music);
+    mShutDown = true;
+  }
+  else if (arg.key == OIS::KC_SPACE)
+  {
+  }
+  else if (arg.key == OIS::KC_P)
+  {
+    paused = !paused;
+    slowdownval = 0.0;
+    if (paused)
+      Mix_HaltMusic();
+    else
+      Mix_PlayMusic(music, 0);
+  }
+  else if (arg.key == OIS::KC_M) {
+    sounding = !sounding;
+    if (sounding)
+      Mix_PlayMusic(music, -1);
+    else
+      Mix_HaltMusic();
+  }
+  else if (arg.key == OIS::KC_Q)
+  {
+    if(currTile >= -1)
+      tileEntities[currTile+1]->setMaterialName("Examples/Chrome");
+    currTile = tileEntities.size() - 1;
+    timer.reset();
+    animDone = false;
+  }
+
+  return BaseApplication::keyPressed(arg);
+}
+//-------------------------------------------------------------------------------------
+bool TutorialApplication::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id ) {
+  isCharging = true;
+  chargeShot = 0;
+
+  return BaseApplication::mousePressed(arg, id);
 }
 //-------------------------------------------------------------------------------------
 bool TutorialApplication::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id ) {

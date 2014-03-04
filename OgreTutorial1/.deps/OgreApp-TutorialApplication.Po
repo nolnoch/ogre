@@ -987,7 +987,7 @@ OgreApp-TutorialApplication.o: TutorialApplication.cpp \
  /usr/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h \
  /usr/include/bullet/BulletDynamics/Dynamics/btActionInterface.h \
  /usr/include/bullet/BulletDynamics/Dynamics/btRigidBody.h Simulator.h \
- Ball.h OgreMotionState.h /usr/include/SDL/SDL.h \
+ Ball.h OgreMotionState.h CameraMan.h /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
  /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
  /usr/include/strings.h /usr/include/inttypes.h /usr/include/iconv.h \
@@ -3189,6 +3189,8 @@ Simulator.h:
 Ball.h:
 
 OgreMotionState.h:
+
+CameraMan.h:
 
 /usr/include/SDL/SDL.h:
 

@@ -19,6 +19,7 @@ This source file is part of the
 
 #include "BaseApplication.h"
 #include "BallManager.h"
+#include "CameraMan.h"
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
@@ -43,8 +44,11 @@ public:
 
 protected:
   virtual bool configure(void);
+  virtual void createCamera(void);
   virtual void createScene(void);
   virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+  virtual bool keyPressed( const OIS::KeyEvent &arg );
+  virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
   virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
 
   Ogre::Timer *mTimer, timer;
