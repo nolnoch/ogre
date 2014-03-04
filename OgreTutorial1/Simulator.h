@@ -1,23 +1,37 @@
-#include <bullet/btBulletDynamicsCommon.h>
-#include <vector>
+/*
+-----------------------------------------------------------------------------
+Filename:    Simulator.h
+-----------------------------------------------------------------------------
 
-#include "BallManager.h"
+-----------------------------------------------------------------------------
+ */
+#ifndef __Simulator_h_
+#define __Simulator_h_
+
+#include <bullet/btBulletDynamicsCommon.h>
+#include <OgreSceneManager.h>
+#include <vector>
 
 
 extern ContactProcessedCallback gContactProcessedCallback;
 
-using std::vector;
-
 class Simulator {
 
 public:
+  Ogre::SceneManager* sceneMgr;
+
   Simulator();
   virtual ~Simulator();
 
   virtual void initSimulator();
+  virtual void createBounds(const int offset);
+  virtual void registerCallback(void * func);
   virtual bool simulateStep(double delay);
-  virtual btRigidBody& addBoxShape(Ogre::SceneNode* n, int x, int y, int z);
-  virtual void registerCallback(void &func);
+  virtual void addPlaneBound(int x, int y, int z, int d);
+  virtual btRigidBody* addBoxShape(Ogre::SceneNode* n, int x, int y, int z);
+  virtual btRigidBody* addBallShape(Ogre::SceneNode* n, int r, int m);
+
+  virtual btDiscreteDynamicsWorld& getDynamicsWorld();
 
 private:
   btDefaultCollisionConfiguration* collisionConfiguration;
@@ -26,10 +40,7 @@ private:
   btSequentialImpulseConstraintSolver* solver;
   btDiscreteDynamicsWorld* dynamicsWorld;
 
-  vector<btCollisionShape *> collisionShapes;
-
-  Ogre::SceneManager* sceneMgr;
-
-  virtual void addPlaneBound(int x, int y, int z, int d);
-  virtual void createBounds(const int offset);
+  std::vector<btCollisionShape *> collisionShapes;
 };
+
+#endif // #ifndef __Simulator_h_

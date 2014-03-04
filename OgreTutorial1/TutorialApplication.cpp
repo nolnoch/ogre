@@ -22,22 +22,30 @@ This source file is part of the
 #endif
 
 //-------------------------------------------------------------------------------------
-TutorialApplication::TutorialApplication(void)
-: headNode(0),
-  mSpeed(0),
+TutorialApplication::TutorialApplication(void) :
   mDirection(Ogre::Vector3::ZERO),
   vZero(Ogre::Vector3::ZERO),
-  boing(0),
   sounding(false),
-  currLevel(1),
-  score(0),
-  shotsFired(0),
-  tileCounter(0),
-  globalBall(0),
-  panelLight(0),
   gameStart(true),
-  animDone(false)
+  gameDone(false),
+  animDone(false),
+  isCharging(false),
+  paused(false),
+  currLevel(1),
+  headNode(0),
+  ballMgr(0),
+  sim(0),
+  panelLight(0),
+  scorePanel(0),
+  congratsPanel(0),
+  chargePanel(0),
+  boing(0),
+  music(0),
+  gong(0)
 {
+  mSpeed = score = shotsFired = tileCounter = winTimer = chargeShot =
+      slowdownval = currTile = 0;
+
   mTimer = OGRE_NEW Ogre::Timer();
   mTimer->reset();
 }
@@ -73,7 +81,8 @@ bool TutorialApplication::configure() {
     Mix_PlayMusic(music, -1);
   }
 
-  sim = new Simulator(mSceneMgr);
+  sim = new TileSimulator();
+  ballMgr = new BallManager(sim);
 
   return ret;
 }
@@ -197,11 +206,7 @@ bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
         winTimer = 0;
         congratsPanel->show();
 
-        for(int i = 0; i < balls.size(); i++) {
-          balls[i]->enableGravity();
-          globalBall->enableGravity();
-          std::cout << "enabling gravity\n";
-        }
+        ballMgr->enableGravity();
       }
     }
   }
@@ -231,25 +236,23 @@ bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
 bool TutorialApplication::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id ) {
   isCharging = false;
   if(chargeShot >= 1000 && !gameDone) {
-    if(globalBall != NULL) {
-      sim->removeBall(globalBall);
-      // delete globalBall->node;
+    Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
+    Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+    Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
+    double force = chargeShot;
+
+    if(ballMgr->globalBall) {
+      ballMgr->removeBall(ballMgr->globalBall);
     }
 
     int x = mCamera->getPosition().x;
     int y = mCamera->getPosition().y;
     int z = mCamera->getPosition().z;
 
-    Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
     ballMeshpc->setCastShadows(true);
-
-    Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     nodepc->attachObject(ballMeshpc);
-    globalBall = new Ball(nodepc, x, y, z, 100);
-    sim->addBall(globalBall);
-    double force = chargeShot;
-    Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
-    globalBall->applyForce(force * direction.x, force * direction.y, force * direction.z);
+    ballMgr->setGlobalBall(ballMgr->addBall(nodepc, x, y, z, 100));
+    ballMgr->globalBall->applyForce(force * direction.x, force * direction.y, force * direction.z);
     shotsFired++;
   }
 

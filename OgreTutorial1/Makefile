@@ -86,10 +86,7 @@ DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(srcdir)/config.h.in depcomp $(noinst_HEADERS) config.guess \
 	config.sub install-sh missing ltmain.sh
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -101,7 +98,9 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_OgreApp_OBJECTS = OgreApp-BaseApplication.$(OBJEXT) \
-	OgreApp-TutorialApplication.$(OBJEXT)
+	OgreApp-TutorialApplication.$(OBJEXT) \
+	OgreApp-Simulator.$(OBJEXT) OgreApp-TileSimulator.$(OBJEXT) \
+	OgreApp-BallManager.$(OBJEXT)
 OgreApp_OBJECTS = $(am_OgreApp_OBJECTS)
 am__DEPENDENCIES_1 =
 OgreApp_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
@@ -201,6 +200,8 @@ AUTOCONF = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing autoconf
 AUTOHEADER = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing autoheader
 AUTOMAKE = ${SHELL} /home/nolnoch/git/ogre/OgreTutorial1/missing automake-1.13
 AWK = mawk
+BULLET_CFLAGS = 
+BULLET_LIBS = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -286,6 +287,8 @@ build_cpu = x86_64
 build_os = linux-gnu
 build_vendor = unknown
 builddir = .
+bullet_CFLAGS = -I/usr/include/bullet  
+bullet_LIBS = -lBulletSoftBody -lBulletDynamics -lBulletCollision -lLinearMath  
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE}
@@ -320,11 +323,11 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 ACLOCAL_AMFLAGS = -I m4
-noinst_HEADERS = BaseApplication.h TutorialApplication.h
+noinst_HEADERS = BaseApplication.h TutorialApplication.h Simulator.h TileSimulator.h BallManager.h CameraMan.h Ball.h
 OgreApp_CPPFLAGS = -I$(top_srcdir)
-OgreApp_SOURCES = BaseApplication.cpp TutorialApplication.cpp
-OgreApp_CXXFLAGS = $(OGRE_CFLAGS) $(OIS_CFLAGS)
-OgreApp_LDADD = $(OGRE_LIBS) $(OIS_LIBS) -lSDL -lSDL_mixer
+OgreApp_SOURCES = BaseApplication.cpp TutorialApplication.cpp Simulator.cpp TileSimulator.cpp BallManager.cpp
+OgreApp_CXXFLAGS = $(OGRE_CFLAGS) $(OIS_CFLAGS) -I/usr/include/bullet
+OgreApp_LDADD = $(OGRE_LIBS) $(OIS_LIBS) -lBulletDynamics -lBulletCollision -lLinearMath -lSDL -lSDL_mixer
 EXTRA_DIST = buildit makeit
 AUTOMAKE_OPTIONS = foreign
 all: config.h
@@ -441,7 +444,10 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/OgreApp-BallManager.Po
 include ./$(DEPDIR)/OgreApp-BaseApplication.Po
+include ./$(DEPDIR)/OgreApp-Simulator.Po
+include ./$(DEPDIR)/OgreApp-TileSimulator.Po
 include ./$(DEPDIR)/OgreApp-TutorialApplication.Po
 
 .cpp.o:
@@ -492,6 +498,48 @@ OgreApp-TutorialApplication.obj: TutorialApplication.cpp
 #	$(AM_V_CXX)source='TutorialApplication.cpp' object='OgreApp-TutorialApplication.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-TutorialApplication.obj `if test -f 'TutorialApplication.cpp'; then $(CYGPATH_W) 'TutorialApplication.cpp'; else $(CYGPATH_W) '$(srcdir)/TutorialApplication.cpp'; fi`
+
+OgreApp-Simulator.o: Simulator.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-Simulator.o -MD -MP -MF $(DEPDIR)/OgreApp-Simulator.Tpo -c -o OgreApp-Simulator.o `test -f 'Simulator.cpp' || echo '$(srcdir)/'`Simulator.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-Simulator.Tpo $(DEPDIR)/OgreApp-Simulator.Po
+#	$(AM_V_CXX)source='Simulator.cpp' object='OgreApp-Simulator.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-Simulator.o `test -f 'Simulator.cpp' || echo '$(srcdir)/'`Simulator.cpp
+
+OgreApp-Simulator.obj: Simulator.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-Simulator.obj -MD -MP -MF $(DEPDIR)/OgreApp-Simulator.Tpo -c -o OgreApp-Simulator.obj `if test -f 'Simulator.cpp'; then $(CYGPATH_W) 'Simulator.cpp'; else $(CYGPATH_W) '$(srcdir)/Simulator.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-Simulator.Tpo $(DEPDIR)/OgreApp-Simulator.Po
+#	$(AM_V_CXX)source='Simulator.cpp' object='OgreApp-Simulator.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-Simulator.obj `if test -f 'Simulator.cpp'; then $(CYGPATH_W) 'Simulator.cpp'; else $(CYGPATH_W) '$(srcdir)/Simulator.cpp'; fi`
+
+OgreApp-TileSimulator.o: TileSimulator.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-TileSimulator.o -MD -MP -MF $(DEPDIR)/OgreApp-TileSimulator.Tpo -c -o OgreApp-TileSimulator.o `test -f 'TileSimulator.cpp' || echo '$(srcdir)/'`TileSimulator.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-TileSimulator.Tpo $(DEPDIR)/OgreApp-TileSimulator.Po
+#	$(AM_V_CXX)source='TileSimulator.cpp' object='OgreApp-TileSimulator.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-TileSimulator.o `test -f 'TileSimulator.cpp' || echo '$(srcdir)/'`TileSimulator.cpp
+
+OgreApp-TileSimulator.obj: TileSimulator.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-TileSimulator.obj -MD -MP -MF $(DEPDIR)/OgreApp-TileSimulator.Tpo -c -o OgreApp-TileSimulator.obj `if test -f 'TileSimulator.cpp'; then $(CYGPATH_W) 'TileSimulator.cpp'; else $(CYGPATH_W) '$(srcdir)/TileSimulator.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-TileSimulator.Tpo $(DEPDIR)/OgreApp-TileSimulator.Po
+#	$(AM_V_CXX)source='TileSimulator.cpp' object='OgreApp-TileSimulator.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-TileSimulator.obj `if test -f 'TileSimulator.cpp'; then $(CYGPATH_W) 'TileSimulator.cpp'; else $(CYGPATH_W) '$(srcdir)/TileSimulator.cpp'; fi`
+
+OgreApp-BallManager.o: BallManager.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-BallManager.o -MD -MP -MF $(DEPDIR)/OgreApp-BallManager.Tpo -c -o OgreApp-BallManager.o `test -f 'BallManager.cpp' || echo '$(srcdir)/'`BallManager.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-BallManager.Tpo $(DEPDIR)/OgreApp-BallManager.Po
+#	$(AM_V_CXX)source='BallManager.cpp' object='OgreApp-BallManager.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-BallManager.o `test -f 'BallManager.cpp' || echo '$(srcdir)/'`BallManager.cpp
+
+OgreApp-BallManager.obj: BallManager.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -MT OgreApp-BallManager.obj -MD -MP -MF $(DEPDIR)/OgreApp-BallManager.Tpo -c -o OgreApp-BallManager.obj `if test -f 'BallManager.cpp'; then $(CYGPATH_W) 'BallManager.cpp'; else $(CYGPATH_W) '$(srcdir)/BallManager.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/OgreApp-BallManager.Tpo $(DEPDIR)/OgreApp-BallManager.Po
+#	$(AM_V_CXX)source='BallManager.cpp' object='OgreApp-BallManager.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(OgreApp_CPPFLAGS) $(CPPFLAGS) $(OgreApp_CXXFLAGS) $(CXXFLAGS) -c -o OgreApp-BallManager.obj `if test -f 'BallManager.cpp'; then $(CYGPATH_W) 'BallManager.cpp'; else $(CYGPATH_W) '$(srcdir)/BallManager.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

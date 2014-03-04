@@ -18,6 +18,7 @@ This source file is part of the
 #define __TutorialApplication_h_
 
 #include "BaseApplication.h"
+#include "BallManager.h"
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
@@ -64,9 +65,8 @@ protected:
   OgreBites::Label* congratsPanel;
   OgreBites::Label* chargePanel;
 
-  std::vector<Ball*> balls;
-  Ball* globalBall;
-  Simulator* sim;
+  BallManager *ballMgr;
+  TileSimulator *sim;
 
   Ogre::Vector3 vZero;
   Mix_Chunk *boing, *gong;
@@ -91,9 +91,7 @@ protected:
           Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
           headNode->attachObject(ballMesh);
           headNode->setScale(Ogre::Vector3(meshSize, meshSize, meshSize));
-          Ball* ball = new Ball(headNode, x * ballSize, y * ballSize, z * ballSize, ballSize/2);
-          sim->addMainBall(ball);
-          balls.push_back(ball);
+          ballMgr->addMainBall(headNode, x * ballSize, y * ballSize, z * ballSize, ballSize/2);
         }
       }
     }
@@ -232,9 +230,7 @@ protected:
 
 
   void levelTearDown() {
-    for(int i = 0; i < balls.size(); i++)
-      sim->removeBall(balls[i]);
-    balls.clear();
+    ballMgr->clearBalls();
 
     for(int i = 0; i < tileList.size(); i++)
       mSceneMgr->destroySceneNode(tileList[i]);
@@ -244,8 +240,6 @@ protected:
     allTileEntities.clear();
 
     currLevel++;
-    sim->removeBall(globalBall);
-    globalBall = NULL;
   }
 
   void simonSaysAnim() {

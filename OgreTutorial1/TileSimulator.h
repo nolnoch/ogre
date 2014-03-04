@@ -1,48 +1,44 @@
+/*
+-----------------------------------------------------------------------------
+Filename:    TileSimulator.h
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+ */
+#ifndef __TileSimulator_h_
+#define __TileSimulator_h_
+
 #include <bullet/btBulletDynamicsCommon.h>
+#include <OgreSceneManager.h>
 #include <vector>
 
+#include "Simulator.h"
 #include "BallManager.h"
 
+
+class BallManager;
+class Ball;
+
+static btRigidBody *activetile;
+static bool targethit;
+static BallManager *tileBallMgr;
 
 class TileSimulator : public Simulator {
 
 public:
-  static btRigidBody *activetile;
-  static std::vector<Ball *> mainballs;
-  static bool targethit;
-
-  TileSimulator(Ogre::SceneManager *sM);
+  TileSimulator();
   virtual ~TileSimulator();
 
+  virtual void initSimulator();
   virtual bool simulateStep(double delay);
-  virtual btRigidBody& addBoxShape(Ogre::SceneNode *n, int x, int y, int z);
+  virtual btRigidBody* addBallShape(Ogre::SceneNode *n, int r);
+  btRigidBody* addTile(Ogre::SceneNode *n, int x, int y, int z);
+  void setBallManager(BallManager *bM);
 
-  static bool tileCallback(btManifoldPoint& cp, void *body0, void *body1) {
-    bool ret = false;
-
-    if (!activetile)
-      return true;
-
-    for (int i = 0; i < mainballs.size(); i++) {
-      Ball* mball = mainballs[i];
-
-      if (activetile == body0 && mball->checkRigidBody((btRigidBody*)body1)) {
-        targethit = true;
-        mball->lockPosition();
-        return true;
-      } else if (activetile == body1 && mball->checkRigidBody((btRigidBody*)body0)) {
-        targethit = true;
-        mball->lockPosition();
-        return true;
-      }
-    }
-
-    return ret;
-  }
+  static bool tileCallback(btManifoldPoint& cp, void *body0, void *body1);
 
 private:
-  std::vector<Ball *> balls;
   std::deque<btRigidBody *> tiles;
-
-  BallManager *ballManager;
 };
+
+#endif // #ifndef __TileSimulator_h_

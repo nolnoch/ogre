@@ -11,6 +11,10 @@ sceneMgr(0)
 {
 }
 
+Simulator::~Simulator() {
+
+}
+
 void Simulator::initSimulator() {
   collisionConfiguration = new btDefaultCollisionConfiguration();
   dispatcher = new btCollisionDispatcher(collisionConfiguration);
@@ -49,11 +53,13 @@ void Simulator::addPlaneBound(int x, int y, int z, int d) {
   dynamicsWorld->addRigidBody(groundRigidBody);
 }
 
-btRigidBody& Simulator::addBoxShape(Ogre::SceneNode* node, int xsize, int ysize, int zsize)  {
+btRigidBody* Simulator::addBoxShape(Ogre::SceneNode* node, int xsize, int ysize, int zsize)  {
   btCollisionShape* boxShape = new btBoxShape(btVector3(xsize, ysize, zsize));
+
   btDefaultMotionState* boxMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),
       btVector3(node->_getDerivedPosition().x, node->_getDerivedPosition().y, node->_getDerivedPosition().z)));
-  btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, boxMotionState, boxShape, btVector3(0, 0, 0));
+
+  btRigidBody::btRigidBodyConstructionInfo boxRigidBodyCI(0, boxMotionState, boxShape, btVector3(0, 0, 0));
   btRigidBody* boxRigidBody = new btRigidBody(boxRigidBodyCI);
 
   boxRigidBody->setRestitution(1.0);
@@ -65,6 +71,30 @@ btRigidBody& Simulator::addBoxShape(Ogre::SceneNode* node, int xsize, int ysize,
   return boxRigidBody;
 }
 
-void Simulator::registerCallback(void &func) {
-  gContactProcessedCallback = func;
+btRigidBody* Simulator::addBallShape(Ogre::SceneNode* node, int radius, int mass)  {
+  btVector3 ballInertia(0, 0, 0);
+  btCollisionShape* ballShape = new btSphereShape(radius);
+  ballShape->calculateLocalInertia(mass, ballInertia);
+
+  btDefaultMotionState* ballMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),
+      btVector3(node->_getDerivedPosition().x, node->_getDerivedPosition().y, node->_getDerivedPosition().z)));
+
+  btRigidBody::btRigidBodyConstructionInfo ballRigidBodyCI(0, ballMotionState, ballShape, ballInertia);
+  btRigidBody* ballRigidBody = new btRigidBody(ballRigidBodyCI);
+
+  ballRigidBody->setRestitution(1.0);
+  ballRigidBody->setCollisionFlags(ballRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+  dynamicsWorld->addRigidBody(ballRigidBody);
+
+  collisionShapes.push_back(ballShape);
+
+  return ballRigidBody;
+}
+
+void Simulator::registerCallback(void *func) {
+  gContactProcessedCallback = (ContactProcessedCallback) func;
+}
+
+btDiscreteDynamicsWorld& Simulator::getDynamicsWorld() {
+  return *this->dynamicsWorld;
 }
