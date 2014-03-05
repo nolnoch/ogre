@@ -20,8 +20,8 @@ class BallManager;
 class Ball;
 
 static btRigidBody *activetile;
-static bool targethit;
 static BallManager *tileBallMgr;
+static bool targethit;
 
 class TileSimulator : public Simulator {
 

@@ -25,12 +25,9 @@ class Ball {
       rB->setAngularFactor(0.0f);
       rB->setRestitution(0.7);
       rB->setDamping(0.5, 0.0);
-
-      setPosition(x, y, z);
   }
 
     virtual ~Ball() {
-      radius = mass = 0;
       delete node;
       delete rigidBody;
     }
@@ -43,6 +40,10 @@ class Ball {
 
     void lockPosition() {
       rigidBody->setMassProps(0, btVector3(0, 0, 0));
+    }
+
+    void unlockPosition() {
+      rigidBody->setMassProps(mass, btVector3(0, 0, 0));
     }
 
     void setPosition(int x, int y, int z) {
@@ -70,7 +71,6 @@ class Ball {
 
   private:
     Ogre::SceneNode* node;
-    int radius;
     btScalar mass;
     btRigidBody* rigidBody;
   };

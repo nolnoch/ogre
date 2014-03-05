@@ -28,6 +28,8 @@ public:
   Ball* addMainBall(Ogre::SceneNode* n, int x, int y, int z, int r);
   void enableGravity();
   void removeBall(Ball* rmBall);
+  void removeGlobalBall();
+  bool isGlobalBall();
   void clearBalls();
 
   TileSimulator* getSimulator();
@@ -38,6 +40,7 @@ private:
   std::vector<Ball *> ballList;
   std::vector<Ball *> mainBalls;
   TileSimulator *sim;
+  bool globalBallActive;
 };
 
 #endif /* BALLMANAGER_H_ */

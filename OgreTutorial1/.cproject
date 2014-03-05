@@ -25,6 +25,7 @@
 								<option id="gnu.cpp.compiler.exe.debug.option.debugging.level.593602252" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.404290558" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/usr/include/boost"/>
+									<listOptionValue builtIn="false" value="/usr/include/bullet"/>
 									<listOptionValue builtIn="false" value="/usr/include/OIS"/>
 									<listOptionValue builtIn="false" value="&quot;${OGRE_LOC}/OgreMain/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${OGRE_LOC}/Samples/Common/include&quot;"/>
@@ -40,6 +41,9 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.309414368" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option id="gnu.cpp.link.option.libs.1023281835" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="OgreMain"/>
+									<listOptionValue builtIn="false" value="BulletDynamics"/>
+									<listOptionValue builtIn="false" value="BulletCollision"/>
+									<listOptionValue builtIn="false" value="LinearMath"/>
 									<listOptionValue builtIn="false" value="boost_system"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
 									<listOptionValue builtIn="false" value="pthread"/>

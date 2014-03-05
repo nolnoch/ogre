@@ -76,10 +76,10 @@ btRigidBody* Simulator::addBallShape(Ogre::SceneNode* node, int radius, int mass
   btCollisionShape* ballShape = new btSphereShape(radius);
   ballShape->calculateLocalInertia(mass, ballInertia);
 
-  btDefaultMotionState* ballMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),
-      btVector3(node->_getDerivedPosition().x, node->_getDerivedPosition().y, node->_getDerivedPosition().z)));
+  OgreMotionState* ballMotionState = new OgreMotionState(btTransform(btQuaternion(0, 0, 0, 1.0),
+      btVector3(node->_getDerivedPosition().x, node->_getDerivedPosition().y, node->_getDerivedPosition().z)), node);
 
-  btRigidBody::btRigidBodyConstructionInfo ballRigidBodyCI(0, ballMotionState, ballShape, ballInertia);
+  btRigidBody::btRigidBodyConstructionInfo ballRigidBodyCI(mass, ballMotionState, ballShape, ballInertia);
   btRigidBody* ballRigidBody = new btRigidBody(ballRigidBodyCI);
 
   ballRigidBody->setRestitution(1.0);

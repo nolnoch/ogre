@@ -178,6 +178,32 @@ void TutorialApplication::createScene(void)
   levelSetup(currLevel);
 }
 //-------------------------------------------------------------------------------------
+void TutorialApplication::createFrameListener(void) {
+  BaseApplication::createFrameListener();
+
+  Ogre::StringVector scorelist;
+  scorelist.push_back("Score");
+  scorelist.push_back("Shots Fired");
+  scorelist.push_back("Current Level");
+  scorePanel = mTrayMgr->createParamsPanel(OgreBites::TL_TOPLEFT, "ScorePanel", 200, scorelist);
+
+  congratsPanel = mTrayMgr->createLabel(OgreBites::TL_TOP, "CongratsPanel", "this is dumb", 300);
+  congratsPanel->hide();
+
+  chargePanel = mTrayMgr->createLabel(OgreBites::TL_BOTTOM, "Chargepanel", "|", 300);
+
+  Ogre::OverlayManager& overlayMgr = Ogre::OverlayManager::getSingleton();
+  Ogre::Overlay* overlay = overlayMgr.create("Crosshair");
+
+  Ogre::OverlayContainer* panel = static_cast<Ogre::OverlayContainer*>(
+      overlayMgr.createOverlayElement("Panel", "PanelName"));
+  panel->setPosition(0.488, 0.475);
+  panel->setDimensions(0.025, 0.0375);
+  panel->setMaterialName("Examples/Crosshair");
+  overlay->add2D(panel);
+  overlay->show();
+}
+//-------------------------------------------------------------------------------------
 bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
   bool ret = BaseApplication::frameRenderingQueued(evt);
@@ -188,11 +214,9 @@ bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
     tile->setMaterialName("Examples/Chrome");
   } else {
     Ogre::Entity* tile = tileEntities[0];
-  }
-
-  if(slowdownval <= 1/60.f) {
     bool hit = sim->simulateStep(slowdownval);
-    if(hit && !gameDone) {
+
+    if (hit && !gameDone) {
       if (sounding) {
         Mix_PlayChannel(-1, boing, 0);
         std::cout << "Playing impact noise." << std::endl;
@@ -206,7 +230,7 @@ bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
       }
       score++;
 
-      if(tileEntities.size() == 0 && !gameDone) {
+      if(tileEntities.size() == 0) {
         gameDone = true;
         winTimer = 0;
         congratsPanel->show();
@@ -228,12 +252,26 @@ bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
 
   simonSaysAnim();
 
-  if (isCharging) {
-    if(chargeShot < 10000)
-      chargeShot += 80;
-    // std::cout << chargeShot << std::endl;
-  } else
-    chargeShot = 0;
+  if (isCharging && chargeShot < 10000)
+    chargeShot += 80;
+
+  if (!mTrayMgr->isDialogVisible()) {
+    scorePanel->setParamValue(0, Ogre::StringConverter::toString(score));
+    scorePanel->setParamValue(1, Ogre::StringConverter::toString(shotsFired));
+    scorePanel->setParamValue(2, Ogre::StringConverter::toString(currLevel));
+    std::stringstream grats;
+    grats << "Moving to level ";
+    grats << (currLevel + 1);
+    grats << "...";
+    congratsPanel->setCaption(grats.str());
+
+
+    std::stringstream scharge;
+    scharge << "|";
+    for(int i = 1000; i < chargeShot; i += 160)
+      scharge << "|";
+    chargePanel->setCaption(scharge.str());
+  }
 
   return ret;
 }
@@ -288,11 +326,12 @@ bool TutorialApplication::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseB
     Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
     Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
+    std::cout << chargeShot << std::endl;
     double force = chargeShot;
+    chargeShot = 0;
 
-    if(ballMgr->globalBall) {
-      ballMgr->removeBall(ballMgr->globalBall);
-    }
+    if(ballMgr->isGlobalBall())
+      ballMgr->removeGlobalBall();
 
     int x = mCamera->getPosition().x;
     int y = mCamera->getPosition().y;

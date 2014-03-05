@@ -1,3 +1,6 @@
 /Debug
 /OgreApp-BaseApplication.o
 /OgreApp-TutorialApplication.o
+/OgreApp-BallManager.o
+/OgreApp-Simulator.o
+/OgreApp-TileSimulator.o

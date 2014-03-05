@@ -12,6 +12,8 @@ Filename:    Simulator.h
 #include <OgreSceneManager.h>
 #include <vector>
 
+#include "OgreMotionState.h"
+
 
 extern ContactProcessedCallback gContactProcessedCallback;
 

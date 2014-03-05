@@ -40,4 +40,4 @@ public:
   }
 };
 
-#endif // #ifndef __BallManager_h_
+#endif // #ifndef __OgreMotionState_h_

@@ -14,9 +14,12 @@ void TileSimulator::initSimulator() {
 }
 
 bool TileSimulator::simulateStep(double delay) {
-  targethit = Simulator::simulateStep(delay);
+  bool ret = Simulator::simulateStep(delay);
+  ret = targethit;
 
-  if(targethit) {
+  if (targethit) {
+    std::cout << "Target hit: in simulateStep" << std::endl;
+
     if(tiles.size() > 0) {
       tiles.pop_back();
 
@@ -25,9 +28,11 @@ bool TileSimulator::simulateStep(double delay) {
       else
         activetile = NULL;
     }
+
+    targethit = false;
   }
 
-  return targethit;
+  return ret;
 }
 
 btRigidBody* TileSimulator::addTile(Ogre::SceneNode *n, int x, int y, int z)  {
@@ -55,5 +60,7 @@ bool TileSimulator::tileCallback(btManifoldPoint& cp, void *body0, void *body1) 
   if (!activetile)
     return true;
 
-  return tileBallMgr->checkCollisions(activetile, body0, body1);
+  targethit = tileBallMgr->checkCollisions(activetile, body0, body1);
+
+  return targethit;
 }
