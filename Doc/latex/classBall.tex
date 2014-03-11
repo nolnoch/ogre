@@ -1,39 +1,141 @@
 \hypertarget{classBall}{\section{Ball Class Reference}
 \label{classBall}\index{Ball@{Ball}}
 }
+
+
+{\ttfamily \#include $<$Ball.\-h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classBall_aec238435b8abb83b6459dc811be703b9}{{\bfseries Ball} (bt\-Rigid\-Body $\ast$r\-B, Ogre\-::\-Scene\-Node $\ast$n, int x, int y, int z)}\label{classBall_aec238435b8abb83b6459dc811be703b9}
-
+\hyperlink{classBall_aec238435b8abb83b6459dc811be703b9}{Ball} (bt\-Rigid\-Body $\ast$r\-B, Ogre\-::\-Scene\-Node $\ast$n, int x, int y, int z)
 \item 
-\hypertarget{classBall_acc744032fcdb54f6555880296b899a1e}{void {\bfseries enable\-Gravity} ()}\label{classBall_acc744032fcdb54f6555880296b899a1e}
-
+virtual \hyperlink{classBall_a20f2f6ac0bf648f406a8e12e63429fcd}{$\sim$\-Ball} ()
 \item 
-\hypertarget{classBall_aca417b802b8bd765d6a06adc64b4cd1c}{void {\bfseries lock\-Position} ()}\label{classBall_aca417b802b8bd765d6a06adc64b4cd1c}
-
+void \hyperlink{classBall_acc744032fcdb54f6555880296b899a1e}{enable\-Gravity} ()
 \item 
-\hypertarget{classBall_ab4ad64bcaa75353124023b924de9ff98}{void {\bfseries unlock\-Position} ()}\label{classBall_ab4ad64bcaa75353124023b924de9ff98}
-
+void \hyperlink{classBall_aca417b802b8bd765d6a06adc64b4cd1c}{lock\-Position} ()
 \item 
-\hypertarget{classBall_afe626f0cd58bb4e6e604f18be11ae6ca}{void {\bfseries set\-Position} (int x, int y, int z)}\label{classBall_afe626f0cd58bb4e6e604f18be11ae6ca}
-
+void \hyperlink{classBall_ab4ad64bcaa75353124023b924de9ff98}{unlock\-Position} ()
 \item 
-\hypertarget{classBall_a8560c24afa515d3319cdf08dd918bf82}{void {\bfseries apply\-Force} (double dx, double dy, double dz)}\label{classBall_a8560c24afa515d3319cdf08dd918bf82}
-
+void \hyperlink{classBall_afe626f0cd58bb4e6e604f18be11ae6ca}{set\-Position} (int x, int y, int z)
 \item 
-\hypertarget{classBall_a6364b72dcbf707a3ff649fdf731936d4}{bool {\bfseries check\-Rigid\-Body} (bt\-Rigid\-Body $\ast$ptr)}\label{classBall_a6364b72dcbf707a3ff649fdf731936d4}
-
+void \hyperlink{classBall_a8560c24afa515d3319cdf08dd918bf82}{apply\-Force} (double dx, double dy, double dz)
 \item 
-\hypertarget{classBall_a0dde8c947575a2f2edb671ef02326c50}{bt\-Rigid\-Body $\ast$ {\bfseries get\-Rigid\-Body} ()}\label{classBall_a0dde8c947575a2f2edb671ef02326c50}
-
+bool \hyperlink{classBall_a6364b72dcbf707a3ff649fdf731936d4}{check\-Rigid\-Body} (bt\-Rigid\-Body $\ast$ptr)
 \item 
-\hypertarget{classBall_a80897cd66327c7b8664b5416021c9f12}{Ogre\-::\-Scene\-Node $\ast$ {\bfseries get\-Scene\-Node} ()}\label{classBall_a80897cd66327c7b8664b5416021c9f12}
-
+bt\-Rigid\-Body $\ast$ \hyperlink{classBall_a0dde8c947575a2f2edb671ef02326c50}{get\-Rigid\-Body} ()
+\item 
+Ogre\-::\-Scene\-Node $\ast$ \hyperlink{classBall_a80897cd66327c7b8664b5416021c9f12}{get\-Scene\-Node} ()
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ogre\-::\-Scene\-Node $\ast$ \hyperlink{classBall_af1e78462805ffd11789b6e6d3940068f}{node}
+\item 
+bt\-Scalar \hyperlink{classBall_aee2035d202321b658c0869f1e885766b}{mass}
+\item 
+bt\-Rigid\-Body $\ast$ \hyperlink{classBall_aa692f8be903d336bb9908482c464ff4b}{rigid\-Body}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBall_aec238435b8abb83b6459dc811be703b9}{\index{Ball@{Ball}!Ball@{Ball}}
+\index{Ball@{Ball}!Ball@{Ball}}
+\subsubsection[{Ball}]{\setlength{\rightskip}{0pt plus 5cm}Ball\-::\-Ball (
+\begin{DoxyParamCaption}
+\item[{bt\-Rigid\-Body $\ast$}]{r\-B, }
+\item[{Ogre\-::\-Scene\-Node $\ast$}]{n, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_aec238435b8abb83b6459dc811be703b9}
+\hypertarget{classBall_a20f2f6ac0bf648f406a8e12e63429fcd}{\index{Ball@{Ball}!$\sim$\-Ball@{$\sim$\-Ball}}
+\index{$\sim$\-Ball@{$\sim$\-Ball}!Ball@{Ball}}
+\subsubsection[{$\sim$\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}Ball\-::$\sim$\-Ball (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classBall_a20f2f6ac0bf648f406a8e12e63429fcd}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBall_a8560c24afa515d3319cdf08dd918bf82}{\index{Ball@{Ball}!apply\-Force@{apply\-Force}}
+\index{apply\-Force@{apply\-Force}!Ball@{Ball}}
+\subsubsection[{apply\-Force}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-::apply\-Force (
+\begin{DoxyParamCaption}
+\item[{double}]{dx, }
+\item[{double}]{dy, }
+\item[{double}]{dz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_a8560c24afa515d3319cdf08dd918bf82}
+\hypertarget{classBall_a6364b72dcbf707a3ff649fdf731936d4}{\index{Ball@{Ball}!check\-Rigid\-Body@{check\-Rigid\-Body}}
+\index{check\-Rigid\-Body@{check\-Rigid\-Body}!Ball@{Ball}}
+\subsubsection[{check\-Rigid\-Body}]{\setlength{\rightskip}{0pt plus 5cm}bool Ball\-::check\-Rigid\-Body (
+\begin{DoxyParamCaption}
+\item[{bt\-Rigid\-Body $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_a6364b72dcbf707a3ff649fdf731936d4}
+\hypertarget{classBall_acc744032fcdb54f6555880296b899a1e}{\index{Ball@{Ball}!enable\-Gravity@{enable\-Gravity}}
+\index{enable\-Gravity@{enable\-Gravity}!Ball@{Ball}}
+\subsubsection[{enable\-Gravity}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-::enable\-Gravity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_acc744032fcdb54f6555880296b899a1e}
+\hypertarget{classBall_a0dde8c947575a2f2edb671ef02326c50}{\index{Ball@{Ball}!get\-Rigid\-Body@{get\-Rigid\-Body}}
+\index{get\-Rigid\-Body@{get\-Rigid\-Body}!Ball@{Ball}}
+\subsubsection[{get\-Rigid\-Body}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Rigid\-Body$\ast$ Ball\-::get\-Rigid\-Body (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_a0dde8c947575a2f2edb671ef02326c50}
+\hypertarget{classBall_a80897cd66327c7b8664b5416021c9f12}{\index{Ball@{Ball}!get\-Scene\-Node@{get\-Scene\-Node}}
+\index{get\-Scene\-Node@{get\-Scene\-Node}!Ball@{Ball}}
+\subsubsection[{get\-Scene\-Node}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Scene\-Node$\ast$ Ball\-::get\-Scene\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_a80897cd66327c7b8664b5416021c9f12}
+\hypertarget{classBall_aca417b802b8bd765d6a06adc64b4cd1c}{\index{Ball@{Ball}!lock\-Position@{lock\-Position}}
+\index{lock\-Position@{lock\-Position}!Ball@{Ball}}
+\subsubsection[{lock\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-::lock\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_aca417b802b8bd765d6a06adc64b4cd1c}
+\hypertarget{classBall_afe626f0cd58bb4e6e604f18be11ae6ca}{\index{Ball@{Ball}!set\-Position@{set\-Position}}
+\index{set\-Position@{set\-Position}!Ball@{Ball}}
+\subsubsection[{set\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-::set\-Position (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_afe626f0cd58bb4e6e604f18be11ae6ca}
+\hypertarget{classBall_ab4ad64bcaa75353124023b924de9ff98}{\index{Ball@{Ball}!unlock\-Position@{unlock\-Position}}
+\index{unlock\-Position@{unlock\-Position}!Ball@{Ball}}
+\subsubsection[{unlock\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-::unlock\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBall_ab4ad64bcaa75353124023b924de9ff98}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classBall_aee2035d202321b658c0869f1e885766b}{\index{Ball@{Ball}!mass@{mass}}
+\index{mass@{mass}!Ball@{Ball}}
+\subsubsection[{mass}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Scalar Ball\-::mass\hspace{0.3cm}{\ttfamily [private]}}}\label{classBall_aee2035d202321b658c0869f1e885766b}
+\hypertarget{classBall_af1e78462805ffd11789b6e6d3940068f}{\index{Ball@{Ball}!node@{node}}
+\index{node@{node}!Ball@{Ball}}
+\subsubsection[{node}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Scene\-Node$\ast$ Ball\-::node\hspace{0.3cm}{\ttfamily [private]}}}\label{classBall_af1e78462805ffd11789b6e6d3940068f}
+\hypertarget{classBall_aa692f8be903d336bb9908482c464ff4b}{\index{Ball@{Ball}!rigid\-Body@{rigid\-Body}}
+\index{rigid\-Body@{rigid\-Body}!Ball@{Ball}}
+\subsubsection[{rigid\-Body}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Rigid\-Body$\ast$ Ball\-::rigid\-Body\hspace{0.3cm}{\ttfamily [private]}}}\label{classBall_aa692f8be903d336bb9908482c464ff4b}
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-Ball.\-h\item 
-Ball.\-cpp\end{DoxyCompactItemize}
+\hyperlink{Ball_8h}{Ball.\-h}\item 
+\hyperlink{Ball_8cpp}{Ball.\-cpp}\end{DoxyCompactItemize}

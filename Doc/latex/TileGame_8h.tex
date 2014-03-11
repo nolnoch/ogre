@@ -1,0 +1,45 @@
+\hypertarget{TileGame_8h}{\section{Tile\-Game.\-h File Reference}
+\label{TileGame_8h}\index{Tile\-Game.\-h@{Tile\-Game.\-h}}
+}
+{\ttfamily \#include \char`\"{}Base\-Game.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Ball\-Manager.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Sound\-Manager.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Net\-Manager.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Camera\-Man.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classTileGame}{Tile\-Game}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{TileGame_8h_afa6282f16d0eef0153ea87002008628a}{W\-A\-L\-L\-\_\-\-S\-I\-Z\-E} = 2400
+\item 
+static const int \hyperlink{TileGame_8h_ae7a47586570baf061dc723cf8850725d}{P\-L\-A\-N\-E\-\_\-\-D\-I\-S\-T} = \hyperlink{TileGame_8h_afa6282f16d0eef0153ea87002008628a}{W\-A\-L\-L\-\_\-\-S\-I\-Z\-E} / 2
+\item 
+static const int \hyperlink{TileGame_8h_a1ee1f1650c9b3637a34b45af7bc9571c}{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W} = 5
+\item 
+static const int \hyperlink{TileGame_8h_a9886187819d57faaaf244a02b0ec4f65}{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-W\-A\-L\-L} = \hyperlink{TileGame_8h_a1ee1f1650c9b3637a34b45af7bc9571c}{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W} $\ast$ \hyperlink{TileGame_8h_a1ee1f1650c9b3637a34b45af7bc9571c}{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W}
+\item 
+static const int \hyperlink{TileGame_8h_a9308a8ccab88ca272b896567bf38e736}{T\-I\-L\-E\-\_\-\-W\-I\-D\-T\-H} = \hyperlink{TileGame_8h_afa6282f16d0eef0153ea87002008628a}{W\-A\-L\-L\-\_\-\-S\-I\-Z\-E} / \hyperlink{TileGame_8h_a1ee1f1650c9b3637a34b45af7bc9571c}{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{TileGame_8h_a1ee1f1650c9b3637a34b45af7bc9571c}{\index{Tile\-Game.\-h@{Tile\-Game.\-h}!N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W@{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W}}
+\index{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W@{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W}!TileGame.h@{Tile\-Game.\-h}}
+\subsubsection[{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W}]{\setlength{\rightskip}{0pt plus 5cm}const int N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W = 5\hspace{0.3cm}{\ttfamily [static]}}}\label{TileGame_8h_a1ee1f1650c9b3637a34b45af7bc9571c}
+\hypertarget{TileGame_8h_a9886187819d57faaaf244a02b0ec4f65}{\index{Tile\-Game.\-h@{Tile\-Game.\-h}!N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-W\-A\-L\-L@{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-W\-A\-L\-L}}
+\index{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-W\-A\-L\-L@{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-W\-A\-L\-L}!TileGame.h@{Tile\-Game.\-h}}
+\subsubsection[{N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-W\-A\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}const int N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-W\-A\-L\-L = {\bf N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W} $\ast$ {\bf N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W}\hspace{0.3cm}{\ttfamily [static]}}}\label{TileGame_8h_a9886187819d57faaaf244a02b0ec4f65}
+\hypertarget{TileGame_8h_ae7a47586570baf061dc723cf8850725d}{\index{Tile\-Game.\-h@{Tile\-Game.\-h}!P\-L\-A\-N\-E\-\_\-\-D\-I\-S\-T@{P\-L\-A\-N\-E\-\_\-\-D\-I\-S\-T}}
+\index{P\-L\-A\-N\-E\-\_\-\-D\-I\-S\-T@{P\-L\-A\-N\-E\-\_\-\-D\-I\-S\-T}!TileGame.h@{Tile\-Game.\-h}}
+\subsubsection[{P\-L\-A\-N\-E\-\_\-\-D\-I\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}const int P\-L\-A\-N\-E\-\_\-\-D\-I\-S\-T = {\bf W\-A\-L\-L\-\_\-\-S\-I\-Z\-E} / 2\hspace{0.3cm}{\ttfamily [static]}}}\label{TileGame_8h_ae7a47586570baf061dc723cf8850725d}
+\hypertarget{TileGame_8h_a9308a8ccab88ca272b896567bf38e736}{\index{Tile\-Game.\-h@{Tile\-Game.\-h}!T\-I\-L\-E\-\_\-\-W\-I\-D\-T\-H@{T\-I\-L\-E\-\_\-\-W\-I\-D\-T\-H}}
+\index{T\-I\-L\-E\-\_\-\-W\-I\-D\-T\-H@{T\-I\-L\-E\-\_\-\-W\-I\-D\-T\-H}!TileGame.h@{Tile\-Game.\-h}}
+\subsubsection[{T\-I\-L\-E\-\_\-\-W\-I\-D\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const int T\-I\-L\-E\-\_\-\-W\-I\-D\-T\-H = {\bf W\-A\-L\-L\-\_\-\-S\-I\-Z\-E} / {\bf N\-U\-M\-\_\-\-T\-I\-L\-E\-S\-\_\-\-R\-O\-W}\hspace{0.3cm}{\ttfamily [static]}}}\label{TileGame_8h_a9308a8ccab88ca272b896567bf38e736}
+\hypertarget{TileGame_8h_afa6282f16d0eef0153ea87002008628a}{\index{Tile\-Game.\-h@{Tile\-Game.\-h}!W\-A\-L\-L\-\_\-\-S\-I\-Z\-E@{W\-A\-L\-L\-\_\-\-S\-I\-Z\-E}}
+\index{W\-A\-L\-L\-\_\-\-S\-I\-Z\-E@{W\-A\-L\-L\-\_\-\-S\-I\-Z\-E}!TileGame.h@{Tile\-Game.\-h}}
+\subsubsection[{W\-A\-L\-L\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}const int W\-A\-L\-L\-\_\-\-S\-I\-Z\-E = 2400\hspace{0.3cm}{\ttfamily [static]}}}\label{TileGame_8h_afa6282f16d0eef0153ea87002008628a}

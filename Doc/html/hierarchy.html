@@ -4,10 +4,17 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>My Project: Class Hierarchy</title>
+<title>OGRE Game: Class Hierarchy</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -22,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">OGRE Game
    </div>
   </td>
  </tr>
@@ -66,12 +73,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('hierarchy.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,37 +112,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr id="row_1_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBallManager.html" target="_self">BallManager</a></td><td class="desc"></td></tr>
 <tr id="row_2_" class="even"><td class="entry"><img id="arr_2_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('2_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>btMotionState</b></td><td class="desc"></td></tr>
 <tr id="row_2_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classOgreMotionState.html" target="_self">OgreMotionState</a></td><td class="desc"></td></tr>
-<tr id="row_3_" class="even"><td class="entry"><img id="arr_3_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('3_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>FrameListener</b></td><td class="desc"></td></tr>
-<tr id="row_3_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img id="arr_3_0_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('3_0_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseApplication.html" target="_self">BaseApplication</a></td><td class="desc"></td></tr>
-<tr id="row_3_0_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classTutorialApplication.html" target="_self">TutorialApplication</a></td><td class="desc"></td></tr>
-<tr id="row_3_1_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classMinimalOgre.html" target="_self">MinimalOgre</a></td><td class="desc"></td></tr>
-<tr id="row_4_" class="even"><td class="entry"><img id="arr_4_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('4_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>KeyListener</b></td><td class="desc"></td></tr>
-<tr id="row_4_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseApplication.html" target="_self">BaseApplication</a></td><td class="desc"></td></tr>
-<tr id="row_4_1_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classMinimalOgre.html" target="_self">MinimalOgre</a></td><td class="desc"></td></tr>
-<tr id="row_5_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structMessageBuffer.html" target="_self">MessageBuffer</a></td><td class="desc"></td></tr>
-<tr id="row_6_" class="even"><td class="entry"><img id="arr_6_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('6_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>MouseListener</b></td><td class="desc"></td></tr>
-<tr id="row_6_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classMinimalOgre.html" target="_self">MinimalOgre</a></td><td class="desc"></td></tr>
-<tr id="row_7_" class="even"><td class="entry"><img id="arr_7_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('7_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>MultiTouchListener</b></td><td class="desc"></td></tr>
-<tr id="row_7_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseApplication.html" target="_self">BaseApplication</a></td><td class="desc"></td></tr>
-<tr id="row_8_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classNetManager.html" target="_self">NetManager</a></td><td class="desc">Networking wrapper for SDL_net for use in OGRE or similar engines</td></tr>
-<tr id="row_9_"><td class="entry"><img id="arr_9_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('9_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>SdkCameraMan</b></td><td class="desc"></td></tr>
-<tr id="row_9_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classCameraMan.html" target="_self">CameraMan</a></td><td class="desc"></td></tr>
-<tr id="row_10_"><td class="entry"><img id="arr_10_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('10_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>SdkTrayListener</b></td><td class="desc"></td></tr>
-<tr id="row_10_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseApplication.html" target="_self">BaseApplication</a></td><td class="desc"></td></tr>
-<tr id="row_10_1_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classMinimalOgre.html" target="_self">MinimalOgre</a></td><td class="desc"></td></tr>
+<tr id="row_3_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structClientData.html" target="_self">ClientData</a></td><td class="desc"></td></tr>
+<tr id="row_4_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structNetManager_1_1ConnectionInfo.html" target="_self">NetManager::ConnectionInfo</a></td><td class="desc"></td></tr>
+<tr id="row_5_" class="even"><td class="entry"><img id="arr_5_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('5_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>FrameListener</b></td><td class="desc"></td></tr>
+<tr id="row_5_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img id="arr_5_0_" src="ftv2mlastnode.png" alt="\" width="16" height="22" onclick="toggleFolder('5_0_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseGame.html" target="_self">BaseGame</a></td><td class="desc"></td></tr>
+<tr id="row_5_0_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classTileGame.html" target="_self">TileGame</a></td><td class="desc"></td></tr>
+<tr id="row_6_"><td class="entry"><img id="arr_6_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('6_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>KeyListener</b></td><td class="desc"></td></tr>
+<tr id="row_6_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseGame.html" target="_self">BaseGame</a></td><td class="desc"></td></tr>
+<tr id="row_7_"><td class="entry"><img id="arr_7_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('7_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>MultiTouchListener</b></td><td class="desc"></td></tr>
+<tr id="row_7_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseGame.html" target="_self">BaseGame</a></td><td class="desc"></td></tr>
+<tr id="row_8_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classNetManager.html" target="_self">NetManager</a></td><td class="desc">Networking wrapper for SDL_net for use in OGRE or similar engines</td></tr>
+<tr id="row_9_" class="even"><td class="entry"><img id="arr_9_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('9_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>SdkCameraMan</b></td><td class="desc"></td></tr>
+<tr id="row_9_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classCameraMan.html" target="_self">CameraMan</a></td><td class="desc"></td></tr>
+<tr id="row_10_" class="even"><td class="entry"><img id="arr_10_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('10_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>SdkTrayListener</b></td><td class="desc"></td></tr>
+<tr id="row_10_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseGame.html" target="_self">BaseGame</a></td><td class="desc"></td></tr>
 <tr id="row_11_" class="even"><td class="entry"><img id="arr_11_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('11_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classSimulator.html" target="_self">Simulator</a></td><td class="desc"></td></tr>
 <tr id="row_11_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classTileSimulator.html" target="_self">TileSimulator</a></td><td class="desc"></td></tr>
-<tr id="row_12_" class="even"><td class="entry"><img id="arr_12_" src="ftv2mlastnode.png" alt="\" width="16" height="22" onclick="toggleFolder('12_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>WindowEventListener</b></td><td class="desc"></td></tr>
-<tr id="row_12_0_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseApplication.html" target="_self">BaseApplication</a></td><td class="desc"></td></tr>
-<tr id="row_12_1_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classMinimalOgre.html" target="_self">MinimalOgre</a></td><td class="desc"></td></tr>
+<tr id="row_12_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classSoundManager.html" target="_self">SoundManager</a></td><td class="desc"></td></tr>
+<tr id="row_13_"><td class="entry"><img id="arr_13_" src="ftv2mlastnode.png" alt="\" width="16" height="22" onclick="toggleFolder('13_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><b>WindowEventListener</b></td><td class="desc"></td></tr>
+<tr id="row_13_0_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classBaseGame.html" target="_self">BaseGame</a></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 10 2014 21:27:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
 </body>
 </html>

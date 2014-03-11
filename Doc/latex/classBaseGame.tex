@@ -1,0 +1,339 @@
+\hypertarget{classBaseGame}{\section{Base\-Game Class Reference}
+\label{classBaseGame}\index{Base\-Game@{Base\-Game}}
+}
+
+
+{\ttfamily \#include $<$Base\-Game.\-h$>$}
+
+Inheritance diagram for Base\-Game\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.382979cm]{classBaseGame}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBaseGame_a8c345641d3157e25860e94d7ed4496eb}{Base\-Game} (void)
+\item 
+virtual \hyperlink{classBaseGame_a88961ab12f1bfeddc4c3a6349aab4b77}{$\sim$\-Base\-Game} (void)
+\item 
+virtual void \hyperlink{classBaseGame_ab272d0e4ad78bfe63d852c9689bfc8c0}{go} (void)
+\item 
+virtual bool \hyperlink{classBaseGame_a19f0d398dd44cde608944620e8e17e89}{frame\-Rendering\-Queued} (const Ogre\-::\-Frame\-Event \&evt)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{classBaseGame_ae8b6fbfd480b0bfac0e260f03abf1b3e}{setup} ()
+\item 
+virtual bool \hyperlink{classBaseGame_a3cd0f813571cb0f0aa1dd561b3846cad}{configure} (void)
+\item 
+virtual void \hyperlink{classBaseGame_aad9855859d12f955cdf0346ff9df5975}{choose\-Scene\-Manager} (void)
+\item 
+virtual void \hyperlink{classBaseGame_a0e5919f248f607ebb4845665604f8aaf}{create\-Camera} (void)
+\item 
+virtual void \hyperlink{classBaseGame_a897c1961eac8082ff2a183e4a8521cfc}{create\-Frame\-Listener} (void)
+\item 
+virtual void \hyperlink{classBaseGame_ab3c23261333805b59b4cdf2edafea065}{create\-Scene} (void)=0
+\item 
+virtual void \hyperlink{classBaseGame_ac27bb4d673e4eb3f70467b9384cf184a}{destroy\-Scene} (void)
+\item 
+virtual void \hyperlink{classBaseGame_abb3740c564c2f6f8867fbaea643e951f}{create\-Viewports} (void)
+\item 
+virtual void \hyperlink{classBaseGame_a5e0e6f03394f7d3c2a6b59e7f5f1a0ad}{setup\-Resources} (void)
+\item 
+virtual void \hyperlink{classBaseGame_aef55ec02c7b7ff4250b2a8f63a9ec53d}{create\-Resource\-Listener} (void)
+\item 
+virtual void \hyperlink{classBaseGame_af120c71b5b2da400dce56d91f7e2960d}{load\-Resources} (void)
+\item 
+virtual bool \hyperlink{classBaseGame_a6b658a490b6aa454639c8080d503ac0a}{key\-Pressed} (const O\-I\-S\-::\-Key\-Event \&arg)
+\item 
+virtual bool \hyperlink{classBaseGame_a0618efac0dfc254a93e1725d892ccba7}{key\-Released} (const O\-I\-S\-::\-Key\-Event \&arg)
+\item 
+virtual bool \hyperlink{classBaseGame_aad37748d0aa0ca6adfe0cd33b068b2a8}{mouse\-Moved} (const O\-I\-S\-::\-Mouse\-Event \&arg)
+\item 
+virtual bool \hyperlink{classBaseGame_a73de286260f1478e877127c8723cddcb}{mouse\-Pressed} (const O\-I\-S\-::\-Mouse\-Event \&arg, O\-I\-S\-::\-Mouse\-Button\-I\-D id)
+\item 
+virtual bool \hyperlink{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}{mouse\-Released} (const O\-I\-S\-::\-Mouse\-Event \&arg, O\-I\-S\-::\-Mouse\-Button\-I\-D id)
+\item 
+virtual void \hyperlink{classBaseGame_abac0b7115e172de2675b4bf09ba8ed47}{window\-Resized} (Ogre\-::\-Render\-Window $\ast$rw)
+\item 
+virtual void \hyperlink{classBaseGame_adf1c158b4a92810f50c6c626be0d4757}{window\-Closed} (Ogre\-::\-Render\-Window $\ast$rw)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ogre\-::\-Root $\ast$ \hyperlink{classBaseGame_a22226146323391088351624576b7891c}{m\-Root}
+\item 
+Ogre\-::\-Camera $\ast$ \hyperlink{classBaseGame_ad3c279cdf94f77cd1652ad142a498a04}{m\-Camera}
+\item 
+Ogre\-::\-Scene\-Manager $\ast$ \hyperlink{classBaseGame_a9ea629769242d9e7fb6f8680ba8aa9fd}{m\-Scene\-Mgr}
+\item 
+Ogre\-::\-Render\-Window $\ast$ \hyperlink{classBaseGame_a6ecc10c576668a3940357e8cb3b4e404}{m\-Window}
+\item 
+Ogre\-::\-String \hyperlink{classBaseGame_ad375b8ad206e9d7759562376c26de651}{m\-Resources\-Cfg}
+\item 
+Ogre\-::\-String \hyperlink{classBaseGame_a696add997f2185f90c0ed6f5dc6af20a}{m\-Plugins\-Cfg}
+\item 
+Ogre\-Bites\-::\-Sdk\-Tray\-Manager $\ast$ \hyperlink{classBaseGame_a7629d875df44ac5a66f408c859115801}{m\-Tray\-Mgr}
+\item 
+Ogre\-Bites\-::\-Sdk\-Camera\-Man $\ast$ \hyperlink{classBaseGame_a7263f984ab72533f785c1db9f0bc447e}{m\-Camera\-Man}
+\item 
+Ogre\-Bites\-::\-Params\-Panel $\ast$ \hyperlink{classBaseGame_ac68de06a1542fc8d4c67ade85a1753c1}{m\-Details\-Panel}
+\item 
+bool \hyperlink{classBaseGame_a1c4ba8734fb3fee6254afc155062d59c}{m\-Cursor\-Was\-Visible}
+\item 
+bool \hyperlink{classBaseGame_a2eba80c12350640bc99c7e9fc0d250da}{m\-Shut\-Down}
+\item 
+O\-I\-S\-::\-Input\-Manager $\ast$ \hyperlink{classBaseGame_abbc23b121d9cfee4a9c9f54b560f754f}{m\-Input\-Manager}
+\item 
+O\-I\-S\-::\-Mouse $\ast$ \hyperlink{classBaseGame_a7534267ce3a49769c0b1aea328aabd87}{m\-Mouse}
+\item 
+O\-I\-S\-::\-Keyboard $\ast$ \hyperlink{classBaseGame_a95f75bc39e6e853ffe0c7e297447c8f0}{m\-Keyboard}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBaseGame_a8c345641d3157e25860e94d7ed4496eb}{\index{Base\-Game@{Base\-Game}!Base\-Game@{Base\-Game}}
+\index{Base\-Game@{Base\-Game}!BaseGame@{Base\-Game}}
+\subsubsection[{Base\-Game}]{\setlength{\rightskip}{0pt plus 5cm}Base\-Game\-::\-Base\-Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classBaseGame_a8c345641d3157e25860e94d7ed4496eb}
+\hypertarget{classBaseGame_a88961ab12f1bfeddc4c3a6349aab4b77}{\index{Base\-Game@{Base\-Game}!$\sim$\-Base\-Game@{$\sim$\-Base\-Game}}
+\index{$\sim$\-Base\-Game@{$\sim$\-Base\-Game}!BaseGame@{Base\-Game}}
+\subsubsection[{$\sim$\-Base\-Game}]{\setlength{\rightskip}{0pt plus 5cm}Base\-Game\-::$\sim$\-Base\-Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBaseGame_a88961ab12f1bfeddc4c3a6349aab4b77}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBaseGame_aad9855859d12f955cdf0346ff9df5975}{\index{Base\-Game@{Base\-Game}!choose\-Scene\-Manager@{choose\-Scene\-Manager}}
+\index{choose\-Scene\-Manager@{choose\-Scene\-Manager}!BaseGame@{Base\-Game}}
+\subsubsection[{choose\-Scene\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::choose\-Scene\-Manager (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_aad9855859d12f955cdf0346ff9df5975}
+\hypertarget{classBaseGame_a3cd0f813571cb0f0aa1dd561b3846cad}{\index{Base\-Game@{Base\-Game}!configure@{configure}}
+\index{configure@{configure}!BaseGame@{Base\-Game}}
+\subsubsection[{configure}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::configure (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a3cd0f813571cb0f0aa1dd561b3846cad}
+
+
+Reimplemented in \hyperlink{classTileGame_a460265525565530c2d5d448a4f10cce1}{Tile\-Game}.
+
+\hypertarget{classBaseGame_a0e5919f248f607ebb4845665604f8aaf}{\index{Base\-Game@{Base\-Game}!create\-Camera@{create\-Camera}}
+\index{create\-Camera@{create\-Camera}!BaseGame@{Base\-Game}}
+\subsubsection[{create\-Camera}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::create\-Camera (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a0e5919f248f607ebb4845665604f8aaf}
+
+
+Reimplemented in \hyperlink{classTileGame_af68126fe7750735a9d3850f11cf93354}{Tile\-Game}.
+
+\hypertarget{classBaseGame_a897c1961eac8082ff2a183e4a8521cfc}{\index{Base\-Game@{Base\-Game}!create\-Frame\-Listener@{create\-Frame\-Listener}}
+\index{create\-Frame\-Listener@{create\-Frame\-Listener}!BaseGame@{Base\-Game}}
+\subsubsection[{create\-Frame\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::create\-Frame\-Listener (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a897c1961eac8082ff2a183e4a8521cfc}
+
+
+Reimplemented in \hyperlink{classTileGame_a8e62f0508c93131c11ed08e0adbedfbb}{Tile\-Game}.
+
+\hypertarget{classBaseGame_aef55ec02c7b7ff4250b2a8f63a9ec53d}{\index{Base\-Game@{Base\-Game}!create\-Resource\-Listener@{create\-Resource\-Listener}}
+\index{create\-Resource\-Listener@{create\-Resource\-Listener}!BaseGame@{Base\-Game}}
+\subsubsection[{create\-Resource\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::create\-Resource\-Listener (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_aef55ec02c7b7ff4250b2a8f63a9ec53d}
+\hypertarget{classBaseGame_ab3c23261333805b59b4cdf2edafea065}{\index{Base\-Game@{Base\-Game}!create\-Scene@{create\-Scene}}
+\index{create\-Scene@{create\-Scene}!BaseGame@{Base\-Game}}
+\subsubsection[{create\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Base\-Game\-::create\-Scene (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classBaseGame_ab3c23261333805b59b4cdf2edafea065}
+
+
+Implemented in \hyperlink{classTileGame_a7a58cee3d3b0f06d80da0b06bae68347}{Tile\-Game}.
+
+\hypertarget{classBaseGame_abb3740c564c2f6f8867fbaea643e951f}{\index{Base\-Game@{Base\-Game}!create\-Viewports@{create\-Viewports}}
+\index{create\-Viewports@{create\-Viewports}!BaseGame@{Base\-Game}}
+\subsubsection[{create\-Viewports}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::create\-Viewports (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_abb3740c564c2f6f8867fbaea643e951f}
+\hypertarget{classBaseGame_ac27bb4d673e4eb3f70467b9384cf184a}{\index{Base\-Game@{Base\-Game}!destroy\-Scene@{destroy\-Scene}}
+\index{destroy\-Scene@{destroy\-Scene}!BaseGame@{Base\-Game}}
+\subsubsection[{destroy\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::destroy\-Scene (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_ac27bb4d673e4eb3f70467b9384cf184a}
+\hypertarget{classBaseGame_a19f0d398dd44cde608944620e8e17e89}{\index{Base\-Game@{Base\-Game}!frame\-Rendering\-Queued@{frame\-Rendering\-Queued}}
+\index{frame\-Rendering\-Queued@{frame\-Rendering\-Queued}!BaseGame@{Base\-Game}}
+\subsubsection[{frame\-Rendering\-Queued}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::frame\-Rendering\-Queued (
+\begin{DoxyParamCaption}
+\item[{const Ogre\-::\-Frame\-Event \&}]{evt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBaseGame_a19f0d398dd44cde608944620e8e17e89}
+
+
+Reimplemented in \hyperlink{classTileGame_abfa3b829a661de02f3f4bf2d8102bd49}{Tile\-Game}.
+
+\hypertarget{classBaseGame_ab272d0e4ad78bfe63d852c9689bfc8c0}{\index{Base\-Game@{Base\-Game}!go@{go}}
+\index{go@{go}!BaseGame@{Base\-Game}}
+\subsubsection[{go}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::go (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBaseGame_ab272d0e4ad78bfe63d852c9689bfc8c0}
+\hypertarget{classBaseGame_a6b658a490b6aa454639c8080d503ac0a}{\index{Base\-Game@{Base\-Game}!key\-Pressed@{key\-Pressed}}
+\index{key\-Pressed@{key\-Pressed}!BaseGame@{Base\-Game}}
+\subsubsection[{key\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::key\-Pressed (
+\begin{DoxyParamCaption}
+\item[{const O\-I\-S\-::\-Key\-Event \&}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a6b658a490b6aa454639c8080d503ac0a}
+
+
+Reimplemented in \hyperlink{classTileGame_af96355c8ea5a968b5ceb5090ea4e811e}{Tile\-Game}.
+
+\hypertarget{classBaseGame_a0618efac0dfc254a93e1725d892ccba7}{\index{Base\-Game@{Base\-Game}!key\-Released@{key\-Released}}
+\index{key\-Released@{key\-Released}!BaseGame@{Base\-Game}}
+\subsubsection[{key\-Released}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::key\-Released (
+\begin{DoxyParamCaption}
+\item[{const O\-I\-S\-::\-Key\-Event \&}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a0618efac0dfc254a93e1725d892ccba7}
+\hypertarget{classBaseGame_af120c71b5b2da400dce56d91f7e2960d}{\index{Base\-Game@{Base\-Game}!load\-Resources@{load\-Resources}}
+\index{load\-Resources@{load\-Resources}!BaseGame@{Base\-Game}}
+\subsubsection[{load\-Resources}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::load\-Resources (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_af120c71b5b2da400dce56d91f7e2960d}
+\hypertarget{classBaseGame_aad37748d0aa0ca6adfe0cd33b068b2a8}{\index{Base\-Game@{Base\-Game}!mouse\-Moved@{mouse\-Moved}}
+\index{mouse\-Moved@{mouse\-Moved}!BaseGame@{Base\-Game}}
+\subsubsection[{mouse\-Moved}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::mouse\-Moved (
+\begin{DoxyParamCaption}
+\item[{const O\-I\-S\-::\-Mouse\-Event \&}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_aad37748d0aa0ca6adfe0cd33b068b2a8}
+\hypertarget{classBaseGame_a73de286260f1478e877127c8723cddcb}{\index{Base\-Game@{Base\-Game}!mouse\-Pressed@{mouse\-Pressed}}
+\index{mouse\-Pressed@{mouse\-Pressed}!BaseGame@{Base\-Game}}
+\subsubsection[{mouse\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::mouse\-Pressed (
+\begin{DoxyParamCaption}
+\item[{const O\-I\-S\-::\-Mouse\-Event \&}]{arg, }
+\item[{O\-I\-S\-::\-Mouse\-Button\-I\-D}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a73de286260f1478e877127c8723cddcb}
+
+
+Reimplemented in \hyperlink{classTileGame_a1826b5a7db94eb11037a46c5d57dfc4f}{Tile\-Game}.
+
+\hypertarget{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}{\index{Base\-Game@{Base\-Game}!mouse\-Released@{mouse\-Released}}
+\index{mouse\-Released@{mouse\-Released}!BaseGame@{Base\-Game}}
+\subsubsection[{mouse\-Released}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::mouse\-Released (
+\begin{DoxyParamCaption}
+\item[{const O\-I\-S\-::\-Mouse\-Event \&}]{arg, }
+\item[{O\-I\-S\-::\-Mouse\-Button\-I\-D}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}
+
+
+Reimplemented in \hyperlink{classTileGame_ab7a0cbe5c9d1f41fa3b16486437511e4}{Tile\-Game}.
+
+\hypertarget{classBaseGame_ae8b6fbfd480b0bfac0e260f03abf1b3e}{\index{Base\-Game@{Base\-Game}!setup@{setup}}
+\index{setup@{setup}!BaseGame@{Base\-Game}}
+\subsubsection[{setup}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::setup (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_ae8b6fbfd480b0bfac0e260f03abf1b3e}
+\hypertarget{classBaseGame_a5e0e6f03394f7d3c2a6b59e7f5f1a0ad}{\index{Base\-Game@{Base\-Game}!setup\-Resources@{setup\-Resources}}
+\index{setup\-Resources@{setup\-Resources}!BaseGame@{Base\-Game}}
+\subsubsection[{setup\-Resources}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::setup\-Resources (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_a5e0e6f03394f7d3c2a6b59e7f5f1a0ad}
+\hypertarget{classBaseGame_adf1c158b4a92810f50c6c626be0d4757}{\index{Base\-Game@{Base\-Game}!window\-Closed@{window\-Closed}}
+\index{window\-Closed@{window\-Closed}!BaseGame@{Base\-Game}}
+\subsubsection[{window\-Closed}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::window\-Closed (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Render\-Window $\ast$}]{rw}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_adf1c158b4a92810f50c6c626be0d4757}
+\hypertarget{classBaseGame_abac0b7115e172de2675b4bf09ba8ed47}{\index{Base\-Game@{Base\-Game}!window\-Resized@{window\-Resized}}
+\index{window\-Resized@{window\-Resized}!BaseGame@{Base\-Game}}
+\subsubsection[{window\-Resized}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Game\-::window\-Resized (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Render\-Window $\ast$}]{rw}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBaseGame_abac0b7115e172de2675b4bf09ba8ed47}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classBaseGame_ad3c279cdf94f77cd1652ad142a498a04}{\index{Base\-Game@{Base\-Game}!m\-Camera@{m\-Camera}}
+\index{m\-Camera@{m\-Camera}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Camera}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Camera$\ast$ Base\-Game\-::m\-Camera\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_ad3c279cdf94f77cd1652ad142a498a04}
+\hypertarget{classBaseGame_a7263f984ab72533f785c1db9f0bc447e}{\index{Base\-Game@{Base\-Game}!m\-Camera\-Man@{m\-Camera\-Man}}
+\index{m\-Camera\-Man@{m\-Camera\-Man}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Camera\-Man}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-Bites\-::\-Sdk\-Camera\-Man$\ast$ Base\-Game\-::m\-Camera\-Man\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a7263f984ab72533f785c1db9f0bc447e}
+\hypertarget{classBaseGame_a1c4ba8734fb3fee6254afc155062d59c}{\index{Base\-Game@{Base\-Game}!m\-Cursor\-Was\-Visible@{m\-Cursor\-Was\-Visible}}
+\index{m\-Cursor\-Was\-Visible@{m\-Cursor\-Was\-Visible}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Cursor\-Was\-Visible}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::m\-Cursor\-Was\-Visible\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a1c4ba8734fb3fee6254afc155062d59c}
+\hypertarget{classBaseGame_ac68de06a1542fc8d4c67ade85a1753c1}{\index{Base\-Game@{Base\-Game}!m\-Details\-Panel@{m\-Details\-Panel}}
+\index{m\-Details\-Panel@{m\-Details\-Panel}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Details\-Panel}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-Bites\-::\-Params\-Panel$\ast$ Base\-Game\-::m\-Details\-Panel\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_ac68de06a1542fc8d4c67ade85a1753c1}
+\hypertarget{classBaseGame_abbc23b121d9cfee4a9c9f54b560f754f}{\index{Base\-Game@{Base\-Game}!m\-Input\-Manager@{m\-Input\-Manager}}
+\index{m\-Input\-Manager@{m\-Input\-Manager}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Input\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}O\-I\-S\-::\-Input\-Manager$\ast$ Base\-Game\-::m\-Input\-Manager\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_abbc23b121d9cfee4a9c9f54b560f754f}
+\hypertarget{classBaseGame_a95f75bc39e6e853ffe0c7e297447c8f0}{\index{Base\-Game@{Base\-Game}!m\-Keyboard@{m\-Keyboard}}
+\index{m\-Keyboard@{m\-Keyboard}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Keyboard}]{\setlength{\rightskip}{0pt plus 5cm}O\-I\-S\-::\-Keyboard$\ast$ Base\-Game\-::m\-Keyboard\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a95f75bc39e6e853ffe0c7e297447c8f0}
+\hypertarget{classBaseGame_a7534267ce3a49769c0b1aea328aabd87}{\index{Base\-Game@{Base\-Game}!m\-Mouse@{m\-Mouse}}
+\index{m\-Mouse@{m\-Mouse}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Mouse}]{\setlength{\rightskip}{0pt plus 5cm}O\-I\-S\-::\-Mouse$\ast$ Base\-Game\-::m\-Mouse\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a7534267ce3a49769c0b1aea328aabd87}
+\hypertarget{classBaseGame_a696add997f2185f90c0ed6f5dc6af20a}{\index{Base\-Game@{Base\-Game}!m\-Plugins\-Cfg@{m\-Plugins\-Cfg}}
+\index{m\-Plugins\-Cfg@{m\-Plugins\-Cfg}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Plugins\-Cfg}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-String Base\-Game\-::m\-Plugins\-Cfg\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a696add997f2185f90c0ed6f5dc6af20a}
+\hypertarget{classBaseGame_ad375b8ad206e9d7759562376c26de651}{\index{Base\-Game@{Base\-Game}!m\-Resources\-Cfg@{m\-Resources\-Cfg}}
+\index{m\-Resources\-Cfg@{m\-Resources\-Cfg}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Resources\-Cfg}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-String Base\-Game\-::m\-Resources\-Cfg\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_ad375b8ad206e9d7759562376c26de651}
+\hypertarget{classBaseGame_a22226146323391088351624576b7891c}{\index{Base\-Game@{Base\-Game}!m\-Root@{m\-Root}}
+\index{m\-Root@{m\-Root}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Root}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Root$\ast$ Base\-Game\-::m\-Root\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a22226146323391088351624576b7891c}
+\hypertarget{classBaseGame_a9ea629769242d9e7fb6f8680ba8aa9fd}{\index{Base\-Game@{Base\-Game}!m\-Scene\-Mgr@{m\-Scene\-Mgr}}
+\index{m\-Scene\-Mgr@{m\-Scene\-Mgr}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Scene\-Mgr}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Scene\-Manager$\ast$ Base\-Game\-::m\-Scene\-Mgr\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a9ea629769242d9e7fb6f8680ba8aa9fd}
+\hypertarget{classBaseGame_a2eba80c12350640bc99c7e9fc0d250da}{\index{Base\-Game@{Base\-Game}!m\-Shut\-Down@{m\-Shut\-Down}}
+\index{m\-Shut\-Down@{m\-Shut\-Down}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Shut\-Down}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Game\-::m\-Shut\-Down\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a2eba80c12350640bc99c7e9fc0d250da}
+\hypertarget{classBaseGame_a7629d875df44ac5a66f408c859115801}{\index{Base\-Game@{Base\-Game}!m\-Tray\-Mgr@{m\-Tray\-Mgr}}
+\index{m\-Tray\-Mgr@{m\-Tray\-Mgr}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Tray\-Mgr}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-Bites\-::\-Sdk\-Tray\-Manager$\ast$ Base\-Game\-::m\-Tray\-Mgr\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a7629d875df44ac5a66f408c859115801}
+\hypertarget{classBaseGame_a6ecc10c576668a3940357e8cb3b4e404}{\index{Base\-Game@{Base\-Game}!m\-Window@{m\-Window}}
+\index{m\-Window@{m\-Window}!BaseGame@{Base\-Game}}
+\subsubsection[{m\-Window}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Render\-Window$\ast$ Base\-Game\-::m\-Window\hspace{0.3cm}{\ttfamily [protected]}}}\label{classBaseGame_a6ecc10c576668a3940357e8cb3b4e404}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{BaseGame_8h}{Base\-Game.\-h}\item 
+\hyperlink{BaseGame_8cpp}{Base\-Game.\-cpp}\end{DoxyCompactItemize}

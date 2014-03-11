@@ -4,10 +4,17 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>My Project: Member List</title>
+<title>OGRE Game: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -22,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">OGRE Game
    </div>
   </td>
  </tr>
@@ -65,12 +72,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classNetManager.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,7 +101,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">NetManager Member List</div>  </div>
@@ -88,37 +109,115 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classNetManager.html">NetManager</a>, including all inherited members.</p>
 <table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a67d25cdb043a462709f1d29e071a5ce8">acceptNewClients</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#add2b0af706ca9c983f58c308f0577e5c">acceptTCP</a>(TCPsocket server)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8ec0340fa0eeffc5f4344589069e6058">addNetworkInfo</a>(Protocol protocol=PROTOCOL_ALL, Uint16 port=0, const char *host=NULL)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classNetManager.html#a444e45de6f806c4c27d7f9915f898329">addProtocol</a>(Protocol protocol)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#afcf943b4ab1e94ba479f4e3f0cd9da2e">close</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNetManager.html#a9e6957843f9cf05afbc38e23b9d46f52">dropClient</a>(Protocol protocol, int clientDataIdx)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#abe7cce0db370157b36d4e16a903a0581">getHost</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNetManager.html#aa6924b10800963247c025870b1116a62">getPort</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a3c941b21b356a166f2ebbdd522dc792d">getProtocol</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNetManager.html#a9dcef281247169fc624d771f2a4ae01a">initNetManager</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0">messageClient</a>(Protocol protocol, int clientDataIdx, char *buf, int len)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNetManager.html#aff24a0ce0cf8a4a2450a70ad17e7ec76">messageClients</a>(char *buf=NULL, int len=0)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#aa4f48b88474c3f6a4422b3a94c07b674">messageServer</a>(char *buf=NULL, int len=0)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#aff05c27b852dddd386e788bed7fa6d12">addUDPClient</a>(UDPpacket *pack)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a75ce7beb5894c63e3af5e59c4fe67483">allocUDPpacket</a>(int size)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a21e6fdda58659998dbb2e0959efefff5">allocUDPpacketV</a>(int count, int size)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a6c0ceb2fde3906dfe2e8d8527aae7a00">bindUDPSocket</a>(UDPsocket sock, int channel, IPaddress *addr)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a5150417e381f56f6b4f892317b81ee46">CHANNEL_AUTO</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7df70a5b62f06128f0ff3f384a0b92bc">CHANNEL_DEFAULT</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a">CHANNEL_MAX</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a64ca334dbe3e4b540236aa35dccc96df">checkSockets</a>(Uint32 timeout_ms)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a9f55bdec9b5c974d26354e680aa48d1e">clearFlags</a>(int state)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#afcf943b4ab1e94ba479f4e3f0cd9da2e">close</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a675dccdb5b282d0353c6b261d0fb6615">closeTCP</a>(TCPsocket sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a40fe0a6c256bc0f2b891aa8715c519f3">closeUDP</a>(UDPsocket sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a5e53e36cb5fa09b218326c5a830269f4">craftUDPpacket</a>(const char *buf, int len)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#aaff19e422dc790a6ac4bad9aefc5749f">dropClient</a>(Protocol protocol, Uint32 host)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a2e5fedf3835e7c392ccb8b1a23ade8d4">forceClientRandomUDP</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#af3cc0529a2c40d959bdb624e9f3101c4">freeUDPpacket</a>(UDPpacket **pack)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a4c118ed195c8c3608b2758d6dd5da7ae">freeUDPpacketV</a>(UDPpacket ***pack)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#abe7cce0db370157b36d4e16a903a0581">getHost</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#aa6924b10800963247c025870b1116a62">getPort</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a3c941b21b356a166f2ebbdd522dc792d">getProtocol</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a9dcef281247169fc624d771f2a4ae01a">initNetManager</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a9e98f4e0367b8811f241cb0038e9b077">lookupTCPClient</a>(Uint32 host, bool create)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#aa9053c3f72215976089b89098935c6d1">lookupUDPClient</a>(Uint32 host, bool create)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a9b24c9f03c8e0db705a1b43cc83fb35e">MESSAGE_COUNT</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e">MESSAGE_LENGTH</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0">messageClient</a>(Protocol protocol, int clientDataIdx, char *buf, int len)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#aff24a0ce0cf8a4a2450a70ad17e7ec76">messageClients</a>(char *buf=NULL, int len=0)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#aa4f48b88474c3f6a4422b3a94c07b674">messageServer</a>(char *buf=NULL, int len=0)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca">NET_CLIENT</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af26a6f0d447b04ad2cc57c080bc2e1f3">NET_INITIALIZED</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a802372821b378b5a23ec6d6a7366012b">NET_RESOLVED</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c">NET_SERVER</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c">NET_TCP_ACCEPT</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a66cd628d6f8ec81c2c1e185e47566fa6">NET_TCP_OPEN</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5">NET_UDP_BOUND</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a6513a7709f76f9e5213f2145da8f83b8">NET_UDP_OPEN</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a085fbd45e5fb462d8915fb2f17a35d64">NET_UNINITIALIZED</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a54b1df101b4fb30060d47353aa98a473">NET_WAITING</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a2e1aedc97e5fb2f633faeabd2aa266c3">netHost</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="classNetManager.html#ac5af765a0303c73966c2e0743458f888">NetManager</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#ac213dda2e72556e53450d5b1e2057f22">pollForActivity</a>(Uint32 timeout_ms=5000)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNetManager.html#a934ebfd8ca745a95263ba92c2ccf2b19">scanForActivity</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>serverData</b> (defined in <a class="el" href="classNetManager.html">NetManager</a>)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNetManager.html#a47666370887fee3b2fa27ae7bff1065f">setHost</a>(const char *host)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#af5db4e28511390202b17f6d711f42d83">setPort</a>(Uint16 port)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNetManager.html#af370ee8343ff23121c0c2f180c34dabc">setProtocol</a>(Protocol protocol)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a2c14b6cf513287e5fb46a85ddb293201">netPort</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#ac24652f01ef284551be311bfc408be06">netProtocol</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a002692771d60d8a4332941f33096fba0">netServer</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#acd2ec7262ea71478204c9007b23d9fff">netStatus</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a7505bdde90a24b85b6cb1d8d81404c5f">nextUDPChannel</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#afe3450801d77b53d99b38c8249f3d955">openClient</a>(Protocol protocol, std::string addr, Uint16 port)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a369f5008d70957c6b3b60d59e453fbee">openServer</a>(Protocol protocol, Uint16 port)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a90fc6dc31d71fa956486243814352ac5">openTCPSocket</a>(IPaddress *addr)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#ae49266e3057c0f17cc3c89591cbcf3e1">openUDPSocket</a>(Uint16 port)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#ac213dda2e72556e53450d5b1e2057f22">pollForActivity</a>(Uint32 timeout_ms=5000)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a72a392298efc424fdf2da299ef41992e">PORT_DEFAULT</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077">PORT_RANDOM</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a5927d55003a434ec69d8909dffe88575">processPacketData</a>(const char *data)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#abb912b135cb4916dd5bd2943f1ed2467">queryTCPAddress</a>(TCPsocket sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a41f2077bd40f1d210406a07486843104">queryUDPAddress</a>(UDPsocket sock, int channel)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a80c34b6f1d22a0db77a6f5063e6d31d9">readTCPSocket</a>(int clientIdx)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a70c29117dc3c7fd49cee0444944a8eee">readUDPSocket</a>(int clientIdx)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#aceb9567e9ca4ca5e09dde53b771e1b59">recvTCP</a>(TCPsocket sock, void *data, int maxlen)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a06b0916f8e98d29429cc61d90319174b">recvUDP</a>(UDPsocket sock, UDPpacket *pack)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a06220534dd830f880ec24d86a6a86561">recvUDPV</a>(UDPsocket sock, UDPpacket **packetV)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#ab7048f28558dec8046b9536ad6c094f8">rejectTCPClient</a>(TCPsocket sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#aae62147d4b4d06cccd992f30b6669ea5">rejectUDPClient</a>(UDPpacket *pack)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a60e404905712ff726f1a4f0e2542d06c">resetManager</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#ae9daa22fe531b7204b004d8136d00e0e">resizeUDPpacket</a>(UDPpacket *pack, int size)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a934ebfd8ca745a95263ba92c2ccf2b19">scanForActivity</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a570a5ce0bdbac7433fe650db23006509">sendTCP</a>(TCPsocket sock, const void *data, int len)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#ac0b9e9d77a598b14b6b30dc160ead039">sendUDP</a>(UDPsocket sock, int channel, UDPpacket *pack)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a5c1d2504835ad09e97cc2fd05ed8f83a">sendUDPV</a>(UDPsocket sock, UDPpacket **packetV, int npackets)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a47666370887fee3b2fa27ae7bff1065f">setHost</a>(const char *host)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#af5db4e28511390202b17f6d711f42d83">setPort</a>(Uint16 port)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#af370ee8343ff23121c0c2f180c34dabc">setProtocol</a>(Protocol protocol)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb">SOCKET_ALL_MAX</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a2e78ae862faab68c752a933ad0910c34">SOCKET_SELF</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c">SOCKET_TCP_MAX</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459">SOCKET_UDP_MAX</a> enum value</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#adc43306f83c33feb0fdd74e16c6583bb">socketNursery</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#ab5b2ae812e37abbb03be5b604e34a60d">startClient</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classNetManager.html#ae6a832ed2ede5f5407b75abc584269b8">startServer</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a8eb8d5a292070e7269133bf1fc1499c4">statusCheck</a>(int state)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#aa5616571aa520977c221d8a8a6471a1f">statusCheck</a>(int state1, int state2)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a55eb599a64a651d890641a256ab4db9a">stopClient</a>(Protocol protocol=PROTOCOL_ALL)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classNetManager.html#ac4d5cdb235713bea820ab5275a0da920">stopServer</a>(Protocol protocol=PROTOCOL_ALL)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>tcpClientData</b> (defined in <a class="el" href="classNetManager.html">NetManager</a>)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>udpClientData</b> (defined in <a class="el" href="classNetManager.html">NetManager</a>)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a862eebc070ee07d7a9e18f62da051604">~NetManager</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a3303746abef87426cab748c92d58006b">tcpClientData</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#abf9491e48d6bc19eacb148d294613b35">tcpClients</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#abca113fc17fe6251fa7ac5a1179ade3c">tcpServerData</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a2314a1df7704bbc4c96d8d0133d78ee6">tcpSockets</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a687d70a4e199c2cbe4cb955a2cd94b04">udpClientData</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d">udpClients</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a7db7fafed8aabbe088aa12c731842efd">udpServerData</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#aa99d99b6fa90707d9101c4e1a1835018">udpSockets</a></td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a1f4271094319fd56f3d20151ca51234b">unbindUDPSocket</a>(UDPsocket sock, int channel)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a74e382ac7ea8b8ce09d11ea43a464385">unwatchSocket</a>(TCPsocket *sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a46c2393e0deef57de2f3cda92d4ea9bd">unwatchSocket</a>(UDPsocket *sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a1d3f54e43abe28d9804d3348bc0eacd8">watchSocket</a>(TCPsocket *sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNetManager.html#a3d0c6dcf246d88b510a2230227dd0e0a">watchSocket</a>(UDPsocket *sock)</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classNetManager.html#a862eebc070ee07d7a9e18f62da051604">~NetManager</a>()</td><td class="entry"><a class="el" href="classNetManager.html">NetManager</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 10 2014 21:27:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
 </body>
 </html>

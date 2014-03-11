@@ -1,0 +1,113 @@
+.TH "SoundManager" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SoundManager \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SoundManager\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSoundManager\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~SoundManager\fP ()"
+.br
+.ti -1c
+.RI "bool \fBinitSoundManager\fP ()"
+.br
+.ti -1c
+.RI "bool \fBloadMusic\fP (const char *name)"
+.br
+.ti -1c
+.RI "int \fBloadSound\fP (const char *name)"
+.br
+.ti -1c
+.RI "void \fBsetVolume\fP (int vol)"
+.br
+.ti -1c
+.RI "void \fBplayMusic\fP ()"
+.br
+.ti -1c
+.RI "void \fBplaySound\fP (int chunk)"
+.br
+.ti -1c
+.RI "void \fBpauseMusic\fP ()"
+.br
+.ti -1c
+.RI "void \fBmute\fP ()"
+.br
+.ti -1c
+.RI "void \fBunmute\fP ()"
+.br
+.ti -1c
+.RI "void \fBtoggleSound\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBsounding\fP"
+.br
+.ti -1c
+.RI "bool \fBinitialized\fP"
+.br
+.ti -1c
+.RI "bool \fBmusicPlaying\fP"
+.br
+.ti -1c
+.RI "Mix_Music * \fBmusic\fP"
+.br
+.ti -1c
+.RI "std::vector< Mix_Chunk * > \fBchunks\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SoundManager::SoundManager ()"
+
+.SS "SoundManager::~SoundManager ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool SoundManager::initSoundManager ()"
+
+.SS "bool SoundManager::loadMusic (const char *name)"
+
+.SS "int SoundManager::loadSound (const char *name)"
+
+.SS "void SoundManager::mute ()"
+
+.SS "void SoundManager::pauseMusic ()"
+
+.SS "void SoundManager::playMusic ()"
+
+.SS "void SoundManager::playSound (intchunk)"
+
+.SS "void SoundManager::setVolume (intvol)"
+
+.SS "void SoundManager::toggleSound ()"
+
+.SS "void SoundManager::unmute ()"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<Mix_Chunk *> SoundManager::chunks\fC [private]\fP"
+
+.SS "bool SoundManager::initialized\fC [private]\fP"
+
+.SS "Mix_Music* SoundManager::music\fC [private]\fP"
+
+.SS "bool SoundManager::musicPlaying\fC [private]\fP"
+
+.SS "bool SoundManager::sounding\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

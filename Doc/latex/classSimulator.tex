@@ -1,6 +1,10 @@
 \hypertarget{classSimulator}{\section{Simulator Class Reference}
 \label{classSimulator}\index{Simulator@{Simulator}}
 }
+
+
+{\ttfamily \#include $<$Simulator.\-h$>$}
+
 Inheritance diagram for Simulator\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,39 +14,165 @@ Inheritance diagram for Simulator\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classSimulator_a6c0dd9962f860e93925a3e4ae8809655}{virtual void {\bfseries init\-Simulator} ()}\label{classSimulator_a6c0dd9962f860e93925a3e4ae8809655}
-
+\hyperlink{classSimulator_a031573bfcfe2e0f5c9539bcc1c7fc5d9}{Simulator} ()
 \item 
-\hypertarget{classSimulator_a38c86f8f73f8aa4dac13555692c67eca}{virtual void {\bfseries create\-Bounds} (const int offset)}\label{classSimulator_a38c86f8f73f8aa4dac13555692c67eca}
-
+virtual \hyperlink{classSimulator_a0f49aa04f42060a785adf77346b9de9f}{$\sim$\-Simulator} ()
 \item 
-\hypertarget{classSimulator_ad35820d07373b65deef417c8c18b7d13}{virtual void {\bfseries register\-Callback} (void $\ast$func)}\label{classSimulator_ad35820d07373b65deef417c8c18b7d13}
-
+virtual void \hyperlink{classSimulator_a6c0dd9962f860e93925a3e4ae8809655}{init\-Simulator} ()
 \item 
-\hypertarget{classSimulator_a6abe3ee406909ab7f03930dfa537a42b}{virtual bool {\bfseries simulate\-Step} (double delay)}\label{classSimulator_a6abe3ee406909ab7f03930dfa537a42b}
-
+virtual void \hyperlink{classSimulator_a38c86f8f73f8aa4dac13555692c67eca}{create\-Bounds} (const int offset)
 \item 
-\hypertarget{classSimulator_a043aa34df7dbd5046ed56407ba9b44de}{virtual void {\bfseries add\-Plane\-Bound} (int x, int y, int z, int d)}\label{classSimulator_a043aa34df7dbd5046ed56407ba9b44de}
-
+virtual void \hyperlink{classSimulator_ad35820d07373b65deef417c8c18b7d13}{register\-Callback} (void $\ast$func)
 \item 
-\hypertarget{classSimulator_ad9e33ec74ec54f65077de1c8dc28fd5b}{virtual bt\-Rigid\-Body $\ast$ {\bfseries add\-Box\-Shape} (Ogre\-::\-Scene\-Node $\ast$n, int x, int y, int z)}\label{classSimulator_ad9e33ec74ec54f65077de1c8dc28fd5b}
-
+virtual bool \hyperlink{classSimulator_a6abe3ee406909ab7f03930dfa537a42b}{simulate\-Step} (double delay)
 \item 
-\hypertarget{classSimulator_a22d1288cafb5a83c3c5c95fc5b58efbb}{virtual bt\-Rigid\-Body $\ast$ {\bfseries add\-Ball\-Shape} (Ogre\-::\-Scene\-Node $\ast$n, int r, int m)}\label{classSimulator_a22d1288cafb5a83c3c5c95fc5b58efbb}
-
+virtual void \hyperlink{classSimulator_a043aa34df7dbd5046ed56407ba9b44de}{add\-Plane\-Bound} (int x, int y, int z, int d)
 \item 
-\hypertarget{classSimulator_a5da2770c96b18da1e5ce575b4652528e}{virtual bt\-Discrete\-Dynamics\-World \& {\bfseries get\-Dynamics\-World} ()}\label{classSimulator_a5da2770c96b18da1e5ce575b4652528e}
-
+virtual bt\-Rigid\-Body $\ast$ \hyperlink{classSimulator_ad9e33ec74ec54f65077de1c8dc28fd5b}{add\-Box\-Shape} (Ogre\-::\-Scene\-Node $\ast$n, int x, int y, int z)
+\item 
+virtual bt\-Rigid\-Body $\ast$ \hyperlink{classSimulator_a22d1288cafb5a83c3c5c95fc5b58efbb}{add\-Ball\-Shape} (Ogre\-::\-Scene\-Node $\ast$n, int r, int m)
+\item 
+virtual bt\-Discrete\-Dynamics\-World \& \hyperlink{classSimulator_a5da2770c96b18da1e5ce575b4652528e}{get\-Dynamics\-World} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classSimulator_ab5748cbb0ec57cd4922d2e88766fb8a2}{Ogre\-::\-Scene\-Manager $\ast$ {\bfseries scene\-Mgr}}\label{classSimulator_ab5748cbb0ec57cd4922d2e88766fb8a2}
-
+Ogre\-::\-Scene\-Manager $\ast$ \hyperlink{classSimulator_ab5748cbb0ec57cd4922d2e88766fb8a2}{scene\-Mgr}
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bt\-Default\-Collision\-Configuration $\ast$ \hyperlink{classSimulator_ae128785e92d1f8cac37b7008ff6c0cf7}{collision\-Configuration}
+\item 
+bt\-Broadphase\-Interface $\ast$ \hyperlink{classSimulator_abf328154008d231ebff7a42a58791e5b}{broadphase}
+\item 
+bt\-Collision\-Dispatcher $\ast$ \hyperlink{classSimulator_af84d7e00b1ee5bcade4e40847eea3fd4}{dispatcher}
+\item 
+bt\-Sequential\-Impulse\-Constraint\-Solver $\ast$ \hyperlink{classSimulator_a2da0915f8ba415561a147b72659ef17a}{solver}
+\item 
+bt\-Discrete\-Dynamics\-World $\ast$ \hyperlink{classSimulator_a287d65d2e05fece22279b022886292ef}{dynamics\-World}
+\item 
+std\-::vector$<$ bt\-Collision\-Shape $\ast$ $>$ \hyperlink{classSimulator_a76a5f71d55dd786819ab1240e5a45791}{collision\-Shapes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSimulator_a031573bfcfe2e0f5c9539bcc1c7fc5d9}{\index{Simulator@{Simulator}!Simulator@{Simulator}}
+\index{Simulator@{Simulator}!Simulator@{Simulator}}
+\subsubsection[{Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Simulator\-::\-Simulator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSimulator_a031573bfcfe2e0f5c9539bcc1c7fc5d9}
+\hypertarget{classSimulator_a0f49aa04f42060a785adf77346b9de9f}{\index{Simulator@{Simulator}!$\sim$\-Simulator@{$\sim$\-Simulator}}
+\index{$\sim$\-Simulator@{$\sim$\-Simulator}!Simulator@{Simulator}}
+\subsubsection[{$\sim$\-Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Simulator\-::$\sim$\-Simulator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_a0f49aa04f42060a785adf77346b9de9f}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSimulator_a22d1288cafb5a83c3c5c95fc5b58efbb}{\index{Simulator@{Simulator}!add\-Ball\-Shape@{add\-Ball\-Shape}}
+\index{add\-Ball\-Shape@{add\-Ball\-Shape}!Simulator@{Simulator}}
+\subsubsection[{add\-Ball\-Shape}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Rigid\-Body $\ast$ Simulator\-::add\-Ball\-Shape (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Scene\-Node $\ast$}]{n, }
+\item[{int}]{r, }
+\item[{int}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_a22d1288cafb5a83c3c5c95fc5b58efbb}
+\hypertarget{classSimulator_ad9e33ec74ec54f65077de1c8dc28fd5b}{\index{Simulator@{Simulator}!add\-Box\-Shape@{add\-Box\-Shape}}
+\index{add\-Box\-Shape@{add\-Box\-Shape}!Simulator@{Simulator}}
+\subsubsection[{add\-Box\-Shape}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Rigid\-Body $\ast$ Simulator\-::add\-Box\-Shape (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Scene\-Node $\ast$}]{n, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_ad9e33ec74ec54f65077de1c8dc28fd5b}
+\hypertarget{classSimulator_a043aa34df7dbd5046ed56407ba9b44de}{\index{Simulator@{Simulator}!add\-Plane\-Bound@{add\-Plane\-Bound}}
+\index{add\-Plane\-Bound@{add\-Plane\-Bound}!Simulator@{Simulator}}
+\subsubsection[{add\-Plane\-Bound}]{\setlength{\rightskip}{0pt plus 5cm}void Simulator\-::add\-Plane\-Bound (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{z, }
+\item[{int}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_a043aa34df7dbd5046ed56407ba9b44de}
+\hypertarget{classSimulator_a38c86f8f73f8aa4dac13555692c67eca}{\index{Simulator@{Simulator}!create\-Bounds@{create\-Bounds}}
+\index{create\-Bounds@{create\-Bounds}!Simulator@{Simulator}}
+\subsubsection[{create\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}void Simulator\-::create\-Bounds (
+\begin{DoxyParamCaption}
+\item[{const int}]{offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_a38c86f8f73f8aa4dac13555692c67eca}
+\hypertarget{classSimulator_a5da2770c96b18da1e5ce575b4652528e}{\index{Simulator@{Simulator}!get\-Dynamics\-World@{get\-Dynamics\-World}}
+\index{get\-Dynamics\-World@{get\-Dynamics\-World}!Simulator@{Simulator}}
+\subsubsection[{get\-Dynamics\-World}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Discrete\-Dynamics\-World \& Simulator\-::get\-Dynamics\-World (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_a5da2770c96b18da1e5ce575b4652528e}
+\hypertarget{classSimulator_a6c0dd9962f860e93925a3e4ae8809655}{\index{Simulator@{Simulator}!init\-Simulator@{init\-Simulator}}
+\index{init\-Simulator@{init\-Simulator}!Simulator@{Simulator}}
+\subsubsection[{init\-Simulator}]{\setlength{\rightskip}{0pt plus 5cm}void Simulator\-::init\-Simulator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_a6c0dd9962f860e93925a3e4ae8809655}
+
+
+Reimplemented in \hyperlink{classTileSimulator_a952f2493568e720f37331119084f9dd3}{Tile\-Simulator}.
+
+\hypertarget{classSimulator_ad35820d07373b65deef417c8c18b7d13}{\index{Simulator@{Simulator}!register\-Callback@{register\-Callback}}
+\index{register\-Callback@{register\-Callback}!Simulator@{Simulator}}
+\subsubsection[{register\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Simulator\-::register\-Callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{func}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_ad35820d07373b65deef417c8c18b7d13}
+\hypertarget{classSimulator_a6abe3ee406909ab7f03930dfa537a42b}{\index{Simulator@{Simulator}!simulate\-Step@{simulate\-Step}}
+\index{simulate\-Step@{simulate\-Step}!Simulator@{Simulator}}
+\subsubsection[{simulate\-Step}]{\setlength{\rightskip}{0pt plus 5cm}bool Simulator\-::simulate\-Step (
+\begin{DoxyParamCaption}
+\item[{double}]{delay}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSimulator_a6abe3ee406909ab7f03930dfa537a42b}
+
+
+Reimplemented in \hyperlink{classTileSimulator_ae944141e1051b803018d6c4af47f2df9}{Tile\-Simulator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classSimulator_abf328154008d231ebff7a42a58791e5b}{\index{Simulator@{Simulator}!broadphase@{broadphase}}
+\index{broadphase@{broadphase}!Simulator@{Simulator}}
+\subsubsection[{broadphase}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Broadphase\-Interface$\ast$ Simulator\-::broadphase\hspace{0.3cm}{\ttfamily [private]}}}\label{classSimulator_abf328154008d231ebff7a42a58791e5b}
+\hypertarget{classSimulator_ae128785e92d1f8cac37b7008ff6c0cf7}{\index{Simulator@{Simulator}!collision\-Configuration@{collision\-Configuration}}
+\index{collision\-Configuration@{collision\-Configuration}!Simulator@{Simulator}}
+\subsubsection[{collision\-Configuration}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Default\-Collision\-Configuration$\ast$ Simulator\-::collision\-Configuration\hspace{0.3cm}{\ttfamily [private]}}}\label{classSimulator_ae128785e92d1f8cac37b7008ff6c0cf7}
+\hypertarget{classSimulator_a76a5f71d55dd786819ab1240e5a45791}{\index{Simulator@{Simulator}!collision\-Shapes@{collision\-Shapes}}
+\index{collision\-Shapes@{collision\-Shapes}!Simulator@{Simulator}}
+\subsubsection[{collision\-Shapes}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$bt\-Collision\-Shape $\ast$$>$ Simulator\-::collision\-Shapes\hspace{0.3cm}{\ttfamily [private]}}}\label{classSimulator_a76a5f71d55dd786819ab1240e5a45791}
+\hypertarget{classSimulator_af84d7e00b1ee5bcade4e40847eea3fd4}{\index{Simulator@{Simulator}!dispatcher@{dispatcher}}
+\index{dispatcher@{dispatcher}!Simulator@{Simulator}}
+\subsubsection[{dispatcher}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Collision\-Dispatcher$\ast$ Simulator\-::dispatcher\hspace{0.3cm}{\ttfamily [private]}}}\label{classSimulator_af84d7e00b1ee5bcade4e40847eea3fd4}
+\hypertarget{classSimulator_a287d65d2e05fece22279b022886292ef}{\index{Simulator@{Simulator}!dynamics\-World@{dynamics\-World}}
+\index{dynamics\-World@{dynamics\-World}!Simulator@{Simulator}}
+\subsubsection[{dynamics\-World}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Discrete\-Dynamics\-World$\ast$ Simulator\-::dynamics\-World\hspace{0.3cm}{\ttfamily [private]}}}\label{classSimulator_a287d65d2e05fece22279b022886292ef}
+\hypertarget{classSimulator_ab5748cbb0ec57cd4922d2e88766fb8a2}{\index{Simulator@{Simulator}!scene\-Mgr@{scene\-Mgr}}
+\index{scene\-Mgr@{scene\-Mgr}!Simulator@{Simulator}}
+\subsubsection[{scene\-Mgr}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Scene\-Manager$\ast$ Simulator\-::scene\-Mgr}}\label{classSimulator_ab5748cbb0ec57cd4922d2e88766fb8a2}
+\hypertarget{classSimulator_a2da0915f8ba415561a147b72659ef17a}{\index{Simulator@{Simulator}!solver@{solver}}
+\index{solver@{solver}!Simulator@{Simulator}}
+\subsubsection[{solver}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Sequential\-Impulse\-Constraint\-Solver$\ast$ Simulator\-::solver\hspace{0.3cm}{\ttfamily [private]}}}\label{classSimulator_a2da0915f8ba415561a147b72659ef17a}
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-Simulator.\-h\item 
-Simulator.\-cpp\end{DoxyCompactItemize}
+\hyperlink{Simulator_8h}{Simulator.\-h}\item 
+\hyperlink{Simulator_8cpp}{Simulator.\-cpp}\end{DoxyCompactItemize}

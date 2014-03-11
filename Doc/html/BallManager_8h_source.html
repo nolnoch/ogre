@@ -4,10 +4,17 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>My Project: BallManager.h Source File</title>
+<title>OGRE Game: BallManager.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -22,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">OGRE Game
    </div>
   </td>
  </tr>
@@ -64,12 +71,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('BallManager_8h_source.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">BallManager.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="BallManager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * BallManager.h</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Mar 4, 2014</span></div>
@@ -95,46 +116,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;TileSimulator.h&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;Ball.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TileSimulator_8h.html">TileSimulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Ball_8h.html">Ball.h</a>&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">class </span><a class="code" href="classTileSimulator.html">TileSimulator</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classBallManager.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBallManager.html">BallManager</a> {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="classBall.html">Ball</a> *globalBall;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classBallManager.html#a9fbb6953ccffca39d124c4867a03d6e5">   20</a></span>&#160;  <a class="code" href="classBall.html">Ball</a> *<a class="code" href="classBallManager.html#a9fbb6953ccffca39d124c4867a03d6e5">globalBall</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classBallManager.html">BallManager</a>(<a class="code" href="classTileSimulator.html">TileSimulator</a> *sim);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classBallManager.html">BallManager</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classBallManager.html#a63b25d78645bea88f1d9742254f92305">BallManager</a>(<a class="code" href="classTileSimulator.html">TileSimulator</a> *<a class="code" href="classBallManager.html#a4916de0948df0af060f6ada4d21284a7">sim</a>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classBallManager.html#a1fbda83b56ce78f9fa2c0b3e1d287456">~BallManager</a>();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">bool</span> initBallManager();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">void</span> setGlobalBall(<a class="code" href="classBall.html">Ball</a> *ball);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="classBall.html">Ball</a>* addBall(Ogre::SceneNode* n, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> r);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classBall.html">Ball</a>* addMainBall(Ogre::SceneNode* n, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> r);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">void</span> enableGravity();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">void</span> removeBall(<a class="code" href="classBall.html">Ball</a>* rmBall);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">void</span> removeGlobalBall();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">bool</span> isGlobalBall();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">void</span> clearBalls();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classBallManager.html#af6eb7ce1ec14906c50ab69fa46eb8b11">initBallManager</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBallManager.html#a7e16e93759654ab1511acf0696e49d44">setGlobalBall</a>(<a class="code" href="classBall.html">Ball</a> *ball);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="classBall.html">Ball</a>* <a class="code" href="classBallManager.html#a0391fe48835ab1816ef8f180ff8b42eb">addBall</a>(Ogre::SceneNode* n, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> r);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classBall.html">Ball</a>* <a class="code" href="classBallManager.html#a1eed74d1d8c6070187774fd23f79fa91">addMainBall</a>(Ogre::SceneNode* n, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> r);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBallManager.html#a318d172c88d6e423c1d3f8dc3d5d9557">enableGravity</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBallManager.html#aa79158dcf4c003391de0fe8750a6d0ab">removeBall</a>(<a class="code" href="classBall.html">Ball</a>* rmBall);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBallManager.html#a03aa05fe5f1a7badf3028a2749596eb1">removeGlobalBall</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classBallManager.html#a72cf25f9ffa0152ca83103ed96ce1fe9">isGlobalBall</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBallManager.html#af51544444357484c9e58bd63f443de57">clearBalls</a>();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classTileSimulator.html">TileSimulator</a>* getSimulator();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classTileSimulator.html">TileSimulator</a>* <a class="code" href="classBallManager.html#a73c4e097e977317ebdb53c32fe72441b">getSimulator</a>();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">bool</span> checkCollisions(btRigidBody *aTile, <span class="keywordtype">void</span> *body0, <span class="keywordtype">void</span> *body1);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classBallManager.html#aaaa28fd371dc2b04d5973f0a8ef6f956">checkCollisions</a>(btRigidBody *aTile, <span class="keywordtype">void</span> *body0, <span class="keywordtype">void</span> *body1);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  std::vector&lt;Ball *&gt; ballList;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  std::vector&lt;Ball *&gt; mainBalls;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classTileSimulator.html">TileSimulator</a> *sim;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">bool</span> globalBallActive;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classBallManager.html#a7a32cb0f1dce0a3c51430ead4918a21e">   40</a></span>&#160;  std::vector&lt;Ball *&gt; <a class="code" href="classBallManager.html#a7a32cb0f1dce0a3c51430ead4918a21e">ballList</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classBallManager.html#a3de8a29f89c02241ef9dd1bc85bcb6f8">   41</a></span>&#160;  std::vector&lt;Ball *&gt; <a class="code" href="classBallManager.html#a3de8a29f89c02241ef9dd1bc85bcb6f8">mainBalls</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classBallManager.html#a4916de0948df0af060f6ada4d21284a7">   42</a></span>&#160;  <a class="code" href="classTileSimulator.html">TileSimulator</a> *<a class="code" href="classBallManager.html#a4916de0948df0af060f6ada4d21284a7">sim</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classBallManager.html#a4f86decb02dc070a4ddf4d408620acf4">   43</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classBallManager.html#a4f86decb02dc070a4ddf4d408620acf4">globalBallActive</a>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BALLMANAGER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 10 2014 21:27:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="BallManager_8h.html">BallManager.h</a></li>
+    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
 </body>
 </html>

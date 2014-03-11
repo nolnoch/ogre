@@ -1,0 +1,1373 @@
+.TH "NetManager" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NetManager \- 
+.PP
+Networking wrapper for SDL_net for use in OGRE or similar engines\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <NetManager\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBConnectionInfo\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNetManager\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~NetManager\fP ()"
+.br
+.in -1c
+.PP
+.RI "\fBRequired Initialization Functions\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBinitNetManager\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddNetworkInfo\fP (\fBProtocol\fP protocol=\fBPROTOCOL_ALL\fP, Uint16 port=0, const char *host=NULL)"
+.br
+.RI "\fIRequired to set TCP/UDP, port, and optional host\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBControl Functions\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBstartServer\fP ()"
+.br
+.RI "\fILaunch a server to listen on given/default port over given/default protocols\&. \fP"
+.ti -1c
+.RI "bool \fBstartClient\fP ()"
+.br
+.RI "\fILaunch a client on given/default port over given/default protocols and connected to given host server\&. \fP"
+.ti -1c
+.RI "bool \fBscanForActivity\fP ()"
+.br
+.RI "\fIScan once for activity on all TCP and UDP sockets\&. \fP"
+.ti -1c
+.RI "bool \fBpollForActivity\fP (Uint32 timeout_ms=5000)"
+.br
+.RI "\fIPoll for activity on all TCP and UDP sockets\&. \fP"
+.ti -1c
+.RI "void \fBmessageClients\fP (char *buf=NULL, int len=0)"
+.br
+.RI "\fISend a single message to all clients\&. \fP"
+.ti -1c
+.RI "void \fBmessageServer\fP (char *buf=NULL, int len=0)"
+.br
+.RI "\fISend a single message to the server\&. \fP"
+.ti -1c
+.RI "void \fBmessageClient\fP (\fBProtocol\fP protocol, int clientDataIdx, char *buf, int len)"
+.br
+.RI "\fISend a single message to a single client over a single protocol\&. \fP"
+.ti -1c
+.RI "void \fBdropClient\fP (\fBProtocol\fP protocol, Uint32 host)"
+.br
+.RI "\fIRemoves an established client from a running server\&. \fP"
+.ti -1c
+.RI "void \fBstopServer\fP (\fBProtocol\fP protocol=\fBPROTOCOL_ALL\fP)"
+.br
+.RI "\fIShut down the running server on any or all protocols\&. \fP"
+.ti -1c
+.RI "void \fBstopClient\fP (\fBProtocol\fP protocol=\fBPROTOCOL_ALL\fP)"
+.br
+.RI "\fIShut down the running client on any or all protocols\&. \fP"
+.ti -1c
+.RI "void \fBclose\fP ()"
+.br
+.RI "\fITerminates all running servers or clients on all protocols\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters & Setters\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBaddProtocol\fP (\fBProtocol\fP protocol)"
+.br
+.RI "\fIAllows the dynamic addition of TCP or UDP to a running server or client\&. \fP"
+.ti -1c
+.RI "void \fBsetProtocol\fP (\fBProtocol\fP protocol)"
+.br
+.RI "\fISet the protocol manually\&. \fP"
+.ti -1c
+.RI "void \fBsetPort\fP (Uint16 port)"
+.br
+.RI "\fISet the port manually\&. \fP"
+.ti -1c
+.RI "void \fBsetHost\fP (const char *host)"
+.br
+.ti -1c
+.RI "Uint32 \fBgetProtocol\fP ()"
+.br
+.RI "\fIReturns the currently active protocols\&. \fP"
+.ti -1c
+.RI "Uint16 \fBgetPort\fP ()"
+.br
+.RI "\fIReturns the currently active port\&. \fP"
+.ti -1c
+.RI "std::string \fBgetHost\fP ()"
+.br
+.RI "\fIReturns the currently active host\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBClientData\fP \fBtcpServerData\fP"
+.br
+.ti -1c
+.RI "\fBClientData\fP \fBudpServerData\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBClientData\fP * > \fBtcpClientData\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBClientData\fP * > \fBudpClientData\fP"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBNET_UNINITIALIZED\fP = 0, \fBNET_INITIALIZED\fP = 1, \fBNET_WAITING\fP = 2, \fBNET_RESOLVED\fP = 4, \fBNET_TCP_OPEN\fP = 8, \fBNET_UDP_OPEN\fP = 16, \fBNET_TCP_ACCEPT\fP = 32, \fBNET_UDP_BOUND\fP = 64, \fBNET_SERVER\fP = 256, \fBNET_CLIENT\fP = 512, \fBPORT_RANDOM\fP = 0, \fBPORT_DEFAULT\fP = 51215, \fBCHANNEL_AUTO\fP = -1, \fBCHANNEL_DEFAULT\fP = 1, \fBCHANNEL_MAX\fP = 2, \fBSOCKET_TCP_MAX\fP = 12, \fBSOCKET_UDP_MAX\fP = 12, \fBSOCKET_ALL_MAX\fP = SOCKET_TCP_MAX + SOCKET_UDP_MAX, \fBSOCKET_SELF\fP = SOCKET_ALL_MAX + 1, \fBMESSAGE_COUNT\fP = 10, \fBMESSAGE_LENGTH\fP = 128 }"
+.br
+.in -1c
+.PP
+.RI "\fB\fP"
+.br
+
+.in +1c
+.in -1c
+.PP
+.RI "\fB\fP"
+.br
+
+.in +1c
+.in -1c
+.SS "Private Member Functions"
+
+.PP
+.RI "\fBDirect SDL Call Wrappers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBopenServer\fP (\fBProtocol\fP protocol, Uint16 port)"
+.br
+.RI "\fILaunch a single server socket on a single protocol\&. \fP"
+.ti -1c
+.RI "bool \fBopenClient\fP (\fBProtocol\fP protocol, std::string addr, Uint16 port)"
+.br
+.RI "\fILaunch a single client socket on a single protocol bound to hostname\&. \fP"
+.ti -1c
+.RI "bool \fBopenTCPSocket\fP (IPaddress *addr)"
+.br
+.RI "\fIOpens a TCP socket\&. \fP"
+.ti -1c
+.RI "bool \fBopenUDPSocket\fP (Uint16 port)"
+.br
+.RI "\fIOpens a UDP socket\&. \fP"
+.ti -1c
+.RI "bool \fBacceptTCP\fP (TCPsocket server)"
+.br
+.RI "\fIFinalizes a listening socket for a server\&. \fP"
+.ti -1c
+.RI "bool \fBbindUDPSocket\fP (UDPsocket sock, int channel, IPaddress *addr)"
+.br
+.RI "\fIBind a UDP channel to a socket\&. \fP"
+.ti -1c
+.RI "void \fBunbindUDPSocket\fP (UDPsocket sock, int channel)"
+.br
+.RI "\fIUnbind a bound socket channel\&. \fP"
+.ti -1c
+.RI "bool \fBsendTCP\fP (TCPsocket sock, const void *data, int len)"
+.br
+.RI "\fISend a single message to a single target via TCP\&. \fP"
+.ti -1c
+.RI "bool \fBsendUDP\fP (UDPsocket sock, int channel, UDPpacket *pack)"
+.br
+.RI "\fISend a single message to a single target via UDP\&. \fP"
+.ti -1c
+.RI "bool \fBrecvTCP\fP (TCPsocket sock, void *data, int maxlen)"
+.br
+.RI "\fIReceive a single message from a single target via TCP\&. \fP"
+.ti -1c
+.RI "bool \fBrecvUDP\fP (UDPsocket sock, UDPpacket *pack)"
+.br
+.RI "\fIReceive a message from a random channel on a UDP socket\&. \fP"
+.ti -1c
+.RI "bool \fBsendUDPV\fP (UDPsocket sock, UDPpacket **packetV, int npackets)"
+.br
+.RI "\fISend n packets from a packet vector using the specified socket\&. \fP"
+.ti -1c
+.RI "int \fBrecvUDPV\fP (UDPsocket sock, UDPpacket **packetV)"
+.br
+.RI "\fIReceive up to len(packetV) packets from all channels on a socket\&. \fP"
+.ti -1c
+.RI "void \fBcloseTCP\fP (TCPsocket sock)"
+.br
+.RI "\fIClose a TCP socket\&. \fP"
+.ti -1c
+.RI "void \fBcloseUDP\fP (UDPsocket sock)"
+.br
+.RI "\fIClose a UDP socket\&. \fP"
+.ti -1c
+.RI "IPaddress * \fBqueryTCPAddress\fP (TCPsocket sock)"
+.br
+.RI "\fILook up an IPaddress by a TCP socket\&. \fP"
+.ti -1c
+.RI "IPaddress * \fBqueryUDPAddress\fP (UDPsocket sock, int channel)"
+.br
+.RI "\fILook up an IPaddress by a UDP socket and channel\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBUDP Packet Management\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "UDPpacket * \fBcraftUDPpacket\fP (const char *buf, int len)"
+.br
+.RI "\fIAllocate and fill a UDPpacket with the given buffer of len bytes\&. \fP"
+.ti -1c
+.RI "UDPpacket * \fBallocUDPpacket\fP (int size)"
+.br
+.RI "\fIAllocate a new SDL-formatted UDP packet\&. \fP"
+.ti -1c
+.RI "UDPpacket ** \fBallocUDPpacketV\fP (int count, int size)"
+.br
+.RI "\fIAllocate a new, empty, and SDL-formatted UDP packet vector\&. \fP"
+.ti -1c
+.RI "bool \fBresizeUDPpacket\fP (UDPpacket *pack, int size)"
+.br
+.RI "\fIResize a UDP packet\&. \fP"
+.ti -1c
+.RI "void \fBfreeUDPpacket\fP (UDPpacket **pack)"
+.br
+.RI "\fIFree a UDP packet\&. \fP"
+.ti -1c
+.RI "void \fBfreeUDPpacketV\fP (UDPpacket ***pack)"
+.br
+.RI "\fIFree a UDP packet vector\&. \fP"
+.ti -1c
+.RI "void \fBprocessPacketData\fP (const char *data)"
+.br
+.RI "\fIParse incoming data from server or clients for NetManager-specific commands\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSocket Registration & Handling\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "void \fBwatchSocket\fP (TCPsocket *sock)"
+.br
+.RI "\fIRegister a TCP socket to be watched for activity by SDL\&. \fP"
+.ti -1c
+.RI "void \fBwatchSocket\fP (UDPsocket *sock)"
+.br
+.RI "\fIRegister a UDP socket to be watched for activity by SDL\&. \fP"
+.ti -1c
+.RI "void \fBunwatchSocket\fP (TCPsocket *sock)"
+.br
+.RI "\fIRemove a TCP socket from SDL's observation\&. \fP"
+.ti -1c
+.RI "void \fBunwatchSocket\fP (UDPsocket *sock)"
+.br
+.RI "\fIRemove a UDP socket from SDL's observation\&. \fP"
+.ti -1c
+.RI "bool \fBcheckSockets\fP (Uint32 timeout_ms)"
+.br
+.RI "\fIAsk SDL to scan registered sockets once or for a given time period\&. \fP"
+.ti -1c
+.RI "void \fBreadTCPSocket\fP (int clientIdx)"
+.br
+.RI "\fIReceives a TCP socket and copies its data to the \fBClientData\fP buffer\&. \fP"
+.ti -1c
+.RI "void \fBreadUDPSocket\fP (int clientIdx)"
+.br
+.RI "\fIReceives a UDP socket and copies its data to the \fBClientData\fP buffer\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBClient Manipulation\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBaddUDPClient\fP (UDPpacket *pack)"
+.br
+.RI "\fIAdds a client discovered on a UDP socket\&. \fP"
+.ti -1c
+.RI "void \fBrejectTCPClient\fP (TCPsocket sock)"
+.br
+.RI "\fIRejects a prospective TCP client\&. \fP"
+.ti -1c
+.RI "void \fBrejectUDPClient\fP (UDPpacket *pack)"
+.br
+.RI "\fIRejects a prospective UDP client\&. \fP"
+.ti -1c
+.RI "\fBConnectionInfo\fP * \fBlookupTCPClient\fP (Uint32 host, bool create)"
+.br
+.RI "\fILook up a TCP client by IPaddress host\&. \fP"
+.ti -1c
+.RI "\fBConnectionInfo\fP * \fBlookupUDPClient\fP (Uint32 host, bool create)"
+.br
+.RI "\fILook up a UDP client by IPaddress host\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBHelper Functions\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBstatusCheck\fP (int state)"
+.br
+.RI "\fIA simple state (bit flag) check for early returns and error prints\&. \fP"
+.ti -1c
+.RI "bool \fBstatusCheck\fP (int state1, int state2)"
+.br
+.RI "\fIA compound state (bit flag) check for early returns and error prints\&. \fP"
+.ti -1c
+.RI "void \fBclearFlags\fP (int state)"
+.br
+.RI "\fIClears a given bit mask of state flags from the internal netStatus\&. \fP"
+.ti -1c
+.RI "void \fBresetManager\fP ()"
+.br
+.RI "\fIClears all vectors and resets all data members to default values\&. \fP"
+.in -1c
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBforceClientRandomUDP\fP"
+.br
+.ti -1c
+.RI "bool \fBacceptNewClients\fP"
+.br
+.ti -1c
+.RI "int \fBnextUDPChannel\fP"
+.br
+.ti -1c
+.RI "int \fBnetStatus\fP"
+.br
+.ti -1c
+.RI "int \fBnetPort\fP"
+.br
+.ti -1c
+.RI "\fBProtocol\fP \fBnetProtocol\fP"
+.br
+.ti -1c
+.RI "std::string \fBnetHost\fP"
+.br
+.ti -1c
+.RI "\fBConnectionInfo\fP \fBnetServer\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBConnectionInfo\fP * > \fBtcpClients\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBConnectionInfo\fP * > \fBudpClients\fP"
+.br
+.ti -1c
+.RI "std::vector< TCPsocket > \fBtcpSockets\fP"
+.br
+.ti -1c
+.RI "std::vector< UDPsocket > \fBudpSockets\fP"
+.br
+.ti -1c
+.RI "SDLNet_SocketSet \fBsocketNursery\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Networking wrapper for SDL_net for use in OGRE or similar engines\&. 
+
+Currently allows simultaneous TCP/UDP connections on a single port\&. While parameters may be given, the class is initialized to a default of both TCP and UDP active on port 51215\&. Fully managed state preservation prevents users from initiating illegal or undefined calls\&. All retrieved data is tunneled to public bins which must or may be checked by users\&. Data to be sent may be specified or else is retrieved by default from the established MessageBuffer bin\&.
+.PP
+I've worked rather hard to eliminate dependency on Ogre3d-specific code so that any application using SDL_net can plug this in and go\&. I've done my best to make it robust in that it supports simultaneous TCP and UDP and makes use of some fairly automatic routines\&.
+.PP
+Ideally, it should support more dynamic buffer sizing and the option to use multiple ports\&. The memory footprint doesn't seem to bad as of yet, but I'm not done with it\&.
+.PP
+Error and state checking was a priority in this implementation, so problems of that sort should be minimal if not non-existent\&. That said, If any code errors are encountered, please fix them or contact me at the header address\&. 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum\fC [private]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINET_UNINITIALIZED \fP\fP
+State management flag bits\&. 
+.TP
+\fB\fINET_INITIALIZED \fP\fP
+.TP
+\fB\fINET_WAITING \fP\fP
+.TP
+\fB\fINET_RESOLVED \fP\fP
+.TP
+\fB\fINET_TCP_OPEN \fP\fP
+.TP
+\fB\fINET_UDP_OPEN \fP\fP
+.TP
+\fB\fINET_TCP_ACCEPT \fP\fP
+.TP
+\fB\fINET_UDP_BOUND \fP\fP
+.TP
+\fB\fINET_SERVER \fP\fP
+.TP
+\fB\fINET_CLIENT \fP\fP
+.TP
+\fB\fIPORT_RANDOM \fP\fP
+Constants\&. 
+.TP
+\fB\fIPORT_DEFAULT \fP\fP
+.TP
+\fB\fICHANNEL_AUTO \fP\fP
+.TP
+\fB\fICHANNEL_DEFAULT \fP\fP
+.TP
+\fB\fICHANNEL_MAX \fP\fP
+.TP
+\fB\fISOCKET_TCP_MAX \fP\fP
+.TP
+\fB\fISOCKET_UDP_MAX \fP\fP
+.TP
+\fB\fISOCKET_ALL_MAX \fP\fP
+.TP
+\fB\fISOCKET_SELF \fP\fP
+.TP
+\fB\fIMESSAGE_COUNT \fP\fP
+.TP
+\fB\fIMESSAGE_LENGTH \fP\fP
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NetManager::NetManager ()"
+Initialize changeable values to defaults\&. Nothing special\&. 
+.SS "NetManager::~NetManager ()\fC [virtual]\fP"
+Standard destruction\&. Calls \fBclose()\fP\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NetManager::acceptTCP (TCPsocketserver)\fC [private]\fP"
+
+.PP
+Finalizes a listening socket for a server\&. A state-bound and error-checked wrapper of the SDLNet_TCP_Accept call\&. New sockets for new clients are established here and added to the MessageInfo public vector\&. If a client already has a \fBConnectionInfo\fP struct for a UDP connection, the TCP connection information will be added to it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserver\fP The listening server socket\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "void NetManager::addNetworkInfo (\fBProtocol\fPprotocol = \fC\fBPROTOCOL_ALL\fP\fP, Uint16port = \fC0\fP, const char *host = \fCNULL\fP)"
+
+.PP
+Required to set TCP/UDP, port, and optional host\&. Allows user to set preferred protocol, port, and optional host\&. If a host is given, it is assumed to be the server, and a client initialization is expected\&. If no host is given, only a server initialization is possible and will be expected\&. Protocol and port are given default values if either or both are not specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP Desired protocols for server or client\&. Default: ALL\&. 
+.br
+\fIport\fP Desired port for server or client\&. Default: 51215 
+.br
+\fIhost\fP Host server if starting client\&. Default: NULL (begin server)\&. 
+.RE
+.PP
+
+.SS "bool NetManager::addProtocol (\fBProtocol\fPprotocol)"
+
+.PP
+Allows the dynamic addition of TCP or UDP to a running server or client\&. Must be currently running as a server or client over only one of TCP or UDP\&. This function adds and immediately launches the requested, missing protocol\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP TCP or UDP, given by PROTOCOL_XXX enum value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::addUDPClient (UDPpacket *pack)\fC [private]\fP"
+
+.PP
+Adds a client discovered on a UDP socket\&. \fBParameters:\fP
+.RS 4
+\fIpack\fP The originating packet of the prospective client\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "UDPpacket * NetManager::allocUDPpacket (intsize)\fC [private]\fP"
+
+.PP
+Allocate a new SDL-formatted UDP packet\&. This is simply an error-checked wrapper of SDLNet_AllocPacket\&. This should only be called for empty packets receiving data\&. Packets to be sent should use \fBcraftUDPpacket()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP The number of bytes to allot the buffer portion of the packet\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new, empty UDPpacket\&. 
+.RE
+.PP
+
+.SS "UDPpacket ** NetManager::allocUDPpacketV (intcount, intsize)\fC [private]\fP"
+
+.PP
+Allocate a new, empty, and SDL-formatted UDP packet vector\&. \fBParameters:\fP
+.RS 4
+\fIcount\fP The number of packets to allocate\&. 
+.br
+\fIsize\fP The size of each packet\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new, empty UDP packet vector\&. 
+.RE
+.PP
+
+.SS "bool NetManager::bindUDPSocket (UDPsocketsock, intchannel, IPaddress *addr)\fC [private]\fP"
+
+.PP
+Bind a UDP channel to a socket\&. Optional functionality from SDL that I've chosen to use\&. A maximum of 32 channels with different IPaddresses may be bound to any one socket, and reaping sockets will iterate through each of these channels separately\&. If a client already has a \fBConnectionInfo\fP struct for a TCP connection, the UDP connection information will be added to it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The UDP socket to be bound\&. 
+.br
+\fIchannel\fP The channel by which to bind this address to this socket\&. 
+.br
+\fIaddr\fP The IPaddress of the hopeful connectee\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::checkSockets (Uint32timeout_ms)\fC [private]\fP"
+
+.PP
+Ask SDL to scan registered sockets once or for a given time period\&. This function will automatically handle all activity discovered on TCP and UDP\&. New clients will be added, and data will be copied to the \fBClientData\fP buffers\&. \fIThe user should check the \fBClientData\fP arrays after calling this function!\fI Excess or unwanted clients will be rejected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout_ms\fP The time to scan in milliseconds\&. 0 is instant\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if there was activity, false if there was not\&. 
+.RE
+.PP
+\fP\fP
+.SS "void NetManager::clearFlags (intstate)\fC [private]\fP"
+
+.PP
+Clears a given bit mask of state flags from the internal netStatus\&. \fBParameters:\fP
+.RS 4
+\fIstate\fP The flags to clear\&. 
+.RE
+.PP
+
+.SS "void NetManager::close ()"
+
+.PP
+Terminates all running servers or clients on all protocols\&. This function is called by the destructor, but it may be called explicitly by the user if desired\&. It will call \fBstopServer()\fP or \fBstopClient()\fP as appropriate\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBstopServer()\fP 
+.PP
+\fBstopClient()\fP 
+.RE
+.PP
+
+.SS "void NetManager::closeTCP (TCPsocketsock)\fC [private]\fP"
+
+.PP
+Close a TCP socket\&. A state-bound and error-checked wrapper of the SDLNet_TCP_Close call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The socket to be closed\&. 
+.RE
+.PP
+
+.SS "void NetManager::closeUDP (UDPsocketsock)\fC [private]\fP"
+
+.PP
+Close a UDP socket\&. A state-bound and error-checked wrapper of the SDLNet_UDP_Close call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The socket to be closed\&. 
+.RE
+.PP
+
+.SS "UDPpacket * NetManager::craftUDPpacket (const char *buf, intlen)\fC [private]\fP"
+
+.PP
+Allocate and fill a UDPpacket with the given buffer of len bytes\&. If \fBallocUDPpacket()\fP returns NULL, this function will also return NULL, but without repeating the warning\&. Make sure to handle NULL packet pointers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP The source buffer\&. 
+.br
+\fIlen\fP The length of bytes to copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An allocated and filled UDPpacket\&. 
+.RE
+.PP
+
+.SS "void NetManager::dropClient (\fBProtocol\fPprotocol, Uint32host)"
+
+.PP
+Removes an established client from a running server\&. Must be running as a server, and must give a connected client\&. May choose to drop the client from TCP, UDP, or both\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP TCP, UDP, or ALL; given by PROTOCOL_XXX enum value\&. 
+.br
+\fIclientDataIdx\fP Index of the client into the tcp/udp \fBClientData\fP vector\&. 
+.RE
+.PP
+
+.SS "void NetManager::freeUDPpacket (UDPpacket **pack)\fC [private]\fP"
+
+.PP
+Free a UDP packet\&. \fBParameters:\fP
+.RS 4
+\fIpack\fP The packet to be freed\&. 
+.RE
+.PP
+
+.SS "void NetManager::freeUDPpacketV (UDPpacket ***pack)\fC [private]\fP"
+
+.PP
+Free a UDP packet vector\&. \fBParameters:\fP
+.RS 4
+\fIpack\fP The packet vector to be freed\&. 
+.RE
+.PP
+
+.SS "std::string NetManager::getHost ()"
+
+.PP
+Returns the currently active host\&. Must be running as a client to call this function; servers do not have hosts\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The currently active host\&. 
+.RE
+.PP
+
+.SS "Uint16 NetManager::getPort ()"
+
+.PP
+Returns the currently active port\&. \fBReturns:\fP
+.RS 4
+The currently active port\&. 
+.RE
+.PP
+
+.SS "Uint32 NetManager::getProtocol ()"
+
+.PP
+Returns the currently active protocols\&. \fBReturns:\fP
+.RS 4
+The currently active protocols\&. 
+.RE
+.PP
+
+.SS "bool NetManager::initNetManager ()"
+Initializes the SDL library if it has not started already, followed by the SDL_net library\&. If both succeed, the internal SocketSet is allocated, and the state is set to NET_INITIALIZED\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "\fBConnectionInfo\fP * NetManager::lookupTCPClient (Uint32host, boolcreate)\fC [private]\fP"
+
+.PP
+Look up a TCP client by IPaddress host\&. IPaddress host is available from almost anywhere, and this conversion to a \fBConnectionInfo\fP pointer allows access to the correct index into all of the client's associated vectors\&. If the \fBConnectionInfo\fP does not already exist, the boolean allows a new instance to be returned instead\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP The IPaddress host\&. 
+.br
+\fIcreate\fP True to return a new \fBConnectionInfo\fP instance, false for NULL\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Either the correct CInfo, a new CInfo, or null\&. 
+.RE
+.PP
+
+.SS "\fBConnectionInfo\fP * NetManager::lookupUDPClient (Uint32host, boolcreate)\fC [private]\fP"
+
+.PP
+Look up a UDP client by IPaddress host\&. IPaddress host is available from almost anywhere, and this conversion to a \fBConnectionInfo\fP pointer allows access to the correct index into all of the client's associated vectors\&. If the \fBConnectionInfo\fP does not already exist, the boolean allows a new instance to be returned instead\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP The IPaddress host\&. 
+.br
+\fIcreate\fP True to return a new \fBConnectionInfo\fP instance, false for NULL\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Either the correct CInfo, a new CInfo, or null\&. 
+.RE
+.PP
+
+.SS "void NetManager::messageClient (\fBProtocol\fPprotocol, intclientDataIdx, char *buf, intlen)"
+
+.PP
+Send a single message to a single client over a single protocol\&. Must be running as a server, and all fields must be provided by the user\&. This will send the given message to the specified client using the specified protocol\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP TCP or UDP, given by the PROTOCOL_XXX enum value\&. 
+.br
+\fIclientDataIdx\fP Index of the client into the tcp/udp \fBClientData\fP vector\&. 
+.br
+\fIbuf\fP Manually given data buffer\&. 
+.br
+\fIlen\fP Length of the given buffer\&. 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBmessageClients()\fP 
+.RE
+.PP
+
+.SS "void NetManager::messageClients (char *buf = \fCNULL\fP, intlen = \fC0\fP)"
+
+.PP
+Send a single message to all clients\&. Must be running as a server to call this function\&. If no arguments are given, it will pull from each client's \fBClientData\fP \fBinput\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP Manually given data buffer\&. Default: NULL\&. 
+.br
+\fIlen\fP Length of given buffer\&. Default: 0\&. 
+.RE
+.PP
+
+.SS "void NetManager::messageServer (char *buf = \fCNULL\fP, intlen = \fC0\fP)"
+
+.PP
+Send a single message to the server\&. Must be running as a client to call this function\&. If no argumetns are given, it will pull from the server's \fBClientData\fP \fBinput\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP Manually given data buffer\&. Default: NULL\&. 
+.br
+\fIlen\fP Length of given buffer\&. Default: 0\&. 
+.RE
+.PP
+
+.SS "bool NetManager::openClient (\fBProtocol\fPprotocol, std::stringhostname, Uint16port)\fC [private]\fP"
+
+.PP
+Launch a single client socket on a single protocol bound to hostname\&. A state-bound and error-checked wrapper of the SDLNet_ResolveHost call\&. To reduce user calls, it chains into the protocol-specific socket opening call\&. This is reachable only via a call from \fBstartClient()\fP\&.
+.PP
+If both TCP and UDP are requested, this function will fire twice; once on each\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP One of TCP or UDP at a time, as given previously by the user\&. 
+.br
+\fIhostname\fP The hostname previously given by the user\&. 
+.br
+\fIport\fP The port previously established by the user\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The success or failure of the following socket call\&. 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBopenTCPSocket()\fP 
+.PP
+\fBopenUDPSocket()\fP 
+.RE
+.PP
+
+.SS "bool NetManager::openServer (\fBProtocol\fPprotocol, Uint16port)\fC [private]\fP"
+
+.PP
+Launch a single server socket on a single protocol\&. A state-bound and error-checked wrapper of the SDLNet_ResolveHost call\&. To reduce user calls, it chains into the protocol-specific socket opening call\&. This is reachable only via a call from \fBstartServer()\fP\&.
+.PP
+If both TCP and UDP are requested, this function will fire twice; once on each\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP One of TCP or UDP at a time, as given previously by the user\&. 
+.br
+\fIport\fP The port previously established by the user\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The success or failure of the following TCP or UDP socket call\&. 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBopenTCPSocket()\fP 
+.PP
+\fBopenUDPSocket()\fP 
+.RE
+.PP
+
+.SS "bool NetManager::openTCPSocket (IPaddress *addr)\fC [private]\fP"
+
+.PP
+Opens a TCP socket\&. A state-bound and error-checked wrapper of the SDLNet_TCP_Open call\&. To reduce user calls, it will chain into \fBacceptTCP()\fP iff this is a server\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP The IPaddress upon which to open the socket\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure, or the result of acceptTCP\&. 
+.RE
+.PP
+
+.SS "bool NetManager::openUDPSocket (Uint16port)\fC [private]\fP"
+
+.PP
+Opens a UDP socket\&. A state-bound and error-checked wrapper of the SDLNet_UDP_Open call\&. Servers and clients both stop here, as they differ only in how incoming connections are handled\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP The port on which to open the socket\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::pollForActivity (Uint32timeout_ms = \fC5000\fP)"
+
+.PP
+Poll for activity on all TCP and UDP sockets\&. If activity is detected, it will be automatically handled according to its protocol and the server or client configuration\&. New clients and data will be processed before this function returns\&. If the return is \fBtrue\fP, the \fI user should immediately scan the external MessageInfo bins \fP for newly output data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout_ms\fP Time in milliseconds to block and poll\&. Default: 5 seconds\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True for activity, false for no activity\&. 
+.RE
+.PP
+
+.SS "void NetManager::processPacketData (const char *data)\fC [private]\fP"
+
+.PP
+Parse incoming data from server or clients for NetManager-specific commands\&. Much of the data and operations will be handled by OGRE et al\&., but some commands might be better suited for internal processing\&.\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data buffer to be processed\&. 
+.RE
+.PP
+
+.SS "IPaddress * NetManager::queryTCPAddress (TCPsocketsock)\fC [private]\fP"
+
+.PP
+Look up an IPaddress by a TCP socket\&. \fBParameters:\fP
+.RS 4
+\fIsock\fP The socket to query\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IPaddress of the socket's associated host\&. 
+.RE
+.PP
+
+.SS "IPaddress * NetManager::queryUDPAddress (UDPsocketsock, intchannel)\fC [private]\fP"
+
+.PP
+Look up an IPaddress by a UDP socket and channel\&. \fBParameters:\fP
+.RS 4
+\fIsock\fP The socket hosting the channel\&. 
+.br
+\fIchannel\fP The target-to-query's bound channel\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IPaddress of the channel's associated host\&. 
+.RE
+.PP
+
+.SS "void NetManager::readTCPSocket (intclientIdx)\fC [private]\fP"
+
+.PP
+Receives a TCP socket and copies its data to the \fBClientData\fP buffer\&. \fBParameters:\fP
+.RS 4
+\fIclientIdx\fP An index into the tcpClients vector\&. 
+.RE
+.PP
+
+.SS "void NetManager::readUDPSocket (intclientIdx)\fC [private]\fP"
+
+.PP
+Receives a UDP socket and copies its data to the \fBClientData\fP buffer\&. Because many channels may be bound to a single socket, the vector versions of UDPpacket and udpRecv are used to gather anything and everything that might arrive in one sweep of the socket\&. New clients are added, if possible\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclientIdx\fP An index into the udpClients vector\&. 
+.RE
+.PP
+
+.SS "bool NetManager::recvTCP (TCPsocketsock, void *data, intmaxlen)\fC [private]\fP"
+
+.PP
+Receive a single message from a single target via TCP\&. A state-bound and error-checked wrapper of the SDLNet_TCP_Recv call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The target's socket\&. 
+.br
+\fIdata\fP The destination buffer for the received data\&. 
+.br
+\fImaxlen\fP The maximum length of data to copy to the destination buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::recvUDP (UDPsocketsock, UDPpacket *pack)\fC [private]\fP"
+
+.PP
+Receive a message from a random channel on a UDP socket\&. A state-bound and error-checked wrapper of the SDLNet_UDP_Recv call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The target's socket\&. 
+.br
+\fIdata\fP The SDL-formatted destination buffer for the received data\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "int NetManager::recvUDPV (UDPsocketsock, UDPpacket **packetV)\fC [private]\fP"
+
+.PP
+Receive up to len(packetV) packets from all channels on a socket\&. A state-bound and error-checked wrapper of the SDLNet_UDP_RecvV call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The target socket\&. 
+.br
+\fIpacketV\fP The SDL-formatted UDP packet vector\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "void NetManager::rejectTCPClient (TCPsocketsock)\fC [private]\fP"
+
+.PP
+Rejects a prospective TCP client\&. Sends a rejection message and closes the socket\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The rejectee's associated socket\&. 
+.RE
+.PP
+
+.SS "void NetManager::rejectUDPClient (UDPpacket *pack)\fC [private]\fP"
+
+.PP
+Rejects a prospective UDP client\&. Sends a rejection message and frees the socket\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The rejectee's associated packet\&. 
+.RE
+.PP
+
+.SS "void NetManager::resetManager ()\fC [private]\fP"
+
+.PP
+Clears all vectors and resets all data members to default values\&. After this function completes, the instance will be considered INITIALIZED and may launch a new server or client\&. 
+.SS "bool NetManager::resizeUDPpacket (UDPpacket *pack, intsize)\fC [private]\fP"
+
+.PP
+Resize a UDP packet\&. \fBParameters:\fP
+.RS 4
+\fIpack\fP The packet to resize\&. 
+.br
+\fIsize\fP The new size of the packet\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::scanForActivity ()"
+
+.PP
+Scan once for activity on all TCP and UDP sockets\&. This calls pollForActivity with a time of 0 milliseconds (instant)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True for activity, false for no activity\&. 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBpollForActivity()\fP 
+.RE
+.PP
+
+.SS "bool NetManager::sendTCP (TCPsocketsock, const void *data, intlen)\fC [private]\fP"
+
+.PP
+Send a single message to a single target via TCP\&. A state-bound and error-checked wrapper of the SDLNet_TCP_Send call\&. One socketed target will receive one copy of the given message\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The target's socket\&. 
+.br
+\fIdata\fP The data to send\&. 
+.br
+\fIlen\fP The length of the data\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::sendUDP (UDPsocketsock, intchannel, UDPpacket *pack)\fC [private]\fP"
+
+.PP
+Send a single message to a single target via UDP\&. A state-bound and error-checked wrapper of the SDLNet_UDP_Send call\&. One channel-bound target \fImay\fP receive one copy of the given message\&. No guarantees are given by UDP, and I have coded no guarantees here, yet\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The target's socket\&. 
+.br
+\fIchannel\fP The target's specific, bound channel\&. 
+.br
+\fIpack\fP The SDL-formatted UDP packet to send\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::sendUDPV (UDPsocketsock, UDPpacket **packetV, intnpackets)\fC [private]\fP"
+
+.PP
+Send n packets from a packet vector using the specified socket\&. A state-bound and error-checked wrapper of the SDLNet_UDP_SendV call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsock\fP The target socket\&. 
+.br
+\fIpacketV\fP The SDL-formatted UDP packet vector\&. 
+.br
+\fInpackets\fP The number of packets to send from the packet vector\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "void NetManager::setHost (const char *host)"
+Set the host manually\&.
+.PP
+Currently useless as a public function\&. This cannot be safely executed after a server or client is launched\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP The desired host\&. 
+.RE
+.PP
+
+.SS "void NetManager::setPort (Uint16port)"
+
+.PP
+Set the port manually\&. Currently useless as a public function\&. This cannot be safely executed after a server or client is launched\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP The desired port\&. 
+.RE
+.PP
+
+.SS "void NetManager::setProtocol (\fBProtocol\fPprotocol)"
+
+.PP
+Set the protocol manually\&. This is currently useless as a public function given the structured use of \fBaddNetworkInfo()\fP and \fBaddProtocol()\fP\&. It is only public because it seems like it should be\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP TCP, UDP, or ALL; given by PROTOCOL_XXX enum value\&. 
+.RE
+.PP
+
+.SS "bool NetManager::startClient ()"
+
+.PP
+Launch a client on given/default port over given/default protocols and connected to given host server\&. Fails if no host server was given in addNetworkInfo or addHost\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::startServer ()"
+
+.PP
+Launch a server to listen on given/default port over given/default protocols\&. Warns if host server was specified but proceeds with launch\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on failure\&. 
+.RE
+.PP
+
+.SS "bool NetManager::statusCheck (intstate)\fC [private]\fP"
+
+.PP
+A simple state (bit flag) check for early returns and error prints\&. \fBParameters:\fP
+.RS 4
+\fIstate\fP The state to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if state is lacking, false if state achieved\&. 
+.RE
+.PP
+
+.SS "bool NetManager::statusCheck (intstate1, intstate2)\fC [private]\fP"
+
+.PP
+A compound state (bit flag) check for early returns and error prints\&. \fBParameters:\fP
+.RS 4
+\fIstate1\fP The first state to be checked\&. 
+.br
+\fIstate2\fP The second state to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if either state is lacking, false if both states achieved\&. 
+.RE
+.PP
+
+.SS "void NetManager::stopClient (\fBProtocol\fPprotocol = \fC\fBPROTOCOL_ALL\fP\fP)"
+
+.PP
+Shut down the running client on any or all protocols\&. Must be running as a client to call this function\&. If after completing the requested removal there are no active protocols, all data structures will be emptied, freed, and reset to default values\&. The state of the instance will return to NET_INITIALIZED, allowing for start of new client or server after another call to \fBaddNetworkInfo()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP TCP, UDP, or all; given by PROTOCOL_XXX enum value 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBresetManager()\fP 
+.PP
+\fBclose()\fP 
+.RE
+.PP
+
+.SS "void NetManager::stopServer (\fBProtocol\fPprotocol = \fC\fBPROTOCOL_ALL\fP\fP)"
+
+.PP
+Shut down the running server on any or all protocols\&. Must be running as a server to call this function\&. If after completing the requested removal there are no active protocols, all data structures will be emptied, freed, and reset to default values\&. The state of the instance will return to NET_INITIALIZED, allowing for start of new client or server after another call to \fBaddNetworkInfo()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprotocol\fP TCP, UDP, or all; given by PROTOCOL_XXX enum value 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBresetManager()\fP 
+.PP
+\fBclose()\fP 
+.RE
+.PP
+
+.SS "void NetManager::unbindUDPSocket (UDPsocketsock, intchannel)\fC [private]\fP"
+
+.PP
+Unbind a bound socket channel\&. \fBParameters:\fP
+.RS 4
+\fIsock\fP The socket upon which the channel is bound\&. 
+.br
+\fIchannel\fP The channel to be unbound\&. 
+.RE
+.PP
+
+.SS "void NetManager::unwatchSocket (TCPsocket *sock)\fC [private]\fP"
+
+.PP
+Remove a TCP socket from SDL's observation\&. \fBParameters:\fP
+.RS 4
+\fIsock\fP The socket to remove\&. 
+.RE
+.PP
+
+.SS "void NetManager::unwatchSocket (UDPsocket *sock)\fC [private]\fP"
+
+.PP
+Remove a UDP socket from SDL's observation\&. \fBParameters:\fP
+.RS 4
+\fIsock\fP The socket to remove\&. 
+.RE
+.PP
+
+.SS "void NetManager::watchSocket (TCPsocket *sock)\fC [private]\fP"
+
+.PP
+Register a TCP socket to be watched for activity by SDL\&. \fBParameters:\fP
+.RS 4
+\fIsock\fP The socket to watch\&. 
+.RE
+.PP
+
+.SS "void NetManager::watchSocket (UDPsocket *sock)\fC [private]\fP"
+
+.PP
+Register a UDP socket to be watched for activity by SDL\&. \fBParameters:\fP
+.RS 4
+\fIsock\fP The socket to watch\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "bool NetManager::acceptNewClients\fC [private]\fP"
+
+.SS "bool NetManager::forceClientRandomUDP\fC [private]\fP"
+
+.SS "std::string NetManager::netHost\fC [private]\fP"
+
+.SS "int NetManager::netPort\fC [private]\fP"
+
+.SS "\fBProtocol\fP NetManager::netProtocol\fC [private]\fP"
+
+.SS "\fBConnectionInfo\fP NetManager::netServer\fC [private]\fP"
+
+.SS "int NetManager::netStatus\fC [private]\fP"
+
+.SS "int NetManager::nextUDPChannel\fC [private]\fP"
+
+.SS "SDLNet_SocketSet NetManager::socketNursery\fC [private]\fP"
+
+.SS "std::vector<\fBClientData\fP *> NetManager::tcpClientData"
+
+.SS "std::vector<\fBConnectionInfo\fP *> NetManager::tcpClients\fC [private]\fP"
+
+.SS "\fBClientData\fP NetManager::tcpServerData"
+
+.SS "std::vector<TCPsocket> NetManager::tcpSockets\fC [private]\fP"
+
+.SS "std::vector<\fBClientData\fP *> NetManager::udpClientData"
+
+.SS "std::vector<\fBConnectionInfo\fP *> NetManager::udpClients\fC [private]\fP"
+
+.SS "\fBClientData\fP NetManager::udpServerData"
+
+.SS "std::vector<UDPsocket> NetManager::udpSockets\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

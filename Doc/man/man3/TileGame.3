@@ -1,0 +1,340 @@
+.TH "TileGame" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TileGame \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TileGame\&.h>\fP
+.PP
+Inherits \fBBaseGame\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTileGame\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~TileGame\fP (void)"
+.br
+.ti -1c
+.RI "Ogre::RenderWindow * \fBgetWindow\fP (void)"
+.br
+.ti -1c
+.RI "Ogre::Timer * \fBgetTimer\fP (void)"
+.br
+.ti -1c
+.RI "OIS::Mouse * \fBgetMouse\fP (void)"
+.br
+.ti -1c
+.RI "OIS::Keyboard * \fBgetKeyboard\fP (void)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBconfigure\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateCamera\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateScene\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateFrameListener\fP (void)"
+.br
+.ti -1c
+.RI "virtual bool \fBframeRenderingQueued\fP (const Ogre::FrameEvent &evt)"
+.br
+.ti -1c
+.RI "virtual bool \fBkeyPressed\fP (const OIS::KeyEvent &arg)"
+.br
+.ti -1c
+.RI "virtual bool \fBmousePressed\fP (const OIS::MouseEvent &arg, OIS::MouseButtonID id)"
+.br
+.ti -1c
+.RI "virtual bool \fBmouseReleased\fP (const OIS::MouseEvent &arg, OIS::MouseButtonID id)"
+.br
+.ti -1c
+.RI "void \fBballSetup\fP (int cubeSize)"
+.br
+.ti -1c
+.RI "void \fBlevelSetup\fP (int num)"
+.br
+.ti -1c
+.RI "void \fBlevelTearDown\fP ()"
+.br
+.ti -1c
+.RI "void \fBsimonSaysAnim\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Ogre::Timer * \fBmTimer\fP"
+.br
+.ti -1c
+.RI "Ogre::Timer \fBtimer\fP"
+.br
+.ti -1c
+.RI "Ogre::SceneNode * \fBheadNode\fP"
+.br
+.ti -1c
+.RI "Ogre::Light * \fBpanelLight\fP"
+.br
+.ti -1c
+.RI "Ogre::Vector3 \fBmDirection\fP"
+.br
+.ti -1c
+.RI "Ogre::Real \fBmSpeed\fP"
+.br
+.ti -1c
+.RI "Ogre::PlaneBoundedVolume \fBboxBound\fP"
+.br
+.ti -1c
+.RI "Ogre::Plane \fBwallUp\fP"
+.br
+.ti -1c
+.RI "Ogre::Plane \fBwallDown\fP"
+.br
+.ti -1c
+.RI "Ogre::Plane \fBwallBack\fP"
+.br
+.ti -1c
+.RI "Ogre::Plane \fBwallFront\fP"
+.br
+.ti -1c
+.RI "Ogre::Plane \fBwallLeft\fP"
+.br
+.ti -1c
+.RI "Ogre::Plane \fBwallRight\fP"
+.br
+.ti -1c
+.RI "std::deque< Ogre::Entity * > \fBallTileEntities\fP"
+.br
+.ti -1c
+.RI "std::deque< Ogre::SceneNode * > \fBtileList\fP"
+.br
+.ti -1c
+.RI "std::deque< Ogre::Entity * > \fBtileEntities\fP"
+.br
+.ti -1c
+.RI "std::deque< Ogre::SceneNode * > \fBtileSceneNodes\fP"
+.br
+.ti -1c
+.RI "OgreBites::ParamsPanel * \fBscorePanel\fP"
+.br
+.ti -1c
+.RI "OgreBites::Label * \fBcongratsPanel\fP"
+.br
+.ti -1c
+.RI "OgreBites::Label * \fBchargePanel\fP"
+.br
+.ti -1c
+.RI "\fBTileSimulator\fP * \fBsim\fP"
+.br
+.ti -1c
+.RI "\fBBallManager\fP * \fBballMgr\fP"
+.br
+.ti -1c
+.RI "\fBSoundManager\fP * \fBsoundMgr\fP"
+.br
+.ti -1c
+.RI "\fBNetManager\fP * \fBnetMgr\fP"
+.br
+.ti -1c
+.RI "\fBSoundFile\fP \fBboing\fP"
+.br
+.ti -1c
+.RI "\fBSoundFile\fP \fBgong\fP"
+.br
+.ti -1c
+.RI "\fBSoundFile\fP \fBmusic\fP"
+.br
+.ti -1c
+.RI "bool \fBpaused\fP"
+.br
+.ti -1c
+.RI "bool \fBgameStart\fP"
+.br
+.ti -1c
+.RI "bool \fBgameDone\fP"
+.br
+.ti -1c
+.RI "bool \fBanimDone\fP"
+.br
+.ti -1c
+.RI "bool \fBisCharging\fP"
+.br
+.ti -1c
+.RI "int \fBscore\fP"
+.br
+.ti -1c
+.RI "int \fBshotsFired\fP"
+.br
+.ti -1c
+.RI "int \fBcurrLevel\fP"
+.br
+.ti -1c
+.RI "int \fBcurrTile\fP"
+.br
+.ti -1c
+.RI "int \fBwinTimer\fP"
+.br
+.ti -1c
+.RI "int \fBtileCounter\fP"
+.br
+.ti -1c
+.RI "int \fBchargeShot\fP"
+.br
+.ti -1c
+.RI "double \fBslowdownval\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TileGame::TileGame (void)"
+
+.SS "TileGame::~TileGame (void)\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void TileGame::ballSetup (intcubeSize)\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "bool TileGame::configure (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBBaseGame\fP\&.
+.SS "void TileGame::createCamera (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBBaseGame\fP\&.
+.SS "void TileGame::createFrameListener (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBBaseGame\fP\&.
+.SS "void TileGame::createScene (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBBaseGame\fP\&.
+.SS "bool TileGame::frameRenderingQueued (const Ogre::FrameEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBBaseGame\fP\&.
+.SS "OIS::Keyboard* TileGame::getKeyboard (void)\fC [inline]\fP"
+
+.SS "OIS::Mouse* TileGame::getMouse (void)\fC [inline]\fP"
+
+.SS "Ogre::Timer* TileGame::getTimer (void)\fC [inline]\fP"
+
+.SS "Ogre::RenderWindow* TileGame::getWindow (void)\fC [inline]\fP"
+
+.SS "bool TileGame::keyPressed (const OIS::KeyEvent &arg)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBBaseGame\fP\&.
+.SS "void TileGame::levelSetup (intnum)\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "void TileGame::levelTearDown ()\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "bool TileGame::mousePressed (const OIS::MouseEvent &arg, OIS::MouseButtonIDid)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBBaseGame\fP\&.
+.SS "bool TileGame::mouseReleased (const OIS::MouseEvent &arg, OIS::MouseButtonIDid)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBBaseGame\fP\&.
+.SS "void TileGame::simonSaysAnim ()\fC [inline]\fP, \fC [protected]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::deque<Ogre::Entity *> TileGame::allTileEntities\fC [protected]\fP"
+
+.SS "bool TileGame::animDone\fC [protected]\fP"
+
+.SS "\fBBallManager\fP* TileGame::ballMgr\fC [protected]\fP"
+
+.SS "\fBSoundFile\fP TileGame::boing\fC [protected]\fP"
+
+.SS "Ogre::PlaneBoundedVolume TileGame::boxBound\fC [protected]\fP"
+
+.SS "OgreBites::Label* TileGame::chargePanel\fC [protected]\fP"
+
+.SS "int TileGame::chargeShot\fC [protected]\fP"
+
+.SS "OgreBites::Label* TileGame::congratsPanel\fC [protected]\fP"
+
+.SS "int TileGame::currLevel\fC [protected]\fP"
+
+.SS "int TileGame::currTile\fC [protected]\fP"
+
+.SS "bool TileGame::gameDone\fC [protected]\fP"
+
+.SS "bool TileGame::gameStart\fC [protected]\fP"
+
+.SS "\fBSoundFile\fP TileGame::gong\fC [protected]\fP"
+
+.SS "Ogre::SceneNode* TileGame::headNode\fC [protected]\fP"
+
+.SS "bool TileGame::isCharging\fC [protected]\fP"
+
+.SS "Ogre::Vector3 TileGame::mDirection\fC [protected]\fP"
+
+.SS "Ogre::Real TileGame::mSpeed\fC [protected]\fP"
+
+.SS "Ogre::Timer* TileGame::mTimer\fC [protected]\fP"
+
+.SS "\fBSoundFile\fP TileGame::music\fC [protected]\fP"
+
+.SS "\fBNetManager\fP* TileGame::netMgr\fC [protected]\fP"
+
+.SS "Ogre::Light* TileGame::panelLight\fC [protected]\fP"
+
+.SS "bool TileGame::paused\fC [protected]\fP"
+
+.SS "int TileGame::score\fC [protected]\fP"
+
+.SS "OgreBites::ParamsPanel* TileGame::scorePanel\fC [protected]\fP"
+
+.SS "int TileGame::shotsFired\fC [protected]\fP"
+
+.SS "\fBTileSimulator\fP* TileGame::sim\fC [protected]\fP"
+
+.SS "double TileGame::slowdownval\fC [protected]\fP"
+
+.SS "\fBSoundManager\fP* TileGame::soundMgr\fC [protected]\fP"
+
+.SS "int TileGame::tileCounter\fC [protected]\fP"
+
+.SS "std::deque<Ogre::Entity *> TileGame::tileEntities\fC [protected]\fP"
+
+.SS "std::deque<Ogre::SceneNode *> TileGame::tileList\fC [protected]\fP"
+
+.SS "std::deque<Ogre::SceneNode *> TileGame::tileSceneNodes\fC [protected]\fP"
+
+.SS "Ogre::Timer TileGame::timer\fC [protected]\fP"
+
+.SS "Ogre::Plane TileGame::wallBack\fC [protected]\fP"
+
+.SS "Ogre::Plane TileGame::wallDown\fC [protected]\fP"
+
+.SS "Ogre::Plane TileGame::wallFront\fC [protected]\fP"
+
+.SS "Ogre::Plane TileGame::wallLeft\fC [protected]\fP"
+
+.SS "Ogre::Plane TileGame::wallRight\fC [protected]\fP"
+
+.SS "Ogre::Plane TileGame::wallUp\fC [protected]\fP"
+
+.SS "int TileGame::winTimer\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

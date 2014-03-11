@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tilesimulator',['TileSimulator',['../classTileSimulator.html',1,'']]],
-  ['tutorialapplication',['TutorialApplication',['../classTutorialApplication.html',1,'']]]
+  ['tilegame',['TileGame',['../classTileGame.html',1,'']]],
+  ['tilesimulator',['TileSimulator',['../classTileSimulator.html',1,'']]]
 ];

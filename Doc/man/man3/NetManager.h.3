@@ -1,0 +1,100 @@
+.TH "NetManager.h" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NetManager.h \- 
+.PP
+Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014\&. 
+.PP
+\fBCopyright:\fP
+.RS 4
+GNU Public License\&. 
+.RE
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <vector>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <SDL/SDL_net\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBClientData\fP"
+.br
+.ti -1c
+.RI "class \fBNetManager\fP"
+.br
+.RI "\fINetworking wrapper for SDL_net for use in OGRE or similar engines\&. \fP"
+.ti -1c
+.RI "struct \fBNetManager::ConnectionInfo\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef int \fBProtocol\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBPROTOCOL_TCP\fP = 1024, \fBPROTOCOL_UDP\fP = 2048, \fBPROTOCOL_ALL\fP = PROTOCOL_TCP | PROTOCOL_UDP }"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014\&. 
+.PP
+\fBCopyright:\fP
+.RS 4
+GNU Public License\&. 
+.RE
+.PP
+
+
+\fBDate:\fP
+.RS 4
+March 7, 2014 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Wade Burch (nolnoch@cs.utexas.edu) 
+.RE
+.PP
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef int \fBProtocol\fP"
+Allows integer manipulations of flags but signals to users that the value should be chosen from the PROTOCOL_XXX enumerated values\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+These should be used whenever type Protocol is requested\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPROTOCOL_TCP \fP\fP
+TCP bit flag\&. 
+.TP
+\fB\fIPROTOCOL_UDP \fP\fP
+UDP bit flag\&. 
+.TP
+\fB\fIPROTOCOL_ALL \fP\fP
+Combined bit flag\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

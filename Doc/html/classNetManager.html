@@ -4,10 +4,17 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>My Project: NetManager Class Reference</title>
+<title>OGRE Game: NetManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -22,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">OGRE Game
    </div>
   </td>
  </tr>
@@ -65,12 +72,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classNetManager.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,12 +101,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classNetManager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">NetManager Class Reference</div>  </div>
@@ -96,22 +119,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="NetManager_8h_source.html">NetManager.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5af765a0303c73966c2e0743458f888"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ac5af765a0303c73966c2e0743458f888">NetManager</a> ()</td></tr>
 <tr class="separator:ac5af765a0303c73966c2e0743458f888"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a862eebc070ee07d7a9e18f62da051604"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a862eebc070ee07d7a9e18f62da051604">~NetManager</a> ()</td></tr>
 <tr class="separator:a862eebc070ee07d7a9e18f62da051604"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Required Initialization Functions.</div></td></tr>
 <tr class="memitem:a9dcef281247169fc624d771f2a4ae01a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9dcef281247169fc624d771f2a4ae01a">initNetManager</a> ()</td></tr>
-<tr class="memdesc:a9dcef281247169fc624d771f2a4ae01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required initialization functions.  <a href="#a9dcef281247169fc624d771f2a4ae01a">More...</a><br/></td></tr>
 <tr class="separator:a9dcef281247169fc624d771f2a4ae01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ec0340fa0eeffc5f4344589069e6058"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a8ec0340fa0eeffc5f4344589069e6058">addNetworkInfo</a> (<a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol=<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a>, Uint16 port=0, const char *host=NULL)</td></tr>
+<tr class="memitem:a8ec0340fa0eeffc5f4344589069e6058"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a8ec0340fa0eeffc5f4344589069e6058">addNetworkInfo</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol=<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a>, Uint16 port=0, const char *host=NULL)</td></tr>
 <tr class="memdesc:a8ec0340fa0eeffc5f4344589069e6058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required to set TCP/UDP, port, and optional host.  <a href="#a8ec0340fa0eeffc5f4344589069e6058">More...</a><br/></td></tr>
 <tr class="separator:a8ec0340fa0eeffc5f4344589069e6058"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Control Functions.</div></td></tr>
 <tr class="memitem:ae6a832ed2ede5f5407b75abc584269b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ae6a832ed2ede5f5407b75abc584269b8">startServer</a> ()</td></tr>
-<tr class="memdesc:ae6a832ed2ede5f5407b75abc584269b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control functions.  <a href="#ae6a832ed2ede5f5407b75abc584269b8">More...</a><br/></td></tr>
+<tr class="memdesc:ae6a832ed2ede5f5407b75abc584269b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch a server to listen on given/default port over given/default protocols.  <a href="#ae6a832ed2ede5f5407b75abc584269b8">More...</a><br/></td></tr>
 <tr class="separator:ae6a832ed2ede5f5407b75abc584269b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5b2ae812e37abbb03be5b604e34a60d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ab5b2ae812e37abbb03be5b604e34a60d">startClient</a> ()</td></tr>
 <tr class="memdesc:ab5b2ae812e37abbb03be5b604e34a60d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch a client on given/default port over given/default protocols and connected to given host server.  <a href="#ab5b2ae812e37abbb03be5b604e34a60d">More...</a><br/></td></tr>
@@ -128,26 +155,26 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa4f48b88474c3f6a4422b3a94c07b674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aa4f48b88474c3f6a4422b3a94c07b674">messageServer</a> (char *buf=NULL, int len=0)</td></tr>
 <tr class="memdesc:aa4f48b88474c3f6a4422b3a94c07b674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to the server.  <a href="#aa4f48b88474c3f6a4422b3a94c07b674">More...</a><br/></td></tr>
 <tr class="separator:aa4f48b88474c3f6a4422b3a94c07b674"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a165db41d5fa0692307f11cba589796d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0">messageClient</a> (<a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol, int clientDataIdx, char *buf, int len)</td></tr>
+<tr class="memitem:a165db41d5fa0692307f11cba589796d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0">messageClient</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, int clientDataIdx, char *buf, int len)</td></tr>
 <tr class="memdesc:a165db41d5fa0692307f11cba589796d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to a single client over a single protocol.  <a href="#a165db41d5fa0692307f11cba589796d0">More...</a><br/></td></tr>
 <tr class="separator:a165db41d5fa0692307f11cba589796d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e6957843f9cf05afbc38e23b9d46f52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9e6957843f9cf05afbc38e23b9d46f52">dropClient</a> (<a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol, int clientDataIdx)</td></tr>
-<tr class="memdesc:a9e6957843f9cf05afbc38e23b9d46f52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an established client from a running server.  <a href="#a9e6957843f9cf05afbc38e23b9d46f52">More...</a><br/></td></tr>
-<tr class="separator:a9e6957843f9cf05afbc38e23b9d46f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4d5cdb235713bea820ab5275a0da920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ac4d5cdb235713bea820ab5275a0da920">stopServer</a> (<a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol=<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a>)</td></tr>
+<tr class="memitem:aaff19e422dc790a6ac4bad9aefc5749f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aaff19e422dc790a6ac4bad9aefc5749f">dropClient</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, Uint32 host)</td></tr>
+<tr class="memdesc:aaff19e422dc790a6ac4bad9aefc5749f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an established client from a running server.  <a href="#aaff19e422dc790a6ac4bad9aefc5749f">More...</a><br/></td></tr>
+<tr class="separator:aaff19e422dc790a6ac4bad9aefc5749f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4d5cdb235713bea820ab5275a0da920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ac4d5cdb235713bea820ab5275a0da920">stopServer</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol=<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a>)</td></tr>
 <tr class="memdesc:ac4d5cdb235713bea820ab5275a0da920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shut down the running server on any or all protocols.  <a href="#ac4d5cdb235713bea820ab5275a0da920">More...</a><br/></td></tr>
 <tr class="separator:ac4d5cdb235713bea820ab5275a0da920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55eb599a64a651d890641a256ab4db9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a55eb599a64a651d890641a256ab4db9a">stopClient</a> (<a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol=<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a>)</td></tr>
+<tr class="memitem:a55eb599a64a651d890641a256ab4db9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a55eb599a64a651d890641a256ab4db9a">stopClient</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol=<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a>)</td></tr>
 <tr class="memdesc:a55eb599a64a651d890641a256ab4db9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shut down the running client on any or all protocols.  <a href="#a55eb599a64a651d890641a256ab4db9a">More...</a><br/></td></tr>
 <tr class="separator:a55eb599a64a651d890641a256ab4db9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcf943b4ab1e94ba479f4e3f0cd9da2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#afcf943b4ab1e94ba479f4e3f0cd9da2e">close</a> ()</td></tr>
 <tr class="memdesc:afcf943b4ab1e94ba479f4e3f0cd9da2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminates all running servers or clients on all protocols.  <a href="#afcf943b4ab1e94ba479f4e3f0cd9da2e">More...</a><br/></td></tr>
 <tr class="separator:afcf943b4ab1e94ba479f4e3f0cd9da2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a444e45de6f806c4c27d7f9915f898329"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a444e45de6f806c4c27d7f9915f898329">addProtocol</a> (<a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Getters &amp; Setters.</div></td></tr>
+<tr class="memitem:a444e45de6f806c4c27d7f9915f898329"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a444e45de6f806c4c27d7f9915f898329">addProtocol</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol)</td></tr>
 <tr class="memdesc:a444e45de6f806c4c27d7f9915f898329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows the dynamic addition of TCP or UDP to a running server or client.  <a href="#a444e45de6f806c4c27d7f9915f898329">More...</a><br/></td></tr>
 <tr class="separator:a444e45de6f806c4c27d7f9915f898329"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af370ee8343ff23121c0c2f180c34dabc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#af370ee8343ff23121c0c2f180c34dabc">setProtocol</a> (<a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol)</td></tr>
+<tr class="memitem:af370ee8343ff23121c0c2f180c34dabc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#af370ee8343ff23121c0c2f180c34dabc">setProtocol</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol)</td></tr>
 <tr class="memdesc:af370ee8343ff23121c0c2f180c34dabc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the protocol manually.  <a href="#af370ee8343ff23121c0c2f180c34dabc">More...</a><br/></td></tr>
 <tr class="separator:af370ee8343ff23121c0c2f180c34dabc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5db4e28511390202b17f6d711f42d83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#af5db4e28511390202b17f6d711f42d83">setPort</a> (Uint16 port)</td></tr>
@@ -167,20 +194,281 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a6b14ccec08283da5ae5e8b4750fc1570"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b14ccec08283da5ae5e8b4750fc1570"></a>
-<a class="el" href="structMessageBuffer.html">MessageBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>serverData</b></td></tr>
-<tr class="separator:a6b14ccec08283da5ae5e8b4750fc1570"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a649bc5ea5a88c73f9f29a98e9e2fa0e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a649bc5ea5a88c73f9f29a98e9e2fa0e7"></a>
-std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tcpClientData</b></td></tr>
-<tr class="separator:a649bc5ea5a88c73f9f29a98e9e2fa0e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69971bac76c80f177e6370a71fe31443"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69971bac76c80f177e6370a71fe31443"></a>
-std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>udpClientData</b></td></tr>
-<tr class="separator:a69971bac76c80f177e6370a71fe31443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca113fc17fe6251fa7ac5a1179ade3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structClientData.html">ClientData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#abca113fc17fe6251fa7ac5a1179ade3c">tcpServerData</a></td></tr>
+<tr class="separator:abca113fc17fe6251fa7ac5a1179ade3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7db7fafed8aabbe088aa12c731842efd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structClientData.html">ClientData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a7db7fafed8aabbe088aa12c731842efd">udpServerData</a></td></tr>
+<tr class="separator:a7db7fafed8aabbe088aa12c731842efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3303746abef87426cab748c92d58006b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structClientData.html">ClientData</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a3303746abef87426cab748c92d58006b">tcpClientData</a></td></tr>
+<tr class="separator:a3303746abef87426cab748c92d58006b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687d70a4e199c2cbe4cb955a2cd94b04"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structClientData.html">ClientData</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a687d70a4e199c2cbe4cb955a2cd94b04">udpClientData</a></td></tr>
+<tr class="separator:a687d70a4e199c2cbe4cb955a2cd94b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a8b6ac33bda181fb28896229528cd62b4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
+&#160;&#160;<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a085fbd45e5fb462d8915fb2f17a35d64">NET_UNINITIALIZED</a> = 0, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af26a6f0d447b04ad2cc57c080bc2e1f3">NET_INITIALIZED</a> = 1, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a54b1df101b4fb30060d47353aa98a473">NET_WAITING</a> = 2, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a802372821b378b5a23ec6d6a7366012b">NET_RESOLVED</a> = 4, 
+<br/>
+&#160;&#160;<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a66cd628d6f8ec81c2c1e185e47566fa6">NET_TCP_OPEN</a> = 8, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a6513a7709f76f9e5213f2145da8f83b8">NET_UDP_OPEN</a> = 16, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c">NET_TCP_ACCEPT</a> = 32, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5">NET_UDP_BOUND</a> = 64, 
+<br/>
+&#160;&#160;<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c">NET_SERVER</a> = 256, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca">NET_CLIENT</a> = 512, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077">PORT_RANDOM</a> = 0, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a72a392298efc424fdf2da299ef41992e">PORT_DEFAULT</a> = 51215, 
+<br/>
+&#160;&#160;<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a5150417e381f56f6b4f892317b81ee46">CHANNEL_AUTO</a> = -1, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7df70a5b62f06128f0ff3f384a0b92bc">CHANNEL_DEFAULT</a> = 1, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a">CHANNEL_MAX</a> = 2, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c">SOCKET_TCP_MAX</a> = 12, 
+<br/>
+&#160;&#160;<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459">SOCKET_UDP_MAX</a> = 12, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb">SOCKET_ALL_MAX</a> = SOCKET_TCP_MAX + SOCKET_UDP_MAX, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a2e78ae862faab68c752a933ad0910c34">SOCKET_SELF</a> = SOCKET_ALL_MAX + 1, 
+<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a9b24c9f03c8e0db705a1b43cc83fb35e">MESSAGE_COUNT</a> = 10, 
+<br/>
+&#160;&#160;<a class="el" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e">MESSAGE_LENGTH</a> = 128
+<br/>
+ }</td></tr>
+<tr class="separator:a8b6ac33bda181fb28896229528cd62b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Direct SDL Call Wrappers</div></td></tr>
+<tr class="memitem:a369f5008d70957c6b3b60d59e453fbee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a369f5008d70957c6b3b60d59e453fbee">openServer</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, Uint16 port)</td></tr>
+<tr class="memdesc:a369f5008d70957c6b3b60d59e453fbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch a single server socket on a single protocol.  <a href="#a369f5008d70957c6b3b60d59e453fbee">More...</a><br/></td></tr>
+<tr class="separator:a369f5008d70957c6b3b60d59e453fbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3450801d77b53d99b38c8249f3d955"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#afe3450801d77b53d99b38c8249f3d955">openClient</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, std::string addr, Uint16 port)</td></tr>
+<tr class="memdesc:afe3450801d77b53d99b38c8249f3d955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch a single client socket on a single protocol bound to hostname.  <a href="#afe3450801d77b53d99b38c8249f3d955">More...</a><br/></td></tr>
+<tr class="separator:afe3450801d77b53d99b38c8249f3d955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90fc6dc31d71fa956486243814352ac5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a90fc6dc31d71fa956486243814352ac5">openTCPSocket</a> (IPaddress *addr)</td></tr>
+<tr class="memdesc:a90fc6dc31d71fa956486243814352ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a TCP socket.  <a href="#a90fc6dc31d71fa956486243814352ac5">More...</a><br/></td></tr>
+<tr class="separator:a90fc6dc31d71fa956486243814352ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae49266e3057c0f17cc3c89591cbcf3e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ae49266e3057c0f17cc3c89591cbcf3e1">openUDPSocket</a> (Uint16 port)</td></tr>
+<tr class="memdesc:ae49266e3057c0f17cc3c89591cbcf3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a UDP socket.  <a href="#ae49266e3057c0f17cc3c89591cbcf3e1">More...</a><br/></td></tr>
+<tr class="separator:ae49266e3057c0f17cc3c89591cbcf3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add2b0af706ca9c983f58c308f0577e5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#add2b0af706ca9c983f58c308f0577e5c">acceptTCP</a> (TCPsocket server)</td></tr>
+<tr class="memdesc:add2b0af706ca9c983f58c308f0577e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes a listening socket for a server.  <a href="#add2b0af706ca9c983f58c308f0577e5c">More...</a><br/></td></tr>
+<tr class="separator:add2b0af706ca9c983f58c308f0577e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c0ceb2fde3906dfe2e8d8527aae7a00"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a6c0ceb2fde3906dfe2e8d8527aae7a00">bindUDPSocket</a> (UDPsocket sock, int channel, IPaddress *addr)</td></tr>
+<tr class="memdesc:a6c0ceb2fde3906dfe2e8d8527aae7a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a UDP channel to a socket.  <a href="#a6c0ceb2fde3906dfe2e8d8527aae7a00">More...</a><br/></td></tr>
+<tr class="separator:a6c0ceb2fde3906dfe2e8d8527aae7a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4271094319fd56f3d20151ca51234b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a1f4271094319fd56f3d20151ca51234b">unbindUDPSocket</a> (UDPsocket sock, int channel)</td></tr>
+<tr class="memdesc:a1f4271094319fd56f3d20151ca51234b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unbind a bound socket channel.  <a href="#a1f4271094319fd56f3d20151ca51234b">More...</a><br/></td></tr>
+<tr class="separator:a1f4271094319fd56f3d20151ca51234b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a570a5ce0bdbac7433fe650db23006509"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a570a5ce0bdbac7433fe650db23006509">sendTCP</a> (TCPsocket sock, const void *data, int len)</td></tr>
+<tr class="memdesc:a570a5ce0bdbac7433fe650db23006509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to a single target via TCP.  <a href="#a570a5ce0bdbac7433fe650db23006509">More...</a><br/></td></tr>
+<tr class="separator:a570a5ce0bdbac7433fe650db23006509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b9e9d77a598b14b6b30dc160ead039"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ac0b9e9d77a598b14b6b30dc160ead039">sendUDP</a> (UDPsocket sock, int channel, UDPpacket *pack)</td></tr>
+<tr class="memdesc:ac0b9e9d77a598b14b6b30dc160ead039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to a single target via UDP.  <a href="#ac0b9e9d77a598b14b6b30dc160ead039">More...</a><br/></td></tr>
+<tr class="separator:ac0b9e9d77a598b14b6b30dc160ead039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb9567e9ca4ca5e09dde53b771e1b59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aceb9567e9ca4ca5e09dde53b771e1b59">recvTCP</a> (TCPsocket sock, void *data, int maxlen)</td></tr>
+<tr class="memdesc:aceb9567e9ca4ca5e09dde53b771e1b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a single message from a single target via TCP.  <a href="#aceb9567e9ca4ca5e09dde53b771e1b59">More...</a><br/></td></tr>
+<tr class="separator:aceb9567e9ca4ca5e09dde53b771e1b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b0916f8e98d29429cc61d90319174b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a06b0916f8e98d29429cc61d90319174b">recvUDP</a> (UDPsocket sock, UDPpacket *pack)</td></tr>
+<tr class="memdesc:a06b0916f8e98d29429cc61d90319174b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a message from a random channel on a UDP socket.  <a href="#a06b0916f8e98d29429cc61d90319174b">More...</a><br/></td></tr>
+<tr class="separator:a06b0916f8e98d29429cc61d90319174b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c1d2504835ad09e97cc2fd05ed8f83a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a5c1d2504835ad09e97cc2fd05ed8f83a">sendUDPV</a> (UDPsocket sock, UDPpacket **packetV, int npackets)</td></tr>
+<tr class="memdesc:a5c1d2504835ad09e97cc2fd05ed8f83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send n packets from a packet vector using the specified socket.  <a href="#a5c1d2504835ad09e97cc2fd05ed8f83a">More...</a><br/></td></tr>
+<tr class="separator:a5c1d2504835ad09e97cc2fd05ed8f83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06220534dd830f880ec24d86a6a86561"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a06220534dd830f880ec24d86a6a86561">recvUDPV</a> (UDPsocket sock, UDPpacket **packetV)</td></tr>
+<tr class="memdesc:a06220534dd830f880ec24d86a6a86561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive up to len(packetV) packets from all channels on a socket.  <a href="#a06220534dd830f880ec24d86a6a86561">More...</a><br/></td></tr>
+<tr class="separator:a06220534dd830f880ec24d86a6a86561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a675dccdb5b282d0353c6b261d0fb6615"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a675dccdb5b282d0353c6b261d0fb6615">closeTCP</a> (TCPsocket sock)</td></tr>
+<tr class="memdesc:a675dccdb5b282d0353c6b261d0fb6615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a TCP socket.  <a href="#a675dccdb5b282d0353c6b261d0fb6615">More...</a><br/></td></tr>
+<tr class="separator:a675dccdb5b282d0353c6b261d0fb6615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40fe0a6c256bc0f2b891aa8715c519f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a40fe0a6c256bc0f2b891aa8715c519f3">closeUDP</a> (UDPsocket sock)</td></tr>
+<tr class="memdesc:a40fe0a6c256bc0f2b891aa8715c519f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a UDP socket.  <a href="#a40fe0a6c256bc0f2b891aa8715c519f3">More...</a><br/></td></tr>
+<tr class="separator:a40fe0a6c256bc0f2b891aa8715c519f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb912b135cb4916dd5bd2943f1ed2467"><td class="memItemLeft" align="right" valign="top">IPaddress *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#abb912b135cb4916dd5bd2943f1ed2467">queryTCPAddress</a> (TCPsocket sock)</td></tr>
+<tr class="memdesc:abb912b135cb4916dd5bd2943f1ed2467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look up an IPaddress by a TCP socket.  <a href="#abb912b135cb4916dd5bd2943f1ed2467">More...</a><br/></td></tr>
+<tr class="separator:abb912b135cb4916dd5bd2943f1ed2467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41f2077bd40f1d210406a07486843104"><td class="memItemLeft" align="right" valign="top">IPaddress *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a41f2077bd40f1d210406a07486843104">queryUDPAddress</a> (UDPsocket sock, int channel)</td></tr>
+<tr class="memdesc:a41f2077bd40f1d210406a07486843104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look up an IPaddress by a UDP socket and channel.  <a href="#a41f2077bd40f1d210406a07486843104">More...</a><br/></td></tr>
+<tr class="separator:a41f2077bd40f1d210406a07486843104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">UDP Packet Management.</div></td></tr>
+<tr class="memitem:a5e53e36cb5fa09b218326c5a830269f4"><td class="memItemLeft" align="right" valign="top">UDPpacket *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a5e53e36cb5fa09b218326c5a830269f4">craftUDPpacket</a> (const char *buf, int len)</td></tr>
+<tr class="memdesc:a5e53e36cb5fa09b218326c5a830269f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and fill a UDPpacket with the given buffer of len bytes.  <a href="#a5e53e36cb5fa09b218326c5a830269f4">More...</a><br/></td></tr>
+<tr class="separator:a5e53e36cb5fa09b218326c5a830269f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ce7beb5894c63e3af5e59c4fe67483"><td class="memItemLeft" align="right" valign="top">UDPpacket *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a75ce7beb5894c63e3af5e59c4fe67483">allocUDPpacket</a> (int size)</td></tr>
+<tr class="memdesc:a75ce7beb5894c63e3af5e59c4fe67483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a new SDL-formatted UDP packet.  <a href="#a75ce7beb5894c63e3af5e59c4fe67483">More...</a><br/></td></tr>
+<tr class="separator:a75ce7beb5894c63e3af5e59c4fe67483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e6fdda58659998dbb2e0959efefff5"><td class="memItemLeft" align="right" valign="top">UDPpacket **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a21e6fdda58659998dbb2e0959efefff5">allocUDPpacketV</a> (int count, int size)</td></tr>
+<tr class="memdesc:a21e6fdda58659998dbb2e0959efefff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a new, empty, and SDL-formatted UDP packet vector.  <a href="#a21e6fdda58659998dbb2e0959efefff5">More...</a><br/></td></tr>
+<tr class="separator:a21e6fdda58659998dbb2e0959efefff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9daa22fe531b7204b004d8136d00e0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ae9daa22fe531b7204b004d8136d00e0e">resizeUDPpacket</a> (UDPpacket *pack, int size)</td></tr>
+<tr class="memdesc:ae9daa22fe531b7204b004d8136d00e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize a UDP packet.  <a href="#ae9daa22fe531b7204b004d8136d00e0e">More...</a><br/></td></tr>
+<tr class="separator:ae9daa22fe531b7204b004d8136d00e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cc0529a2c40d959bdb624e9f3101c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#af3cc0529a2c40d959bdb624e9f3101c4">freeUDPpacket</a> (UDPpacket **pack)</td></tr>
+<tr class="memdesc:af3cc0529a2c40d959bdb624e9f3101c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a UDP packet.  <a href="#af3cc0529a2c40d959bdb624e9f3101c4">More...</a><br/></td></tr>
+<tr class="separator:af3cc0529a2c40d959bdb624e9f3101c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c118ed195c8c3608b2758d6dd5da7ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a4c118ed195c8c3608b2758d6dd5da7ae">freeUDPpacketV</a> (UDPpacket ***pack)</td></tr>
+<tr class="memdesc:a4c118ed195c8c3608b2758d6dd5da7ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a UDP packet vector.  <a href="#a4c118ed195c8c3608b2758d6dd5da7ae">More...</a><br/></td></tr>
+<tr class="separator:a4c118ed195c8c3608b2758d6dd5da7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5927d55003a434ec69d8909dffe88575"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a5927d55003a434ec69d8909dffe88575">processPacketData</a> (const char *data)</td></tr>
+<tr class="memdesc:a5927d55003a434ec69d8909dffe88575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse incoming data from server or clients for NetManager-specific commands.  <a href="#a5927d55003a434ec69d8909dffe88575">More...</a><br/></td></tr>
+<tr class="separator:a5927d55003a434ec69d8909dffe88575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Socket Registration &amp; Handling.</div></td></tr>
+<tr class="memitem:a1d3f54e43abe28d9804d3348bc0eacd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a1d3f54e43abe28d9804d3348bc0eacd8">watchSocket</a> (TCPsocket *sock)</td></tr>
+<tr class="memdesc:a1d3f54e43abe28d9804d3348bc0eacd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a TCP socket to be watched for activity by SDL.  <a href="#a1d3f54e43abe28d9804d3348bc0eacd8">More...</a><br/></td></tr>
+<tr class="separator:a1d3f54e43abe28d9804d3348bc0eacd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0c6dcf246d88b510a2230227dd0e0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a3d0c6dcf246d88b510a2230227dd0e0a">watchSocket</a> (UDPsocket *sock)</td></tr>
+<tr class="memdesc:a3d0c6dcf246d88b510a2230227dd0e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a UDP socket to be watched for activity by SDL.  <a href="#a3d0c6dcf246d88b510a2230227dd0e0a">More...</a><br/></td></tr>
+<tr class="separator:a3d0c6dcf246d88b510a2230227dd0e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74e382ac7ea8b8ce09d11ea43a464385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a74e382ac7ea8b8ce09d11ea43a464385">unwatchSocket</a> (TCPsocket *sock)</td></tr>
+<tr class="memdesc:a74e382ac7ea8b8ce09d11ea43a464385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a TCP socket from SDL's observation.  <a href="#a74e382ac7ea8b8ce09d11ea43a464385">More...</a><br/></td></tr>
+<tr class="separator:a74e382ac7ea8b8ce09d11ea43a464385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c2393e0deef57de2f3cda92d4ea9bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a46c2393e0deef57de2f3cda92d4ea9bd">unwatchSocket</a> (UDPsocket *sock)</td></tr>
+<tr class="memdesc:a46c2393e0deef57de2f3cda92d4ea9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a UDP socket from SDL's observation.  <a href="#a46c2393e0deef57de2f3cda92d4ea9bd">More...</a><br/></td></tr>
+<tr class="separator:a46c2393e0deef57de2f3cda92d4ea9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64ca334dbe3e4b540236aa35dccc96df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a64ca334dbe3e4b540236aa35dccc96df">checkSockets</a> (Uint32 timeout_ms)</td></tr>
+<tr class="memdesc:a64ca334dbe3e4b540236aa35dccc96df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ask SDL to scan registered sockets once or for a given time period.  <a href="#a64ca334dbe3e4b540236aa35dccc96df">More...</a><br/></td></tr>
+<tr class="separator:a64ca334dbe3e4b540236aa35dccc96df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80c34b6f1d22a0db77a6f5063e6d31d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a80c34b6f1d22a0db77a6f5063e6d31d9">readTCPSocket</a> (int clientIdx)</td></tr>
+<tr class="memdesc:a80c34b6f1d22a0db77a6f5063e6d31d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a TCP socket and copies its data to the <a class="el" href="structClientData.html">ClientData</a> buffer.  <a href="#a80c34b6f1d22a0db77a6f5063e6d31d9">More...</a><br/></td></tr>
+<tr class="separator:a80c34b6f1d22a0db77a6f5063e6d31d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c29117dc3c7fd49cee0444944a8eee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a70c29117dc3c7fd49cee0444944a8eee">readUDPSocket</a> (int clientIdx)</td></tr>
+<tr class="memdesc:a70c29117dc3c7fd49cee0444944a8eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a UDP socket and copies its data to the <a class="el" href="structClientData.html">ClientData</a> buffer.  <a href="#a70c29117dc3c7fd49cee0444944a8eee">More...</a><br/></td></tr>
+<tr class="separator:a70c29117dc3c7fd49cee0444944a8eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Client Manipulation.</div></td></tr>
+<tr class="memitem:aff05c27b852dddd386e788bed7fa6d12"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aff05c27b852dddd386e788bed7fa6d12">addUDPClient</a> (UDPpacket *pack)</td></tr>
+<tr class="memdesc:aff05c27b852dddd386e788bed7fa6d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a client discovered on a UDP socket.  <a href="#aff05c27b852dddd386e788bed7fa6d12">More...</a><br/></td></tr>
+<tr class="separator:aff05c27b852dddd386e788bed7fa6d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7048f28558dec8046b9536ad6c094f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ab7048f28558dec8046b9536ad6c094f8">rejectTCPClient</a> (TCPsocket sock)</td></tr>
+<tr class="memdesc:ab7048f28558dec8046b9536ad6c094f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rejects a prospective TCP client.  <a href="#ab7048f28558dec8046b9536ad6c094f8">More...</a><br/></td></tr>
+<tr class="separator:ab7048f28558dec8046b9536ad6c094f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae62147d4b4d06cccd992f30b6669ea5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aae62147d4b4d06cccd992f30b6669ea5">rejectUDPClient</a> (UDPpacket *pack)</td></tr>
+<tr class="memdesc:aae62147d4b4d06cccd992f30b6669ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rejects a prospective UDP client.  <a href="#aae62147d4b4d06cccd992f30b6669ea5">More...</a><br/></td></tr>
+<tr class="separator:aae62147d4b4d06cccd992f30b6669ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e98f4e0367b8811f241cb0038e9b077"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9e98f4e0367b8811f241cb0038e9b077">lookupTCPClient</a> (Uint32 host, bool create)</td></tr>
+<tr class="memdesc:a9e98f4e0367b8811f241cb0038e9b077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look up a TCP client by IPaddress host.  <a href="#a9e98f4e0367b8811f241cb0038e9b077">More...</a><br/></td></tr>
+<tr class="separator:a9e98f4e0367b8811f241cb0038e9b077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9053c3f72215976089b89098935c6d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aa9053c3f72215976089b89098935c6d1">lookupUDPClient</a> (Uint32 host, bool create)</td></tr>
+<tr class="memdesc:aa9053c3f72215976089b89098935c6d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look up a UDP client by IPaddress host.  <a href="#aa9053c3f72215976089b89098935c6d1">More...</a><br/></td></tr>
+<tr class="separator:aa9053c3f72215976089b89098935c6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Helper Functions.</div></td></tr>
+<tr class="memitem:a8eb8d5a292070e7269133bf1fc1499c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a8eb8d5a292070e7269133bf1fc1499c4">statusCheck</a> (int state)</td></tr>
+<tr class="memdesc:a8eb8d5a292070e7269133bf1fc1499c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple state (bit flag) check for early returns and error prints.  <a href="#a8eb8d5a292070e7269133bf1fc1499c4">More...</a><br/></td></tr>
+<tr class="separator:a8eb8d5a292070e7269133bf1fc1499c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5616571aa520977c221d8a8a6471a1f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aa5616571aa520977c221d8a8a6471a1f">statusCheck</a> (int state1, int state2)</td></tr>
+<tr class="memdesc:aa5616571aa520977c221d8a8a6471a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A compound state (bit flag) check for early returns and error prints.  <a href="#aa5616571aa520977c221d8a8a6471a1f">More...</a><br/></td></tr>
+<tr class="separator:aa5616571aa520977c221d8a8a6471a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f55bdec9b5c974d26354e680aa48d1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9f55bdec9b5c974d26354e680aa48d1e">clearFlags</a> (int state)</td></tr>
+<tr class="memdesc:a9f55bdec9b5c974d26354e680aa48d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears a given bit mask of state flags from the internal netStatus.  <a href="#a9f55bdec9b5c974d26354e680aa48d1e">More...</a><br/></td></tr>
+<tr class="separator:a9f55bdec9b5c974d26354e680aa48d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e404905712ff726f1a4f0e2542d06c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a60e404905712ff726f1a4f0e2542d06c">resetManager</a> ()</td></tr>
+<tr class="memdesc:a60e404905712ff726f1a4f0e2542d06c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all vectors and resets all data members to default values.  <a href="#a60e404905712ff726f1a4f0e2542d06c">More...</a><br/></td></tr>
+<tr class="separator:a60e404905712ff726f1a4f0e2542d06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2e5fedf3835e7c392ccb8b1a23ade8d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a2e5fedf3835e7c392ccb8b1a23ade8d4">forceClientRandomUDP</a></td></tr>
+<tr class="separator:a2e5fedf3835e7c392ccb8b1a23ade8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67d25cdb043a462709f1d29e071a5ce8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a67d25cdb043a462709f1d29e071a5ce8">acceptNewClients</a></td></tr>
+<tr class="separator:a67d25cdb043a462709f1d29e071a5ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7505bdde90a24b85b6cb1d8d81404c5f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a7505bdde90a24b85b6cb1d8d81404c5f">nextUDPChannel</a></td></tr>
+<tr class="separator:a7505bdde90a24b85b6cb1d8d81404c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd2ec7262ea71478204c9007b23d9fff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#acd2ec7262ea71478204c9007b23d9fff">netStatus</a></td></tr>
+<tr class="separator:acd2ec7262ea71478204c9007b23d9fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c14b6cf513287e5fb46a85ddb293201"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a2c14b6cf513287e5fb46a85ddb293201">netPort</a></td></tr>
+<tr class="separator:a2c14b6cf513287e5fb46a85ddb293201"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac24652f01ef284551be311bfc408be06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ac24652f01ef284551be311bfc408be06">netProtocol</a></td></tr>
+<tr class="separator:ac24652f01ef284551be311bfc408be06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e1aedc97e5fb2f633faeabd2aa266c3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a2e1aedc97e5fb2f633faeabd2aa266c3">netHost</a></td></tr>
+<tr class="separator:a2e1aedc97e5fb2f633faeabd2aa266c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a002692771d60d8a4332941f33096fba0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a002692771d60d8a4332941f33096fba0">netServer</a></td></tr>
+<tr class="separator:a002692771d60d8a4332941f33096fba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9491e48d6bc19eacb148d294613b35"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#abf9491e48d6bc19eacb148d294613b35">tcpClients</a></td></tr>
+<tr class="separator:abf9491e48d6bc19eacb148d294613b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5cbc9d5ddb14541adb07b748802446d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d">udpClients</a></td></tr>
+<tr class="separator:ab5cbc9d5ddb14541adb07b748802446d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2314a1df7704bbc4c96d8d0133d78ee6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; TCPsocket &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a2314a1df7704bbc4c96d8d0133d78ee6">tcpSockets</a></td></tr>
+<tr class="separator:a2314a1df7704bbc4c96d8d0133d78ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99d99b6fa90707d9101c4e1a1835018"><td class="memItemLeft" align="right" valign="top">std::vector&lt; UDPsocket &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aa99d99b6fa90707d9101c4e1a1835018">udpSockets</a></td></tr>
+<tr class="separator:aa99d99b6fa90707d9101c4e1a1835018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc43306f83c33feb0fdd74e16c6583bb"><td class="memItemLeft" align="right" valign="top">SDLNet_SocketSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#adc43306f83c33feb0fdd74e16c6583bb">socketNursery</a></td></tr>
+<tr class="separator:adc43306f83c33feb0fdd74e16c6583bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Networking wrapper for SDL_net for use in OGRE or similar engines. </p>
-<p>Currently allows simultaneous TCP/UDP connections on a single port. While parameters may be given, the class is initialized to a default of both TCP and UDP active on port 51215. Fully managed state preservation prevents users from initiating illegal or undefined calls. All retrieved data is tunneled to public bins which must or may be checked by users. Data to be sent may be specified or else is retrieved by default from the established <a class="el" href="structMessageBuffer.html">MessageBuffer</a> bin. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<p>Currently allows simultaneous TCP/UDP connections on a single port. While parameters may be given, the class is initialized to a default of both TCP and UDP active on port 51215. Fully managed state preservation prevents users from initiating illegal or undefined calls. All retrieved data is tunneled to public bins which must or may be checked by users. Data to be sent may be specified or else is retrieved by default from the established MessageBuffer bin.</p>
+<p>I've worked rather hard to eliminate dependency on Ogre3d-specific code so that any application using SDL_net can plug this in and go. I've done my best to make it robust in that it supports simultaneous TCP and UDP and makes use of some fairly automatic routines.</p>
+<p>Ideally, it should support more dynamic buffer sizing and the option to use multiple ports. The memory footprint doesn't seem to bad as of yet, but I'm not done with it.</p>
+<p>Error and state checking was a priority in this implementation, so problems of that sort should be minimal if not non-existent. That said, If any code errors are encountered, please fix them or contact me at the header address. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a085fbd45e5fb462d8915fb2f17a35d64"></a>NET_UNINITIALIZED</em>&nbsp;</td><td class="fielddoc">
+<p>State management flag bits. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4af26a6f0d447b04ad2cc57c080bc2e1f3"></a>NET_INITIALIZED</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a54b1df101b4fb30060d47353aa98a473"></a>NET_WAITING</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a802372821b378b5a23ec6d6a7366012b"></a>NET_RESOLVED</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a66cd628d6f8ec81c2c1e185e47566fa6"></a>NET_TCP_OPEN</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a6513a7709f76f9e5213f2145da8f83b8"></a>NET_UDP_OPEN</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c"></a>NET_TCP_ACCEPT</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5"></a>NET_UDP_BOUND</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c"></a>NET_SERVER</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca"></a>NET_CLIENT</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077"></a>PORT_RANDOM</em>&nbsp;</td><td class="fielddoc">
+<p>Constants. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a72a392298efc424fdf2da299ef41992e"></a>PORT_DEFAULT</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a5150417e381f56f6b4f892317b81ee46"></a>CHANNEL_AUTO</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a7df70a5b62f06128f0ff3f384a0b92bc"></a>CHANNEL_DEFAULT</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a"></a>CHANNEL_MAX</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c"></a>SOCKET_TCP_MAX</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459"></a>SOCKET_UDP_MAX</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb"></a>SOCKET_ALL_MAX</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a2e78ae862faab68c752a933ad0910c34"></a>SOCKET_SELF</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a9b24c9f03c8e0db705a1b43cc83fb35e"></a>MESSAGE_COUNT</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e"></a>MESSAGE_LENGTH</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac5af765a0303c73966c2e0743458f888"></a>
 <div class="memitem">
 <div class="memproto">
@@ -222,6 +510,40 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="add2b0af706ca9c983f58c308f0577e5c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::acceptTCP </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket&#160;</td>
+          <td class="paramname"><em>server</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finalizes a listening socket for a server. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_TCP_Accept call. New sockets for new clients are established here and added to the MessageInfo public vector. If a client already has a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> struct for a UDP connection, the TCP connection information will be added to it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">server</td><td>The listening server socket. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a8ec0340fa0eeffc5f4344589069e6058"></a>
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +551,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
         <tr>
           <td class="memname">void NetManager::addNetworkInfo </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
           <td class="paramname"><em>protocol</em> = <code><a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a></code>, </td>
         </tr>
         <tr>
@@ -272,7 +594,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
         <tr>
           <td class="memname">bool NetManager::addProtocol </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
           <td class="paramname"><em>protocol</em></td><td>)</td>
           <td></td>
         </tr>
@@ -288,6 +610,236 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aff05c27b852dddd386e788bed7fa6d12"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::addUDPClient </td>
+          <td>(</td>
+          <td class="paramtype">UDPpacket *&#160;</td>
+          <td class="paramname"><em>pack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a client discovered on a UDP socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pack</td><td>The originating packet of the prospective client. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a75ce7beb5894c63e3af5e59c4fe67483"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UDPpacket * NetManager::allocUDPpacket </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allocate a new SDL-formatted UDP packet. </p>
+<p>This is simply an error-checked wrapper of SDLNet_AllocPacket. This should only be called for empty packets receiving data. Packets to be sent should use <a class="el" href="classNetManager.html#a5e53e36cb5fa09b218326c5a830269f4" title="Allocate and fill a UDPpacket with the given buffer of len bytes.">craftUDPpacket()</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The number of bytes to allot the buffer portion of the packet. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The new, empty UDPpacket. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a21e6fdda58659998dbb2e0959efefff5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UDPpacket ** NetManager::allocUDPpacketV </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allocate a new, empty, and SDL-formatted UDP packet vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count</td><td>The number of packets to allocate. </td></tr>
+    <tr><td class="paramname">size</td><td>The size of each packet. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The new, empty UDP packet vector. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6c0ceb2fde3906dfe2e8d8527aae7a00"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::bindUDPSocket </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IPaddress *&#160;</td>
+          <td class="paramname"><em>addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bind a UDP channel to a socket. </p>
+<p>Optional functionality from SDL that I've chosen to use. A maximum of 32 channels with different IPaddresses may be bound to any one socket, and reaping sockets will iterate through each of these channels separately. If a client already has a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> struct for a TCP connection, the UDP connection information will be added to it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The UDP socket to be bound. </td></tr>
+    <tr><td class="paramname">channel</td><td>The channel by which to bind this address to this socket. </td></tr>
+    <tr><td class="paramname">addr</td><td>The IPaddress of the hopeful connectee. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a64ca334dbe3e4b540236aa35dccc96df"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::checkSockets </td>
+          <td>(</td>
+          <td class="paramtype">Uint32&#160;</td>
+          <td class="paramname"><em>timeout_ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ask SDL to scan registered sockets once or for a given time period. </p>
+<p>This function will automatically handle all activity discovered on TCP and UDP. New clients will be added, and data will be copied to the <a class="el" href="structClientData.html">ClientData</a> buffers. <em>The user should check the <a class="el" href="structClientData.html">ClientData</a> arrays after calling this function!<em> Excess or unwanted clients will be rejected. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout_ms</td><td>The time to scan in milliseconds. 0 is instant. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there was activity, false if there was not. </dd></dl>
+<p></em></em></p>
+
+</div>
+</div>
+<a class="anchor" id="a9f55bdec9b5c974d26354e680aa48d1e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::clearFlags </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clears a given bit mask of state flags from the internal netStatus. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>The flags to clear. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -312,21 +864,132 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 
 </div>
 </div>
-<a class="anchor" id="a9e6957843f9cf05afbc38e23b9d46f52"></a>
+<a class="anchor" id="a675dccdb5b282d0353c6b261d0fb6615"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::closeTCP </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Close a TCP socket. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_TCP_Close call. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket to be closed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a40fe0a6c256bc0f2b891aa8715c519f3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::closeUDP </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Close a UDP socket. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_UDP_Close call. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket to be closed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5e53e36cb5fa09b218326c5a830269f4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UDPpacket * NetManager::craftUDPpacket </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allocate and fill a UDPpacket with the given buffer of len bytes. </p>
+<p>If <a class="el" href="classNetManager.html#a75ce7beb5894c63e3af5e59c4fe67483" title="Allocate a new SDL-formatted UDP packet.">allocUDPpacket()</a> returns NULL, this function will also return NULL, but without repeating the warning. Make sure to handle NULL packet pointers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>The source buffer. </td></tr>
+    <tr><td class="paramname">len</td><td>The length of bytes to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An allocated and filled UDPpacket. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaff19e422dc790a6ac4bad9aefc5749f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void NetManager::dropClient </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
           <td class="paramname"><em>protocol</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>clientDataIdx</em>&#160;</td>
+          <td class="paramtype">Uint32&#160;</td>
+          <td class="paramname"><em>host</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -341,7 +1004,71 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">protocol</td><td>TCP, UDP, or ALL; given by PROTOCOL_XXX enum value. </td></tr>
-    <tr><td class="paramname">clientDataIdx</td><td>Index of the client into the tcp/udp ClientData vector. </td></tr>
+    <tr><td class="paramname">clientDataIdx</td><td>Index of the client into the tcp/udp <a class="el" href="structClientData.html">ClientData</a> vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af3cc0529a2c40d959bdb624e9f3101c4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::freeUDPpacket </td>
+          <td>(</td>
+          <td class="paramtype">UDPpacket **&#160;</td>
+          <td class="paramname"><em>pack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Free a UDP packet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pack</td><td>The packet to be freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4c118ed195c8c3608b2758d6dd5da7ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::freeUDPpacketV </td>
+          <td>(</td>
+          <td class="paramtype">UDPpacket ***&#160;</td>
+          <td class="paramname"><em>pack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Free a UDP packet vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pack</td><td>The packet vector to be freed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -415,10 +1142,98 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Required initialization functions. </p>
 <p>Initializes the SDL library if it has not started already, followed by the SDL_net library. If both succeed, the internal SocketSet is allocated, and the state is set to NET_INITIALIZED. </p>
 <dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9e98f4e0367b8811f241cb0038e9b077"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * NetManager::lookupTCPClient </td>
+          <td>(</td>
+          <td class="paramtype">Uint32&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>create</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Look up a TCP client by IPaddress host. </p>
+<p>IPaddress host is available from almost anywhere, and this conversion to a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> pointer allows access to the correct index into all of the client's associated vectors. If the <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> does not already exist, the boolean allows a new instance to be returned instead. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>The IPaddress host. </td></tr>
+    <tr><td class="paramname">create</td><td>True to return a new <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> instance, false for NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Either the correct CInfo, a new CInfo, or null. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa9053c3f72215976089b89098935c6d1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * NetManager::lookupUDPClient </td>
+          <td>(</td>
+          <td class="paramtype">Uint32&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>create</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Look up a UDP client by IPaddress host. </p>
+<p>IPaddress host is available from almost anywhere, and this conversion to a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> pointer allows access to the correct index into all of the client's associated vectors. If the <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> does not already exist, the boolean allows a new instance to be returned instead. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>The IPaddress host. </td></tr>
+    <tr><td class="paramname">create</td><td>True to return a new <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> instance, false for NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Either the correct CInfo, a new CInfo, or null. </dd></dl>
 
 </div>
 </div>
@@ -429,7 +1244,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
         <tr>
           <td class="memname">void NetManager::messageClient </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
           <td class="paramname"><em>protocol</em>, </td>
         </tr>
         <tr>
@@ -463,7 +1278,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">protocol</td><td>TCP or UDP, given by the PROTOCOL_XXX enum value. </td></tr>
-    <tr><td class="paramname">clientDataIdx</td><td>Index of the client into the tcp/udp ClientData vector. </td></tr>
+    <tr><td class="paramname">clientDataIdx</td><td>Index of the client into the tcp/udp <a class="el" href="structClientData.html">ClientData</a> vector. </td></tr>
     <tr><td class="paramname">buf</td><td>Manually given data buffer. </td></tr>
     <tr><td class="paramname">len</td><td>Length of the given buffer. </td></tr>
   </table>
@@ -498,7 +1313,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 </div><div class="memdoc">
 
 <p>Send a single message to all clients. </p>
-<p>Must be running as a server to call this function. If no arguments are given, it will pull from each client's <a class="el" href="structMessageBuffer.html">MessageBuffer</a> <b>input</b> field. </p>
+<p>Must be running as a server to call this function. If no arguments are given, it will pull from each client's <a class="el" href="structClientData.html">ClientData</a> <b>input</b> field. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buf</td><td>Manually given data buffer. Default: NULL. </td></tr>
@@ -534,7 +1349,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 </div><div class="memdoc">
 
 <p>Send a single message to the server. </p>
-<p>Must be running as a client to call this function. If no argumetns are given, it will pull from the server's <a class="el" href="structMessageBuffer.html">MessageBuffer</a> <b>input</b> field. </p>
+<p>Must be running as a client to call this function. If no argumetns are given, it will pull from the server's <a class="el" href="structClientData.html">ClientData</a> <b>input</b> field. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buf</td><td>Manually given data buffer. Default: NULL. </td></tr>
@@ -542,6 +1357,179 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="afe3450801d77b53d99b38c8249f3d955"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::openClient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
+          <td class="paramname"><em>protocol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint16&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Launch a single client socket on a single protocol bound to hostname. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_ResolveHost call. To reduce user calls, it chains into the protocol-specific socket opening call. This is reachable only via a call from <a class="el" href="classNetManager.html#ab5b2ae812e37abbb03be5b604e34a60d" title="Launch a client on given/default port over given/default protocols and connected to given host server...">startClient()</a>.</p>
+<p>If both TCP and UDP are requested, this function will fire twice; once on each. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protocol</td><td>One of TCP or UDP at a time, as given previously by the user. </td></tr>
+    <tr><td class="paramname">hostname</td><td>The hostname previously given by the user. </td></tr>
+    <tr><td class="paramname">port</td><td>The port previously established by the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The success or failure of the following socket call. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#a90fc6dc31d71fa956486243814352ac5" title="Opens a TCP socket.">openTCPSocket()</a> </dd>
+<dd>
+<a class="el" href="classNetManager.html#ae49266e3057c0f17cc3c89591cbcf3e1" title="Opens a UDP socket.">openUDPSocket()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a369f5008d70957c6b3b60d59e453fbee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::openServer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
+          <td class="paramname"><em>protocol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint16&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Launch a single server socket on a single protocol. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_ResolveHost call. To reduce user calls, it chains into the protocol-specific socket opening call. This is reachable only via a call from <a class="el" href="classNetManager.html#ae6a832ed2ede5f5407b75abc584269b8" title="Launch a server to listen on given/default port over given/default protocols.">startServer()</a>.</p>
+<p>If both TCP and UDP are requested, this function will fire twice; once on each. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protocol</td><td>One of TCP or UDP at a time, as given previously by the user. </td></tr>
+    <tr><td class="paramname">port</td><td>The port previously established by the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The success or failure of the following TCP or UDP socket call. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#a90fc6dc31d71fa956486243814352ac5" title="Opens a TCP socket.">openTCPSocket()</a> </dd>
+<dd>
+<a class="el" href="classNetManager.html#ae49266e3057c0f17cc3c89591cbcf3e1" title="Opens a UDP socket.">openUDPSocket()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a90fc6dc31d71fa956486243814352ac5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::openTCPSocket </td>
+          <td>(</td>
+          <td class="paramtype">IPaddress *&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Opens a TCP socket. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_TCP_Open call. To reduce user calls, it will chain into <a class="el" href="classNetManager.html#add2b0af706ca9c983f58c308f0577e5c" title="Finalizes a listening socket for a server.">acceptTCP()</a> iff this is a server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>The IPaddress upon which to open the socket. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure, or the result of acceptTCP. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae49266e3057c0f17cc3c89591cbcf3e1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::openUDPSocket </td>
+          <td>(</td>
+          <td class="paramtype">Uint16&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Opens a UDP socket. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_UDP_Open call. Servers and clients both stop here, as they differ only in how incoming connections are handled. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port on which to open the socket. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
 
 </div>
 </div>
@@ -571,6 +1559,459 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 
 </div>
 </div>
+<a class="anchor" id="a5927d55003a434ec69d8909dffe88575"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::processPacketData </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parse incoming data from server or clients for NetManager-specific commands. </p>
+<p>Much of the data and operations will be handled by OGRE et al., but some commands might be better suited for internal processing... </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The data buffer to be processed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="abb912b135cb4916dd5bd2943f1ed2467"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IPaddress * NetManager::queryTCPAddress </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Look up an IPaddress by a TCP socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket to query. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The IPaddress of the socket's associated host. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a41f2077bd40f1d210406a07486843104"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IPaddress * NetManager::queryUDPAddress </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Look up an IPaddress by a UDP socket and channel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket hosting the channel. </td></tr>
+    <tr><td class="paramname">channel</td><td>The target-to-query's bound channel. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The IPaddress of the channel's associated host. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a80c34b6f1d22a0db77a6f5063e6d31d9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::readTCPSocket </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Receives a TCP socket and copies its data to the <a class="el" href="structClientData.html">ClientData</a> buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientIdx</td><td>An index into the tcpClients vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a70c29117dc3c7fd49cee0444944a8eee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::readUDPSocket </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Receives a UDP socket and copies its data to the <a class="el" href="structClientData.html">ClientData</a> buffer. </p>
+<p>Because many channels may be bound to a single socket, the vector versions of UDPpacket and udpRecv are used to gather anything and everything that might arrive in one sweep of the socket. New clients are added, if possible. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientIdx</td><td>An index into the udpClients vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aceb9567e9ca4ca5e09dde53b771e1b59"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::recvTCP </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Receive a single message from a single target via TCP. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_TCP_Recv call. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The target's socket. </td></tr>
+    <tr><td class="paramname">data</td><td>The destination buffer for the received data. </td></tr>
+    <tr><td class="paramname">maxlen</td><td>The maximum length of data to copy to the destination buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a06b0916f8e98d29429cc61d90319174b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::recvUDP </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UDPpacket *&#160;</td>
+          <td class="paramname"><em>pack</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Receive a message from a random channel on a UDP socket. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_UDP_Recv call. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The target's socket. </td></tr>
+    <tr><td class="paramname">data</td><td>The SDL-formatted destination buffer for the received data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a06220534dd830f880ec24d86a6a86561"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NetManager::recvUDPV </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UDPpacket **&#160;</td>
+          <td class="paramname"><em>packetV</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Receive up to len(packetV) packets from all channels on a socket. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_UDP_RecvV call. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The target socket. </td></tr>
+    <tr><td class="paramname">packetV</td><td>The SDL-formatted UDP packet vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab7048f28558dec8046b9536ad6c094f8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::rejectTCPClient </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rejects a prospective TCP client. </p>
+<p>Sends a rejection message and closes the socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The rejectee's associated socket. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aae62147d4b4d06cccd992f30b6669ea5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::rejectUDPClient </td>
+          <td>(</td>
+          <td class="paramtype">UDPpacket *&#160;</td>
+          <td class="paramname"><em>pack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rejects a prospective UDP client. </p>
+<p>Sends a rejection message and frees the socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The rejectee's associated packet. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a60e404905712ff726f1a4f0e2542d06c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::resetManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clears all vectors and resets all data members to default values. </p>
+<p>After this function completes, the instance will be considered INITIALIZED and may launch a new server or client. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae9daa22fe531b7204b004d8136d00e0e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::resizeUDPpacket </td>
+          <td>(</td>
+          <td class="paramtype">UDPpacket *&#160;</td>
+          <td class="paramname"><em>pack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resize a UDP packet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pack</td><td>The packet to resize. </td></tr>
+    <tr><td class="paramname">size</td><td>The new size of the packet. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a934ebfd8ca745a95263ba92c2ccf2b19"></a>
 <div class="memitem">
 <div class="memproto">
@@ -586,8 +2027,164 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
 
 <p>Scan once for activity on all TCP and UDP sockets. </p>
 <p>This calls pollForActivity with a time of 0 milliseconds (instant). </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#ac213dda2e72556e53450d5b1e2057f22" title="Poll for activity on all TCP and UDP sockets.">pollForActivity()</a> </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>True for activity, false for no activity. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#ac213dda2e72556e53450d5b1e2057f22" title="Poll for activity on all TCP and UDP sockets.">pollForActivity()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a570a5ce0bdbac7433fe650db23006509"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::sendTCP </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send a single message to a single target via TCP. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_TCP_Send call. One socketed target will receive one copy of the given message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The target's socket. </td></tr>
+    <tr><td class="paramname">data</td><td>The data to send. </td></tr>
+    <tr><td class="paramname">len</td><td>The length of the data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac0b9e9d77a598b14b6b30dc160ead039"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::sendUDP </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UDPpacket *&#160;</td>
+          <td class="paramname"><em>pack</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send a single message to a single target via UDP. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_UDP_Send call. One channel-bound target <em>may</em> receive one copy of the given message. No guarantees are given by UDP, and I have coded no guarantees here, yet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The target's socket. </td></tr>
+    <tr><td class="paramname">channel</td><td>The target's specific, bound channel. </td></tr>
+    <tr><td class="paramname">pack</td><td>The SDL-formatted UDP packet to send. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5c1d2504835ad09e97cc2fd05ed8f83a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::sendUDPV </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UDPpacket **&#160;</td>
+          <td class="paramname"><em>packetV</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>npackets</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send n packets from a packet vector using the specified socket. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_UDP_SendV call. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The target socket. </td></tr>
+    <tr><td class="paramname">packetV</td><td>The SDL-formatted UDP packet vector. </td></tr>
+    <tr><td class="paramname">npackets</td><td>The number of packets to send from the packet vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
 
 </div>
 </div>
@@ -647,7 +2244,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
         <tr>
           <td class="memname">void NetManager::setProtocol </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
           <td class="paramname"><em>protocol</em></td><td>)</td>
           <td></td>
         </tr>
@@ -697,10 +2294,86 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
       </table>
 </div><div class="memdoc">
 
-<p>Control functions. </p>
-<p>Launch a server to listen on given/default port over given/default protocols.</p>
+<p>Launch a server to listen on given/default port over given/default protocols. </p>
 <p>Warns if host server was specified but proceeds with launch. </p>
 <dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8eb8d5a292070e7269133bf1fc1499c4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::statusCheck </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A simple state (bit flag) check for early returns and error prints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>The state to be checked. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if state is lacking, false if state achieved. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa5616571aa520977c221d8a8a6471a1f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::statusCheck </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A compound state (bit flag) check for early returns and error prints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state1</td><td>The first state to be checked. </td></tr>
+    <tr><td class="paramname">state2</td><td>The second state to be checked. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if either state is lacking, false if both states achieved. </dd></dl>
 
 </div>
 </div>
@@ -711,7 +2384,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
         <tr>
           <td class="memname">void NetManager::stopClient </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
           <td class="paramname"><em>protocol</em> = <code><a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a></code></td><td>)</td>
           <td></td>
         </tr>
@@ -726,7 +2399,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd>resetManager() </dd>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#a60e404905712ff726f1a4f0e2542d06c" title="Clears all vectors and resets all data members to default values.">resetManager()</a> </dd>
 <dd>
 <a class="el" href="classNetManager.html#afcf943b4ab1e94ba479f4e3f0cd9da2e" title="Terminates all running servers or clients on all protocols.">close()</a> </dd></dl>
 
@@ -739,7 +2412,7 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
         <tr>
           <td class="memname">void NetManager::stopServer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
           <td class="paramname"><em>protocol</em> = <code><a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a></code></td><td>)</td>
           <td></td>
         </tr>
@@ -754,22 +2427,506 @@ std::vector&lt; <a class="el" href="structMessageBuffer.html">MessageBuffer</a> 
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd>resetManager() </dd>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#a60e404905712ff726f1a4f0e2542d06c" title="Clears all vectors and resets all data members to default values.">resetManager()</a> </dd>
 <dd>
 <a class="el" href="classNetManager.html#afcf943b4ab1e94ba479f4e3f0cd9da2e" title="Terminates all running servers or clients on all protocols.">close()</a> </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="a1f4271094319fd56f3d20151ca51234b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::unbindUDPSocket </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unbind a bound socket channel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket upon which the channel is bound. </td></tr>
+    <tr><td class="paramname">channel</td><td>The channel to be unbound. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a74e382ac7ea8b8ce09d11ea43a464385"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::unwatchSocket </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove a TCP socket from SDL's observation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a46c2393e0deef57de2f3cda92d4ea9bd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::unwatchSocket </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove a UDP socket from SDL's observation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1d3f54e43abe28d9804d3348bc0eacd8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::watchSocket </td>
+          <td>(</td>
+          <td class="paramtype">TCPsocket *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register a TCP socket to be watched for activity by SDL. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket to watch. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3d0c6dcf246d88b510a2230227dd0e0a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::watchSocket </td>
+          <td>(</td>
+          <td class="paramtype">UDPsocket *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register a UDP socket to be watched for activity by SDL. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The socket to watch. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a67d25cdb043a462709f1d29e071a5ce8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::acceptNewClients</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2e5fedf3835e7c392ccb8b1a23ade8d4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetManager::forceClientRandomUDP</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2e1aedc97e5fb2f633faeabd2aa266c3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string NetManager::netHost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2c14b6cf513287e5fb46a85ddb293201"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NetManager::netPort</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac24652f01ef284551be311bfc408be06"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> NetManager::netProtocol</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a002692771d60d8a4332941f33096fba0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> NetManager::netServer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acd2ec7262ea71478204c9007b23d9fff"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NetManager::netStatus</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7505bdde90a24b85b6cb1d8d81404c5f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NetManager::nextUDPChannel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adc43306f83c33feb0fdd74e16c6583bb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDLNet_SocketSet NetManager::socketNursery</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3303746abef87426cab748c92d58006b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structClientData.html">ClientData</a> *&gt; NetManager::tcpClientData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abf9491e48d6bc19eacb148d294613b35"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&gt; NetManager::tcpClients</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abca113fc17fe6251fa7ac5a1179ade3c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structClientData.html">ClientData</a> NetManager::tcpServerData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2314a1df7704bbc4c96d8d0133d78ee6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;TCPsocket&gt; NetManager::tcpSockets</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a687d70a4e199c2cbe4cb955a2cd94b04"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structClientData.html">ClientData</a> *&gt; NetManager::udpClientData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab5cbc9d5ddb14541adb07b748802446d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&gt; NetManager::udpClients</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7db7fafed8aabbe088aa12c731842efd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structClientData.html">ClientData</a> NetManager::udpServerData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa99d99b6fa90707d9101c4e1a1835018"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;UDPsocket&gt; NetManager::udpSockets</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="NetManager_8h_source.html">NetManager.h</a></li>
-<li>NetManager.cpp</li>
+<li><a class="el" href="NetManager_8cpp.html">NetManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 10 2014 21:27:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classNetManager.html">NetManager</a></li>
+    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
 </body>
 </html>

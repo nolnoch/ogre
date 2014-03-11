@@ -1,6 +1,10 @@
 \hypertarget{classTileSimulator}{\section{Tile\-Simulator Class Reference}
 \label{classTileSimulator}\index{Tile\-Simulator@{Tile\-Simulator}}
 }
+
+
+{\ttfamily \#include $<$Tile\-Simulator.\-h$>$}
+
 Inheritance diagram for Tile\-Simulator\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,31 +14,116 @@ Inheritance diagram for Tile\-Simulator\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classTileSimulator_a952f2493568e720f37331119084f9dd3}{virtual void {\bfseries init\-Simulator} ()}\label{classTileSimulator_a952f2493568e720f37331119084f9dd3}
-
+\hyperlink{classTileSimulator_a96ab96c82b83362c9249c30afd9c8a73}{Tile\-Simulator} ()
 \item 
-\hypertarget{classTileSimulator_ae944141e1051b803018d6c4af47f2df9}{virtual bool {\bfseries simulate\-Step} (double delay)}\label{classTileSimulator_ae944141e1051b803018d6c4af47f2df9}
-
+virtual \hyperlink{classTileSimulator_ae888f7fa1ad73f5876edd70719e99e5c}{$\sim$\-Tile\-Simulator} ()
 \item 
-\hypertarget{classTileSimulator_ad1db783060a2d2af92e614042cab0767}{virtual bt\-Rigid\-Body $\ast$ {\bfseries add\-Ball\-Shape} (Ogre\-::\-Scene\-Node $\ast$n, int r)}\label{classTileSimulator_ad1db783060a2d2af92e614042cab0767}
-
+virtual void \hyperlink{classTileSimulator_a952f2493568e720f37331119084f9dd3}{init\-Simulator} ()
 \item 
-\hypertarget{classTileSimulator_af5290bb6e13b9c9dccced4d275b7cac7}{bt\-Rigid\-Body $\ast$ {\bfseries add\-Tile} (Ogre\-::\-Scene\-Node $\ast$n, int x, int y, int z)}\label{classTileSimulator_af5290bb6e13b9c9dccced4d275b7cac7}
-
+virtual bool \hyperlink{classTileSimulator_ae944141e1051b803018d6c4af47f2df9}{simulate\-Step} (double delay)
 \item 
-\hypertarget{classTileSimulator_a6c90f655f570b9c80642007c6c97f1aa}{void {\bfseries set\-Ball\-Manager} (\hyperlink{classBallManager}{Ball\-Manager} $\ast$b\-M)}\label{classTileSimulator_a6c90f655f570b9c80642007c6c97f1aa}
-
+virtual bt\-Rigid\-Body $\ast$ \hyperlink{classTileSimulator_ad1db783060a2d2af92e614042cab0767}{add\-Ball\-Shape} (Ogre\-::\-Scene\-Node $\ast$n, int r)
+\item 
+bt\-Rigid\-Body $\ast$ \hyperlink{classTileSimulator_af5290bb6e13b9c9dccced4d275b7cac7}{add\-Tile} (Ogre\-::\-Scene\-Node $\ast$n, int x, int y, int z)
+\item 
+void \hyperlink{classTileSimulator_a6c90f655f570b9c80642007c6c97f1aa}{set\-Ball\-Manager} (\hyperlink{classBallManager}{Ball\-Manager} $\ast$b\-M)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classTileSimulator_abe7afed920e22486c1a19e162a601bca}{static bool {\bfseries tile\-Callback} (bt\-Manifold\-Point \&cp, void $\ast$body0, void $\ast$body1)}\label{classTileSimulator_abe7afed920e22486c1a19e162a601bca}
-
+static bool \hyperlink{classTileSimulator_abe7afed920e22486c1a19e162a601bca}{tile\-Callback} (bt\-Manifold\-Point \&cp, void $\ast$body0, void $\ast$body1)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::deque$<$ bt\-Rigid\-Body $\ast$ $>$ \hyperlink{classTileSimulator_a58a909f82bf80b79e892f0057366af92}{tiles}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTileSimulator_a96ab96c82b83362c9249c30afd9c8a73}{\index{Tile\-Simulator@{Tile\-Simulator}!Tile\-Simulator@{Tile\-Simulator}}
+\index{Tile\-Simulator@{Tile\-Simulator}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{Tile\-Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Tile\-Simulator\-::\-Tile\-Simulator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTileSimulator_a96ab96c82b83362c9249c30afd9c8a73}
+\hypertarget{classTileSimulator_ae888f7fa1ad73f5876edd70719e99e5c}{\index{Tile\-Simulator@{Tile\-Simulator}!$\sim$\-Tile\-Simulator@{$\sim$\-Tile\-Simulator}}
+\index{$\sim$\-Tile\-Simulator@{$\sim$\-Tile\-Simulator}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{$\sim$\-Tile\-Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Tile\-Simulator\-::$\sim$\-Tile\-Simulator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classTileSimulator_ae888f7fa1ad73f5876edd70719e99e5c}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classTileSimulator_ad1db783060a2d2af92e614042cab0767}{\index{Tile\-Simulator@{Tile\-Simulator}!add\-Ball\-Shape@{add\-Ball\-Shape}}
+\index{add\-Ball\-Shape@{add\-Ball\-Shape}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{add\-Ball\-Shape}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Rigid\-Body $\ast$ Tile\-Simulator\-::add\-Ball\-Shape (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Scene\-Node $\ast$}]{n, }
+\item[{int}]{r}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classTileSimulator_ad1db783060a2d2af92e614042cab0767}
+\hypertarget{classTileSimulator_af5290bb6e13b9c9dccced4d275b7cac7}{\index{Tile\-Simulator@{Tile\-Simulator}!add\-Tile@{add\-Tile}}
+\index{add\-Tile@{add\-Tile}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{add\-Tile}]{\setlength{\rightskip}{0pt plus 5cm}bt\-Rigid\-Body $\ast$ Tile\-Simulator\-::add\-Tile (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Scene\-Node $\ast$}]{n, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{z}
+\end{DoxyParamCaption}
+)}}\label{classTileSimulator_af5290bb6e13b9c9dccced4d275b7cac7}
+\hypertarget{classTileSimulator_a952f2493568e720f37331119084f9dd3}{\index{Tile\-Simulator@{Tile\-Simulator}!init\-Simulator@{init\-Simulator}}
+\index{init\-Simulator@{init\-Simulator}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{init\-Simulator}]{\setlength{\rightskip}{0pt plus 5cm}void Tile\-Simulator\-::init\-Simulator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classTileSimulator_a952f2493568e720f37331119084f9dd3}
+
+
+Reimplemented from \hyperlink{classSimulator_a6c0dd9962f860e93925a3e4ae8809655}{Simulator}.
+
+\hypertarget{classTileSimulator_a6c90f655f570b9c80642007c6c97f1aa}{\index{Tile\-Simulator@{Tile\-Simulator}!set\-Ball\-Manager@{set\-Ball\-Manager}}
+\index{set\-Ball\-Manager@{set\-Ball\-Manager}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{set\-Ball\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}void Tile\-Simulator\-::set\-Ball\-Manager (
+\begin{DoxyParamCaption}
+\item[{{\bf Ball\-Manager} $\ast$}]{b\-M}
+\end{DoxyParamCaption}
+)}}\label{classTileSimulator_a6c90f655f570b9c80642007c6c97f1aa}
+\hypertarget{classTileSimulator_ae944141e1051b803018d6c4af47f2df9}{\index{Tile\-Simulator@{Tile\-Simulator}!simulate\-Step@{simulate\-Step}}
+\index{simulate\-Step@{simulate\-Step}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{simulate\-Step}]{\setlength{\rightskip}{0pt plus 5cm}bool Tile\-Simulator\-::simulate\-Step (
+\begin{DoxyParamCaption}
+\item[{double}]{delay}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classTileSimulator_ae944141e1051b803018d6c4af47f2df9}
+
+
+Reimplemented from \hyperlink{classSimulator_a6abe3ee406909ab7f03930dfa537a42b}{Simulator}.
+
+\hypertarget{classTileSimulator_abe7afed920e22486c1a19e162a601bca}{\index{Tile\-Simulator@{Tile\-Simulator}!tile\-Callback@{tile\-Callback}}
+\index{tile\-Callback@{tile\-Callback}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{tile\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}bool Tile\-Simulator\-::tile\-Callback (
+\begin{DoxyParamCaption}
+\item[{bt\-Manifold\-Point \&}]{cp, }
+\item[{void $\ast$}]{body0, }
+\item[{void $\ast$}]{body1}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTileSimulator_abe7afed920e22486c1a19e162a601bca}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classTileSimulator_a58a909f82bf80b79e892f0057366af92}{\index{Tile\-Simulator@{Tile\-Simulator}!tiles@{tiles}}
+\index{tiles@{tiles}!TileSimulator@{Tile\-Simulator}}
+\subsubsection[{tiles}]{\setlength{\rightskip}{0pt plus 5cm}std\-::deque$<$bt\-Rigid\-Body $\ast$$>$ Tile\-Simulator\-::tiles\hspace{0.3cm}{\ttfamily [private]}}}\label{classTileSimulator_a58a909f82bf80b79e892f0057366af92}
+
+
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-Tile\-Simulator.\-h\item 
-Tile\-Simulator.\-cpp\end{DoxyCompactItemize}
+\hyperlink{TileSimulator_8h}{Tile\-Simulator.\-h}\item 
+\hyperlink{TileSimulator_8cpp}{Tile\-Simulator.\-cpp}\end{DoxyCompactItemize}

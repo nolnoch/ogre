@@ -1,0 +1,161 @@
+\hypertarget{classSoundManager}{\section{Sound\-Manager Class Reference}
+\label{classSoundManager}\index{Sound\-Manager@{Sound\-Manager}}
+}
+
+
+{\ttfamily \#include $<$Sound\-Manager.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSoundManager_abcc1fbf3488be5788a42c9a4fe56df35}{Sound\-Manager} ()
+\item 
+virtual \hyperlink{classSoundManager_ad5dbf8eab22db48ff8f3db51b02f8938}{$\sim$\-Sound\-Manager} ()
+\item 
+bool \hyperlink{classSoundManager_ad1787c39537a0fc19215e7baacf04439}{init\-Sound\-Manager} ()
+\item 
+bool \hyperlink{classSoundManager_a57caed0509fdbe4710de7b5f7d4de201}{load\-Music} (const char $\ast$name)
+\item 
+int \hyperlink{classSoundManager_abaa5592584989a7c430b4c0bb74af36b}{load\-Sound} (const char $\ast$name)
+\item 
+void \hyperlink{classSoundManager_a0ac4dd6921e28b5e3c84fe04d8c21c0b}{set\-Volume} (int vol)
+\item 
+void \hyperlink{classSoundManager_a6265e3f73b56fea0cab813cd0447d310}{play\-Music} ()
+\item 
+void \hyperlink{classSoundManager_a77322f5a208b15ba5495c57103b302e5}{play\-Sound} (int chunk)
+\item 
+void \hyperlink{classSoundManager_a5071bf5e87394afdb1e4148227ffc3ea}{pause\-Music} ()
+\item 
+void \hyperlink{classSoundManager_ae8afa6738d1e3cb81ed90216574a08f4}{mute} ()
+\item 
+void \hyperlink{classSoundManager_adb6bd13299469546885f7469680a2699}{unmute} ()
+\item 
+void \hyperlink{classSoundManager_a316417bb0eb4ee5c84d7ed62cdd08705}{toggle\-Sound} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classSoundManager_a099128ef18dacf43acd4942aedf712a2}{sounding}
+\item 
+bool \hyperlink{classSoundManager_a4d95e056b1fe09c91fc601e8062b9b9b}{initialized}
+\item 
+bool \hyperlink{classSoundManager_a448beccb044e3cbdbe72262f73bd464c}{music\-Playing}
+\item 
+Mix\-\_\-\-Music $\ast$ \hyperlink{classSoundManager_add68d7295ec04f3d1fb351199ef943a3}{music}
+\item 
+std\-::vector$<$ Mix\-\_\-\-Chunk $\ast$ $>$ \hyperlink{classSoundManager_a591ec09cf6486bc6ff62c458b1718630}{chunks}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSoundManager_abcc1fbf3488be5788a42c9a4fe56df35}{\index{Sound\-Manager@{Sound\-Manager}!Sound\-Manager@{Sound\-Manager}}
+\index{Sound\-Manager@{Sound\-Manager}!SoundManager@{Sound\-Manager}}
+\subsubsection[{Sound\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}Sound\-Manager\-::\-Sound\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_abcc1fbf3488be5788a42c9a4fe56df35}
+\hypertarget{classSoundManager_ad5dbf8eab22db48ff8f3db51b02f8938}{\index{Sound\-Manager@{Sound\-Manager}!$\sim$\-Sound\-Manager@{$\sim$\-Sound\-Manager}}
+\index{$\sim$\-Sound\-Manager@{$\sim$\-Sound\-Manager}!SoundManager@{Sound\-Manager}}
+\subsubsection[{$\sim$\-Sound\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}Sound\-Manager\-::$\sim$\-Sound\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSoundManager_ad5dbf8eab22db48ff8f3db51b02f8938}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSoundManager_ad1787c39537a0fc19215e7baacf04439}{\index{Sound\-Manager@{Sound\-Manager}!init\-Sound\-Manager@{init\-Sound\-Manager}}
+\index{init\-Sound\-Manager@{init\-Sound\-Manager}!SoundManager@{Sound\-Manager}}
+\subsubsection[{init\-Sound\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}bool Sound\-Manager\-::init\-Sound\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_ad1787c39537a0fc19215e7baacf04439}
+\hypertarget{classSoundManager_a57caed0509fdbe4710de7b5f7d4de201}{\index{Sound\-Manager@{Sound\-Manager}!load\-Music@{load\-Music}}
+\index{load\-Music@{load\-Music}!SoundManager@{Sound\-Manager}}
+\subsubsection[{load\-Music}]{\setlength{\rightskip}{0pt plus 5cm}bool Sound\-Manager\-::load\-Music (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a57caed0509fdbe4710de7b5f7d4de201}
+\hypertarget{classSoundManager_abaa5592584989a7c430b4c0bb74af36b}{\index{Sound\-Manager@{Sound\-Manager}!load\-Sound@{load\-Sound}}
+\index{load\-Sound@{load\-Sound}!SoundManager@{Sound\-Manager}}
+\subsubsection[{load\-Sound}]{\setlength{\rightskip}{0pt plus 5cm}int Sound\-Manager\-::load\-Sound (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_abaa5592584989a7c430b4c0bb74af36b}
+\hypertarget{classSoundManager_ae8afa6738d1e3cb81ed90216574a08f4}{\index{Sound\-Manager@{Sound\-Manager}!mute@{mute}}
+\index{mute@{mute}!SoundManager@{Sound\-Manager}}
+\subsubsection[{mute}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::mute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_ae8afa6738d1e3cb81ed90216574a08f4}
+\hypertarget{classSoundManager_a5071bf5e87394afdb1e4148227ffc3ea}{\index{Sound\-Manager@{Sound\-Manager}!pause\-Music@{pause\-Music}}
+\index{pause\-Music@{pause\-Music}!SoundManager@{Sound\-Manager}}
+\subsubsection[{pause\-Music}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::pause\-Music (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a5071bf5e87394afdb1e4148227ffc3ea}
+\hypertarget{classSoundManager_a6265e3f73b56fea0cab813cd0447d310}{\index{Sound\-Manager@{Sound\-Manager}!play\-Music@{play\-Music}}
+\index{play\-Music@{play\-Music}!SoundManager@{Sound\-Manager}}
+\subsubsection[{play\-Music}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::play\-Music (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a6265e3f73b56fea0cab813cd0447d310}
+\hypertarget{classSoundManager_a77322f5a208b15ba5495c57103b302e5}{\index{Sound\-Manager@{Sound\-Manager}!play\-Sound@{play\-Sound}}
+\index{play\-Sound@{play\-Sound}!SoundManager@{Sound\-Manager}}
+\subsubsection[{play\-Sound}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::play\-Sound (
+\begin{DoxyParamCaption}
+\item[{int}]{chunk}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a77322f5a208b15ba5495c57103b302e5}
+\hypertarget{classSoundManager_a0ac4dd6921e28b5e3c84fe04d8c21c0b}{\index{Sound\-Manager@{Sound\-Manager}!set\-Volume@{set\-Volume}}
+\index{set\-Volume@{set\-Volume}!SoundManager@{Sound\-Manager}}
+\subsubsection[{set\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::set\-Volume (
+\begin{DoxyParamCaption}
+\item[{int}]{vol}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a0ac4dd6921e28b5e3c84fe04d8c21c0b}
+\hypertarget{classSoundManager_a316417bb0eb4ee5c84d7ed62cdd08705}{\index{Sound\-Manager@{Sound\-Manager}!toggle\-Sound@{toggle\-Sound}}
+\index{toggle\-Sound@{toggle\-Sound}!SoundManager@{Sound\-Manager}}
+\subsubsection[{toggle\-Sound}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::toggle\-Sound (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a316417bb0eb4ee5c84d7ed62cdd08705}
+\hypertarget{classSoundManager_adb6bd13299469546885f7469680a2699}{\index{Sound\-Manager@{Sound\-Manager}!unmute@{unmute}}
+\index{unmute@{unmute}!SoundManager@{Sound\-Manager}}
+\subsubsection[{unmute}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::unmute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_adb6bd13299469546885f7469680a2699}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classSoundManager_a591ec09cf6486bc6ff62c458b1718630}{\index{Sound\-Manager@{Sound\-Manager}!chunks@{chunks}}
+\index{chunks@{chunks}!SoundManager@{Sound\-Manager}}
+\subsubsection[{chunks}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$Mix\-\_\-\-Chunk $\ast$$>$ Sound\-Manager\-::chunks\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_a591ec09cf6486bc6ff62c458b1718630}
+\hypertarget{classSoundManager_a4d95e056b1fe09c91fc601e8062b9b9b}{\index{Sound\-Manager@{Sound\-Manager}!initialized@{initialized}}
+\index{initialized@{initialized}!SoundManager@{Sound\-Manager}}
+\subsubsection[{initialized}]{\setlength{\rightskip}{0pt plus 5cm}bool Sound\-Manager\-::initialized\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_a4d95e056b1fe09c91fc601e8062b9b9b}
+\hypertarget{classSoundManager_add68d7295ec04f3d1fb351199ef943a3}{\index{Sound\-Manager@{Sound\-Manager}!music@{music}}
+\index{music@{music}!SoundManager@{Sound\-Manager}}
+\subsubsection[{music}]{\setlength{\rightskip}{0pt plus 5cm}Mix\-\_\-\-Music$\ast$ Sound\-Manager\-::music\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_add68d7295ec04f3d1fb351199ef943a3}
+\hypertarget{classSoundManager_a448beccb044e3cbdbe72262f73bd464c}{\index{Sound\-Manager@{Sound\-Manager}!music\-Playing@{music\-Playing}}
+\index{music\-Playing@{music\-Playing}!SoundManager@{Sound\-Manager}}
+\subsubsection[{music\-Playing}]{\setlength{\rightskip}{0pt plus 5cm}bool Sound\-Manager\-::music\-Playing\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_a448beccb044e3cbdbe72262f73bd464c}
+\hypertarget{classSoundManager_a099128ef18dacf43acd4942aedf712a2}{\index{Sound\-Manager@{Sound\-Manager}!sounding@{sounding}}
+\index{sounding@{sounding}!SoundManager@{Sound\-Manager}}
+\subsubsection[{sounding}]{\setlength{\rightskip}{0pt plus 5cm}bool Sound\-Manager\-::sounding\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_a099128ef18dacf43acd4942aedf712a2}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SoundManager_8h}{Sound\-Manager.\-h}\item 
+\hyperlink{SoundManager_8cpp}{Sound\-Manager.\-cpp}\end{DoxyCompactItemize}

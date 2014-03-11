@@ -1,0 +1,123 @@
+.TH "Simulator" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Simulator \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Simulator\&.h>\fP
+.PP
+Inherited by \fBTileSimulator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSimulator\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~Simulator\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBinitSimulator\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBcreateBounds\fP (const int offset)"
+.br
+.ti -1c
+.RI "virtual void \fBregisterCallback\fP (void *func)"
+.br
+.ti -1c
+.RI "virtual bool \fBsimulateStep\fP (double delay)"
+.br
+.ti -1c
+.RI "virtual void \fBaddPlaneBound\fP (int x, int y, int z, int d)"
+.br
+.ti -1c
+.RI "virtual btRigidBody * \fBaddBoxShape\fP (Ogre::SceneNode *n, int x, int y, int z)"
+.br
+.ti -1c
+.RI "virtual btRigidBody * \fBaddBallShape\fP (Ogre::SceneNode *n, int r, int m)"
+.br
+.ti -1c
+.RI "virtual btDiscreteDynamicsWorld & \fBgetDynamicsWorld\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Ogre::SceneManager * \fBsceneMgr\fP"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "btDefaultCollisionConfiguration * \fBcollisionConfiguration\fP"
+.br
+.ti -1c
+.RI "btBroadphaseInterface * \fBbroadphase\fP"
+.br
+.ti -1c
+.RI "btCollisionDispatcher * \fBdispatcher\fP"
+.br
+.ti -1c
+.RI "btSequentialImpulseConstraintSolver * \fBsolver\fP"
+.br
+.ti -1c
+.RI "btDiscreteDynamicsWorld * \fBdynamicsWorld\fP"
+.br
+.ti -1c
+.RI "std::vector< btCollisionShape * > \fBcollisionShapes\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Simulator::Simulator ()"
+
+.SS "Simulator::~Simulator ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "btRigidBody * Simulator::addBallShape (Ogre::SceneNode *n, intr, intm)\fC [virtual]\fP"
+
+.SS "btRigidBody * Simulator::addBoxShape (Ogre::SceneNode *n, intx, inty, intz)\fC [virtual]\fP"
+
+.SS "void Simulator::addPlaneBound (intx, inty, intz, intd)\fC [virtual]\fP"
+
+.SS "void Simulator::createBounds (const intoffset)\fC [virtual]\fP"
+
+.SS "btDiscreteDynamicsWorld & Simulator::getDynamicsWorld ()\fC [virtual]\fP"
+
+.SS "void Simulator::initSimulator ()\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileSimulator\fP\&.
+.SS "void Simulator::registerCallback (void *func)\fC [virtual]\fP"
+
+.SS "bool Simulator::simulateStep (doubledelay)\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileSimulator\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "btBroadphaseInterface* Simulator::broadphase\fC [private]\fP"
+
+.SS "btDefaultCollisionConfiguration* Simulator::collisionConfiguration\fC [private]\fP"
+
+.SS "std::vector<btCollisionShape *> Simulator::collisionShapes\fC [private]\fP"
+
+.SS "btCollisionDispatcher* Simulator::dispatcher\fC [private]\fP"
+
+.SS "btDiscreteDynamicsWorld* Simulator::dynamicsWorld\fC [private]\fP"
+
+.SS "Ogre::SceneManager* Simulator::sceneMgr"
+
+.SS "btSequentialImpulseConstraintSolver* Simulator::solver\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

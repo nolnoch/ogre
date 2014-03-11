@@ -196,32 +196,54 @@ bool NetManager::scanForActivity() {
  * @brief Send a single message to all clients.
  *
  * Must be running as a server to call this function. If no arguments are given,
- * it will pull from each client's MessageBuffer \b input field.
+ * it will pull from each client's ClientData \b input field.
  * @param buf Manually given data buffer. Default: NULL.
  * @param len Length of given buffer. Default: 0.
  */
 void NetManager::messageClients(char *buf, int len) {
-  int i;
+  int i, length;
+  char *data;
 
   if (statusCheck(NET_SERVER)) {
     std::cout << "NetManager: No server running, and thus no clients to message." << std::endl;
     return;
   }
 
-  if (netServer.protocols & PROTOCOL_TCP) {
-    for (i = 0; i < tcpClients.size(); i++) {
-      sendTCP(tcpSockets[tcpClients[i]->tcpSocketIdx], buf, len);
-    }
-  }
-  if (netServer.protocols & PROTOCOL_UDP) {
-    UDPpacket *pack = craftUDPpacket(buf, len);
-
-    if (pack)
-      for (i = 0; i < udpClients.size(); i++) {
-        pack->len = len;
-        sendUDP(udpSockets[udpClients[i]->udpSocketIdx],
-            udpClients[i]->udpChannel, pack);
+  if (buf && (0 < len) && (len < MESSAGE_LENGTH)) {
+    if (netServer.protocols & PROTOCOL_TCP) {
+      for (i = 0; i < tcpClients.size(); i++) {
+        sendTCP(tcpSockets[tcpClients[i]->tcpSocketIdx], buf, len);
       }
+    }
+    if (netServer.protocols & PROTOCOL_UDP) {
+      UDPpacket *pack = craftUDPpacket(buf, len);
+
+      if (pack)
+        for (i = 0; i < udpClients.size(); i++) {
+          sendUDP(udpSockets[udpClients[i]->udpSocketIdx],
+              udpClients[i]->udpChannel, pack);
+        }
+    }
+  } else {
+    length = MESSAGE_LENGTH;
+
+    if (netServer.protocols & PROTOCOL_TCP) {
+      for (i = 0; i < tcpClients.size(); i++) {
+        data = tcpClientData[tcpClients[i]->tcpDataIdx]->input;
+        sendTCP(tcpSockets[tcpClients[i]->tcpSocketIdx], data, length);
+      }
+    }
+    if (netServer.protocols & PROTOCOL_UDP) {
+      UDPpacket *pack;
+
+      if (pack)
+        for (i = 0; i < udpClients.size(); i++) {
+          data = udpClientData[udpClients[i]->udpDataIdx]->input;
+          pack = craftUDPpacket(data, length);
+          sendUDP(udpSockets[udpClients[i]->udpSocketIdx],
+              udpClients[i]->udpChannel, pack);
+        }
+    }
   }
 }
 
@@ -229,7 +251,7 @@ void NetManager::messageClients(char *buf, int len) {
  * @brief Send a single message to the server.
  *
  * Must be running as a client to call this function. If no argumetns are given,
- * it will pull from the server's MessageBuffer \b input field.
+ * it will pull from the server's ClientData \b input field.
  * @param buf Manually given data buffer. Default: NULL.
  * @param len Length of given buffer. Default: 0.
  */
@@ -287,22 +309,25 @@ void NetManager::messageClient(Protocol protocol, int clientDataIdx, char *buf, 
  * @param protocol TCP, UDP, or ALL; given by PROTOCOL_XXX enum value.
  * @param clientDataIdx Index of the client into the tcp/udp ClientData vector.
  */
-void NetManager::dropClient(Protocol protocol, int clientDataIdx) {
+void NetManager::dropClient(Protocol protocol, Uint32 host) {
   if (statusCheck(NET_SERVER)) {
     std::cout << "NetManager: No server running, and thus no clients to drop." << std::endl;
     return;
   }
 
-  if (protocol & PROTOCOL_TCP) {
-    TCPsocket client = tcpSockets[tcpClients[clientDataIdx]->tcpSocketIdx];
+  ConnectionInfo *tcpInfo = lookupTCPClient(host, false);
+  ConnectionInfo *udpInfo = lookupUDPClient(host, false);
+
+  if ((protocol & PROTOCOL_TCP) && tcpInfo) {
+    int idx = tcpInfo->tcpClientIdx;
+    TCPsocket client = tcpSockets[idx];
     unwatchSocket(&client);
     closeTCP(client);
-    tcpSockets.erase(tcpSockets.begin() + clientDataIdx);
+    tcpSockets.erase(tcpSockets.begin() + idx);
   }
-  if (protocol & PROTOCOL_UDP) {
-    ConnectionInfo *cInfo = udpClients[clientDataIdx];
-    UDPsocket client = udpSockets[cInfo->udpSocketIdx];
-    unbindUDPSocket(client, cInfo->udpChannel);
+  if ((protocol & PROTOCOL_UDP) && udpInfo) {
+    UDPsocket client = udpSockets[udpInfo->udpSocketIdx];
+    unbindUDPSocket(client, udpInfo->udpChannel);
 
     // TODO Implement reclaimable channels through bitmap or 2d array?
   }
@@ -517,6 +542,21 @@ std::string NetManager::getHost() {
  */
 
 
+/**
+ * @brief Launch a single server socket on a single protocol.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_ResolveHost call. To
+ * reduce user calls, it chains into the protocol-specific socket opening call.
+ * This is reachable only via a call from startServer().
+ *
+ * If both TCP and UDP are requested, this function will fire twice; once on
+ * each.
+ * @param protocol One of TCP or UDP at a time, as given previously by the user.
+ * @param port The port previously established by the user.
+ * @return The success or failure of the following TCP or UDP socket call.
+ * @see openTCPSocket()
+ * @see openUDPSocket()
+ */
 bool NetManager::openServer(Protocol protocol, Uint16 port) {
   if (statusCheck(NET_WAITING))
     return false;
@@ -543,6 +583,22 @@ bool NetManager::openServer(Protocol protocol, Uint16 port) {
       openTCPSocket(&netServer.address) : openUDPSocket(port);
 }
 
+/**
+ * @brief Launch a single client socket on a single protocol bound to hostname.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_ResolveHost call. To
+ * reduce user calls, it chains into the protocol-specific socket opening call.
+ * This is reachable only via a call from startClient().
+ *
+ * If both TCP and UDP are requested, this function will fire twice; once on
+ * each.
+ * @param protocol One of TCP or UDP at a time, as given previously by the user.
+ * @param hostname The hostname previously given by the user.
+ * @param port The port previously established by the user.
+ * @return The success or failure of the following socket call.
+ * @see openTCPSocket()
+ * @see openUDPSocket()
+ */
 bool NetManager::openClient(Protocol protocol, std::string hostname, Uint16 port) {
   if (statusCheck(NET_WAITING))
     return false;
@@ -561,7 +617,6 @@ bool NetManager::openClient(Protocol protocol, std::string hostname, Uint16 port
     std::cout << "SDL_net: Failed to resolve server!" << std::endl;
   } else {
     netServer.protocols |= protocol;
-    netServer.hostname = hostname;
     netStatus ^= NET_WAITING;
     netStatus |= NET_RESOLVED;
   }
@@ -570,6 +625,14 @@ bool NetManager::openClient(Protocol protocol, std::string hostname, Uint16 port
       openTCPSocket(&netServer.address) : openUDPSocket(port);
 }
 
+/**
+ * @brief Opens a TCP socket.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_TCP_Open call. To
+ * reduce user calls, it will chain into acceptTCP() iff this is a server.
+ * @param addr The IPaddress upon which to open the socket.
+ * @return True on success, false on failure, or the result of acceptTCP.
+ */
 bool NetManager::openTCPSocket(IPaddress *addr) {
   bool ret = false;
 
@@ -591,6 +654,15 @@ bool NetManager::openTCPSocket(IPaddress *addr) {
   return (netStatus & NET_SERVER) ? acceptTCP(tcpSock) : ret;
 }
 
+/**
+ * @brief Opens a UDP socket.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_UDP_Open call. Servers
+ * and clients both stop here, as they differ only in how incoming connections
+ * are handled.
+ * @param port The port on which to open the socket.
+ * @return True on success, false on failure.
+ */
 bool NetManager::openUDPSocket(Uint16 port) {
   bool ret = true;
   Uint16 udpPort = port;
@@ -622,6 +694,16 @@ bool NetManager::openUDPSocket(Uint16 port) {
   return ret;
 }
 
+/**
+ * @brief Finalizes a listening socket for a server.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_TCP_Accept call. New
+ * sockets for new clients are established here and added to the MessageInfo
+ * public vector. If a client already has a ConnectionInfo struct for a UDP
+ * connection, the TCP connection information will be added to it.
+ * @param server The listening server socket.
+ * @return True on success, false on failure.
+ */
 bool NetManager::acceptTCP(TCPsocket server) {
   bool ret = false;
 
@@ -642,17 +724,17 @@ bool NetManager::acceptTCP(TCPsocket server) {
   if (!tcpSock)
     std::cout << "SDL_net: Failed to accept TCP client on server socket." << std::endl;
   else {
-    ConnectionInfo *client = new ConnectionInfo;
-    MessageBuffer *buffer = new MessageBuffer;
+    ClientData *buffer = new ClientData;
     IPaddress *addr = queryTCPAddress(tcpSock);
-    client->hostname = SDLNet_ResolveIP(addr);
+    ConnectionInfo *client = lookupTCPClient(addr->host, true);
+    buffer->host = addr->host;
+    buffer->updated = false;
     client->protocols |= PROTOCOL_TCP;
     client->address.host = addr->host;
     client->address.port = addr->port;
     client->tcpSocketIdx = tcpSockets.size();
     client->tcpClientIdx = tcpClients.size();
-    buffer->host = addr->host;
-    buffer->updated = false;
+    client->tcpDataIdx = tcpClientData.size();
     tcpClientData.push_back(buffer);
     tcpClients.push_back(client);
     tcpSockets.push_back(tcpSock);
@@ -665,6 +747,19 @@ bool NetManager::acceptTCP(TCPsocket server) {
   return ret;
 }
 
+/**
+ * @brief Bind a UDP channel to a socket.
+ *
+ * Optional functionality from SDL that I've chosen to use. A maximum of 32
+ * channels with different IPaddresses may be bound to any one socket, and
+ * reaping sockets will iterate through each of these channels separately.
+ * If a client already has a ConnectionInfo struct for a TCP connection, the
+ * UDP connection information will be added to it.
+ * @param sock The UDP socket to be bound.
+ * @param channel The channel by which to bind this address to this socket.
+ * @param addr The IPaddress of the hopeful connectee.
+ * @return True on success, false on failure.
+ */
 bool NetManager::bindUDPSocket (UDPsocket sock, int channel, IPaddress *addr) {
   bool ret = true;
 
@@ -682,17 +777,17 @@ bool NetManager::bindUDPSocket (UDPsocket sock, int channel, IPaddress *addr) {
     netServer.udpChannel = udpchannel;
     netStatus |= NET_UDP_BOUND;
   } else {
-    ConnectionInfo *client = new ConnectionInfo;
-    MessageBuffer *buffer = new MessageBuffer;
-    client->hostname = SDLNet_ResolveIP(addr);
+    ClientData *buffer = new ClientData;
+    ConnectionInfo *client = lookupUDPClient(addr->host, true);
+    buffer->host = addr->host;
+    buffer->updated = false;
     client->protocols |= PROTOCOL_UDP;
     client->address.host = addr->host;
     client->address.port = addr->port;
+    client->udpChannel = udpchannel;
     client->udpSocketIdx = udpSockets.size() - 1;
     client->udpClientIdx = udpClients.size();
-    client->udpChannel = udpchannel;
-    buffer->host = addr->host;
-    buffer->updated = false;
+    client->udpDataIdx = udpClientData.size();
     udpClientData.push_back(buffer);
     udpClients.push_back(client);
   }
@@ -700,10 +795,26 @@ bool NetManager::bindUDPSocket (UDPsocket sock, int channel, IPaddress *addr) {
   return ret;
 }
 
+/**
+ * @brief Unbind a bound socket channel.
+ *
+ * @param sock The socket upon which the channel is bound.
+ * @param channel The channel to be unbound.
+ */
 void NetManager::unbindUDPSocket(UDPsocket sock, int channel) {
   SDLNet_UDP_Unbind(sock, channel);
 }
 
+/**
+ * @brief Send a single message to a single target via TCP.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_TCP_Send call. One
+ * socketed target will receive one copy of the given message.
+ * @param sock The target's socket.
+ * @param data The data to send.
+ * @param len The length of the data.
+ * @return True on success, false on failure.
+ */
 bool NetManager::sendTCP(TCPsocket sock, const void *data, int len) {
   bool ret = true;
 
@@ -719,6 +830,17 @@ bool NetManager::sendTCP(TCPsocket sock, const void *data, int len) {
   return ret;
 }
 
+/**
+ * @brief Send a single message to a single target via UDP.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_UDP_Send call. One
+ * channel-bound target \e may receive one copy of the given message. No
+ * guarantees are given by UDP, and I have coded no guarantees here, yet.
+ * @param sock The target's socket.
+ * @param channel The target's specific, bound channel.
+ * @param pack The SDL-formatted UDP packet to send.
+ * @return True on success, false on failure.
+ */
 bool NetManager::sendUDP(UDPsocket sock, int channel, UDPpacket *pack) {
   bool ret = true;
 
@@ -734,6 +856,15 @@ bool NetManager::sendUDP(UDPsocket sock, int channel, UDPpacket *pack) {
   return ret;
 }
 
+/**
+ * @brief Receive a single message from a single target via TCP.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_TCP_Recv call.
+ * @param sock The target's socket.
+ * @param data The destination buffer for the received data.
+ * @param maxlen The maximum length of data to copy to the destination buffer.
+ * @return True on success, false on failure.
+ */
 bool NetManager::recvTCP(TCPsocket sock, void *data, int maxlen) {
   bool ret = true;
 
@@ -749,6 +880,14 @@ bool NetManager::recvTCP(TCPsocket sock, void *data, int maxlen) {
   return ret;
 }
 
+/**
+ * @brief Receive a message from a random channel on a UDP socket.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_UDP_Recv call.
+ * @param sock The target's socket.
+ * @param data The SDL-formatted destination buffer for the received data.
+ * @return True on success, false on failure.
+ */
 bool NetManager::recvUDP(UDPsocket sock, UDPpacket *pack) {
   bool ret = true;
   int result;
@@ -771,6 +910,15 @@ bool NetManager::recvUDP(UDPsocket sock, UDPpacket *pack) {
   return ret;
 }
 
+/**
+ * @brief Send n packets from a packet vector using the specified socket.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_UDP_SendV call.
+ * @param sock The target socket.
+ * @param packetV The SDL-formatted UDP packet vector.
+ * @param npackets The number of packets to send from the packet vector.
+ * @return True on success, false on failure.
+ */
 bool NetManager::sendUDPV(UDPsocket sock, UDPpacket **packetV, int npackets) {
   bool ret = true;
 
@@ -786,8 +934,15 @@ bool NetManager::sendUDPV(UDPsocket sock, UDPpacket **packetV, int npackets) {
   return ret;
 }
 
-bool NetManager::recvUDPV(UDPsocket sock, UDPpacket **packetV) {
-  bool ret = true;
+/**
+ * @brief Receive up to len(packetV) packets from all channels on a socket.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_UDP_RecvV call.
+ * @param sock The target socket.
+ * @param packetV The SDL-formatted UDP packet vector.
+ * @return True on success, false on failure.
+ */
+int NetManager::recvUDPV(UDPsocket sock, UDPpacket **packetV) {
   int result;
 
   if (statusCheck(NET_UDP_BOUND))
@@ -796,8 +951,6 @@ bool NetManager::recvUDPV(UDPsocket sock, UDPpacket **packetV) {
   result  = SDLNet_UDP_RecvV(sock, packetV);
 
   if (result < 1) {
-    ret = false;
-
     if (result < 0) {
       std::cout << "SDL_net: Failed to receive UDP data." << std::endl;
       std::cout << SDLNet_GetError() << std::endl;
@@ -805,9 +958,15 @@ bool NetManager::recvUDPV(UDPsocket sock, UDPpacket **packetV) {
       std::cout << "NetManager: No packets received." << std::endl;
   }
 
-  return ret;
+  return result;
 }
 
+/**
+ * @brief Close a TCP socket.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_TCP_Close call.
+ * @param sock The socket to be closed.
+ */
 void NetManager::closeTCP(TCPsocket sock) {
   SDLNet_TCP_Close(sock);
   clearFlags(NET_TCP_ACCEPT | NET_TCP_OPEN);
@@ -817,6 +976,12 @@ void NetManager::closeTCP(TCPsocket sock) {
     close();
 }
 
+/**
+ * @brief Close a UDP socket.
+ *
+ * A state-bound and error-checked wrapper of the SDLNet_UDP_Close call.
+ * @param sock The socket to be closed.
+ */
 void NetManager::closeUDP(UDPsocket sock) {
   SDLNet_UDP_Close(sock);
   clearFlags(NET_UDP_BOUND | NET_UDP_OPEN);
@@ -826,6 +991,11 @@ void NetManager::closeUDP(UDPsocket sock) {
     close();
 }
 
+/**
+ * @brief Look up an IPaddress by a TCP socket.
+ * @param sock The socket to query.
+ * @return The IPaddress of the socket's associated host.
+ */
 IPaddress* NetManager::queryTCPAddress(TCPsocket sock) {
   IPaddress *remote;
 
@@ -840,6 +1010,12 @@ IPaddress* NetManager::queryTCPAddress(TCPsocket sock) {
   return remote;
 }
 
+/**
+ * @brief Look up an IPaddress by a UDP socket and channel.
+ * @param sock The socket hosting the channel.
+ * @param channel The target-to-query's bound channel.
+ * @return The IPaddress of the channel's associated host.
+ */
 IPaddress* NetManager::queryUDPAddress(UDPsocket sock, int channel) {
   IPaddress *remote;
 
@@ -853,6 +1029,44 @@ IPaddress* NetManager::queryUDPAddress(UDPsocket sock, int channel) {
   return remote;
 }
 
+/**
+ * @brief Allocate and fill a UDPpacket with the given buffer of len bytes.
+ *
+ * If allocUDPpacket() returns NULL, this function will also return NULL, but
+ * without repeating the warning. Make sure to handle NULL packet pointers.
+ * @param buf The source buffer.
+ * @param len The length of bytes to copy.
+ * @return An allocated and filled UDPpacket.
+ */
+UDPpacket* NetManager::craftUDPpacket(const char *buf, int len) {
+  UDPpacket *packet;
+  int header;
+
+  if (len > MESSAGE_LENGTH) {
+    std::cout << "NetManager: Message length exceeds current maximum." << std::endl;
+    return NULL;
+  }
+
+  packet = allocUDPpacket(MESSAGE_LENGTH);
+
+  if (!packet)
+    return NULL;
+
+  packet->len = len;
+  memcpy(packet->data, buf, len);
+
+  return packet;
+}
+
+/**
+ * @brief Allocate a new SDL-formatted UDP packet.
+ *
+ * This is simply an error-checked wrapper of SDLNet_AllocPacket. This should
+ * only be called for empty packets receiving data. Packets to be sent should
+ * use craftUDPpacket().
+ * @param size The number of bytes to allot the buffer portion of the packet.
+ * @return The new, empty UDPpacket.
+ */
 UDPpacket* NetManager::allocUDPpacket(int size) {
   UDPpacket *newPacket;
 
@@ -865,6 +1079,30 @@ UDPpacket* NetManager::allocUDPpacket(int size) {
   return newPacket;
 }
 
+/**
+ * @brief Allocate a new, empty, and SDL-formatted UDP packet vector.
+ * @param count The number of packets to allocate.
+ * @param size The size of each packet.
+ * @return The new, empty UDP packet vector.
+ */
+UDPpacket** NetManager::allocUDPpacketV(int count, int size) {
+  UDPpacket **newPacket;
+
+  newPacket = SDLNet_AllocPacketV(count, size);
+
+  if (!newPacket) {
+    std::cout << "SDL_net: Unable to allocate UDP packet." << std::endl;
+  }
+
+  return newPacket;
+}
+
+/**
+ * @brief Resize a UDP packet.
+ * @param pack The packet to resize.
+ * @param size The new size of the packet.
+ * @return True on success, false on failure.
+ */
 bool NetManager::resizeUDPpacket(UDPpacket *pack, int size) {
   bool ret = true;
   int newSize;
@@ -880,31 +1118,88 @@ bool NetManager::resizeUDPpacket(UDPpacket *pack, int size) {
   return ret;
 }
 
+/**
+ * @brief Free a UDP packet.
+ * @param pack The packet to be freed.
+ */
 void NetManager::freeUDPpacket(UDPpacket **pack) {
   SDLNet_FreePacket(*pack);
   *pack = NULL;
 }
 
+/**
+ * @brief Free a UDP packet vector.
+ * @param pack The packet vector to be freed.
+ */
+void NetManager::freeUDPpacketV(UDPpacket ***pack) {
+  SDLNet_FreePacketV(*pack);
+  *pack = NULL;
+}
+
+/**
+ * @brief Parse incoming data from server or clients for NetManager-specific
+ * commands.
+ *
+ * Much of the data and operations will be handled by OGRE et al., but some
+ * commands might be better suited for internal processing...
+ * @param data The data buffer to be processed.
+ */
+void NetManager::processPacketData(const char *data) {
+  /* TODO Scan copied data to check for messages to NetManager.
+   *
+   * Establish clear signals for 'drop client' et al.  How much will
+   * be handled by the OGRE application, and how much will be taken
+   * care of internally (by NetManager)?
+   *
+   */
+}
+
+/**
+ * @brief Register a TCP socket to be watched for activity by SDL.
+ * @param sock The socket to watch.
+ */
 void NetManager::watchSocket(TCPsocket *sock) {
   if (-1 == SDLNet_TCP_AddSocket(socketNursery, sock))
     std::cout << "SDL_net: Unable to add socket to SocketSet." << std::endl;
 }
 
+/**
+ * @brief Register a UDP socket to be watched for activity by SDL.
+ * @param sock The socket to watch.
+ */
 void NetManager::watchSocket(UDPsocket *sock) {
   if (-1 == SDLNet_UDP_AddSocket(socketNursery, sock))
     std::cout << "SDL_net: Unable to add socket to SocketSet." << std::endl;
 }
 
+/**
+ * @brief Remove a TCP socket from SDL's observation.
+ * @param sock The socket to remove.
+ */
 void NetManager::unwatchSocket(TCPsocket *sock) {
   if (-1 == SDLNet_TCP_DelSocket(socketNursery, sock))
     std::cout << "SDL_net: Unable to remove socket from SocketSet." << std::endl;
 }
 
+/**
+ * @brief Remove a UDP socket from SDL's observation.
+ * @param sock The socket to remove.
+ */
 void NetManager::unwatchSocket(UDPsocket *sock) {
   if (-1 == SDLNet_UDP_DelSocket(socketNursery, sock))
     std::cout << "SDL_net: Unable to remove socket from SocketSet." << std::endl;
 }
 
+/**
+ * @brief Ask SDL to scan registered sockets once or for a given time period.
+ *
+ * This function will automatically handle all activity discovered on TCP and
+ * UDP. New clients will be added, and data will be copied to the ClientData
+ * buffers. <em>The user should check the ClientData arrays after calling this
+ * function!<em>  Excess or unwanted clients will be rejected.
+ * @param timeout_ms The time to scan in milliseconds. 0 is instant.
+ * @return True if there was activity, false if there was not.
+ */
 bool NetManager::checkSockets(Uint32 timeout_ms) {
   int nReadySockets;
   bool ret = false;
@@ -956,68 +1251,86 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
   return ret;
 }
 
+/**
+ * @brief Receives a TCP socket and copies its data to the ClientData buffer.
+ * @param clientIdx An index into the tcpClients vector.
+ */
 void NetManager::readTCPSocket(int clientIdx) {
   bool result;
   int idxSocket;
-  MessageBuffer *mBuf;
+  ClientData *cData;
 
   if (clientIdx == SOCKET_SELF) {
     idxSocket = netServer.tcpSocketIdx;
-    mBuf = (netStatus & NET_SERVER) ? tcpClientData[netServer.tcpClientIdx] : &serverData;
+    cData = &tcpServerData;
   } else {
     idxSocket = tcpClients[clientIdx]->tcpSocketIdx;
-    mBuf = tcpClientData[clientIdx];
+    cData = tcpClientData[tcpClients[clientIdx]->tcpDataIdx];
   }
 
-  result = recvTCP(tcpSockets[idxSocket], mBuf->output,
+  result = recvTCP(tcpSockets[idxSocket], cData->output,
       MESSAGE_LENGTH);
 
   if (!result) {
     std::cout << "NetManager: Failed to read TCP packet from tcpClient " << clientIdx
         << "." << std::endl;
   } else
-    mBuf->updated = true;
+    cData->updated = true;
 }
 
+/**
+ * @brief Receives a UDP socket and copies its data to the ClientData buffer.
+ *
+ * Because many channels may be bound to a single socket, the vector versions
+ * of UDPpacket and udpRecv are used to gather anything and everything that
+ * might arrive in one sweep of the socket. New clients are added, if possible.
+ * @param clientIdx An index into the udpClients vector.
+ */
 void NetManager::readUDPSocket(int clientIdx) {
-  UDPpacket *buf;
-  bool result;
-  int idxSocket;
-  MessageBuffer *mBuf;
+  UDPpacket **bufV;
+  ClientData *cData;
+  int idxSocket, numPackets,  i;
 
-  if (clientIdx == SOCKET_SELF) {
-    idxSocket = netServer.udpSocketIdx;
-    mBuf = (netStatus & NET_SERVER) ? udpClientData[netServer.udpClientIdx] : &serverData;
-  } else {
-    idxSocket = udpClients[clientIdx]->udpSocketIdx;
-    mBuf = udpClientData[clientIdx];
-  }
+  idxSocket = (clientIdx == SOCKET_SELF) ? netServer.udpSocketIdx :
+      udpClients[clientIdx]->udpSocketIdx;
 
-  buf = allocUDPpacket(MESSAGE_LENGTH);
+  bufV = allocUDPpacketV(MESSAGE_COUNT, MESSAGE_LENGTH);
 
-  result = recvUDP(udpSockets[idxSocket], buf);
+  numPackets = recvUDPV(udpSockets[idxSocket], bufV);
 
-  if (!result) {
+  if (numPackets < 0) {
     std::cout << "NetManager: Failed to read UDP packet from udpClient "
         << clientIdx << "." << std::endl;
   } else {
-    if (buf->channel == -1) {
-      if (netStatus & NET_CLIENT) {
-        std::cout << "NetManager: Unrecognized packet source." << std::endl;
-      } else if (!addUDPClient(buf)) {
-        std::cout << "NetManager: Unable to add new UDP client." << std::endl;
+    for (i = 0; i < numPackets; i++) {
+      if (bufV[i]->channel == -1) {
+        if (netStatus & NET_CLIENT) {
+          std::cout << "NetManager: Unrecognized packet source." << std::endl;
+        } else {
+          if (!addUDPClient(bufV[i]))
+            std::cout << "NetManager: Unable to add new UDP client." << std::endl;
+        }
+      } else {
+        if ((cData = lookupUDPClient(bufV[i]->address.host, false))) {
+          memcpy(cData->output, bufV[i]->data, bufV[i]->len);
+          cData->updated = true;
+        } else
+          std::cout << "NetManager: Failed to look up existing client." << std::cout;
       }
-    } else {
-      memcpy(mBuf->output, buf->data, buf->len);
-      mBuf->updated = true;
     }
   }
 
-  if (buf)
-    freeUDPpacket(&buf);
+  if (bufV)
+    freeUDPpacketV(&bufV);
 }
 
+/**
+ * @brief Adds a client discovered on a UDP socket.
+ * @param pack The originating packet of the prospective client.
+ * @return True on success, false on failure.
+ */
 bool NetManager::addUDPClient(UDPpacket *pack) {
+  ClientData *cData;
   bool ret = true;
   int socketIdx;
 
@@ -1035,12 +1348,24 @@ bool NetManager::addUDPClient(UDPpacket *pack) {
       rejectUDPClient(pack);
       return false;
     }
-  } else
-    bindUDPSocket(udpSockets.back(), nextUDPChannel++, &pack->address);
+  }
+
+  bindUDPSocket(udpSockets.back(), nextUDPChannel++, &pack->address);
+
+  if ((cData = lookupUDPClient(pack->address.host, false))) {
+    memcpy(cData->output, pack->data, pack->len);
+    cData->updated = true;
+  }
 
   return ret;
 }
 
+/**
+ * @brief Rejects a prospective TCP client.
+ *
+ * Sends a rejection message and closes the socket.
+ * @param sock The rejectee's associated socket.
+ */
 void NetManager::rejectTCPClient(TCPsocket sock) {
   std::string deny = "Server full; connection rejected.";
   sendTCP(sock, deny.c_str(), deny.length());
@@ -1048,6 +1373,12 @@ void NetManager::rejectTCPClient(TCPsocket sock) {
   closeTCP(sock);
 }
 
+/**
+ * @brief Rejects a prospective UDP client.
+ *
+ * Sends a rejection message and frees the socket.
+ * @param sock The rejectee's associated packet.
+ */
 void NetManager::rejectUDPClient(UDPpacket *pack) {
   UDPpacket *packet;
 
@@ -1061,37 +1392,59 @@ void NetManager::rejectUDPClient(UDPpacket *pack) {
   freeUDPpacket(&packet);
 }
 
-UDPpacket* NetManager::craftUDPpacket(const char *buf, int len) {
-  UDPpacket *packet;
-  int header;
+/**
+ * @brief Look up a TCP client by IPaddress host.
+ *
+ * IPaddress host is available from almost anywhere, and this conversion to a
+ * ConnectionInfo pointer allows access to the correct index into all of the
+ * client's associated vectors. If the ConnectionInfo does not already exist,
+ * the boolean allows a new instance to be returned instead.
+ * @param host The IPaddress host.
+ * @param create True to return a new ConnectionInfo instance, false for NULL.
+ * @return Either the correct CInfo, a new CInfo, or null.
+ */
+ConnectionInfo* NetManager::lookupTCPClient(Uint32 host, bool create) {
+  std::vector<ConnectionInfo *>::iterator it;
 
-  if (len > MESSAGE_LENGTH) {
-    std::cout << "NetManager: Message length exceeds current maximum." << std::endl;
-    return NULL;
+  for (it = tcpClients.begin(); it != tcpClients.end(); it++) {
+    if ((*it)->address.host == host)
+      return *it;
   }
+  if (netServer.address.host == host)
+    return &netServer;
 
-  packet = allocUDPpacket(MESSAGE_LENGTH);
-
-  if (!packet)
-    return NULL;
-
-  packet->len = len;
-  memcpy(packet->data, buf, len);
-
-  return packet;
+  return create ? new ConnectionInfo() : NULL;
 }
 
-void NetManager::processPacketData(const char *data) {
-  /* TODO Scan copied data to check for messages to NetManager.
-   *
-   * Establish clear signals for 'drop client' et al.  How much will
-   * be handled by the OGRE application, and how much will be taken
-   * care of internally (by NetManager)?
-   *
-   */
+/**
+ * @brief Look up a UDP client by IPaddress host.
+ *
+ * IPaddress host is available from almost anywhere, and this conversion to a
+ * ConnectionInfo pointer allows access to the correct index into all of the
+ * client's associated vectors. If the ConnectionInfo does not already exist,
+ * the boolean allows a new instance to be returned instead.
+ * @param host The IPaddress host.
+ * @param create True to return a new ConnectionInfo instance, false for NULL.
+ * @return Either the correct CInfo, a new CInfo, or null.
+ */
+ConnectionInfo* NetManager::lookupUDPClient(Uint32 host, bool create) {
+  std::vector<ConnectionInfo *>::iterator it;
 
+  for (it = udpClients.begin(); it != udpClients.end(); it++) {
+    if ((*it)->address.host == host)
+      return *it;
+  }
+  if (netServer.address.host == host)
+    return &netServer;
+
+  return create ? new ConnectionInfo() : NULL;
 }
 
+/**
+ * @brief A simple state (bit flag) check for early returns and error prints.
+ * @param state The state to be checked.
+ * @return True if state is lacking, false if state achieved.
+ */
 bool NetManager::statusCheck(int state) {
   bool ret = (state != (netStatus & state));
 
@@ -1101,6 +1454,12 @@ bool NetManager::statusCheck(int state) {
   return ret;
 }
 
+/**
+ * @brief A compound state (bit flag) check for early returns and error prints.
+ * @param state1 The first state to be checked.
+ * @param state2 The second state to be checked.
+ * @return True if either state is lacking, false if both states achieved.
+ */
 bool NetManager::statusCheck(int state1, int state2) {
   bool ret1 = (state1 != (netStatus & state1));
   bool ret2 = (state2 != (netStatus & state2));
@@ -1112,11 +1471,21 @@ bool NetManager::statusCheck(int state1, int state2) {
   return result;
 }
 
+/**
+ * @brief Clears a given bit mask of state flags from the internal netStatus.
+ * @param state The flags to clear.
+ */
 void NetManager::clearFlags(int state) {
   int mask = netStatus & state;
   netStatus ^= mask;
 }
 
+/**
+ * @brief Clears all vectors and resets all data members to default values.
+ *
+ * After this function completes, the instance will be considered INITIALIZED
+ * and may launch a new server or client.
+ */
 void NetManager::resetManager() {
   int i;
 

@@ -1,0 +1,93 @@
+.TH "Ball" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Ball \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Ball\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBall\fP (btRigidBody *rB, Ogre::SceneNode *n, int x, int y, int z)"
+.br
+.ti -1c
+.RI "virtual \fB~Ball\fP ()"
+.br
+.ti -1c
+.RI "void \fBenableGravity\fP ()"
+.br
+.ti -1c
+.RI "void \fBlockPosition\fP ()"
+.br
+.ti -1c
+.RI "void \fBunlockPosition\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPosition\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "void \fBapplyForce\fP (double dx, double dy, double dz)"
+.br
+.ti -1c
+.RI "bool \fBcheckRigidBody\fP (btRigidBody *ptr)"
+.br
+.ti -1c
+.RI "btRigidBody * \fBgetRigidBody\fP ()"
+.br
+.ti -1c
+.RI "Ogre::SceneNode * \fBgetSceneNode\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "Ogre::SceneNode * \fBnode\fP"
+.br
+.ti -1c
+.RI "btScalar \fBmass\fP"
+.br
+.ti -1c
+.RI "btRigidBody * \fBrigidBody\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Ball::Ball (btRigidBody *rB, Ogre::SceneNode *n, intx, inty, intz)\fC [inline]\fP"
+
+.SS "Ball::~Ball ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Ball::applyForce (doubledx, doubledy, doubledz)\fC [inline]\fP"
+
+.SS "bool Ball::checkRigidBody (btRigidBody *ptr)\fC [inline]\fP"
+
+.SS "void Ball::enableGravity ()\fC [inline]\fP"
+
+.SS "btRigidBody* Ball::getRigidBody ()\fC [inline]\fP"
+
+.SS "Ogre::SceneNode* Ball::getSceneNode ()\fC [inline]\fP"
+
+.SS "void Ball::lockPosition ()\fC [inline]\fP"
+
+.SS "void Ball::setPosition (intx, inty, intz)\fC [inline]\fP"
+
+.SS "void Ball::unlockPosition ()\fC [inline]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "btScalar Ball::mass\fC [private]\fP"
+
+.SS "Ogre::SceneNode* Ball::node\fC [private]\fP"
+
+.SS "btRigidBody* Ball::rigidBody\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

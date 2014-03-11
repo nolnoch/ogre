@@ -4,10 +4,17 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>My Project: Member List</title>
+<title>OGRE Game: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -22,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">OGRE Game
    </div>
   </td>
  </tr>
@@ -65,12 +72,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classTileSimulator.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,7 +101,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">TileSimulator Member List</div>  </div>
@@ -88,29 +109,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classTileSimulator.html">TileSimulator</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>addBallShape</b>(Ogre::SceneNode *n, int r) (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>addBallShape</b>(Ogre::SceneNode *n, int r, int m) (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>addBoxShape</b>(Ogre::SceneNode *n, int x, int y, int z) (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>addPlaneBound</b>(int x, int y, int z, int d) (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>addTile</b>(Ogre::SceneNode *n, int x, int y, int z) (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>createBounds</b>(const int offset) (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getDynamicsWorld</b>() (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>initSimulator</b>() (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>registerCallback</b>(void *func) (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>sceneMgr</b> (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setBallManager</b>(BallManager *bM) (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>simulateStep</b>(double delay) (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Simulator</b>() (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>tileCallback</b>(btManifoldPoint &amp;cp, void *body0, void *body1) (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>TileSimulator</b>() (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Simulator</b>() (defined in <a class="el" href="classSimulator.html">Simulator</a>)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~TileSimulator</b>() (defined in <a class="el" href="classTileSimulator.html">TileSimulator</a>)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTileSimulator.html#ad1db783060a2d2af92e614042cab0767">addBallShape</a>(Ogre::SceneNode *n, int r)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classSimulator.html#a22d1288cafb5a83c3c5c95fc5b58efbb">Simulator::addBallShape</a>(Ogre::SceneNode *n, int r, int m)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classSimulator.html#ad9e33ec74ec54f65077de1c8dc28fd5b">addBoxShape</a>(Ogre::SceneNode *n, int x, int y, int z)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classSimulator.html#a043aa34df7dbd5046ed56407ba9b44de">addPlaneBound</a>(int x, int y, int z, int d)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTileSimulator.html#af5290bb6e13b9c9dccced4d275b7cac7">addTile</a>(Ogre::SceneNode *n, int x, int y, int z)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classSimulator.html#a38c86f8f73f8aa4dac13555692c67eca">createBounds</a>(const int offset)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classSimulator.html#a5da2770c96b18da1e5ce575b4652528e">getDynamicsWorld</a>()</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classTileSimulator.html#a952f2493568e720f37331119084f9dd3">initSimulator</a>()</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classSimulator.html#ad35820d07373b65deef417c8c18b7d13">registerCallback</a>(void *func)</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classSimulator.html#ab5748cbb0ec57cd4922d2e88766fb8a2">sceneMgr</a></td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTileSimulator.html#a6c90f655f570b9c80642007c6c97f1aa">setBallManager</a>(BallManager *bM)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classTileSimulator.html#ae944141e1051b803018d6c4af47f2df9">simulateStep</a>(double delay)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classSimulator.html#a031573bfcfe2e0f5c9539bcc1c7fc5d9">Simulator</a>()</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classTileSimulator.html#abe7afed920e22486c1a19e162a601bca">tileCallback</a>(btManifoldPoint &amp;cp, void *body0, void *body1)</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTileSimulator.html#a58a909f82bf80b79e892f0057366af92">tiles</a></td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classTileSimulator.html#a96ab96c82b83362c9249c30afd9c8a73">TileSimulator</a>()</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classSimulator.html#a0f49aa04f42060a785adf77346b9de9f">~Simulator</a>()</td><td class="entry"><a class="el" href="classSimulator.html">Simulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classTileSimulator.html#ae888f7fa1ad73f5876edd70719e99e5c">~TileSimulator</a>()</td><td class="entry"><a class="el" href="classTileSimulator.html">TileSimulator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 10 2014 21:27:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
 </body>
 </html>

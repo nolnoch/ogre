@@ -17,41 +17,45 @@
 #include <SDL/SDL_net.h>
 
 
+
+/* ****************************************************************************
+ * Global Structures
+ */
 /**
- * @typedef int Protocol
- * Makes it clearer to users that though an integer is being used, it should be
- * chosen from the PROTOCOL_XXX enumerated values.
+ * Allows integer manipulations of flags but signals to users that the value
+ * should be chosen from the PROTOCOL_XXX enumerated values.
  */
 typedef int Protocol;
 
 /**
- * @enum Protocol
  * These should be used whenever type Protocol is requested.
  */
 enum {
-  PROTOCOL_TCP        = 1024,                           //!< PROTOCOL_TCP
-  PROTOCOL_UDP        = 2048,                           //!< PROTOCOL_UDP
-  PROTOCOL_ALL        = PROTOCOL_TCP | PROTOCOL_UDP     //!< PROTOCOL_ALL
+  PROTOCOL_TCP        = 1024,                           //!< TCP bit flag.
+  PROTOCOL_UDP        = 2048,                           //!< UDP bit flag.
+  PROTOCOL_ALL        = PROTOCOL_TCP | PROTOCOL_UDP     //!< Combined bit flag.
 };
+
+struct ConnectionInfo;
 
 /**
- * @struct MessageBuffer
  * External bins to which all received data is output and from which data may
  * be automatically pulled as input.
- * @var host Objective, standardized identifier to differentiate bin owners.
- * @var updated True to indicate new network output before buffer is read.
- * @b The @b user @b is @b responsible @b for @b clearing @b this @b flag
- * @b when @b data @b is @b retrieved!
- * @var output Received network data to be handled by user.
- * @var input Target for automatic data pulls by NetManager on client updates.
+ * \b The \b user \b is \b responsible \b for \b clearing \b the \b updated
+ * \b flag \b when \b data \b is \b retrieved!
  */
-struct MessageBuffer {
-  Uint32 host;
-  bool updated;
-  char output[128];
-  char input[128];
+struct ClientData {
+  Uint32 host;              //!< To differentiate bin owners.
+  bool updated;             //!< Indicates new network output.
+  char output[128];         //!< Received network data.
+  char input[128];          //!< Target for automatic data pulls.
 };
 
+
+
+/* ****************************************************************************
+ * Class
+ */
 /**
  * @class NetManager
  * @brief Networking wrapper for SDL_net for use in OGRE or similar engines.
@@ -63,19 +67,36 @@ struct MessageBuffer {
  * data is tunneled to public bins which must or may be checked by users.
  * Data to be sent may be specified or else is retrieved by default from the
  * established MessageBuffer bin.
+ *
+ * I've worked rather hard to eliminate dependency on Ogre3d-specific code so
+ * that any application using SDL_net can plug this in and go.  I've done my
+ * best to make it robust in that it supports simultaneous TCP and UDP and
+ * makes use of some fairly automatic routines.
+ *
+ * Ideally, it should support more dynamic buffer sizing and the option to use
+ * multiple ports.  The memory footprint doesn't seem to bad as of yet, but I'm
+ * not done with it.
+ *
+ * Error and state checking was a priority in this implementation, so problems
+ * of that sort should be minimal if not non-existent.  That said, If any code
+ * errors are encountered, please fix them or contact me at the header address.
  */
 class NetManager {
 public:
+  /* ***************************************************
+   * Public
+   */
+
   NetManager();
   virtual ~NetManager();
 
-  //! Required initialization functions. @{
+  /** @name Required Initialization Functions.                      *////@{
   bool initNetManager();
   void addNetworkInfo(Protocol protocol = PROTOCOL_ALL,
       Uint16 port = 0, const char *host = NULL);
   //! @}
 
-  //! Control functions. @{
+  /** @name Control Functions.                                      *////@{
   bool startServer();
   bool startClient();
   bool scanForActivity();
@@ -83,13 +104,13 @@ public:
   void messageClients(char *buf = NULL, int len = 0);
   void messageServer(char *buf = NULL, int len = 0);
   void messageClient(Protocol protocol, int clientDataIdx, char *buf, int len);
-  void dropClient(Protocol protocol, int clientDataIdx);
+  void dropClient(Protocol protocol, Uint32 host);
   void stopServer(Protocol protocol = PROTOCOL_ALL);
   void stopClient(Protocol protocol = PROTOCOL_ALL);
   void close();
   //! @}
 
-  /* Getters and setters. *////@{
+  /** @name Getters & Setters.                                      *////@{
   bool addProtocol(Protocol protocol);
   void setProtocol(Protocol protocol);
   void setPort(Uint16 port);
@@ -99,15 +120,20 @@ public:
   std::string getHost();
   //! @}
 
+  ClientData tcpServerData;
+  ClientData udpServerData;
+  std::vector<ClientData *> tcpClientData;
+  std::vector<ClientData *> udpClientData;
 
-  // Public data members.
-  MessageBuffer serverData;
-  std::vector<MessageBuffer *> tcpClientData;
-  std::vector<MessageBuffer *> udpClientData;
 
 private:
+  /* ***************************************************
+   * Private
+   */
+
   enum {
-    // State management flag bits.
+    ///@{
+    /** State management flag bits. */
     NET_UNINITIALIZED   = 0,
     NET_INITIALIZED     = 1,
     NET_WAITING         = 2,
@@ -116,11 +142,11 @@ private:
     NET_UDP_OPEN        = 16,
     NET_TCP_ACCEPT      = 32,
     NET_UDP_BOUND       = 64,
-
     NET_SERVER          = 256,
     NET_CLIENT          = 512,
-
-    // Constants.
+    ///@}
+    ///@{
+    /** Constants.                  */
     PORT_RANDOM         = 0,
     PORT_DEFAULT        = 51215,
     CHANNEL_AUTO        = -1,
@@ -130,10 +156,12 @@ private:
     SOCKET_UDP_MAX      = 12,
     SOCKET_ALL_MAX      = SOCKET_TCP_MAX + SOCKET_UDP_MAX,
     SOCKET_SELF         = SOCKET_ALL_MAX + 1,
+    MESSAGE_COUNT       = 10,
     MESSAGE_LENGTH      = 128
+    ///@}
   };
 
-  // Direct SDL call wrappers with state and error checking.
+  /** @name Direct SDL Call Wrappers                                *////@{
   bool openServer(Protocol protocol, Uint16 port);
   bool openClient(Protocol protocol, std::string addr, Uint16 port);
   bool openTCPSocket (IPaddress *addr);
@@ -146,20 +174,24 @@ private:
   bool recvTCP(TCPsocket sock, void *data, int maxlen);
   bool recvUDP(UDPsocket sock, UDPpacket *pack);
   bool sendUDPV(UDPsocket sock, UDPpacket **packetV, int npackets);
-  bool recvUDPV(UDPsocket sock, UDPpacket **packetV);
+  int recvUDPV(UDPsocket sock, UDPpacket **packetV);
   void closeTCP(TCPsocket sock);
   void closeUDP(UDPsocket sock);
   IPaddress* queryTCPAddress(TCPsocket sock);
   IPaddress* queryUDPAddress(UDPsocket sock, int channel);
+  //! @}
 
-  // UDP packet management.
+  /** @name  UDP Packet Management.                                  *////@{
   UDPpacket* craftUDPpacket(const char *buf, int len);
   UDPpacket* allocUDPpacket(int size);
+  UDPpacket** allocUDPpacketV(int count, int size);
   bool resizeUDPpacket(UDPpacket *pack, int size);
   void freeUDPpacket(UDPpacket **pack);
+  void freeUDPpacketV(UDPpacket ***pack);
   void processPacketData(const char *data);
+  //! @}
 
-  // Socket registration and handling.
+  /** @name Socket Registration & Handling.                          *////@{
   void watchSocket(TCPsocket *sock);
   void watchSocket(UDPsocket *sock);
   void unwatchSocket(TCPsocket *sock);
@@ -167,32 +199,39 @@ private:
   bool checkSockets(Uint32 timeout_ms);
   void readTCPSocket(int clientIdx);
   void readUDPSocket(int clientIdx);
+  //! @}
 
-  // Client addition and rejection.
+  /** @name Client Manipulation.                                     *////@{
   bool addUDPClient(UDPpacket *pack);
   void rejectTCPClient(TCPsocket sock);
   void rejectUDPClient(UDPpacket *pack);
+  ConnectionInfo* lookupTCPClient(Uint32 host, bool create);
+  ConnectionInfo* lookupUDPClient(Uint32 host, bool create);
+  //! @}
 
-  // Helper functions.
+  /** @name Helper Functions.                                        *////@{
   bool statusCheck(int state);
   bool statusCheck(int state1, int state2);
   void clearFlags(int state);
   void resetManager();
+  //! @}
 
-  // Internal state information packaging.
+  /**
+   * Internal state information packaging.
+   */
   struct ConnectionInfo {
-    int tcpSocketIdx;
-    int udpSocketIdx;
-    int tcpClientIdx;
-    int udpClientIdx;
-    int udpChannel;
+    short tcpSocketIdx;
+    short udpSocketIdx;
+    short tcpClientIdx;
+    short udpClientIdx;
+    short tcpDataIdx;
+    short udpDataIdx;
+    short udpChannel;
     Protocol protocols;
     IPaddress address;
-    std::string hostname;
   };
 
 
-  // Private data members.
   bool forceClientRandomUDP;
   bool acceptNewClients;
   int nextUDPChannel;

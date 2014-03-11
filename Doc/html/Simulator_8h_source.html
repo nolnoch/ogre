@@ -4,10 +4,17 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>My Project: Simulator.h Source File</title>
+<title>OGRE Game: Simulator.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -22,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">OGRE Game
    </div>
   </td>
  </tr>
@@ -64,12 +71,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('Simulator_8h_source.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Simulator.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="Simulator_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">-----------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Filename:    Simulator.h</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">-----------------------------------------------------------------------------</span></div>
@@ -97,46 +118,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;OgreSceneManager.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;OgreMotionState.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="OgreMotionState_8h.html">OgreMotionState.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> ContactProcessedCallback gContactProcessedCallback;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> ContactProcessedCallback <a class="code" href="Simulator_8h.html#a894efabc230046dd9f6fc1cb0e3c9edc">gContactProcessedCallback</a>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classSimulator.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSimulator.html">Simulator</a> {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  Ogre::SceneManager* sceneMgr;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classSimulator.html#ab5748cbb0ec57cd4922d2e88766fb8a2">   23</a></span>&#160;  Ogre::SceneManager* <a class="code" href="classSimulator.html#ab5748cbb0ec57cd4922d2e88766fb8a2">sceneMgr</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="classSimulator.html">Simulator</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classSimulator.html">Simulator</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="classSimulator.html#a031573bfcfe2e0f5c9539bcc1c7fc5d9">Simulator</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classSimulator.html#a0f49aa04f42060a785adf77346b9de9f">~Simulator</a>();</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> initSimulator();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> createBounds(<span class="keyword">const</span> <span class="keywordtype">int</span> offset);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> registerCallback(<span class="keywordtype">void</span> * func);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> simulateStep(<span class="keywordtype">double</span> delay);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> addPlaneBound(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> d);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">virtual</span> btRigidBody* addBoxShape(Ogre::SceneNode* n, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">virtual</span> btRigidBody* addBallShape(Ogre::SceneNode* n, <span class="keywordtype">int</span> r, <span class="keywordtype">int</span> m);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSimulator.html#a6c0dd9962f860e93925a3e4ae8809655">initSimulator</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSimulator.html#a38c86f8f73f8aa4dac13555692c67eca">createBounds</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> offset);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSimulator.html#ad35820d07373b65deef417c8c18b7d13">registerCallback</a>(<span class="keywordtype">void</span> * func);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classSimulator.html#a6abe3ee406909ab7f03930dfa537a42b">simulateStep</a>(<span class="keywordtype">double</span> delay);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSimulator.html#a043aa34df7dbd5046ed56407ba9b44de">addPlaneBound</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> d);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">virtual</span> btRigidBody* <a class="code" href="classSimulator.html#ad9e33ec74ec54f65077de1c8dc28fd5b">addBoxShape</a>(Ogre::SceneNode* n, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">virtual</span> btRigidBody* <a class="code" href="classSimulator.html#a22d1288cafb5a83c3c5c95fc5b58efbb">addBallShape</a>(Ogre::SceneNode* n, <span class="keywordtype">int</span> r, <span class="keywordtype">int</span> m);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">virtual</span> btDiscreteDynamicsWorld&amp; getDynamicsWorld();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">virtual</span> btDiscreteDynamicsWorld&amp; <a class="code" href="classSimulator.html#a5da2770c96b18da1e5ce575b4652528e">getDynamicsWorld</a>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  btDefaultCollisionConfiguration* collisionConfiguration;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  btBroadphaseInterface* broadphase;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  btCollisionDispatcher* dispatcher;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  btSequentialImpulseConstraintSolver* solver;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  btDiscreteDynamicsWorld* dynamicsWorld;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classSimulator.html#ae128785e92d1f8cac37b7008ff6c0cf7">   39</a></span>&#160;  btDefaultCollisionConfiguration* <a class="code" href="classSimulator.html#ae128785e92d1f8cac37b7008ff6c0cf7">collisionConfiguration</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classSimulator.html#abf328154008d231ebff7a42a58791e5b">   40</a></span>&#160;  btBroadphaseInterface* <a class="code" href="classSimulator.html#abf328154008d231ebff7a42a58791e5b">broadphase</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classSimulator.html#af84d7e00b1ee5bcade4e40847eea3fd4">   41</a></span>&#160;  btCollisionDispatcher* <a class="code" href="classSimulator.html#af84d7e00b1ee5bcade4e40847eea3fd4">dispatcher</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classSimulator.html#a2da0915f8ba415561a147b72659ef17a">   42</a></span>&#160;  btSequentialImpulseConstraintSolver* <a class="code" href="classSimulator.html#a2da0915f8ba415561a147b72659ef17a">solver</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classSimulator.html#a287d65d2e05fece22279b022886292ef">   43</a></span>&#160;  btDiscreteDynamicsWorld* <a class="code" href="classSimulator.html#a287d65d2e05fece22279b022886292ef">dynamicsWorld</a>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  std::vector&lt;btCollisionShape *&gt; collisionShapes;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classSimulator.html#a76a5f71d55dd786819ab1240e5a45791">   45</a></span>&#160;  std::vector&lt;btCollisionShape *&gt; <a class="code" href="classSimulator.html#a76a5f71d55dd786819ab1240e5a45791">collisionShapes</a>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif // #ifndef __Simulator_h_</span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 10 2014 21:27:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="Simulator_8h.html">Simulator.h</a></li>
+    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
 </body>
 </html>

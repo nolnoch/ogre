@@ -1,0 +1,232 @@
+.TH "BaseGame" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BaseGame \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <BaseGame\&.h>\fP
+.PP
+Inherits FrameListener, WindowEventListener, KeyListener, MultiTouchListener, and SdkTrayListener\&.
+.PP
+Inherited by \fBTileGame\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBaseGame\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~BaseGame\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBgo\fP (void)"
+.br
+.ti -1c
+.RI "virtual bool \fBframeRenderingQueued\fP (const Ogre::FrameEvent &evt)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBsetup\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBconfigure\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBchooseSceneManager\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateCamera\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateFrameListener\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateScene\fP (void)=0"
+.br
+.ti -1c
+.RI "virtual void \fBdestroyScene\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateViewports\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBsetupResources\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBcreateResourceListener\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBloadResources\fP (void)"
+.br
+.ti -1c
+.RI "virtual bool \fBkeyPressed\fP (const OIS::KeyEvent &arg)"
+.br
+.ti -1c
+.RI "virtual bool \fBkeyReleased\fP (const OIS::KeyEvent &arg)"
+.br
+.ti -1c
+.RI "virtual bool \fBmouseMoved\fP (const OIS::MouseEvent &arg)"
+.br
+.ti -1c
+.RI "virtual bool \fBmousePressed\fP (const OIS::MouseEvent &arg, OIS::MouseButtonID id)"
+.br
+.ti -1c
+.RI "virtual bool \fBmouseReleased\fP (const OIS::MouseEvent &arg, OIS::MouseButtonID id)"
+.br
+.ti -1c
+.RI "virtual void \fBwindowResized\fP (Ogre::RenderWindow *rw)"
+.br
+.ti -1c
+.RI "virtual void \fBwindowClosed\fP (Ogre::RenderWindow *rw)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Ogre::Root * \fBmRoot\fP"
+.br
+.ti -1c
+.RI "Ogre::Camera * \fBmCamera\fP"
+.br
+.ti -1c
+.RI "Ogre::SceneManager * \fBmSceneMgr\fP"
+.br
+.ti -1c
+.RI "Ogre::RenderWindow * \fBmWindow\fP"
+.br
+.ti -1c
+.RI "Ogre::String \fBmResourcesCfg\fP"
+.br
+.ti -1c
+.RI "Ogre::String \fBmPluginsCfg\fP"
+.br
+.ti -1c
+.RI "OgreBites::SdkTrayManager * \fBmTrayMgr\fP"
+.br
+.ti -1c
+.RI "OgreBites::SdkCameraMan * \fBmCameraMan\fP"
+.br
+.ti -1c
+.RI "OgreBites::ParamsPanel * \fBmDetailsPanel\fP"
+.br
+.ti -1c
+.RI "bool \fBmCursorWasVisible\fP"
+.br
+.ti -1c
+.RI "bool \fBmShutDown\fP"
+.br
+.ti -1c
+.RI "OIS::InputManager * \fBmInputManager\fP"
+.br
+.ti -1c
+.RI "OIS::Mouse * \fBmMouse\fP"
+.br
+.ti -1c
+.RI "OIS::Keyboard * \fBmKeyboard\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BaseGame::BaseGame (void)"
+
+.SS "BaseGame::~BaseGame (void)\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void BaseGame::chooseSceneManager (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "bool BaseGame::configure (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileGame\fP\&.
+.SS "void BaseGame::createCamera (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileGame\fP\&.
+.SS "void BaseGame::createFrameListener (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileGame\fP\&.
+.SS "void BaseGame::createResourceListener (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "virtual void BaseGame::createScene (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBTileGame\fP\&.
+.SS "void BaseGame::createViewports (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "void BaseGame::destroyScene (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "bool BaseGame::frameRenderingQueued (const Ogre::FrameEvent &evt)\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileGame\fP\&.
+.SS "void BaseGame::go (void)\fC [virtual]\fP"
+
+.SS "bool BaseGame::keyPressed (const OIS::KeyEvent &arg)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileGame\fP\&.
+.SS "bool BaseGame::keyReleased (const OIS::KeyEvent &arg)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "void BaseGame::loadResources (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "bool BaseGame::mouseMoved (const OIS::MouseEvent &arg)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "bool BaseGame::mousePressed (const OIS::MouseEvent &arg, OIS::MouseButtonIDid)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileGame\fP\&.
+.SS "bool BaseGame::mouseReleased (const OIS::MouseEvent &arg, OIS::MouseButtonIDid)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBTileGame\fP\&.
+.SS "bool BaseGame::setup (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "void BaseGame::setupResources (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "void BaseGame::windowClosed (Ogre::RenderWindow *rw)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "void BaseGame::windowResized (Ogre::RenderWindow *rw)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "Ogre::Camera* BaseGame::mCamera\fC [protected]\fP"
+
+.SS "OgreBites::SdkCameraMan* BaseGame::mCameraMan\fC [protected]\fP"
+
+.SS "bool BaseGame::mCursorWasVisible\fC [protected]\fP"
+
+.SS "OgreBites::ParamsPanel* BaseGame::mDetailsPanel\fC [protected]\fP"
+
+.SS "OIS::InputManager* BaseGame::mInputManager\fC [protected]\fP"
+
+.SS "OIS::Keyboard* BaseGame::mKeyboard\fC [protected]\fP"
+
+.SS "OIS::Mouse* BaseGame::mMouse\fC [protected]\fP"
+
+.SS "Ogre::String BaseGame::mPluginsCfg\fC [protected]\fP"
+
+.SS "Ogre::String BaseGame::mResourcesCfg\fC [protected]\fP"
+
+.SS "Ogre::Root* BaseGame::mRoot\fC [protected]\fP"
+
+.SS "Ogre::SceneManager* BaseGame::mSceneMgr\fC [protected]\fP"
+
+.SS "bool BaseGame::mShutDown\fC [protected]\fP"
+
+.SS "OgreBites::SdkTrayManager* BaseGame::mTrayMgr\fC [protected]\fP"
+
+.SS "Ogre::RenderWindow* BaseGame::mWindow\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

@@ -1,0 +1,122 @@
+.TH "BallManager" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BallManager \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <BallManager\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBallManager\fP (\fBTileSimulator\fP *\fBsim\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~BallManager\fP ()"
+.br
+.ti -1c
+.RI "bool \fBinitBallManager\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetGlobalBall\fP (\fBBall\fP *ball)"
+.br
+.ti -1c
+.RI "\fBBall\fP * \fBaddBall\fP (Ogre::SceneNode *n, int x, int y, int z, int r)"
+.br
+.ti -1c
+.RI "\fBBall\fP * \fBaddMainBall\fP (Ogre::SceneNode *n, int x, int y, int z, int r)"
+.br
+.ti -1c
+.RI "void \fBenableGravity\fP ()"
+.br
+.ti -1c
+.RI "void \fBremoveBall\fP (\fBBall\fP *rmBall)"
+.br
+.ti -1c
+.RI "void \fBremoveGlobalBall\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisGlobalBall\fP ()"
+.br
+.ti -1c
+.RI "void \fBclearBalls\fP ()"
+.br
+.ti -1c
+.RI "\fBTileSimulator\fP * \fBgetSimulator\fP ()"
+.br
+.ti -1c
+.RI "bool \fBcheckCollisions\fP (btRigidBody *aTile, void *body0, void *body1)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBBall\fP * \fBglobalBall\fP"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBBall\fP * > \fBballList\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBBall\fP * > \fBmainBalls\fP"
+.br
+.ti -1c
+.RI "\fBTileSimulator\fP * \fBsim\fP"
+.br
+.ti -1c
+.RI "bool \fBglobalBallActive\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BallManager::BallManager (\fBTileSimulator\fP *sim)"
+
+.SS "BallManager::~BallManager ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBBall\fP * BallManager::addBall (Ogre::SceneNode *n, intx, inty, intz, intr)"
+
+.SS "\fBBall\fP * BallManager::addMainBall (Ogre::SceneNode *n, intx, inty, intz, intr)"
+
+.SS "bool BallManager::checkCollisions (btRigidBody *aTile, void *body0, void *body1)"
+
+.SS "void BallManager::clearBalls ()"
+
+.SS "void BallManager::enableGravity ()"
+
+.SS "\fBTileSimulator\fP * BallManager::getSimulator ()"
+
+.SS "bool BallManager::initBallManager ()"
+
+.SS "bool BallManager::isGlobalBall ()"
+
+.SS "void BallManager::removeBall (\fBBall\fP *rmBall)"
+
+.SS "void BallManager::removeGlobalBall ()"
+
+.SS "void BallManager::setGlobalBall (\fBBall\fP *ball)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBBall\fP *> BallManager::ballList\fC [private]\fP"
+
+.SS "\fBBall\fP* BallManager::globalBall"
+
+.SS "bool BallManager::globalBallActive\fC [private]\fP"
+
+.SS "std::vector<\fBBall\fP *> BallManager::mainBalls\fC [private]\fP"
+
+.SS "\fBTileSimulator\fP* BallManager::sim\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

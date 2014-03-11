@@ -4,10 +4,17 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>My Project: NetManager.h Source File</title>
+<title>OGRE Game: NetManager.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -22,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">OGRE Game
    </div>
   </td>
  </tr>
@@ -64,12 +71,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('NetManager_8h_source.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,167 +115,186 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;SDL/SDL_net.h&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93">   32</a></span>&#160;  <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93" title="PROTOCOL_TCP.">PROTOCOL_TCP</a>        = 1024,                           </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7">   33</a></span>&#160;  <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7" title="PROTOCOL_UDP.">PROTOCOL_UDP</a>        = 2048,                           </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">   34</a></span>&#160;  <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="PROTOCOL_ALL.">PROTOCOL_ALL</a>        = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93" title="PROTOCOL_TCP.">PROTOCOL_TCP</a> | <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7" title="PROTOCOL_UDP.">PROTOCOL_UDP</a>     </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="structMessageBuffer.html">   48</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structMessageBuffer.html">MessageBuffer</a> {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Uint32 host;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">bool</span> updated;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">char</span> output[128];</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">char</span> input[128];</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/* ****************************************************************************</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * Global Structures</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">   28</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93">   34</a></span>&#160;  <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93" title="TCP bit flag.">PROTOCOL_TCP</a>        = 1024,                           </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7">   35</a></span>&#160;  <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7" title="UDP bit flag.">PROTOCOL_UDP</a>        = 2048,                           </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">   36</a></span>&#160;  <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="Combined bit flag.">PROTOCOL_ALL</a>        = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93" title="TCP bit flag.">PROTOCOL_TCP</a> | <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7" title="UDP bit flag.">PROTOCOL_UDP</a>     </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">struct </span>ConnectionInfo;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="structClientData.html">   47</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structClientData.html">ClientData</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="structClientData.html#a80800ab1be736113d72ae920e2c206e5">   48</a></span>&#160;  Uint32 <a class="code" href="structClientData.html#a80800ab1be736113d72ae920e2c206e5" title="To differentiate bin owners.">host</a>;              </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="structClientData.html#ac6a00858b77772f89feb087a87004176">   49</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structClientData.html#ac6a00858b77772f89feb087a87004176" title="Indicates new network output.">updated</a>;             </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="structClientData.html#a9a56c37fe0e6a3dea909ab4efc7090b7">   50</a></span>&#160;  <span class="keywordtype">char</span> <a class="code" href="structClientData.html#a9a56c37fe0e6a3dea909ab4efc7090b7" title="Received network data.">output</a>[128];         </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="structClientData.html#ac35c0f10a3464940d3cc884b384ff2f4">   51</a></span>&#160;  <span class="keywordtype">char</span> <a class="code" href="structClientData.html#ac35c0f10a3464940d3cc884b384ff2f4" title="Target for automatic data pulls.">input</a>[128];          </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classNetManager.html">   67</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNetManager.html" title="Networking wrapper for SDL_net for use in OGRE or similar engines.">NetManager</a> {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classNetManager.html#ac5af765a0303c73966c2e0743458f888">NetManager</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classNetManager.html#a862eebc070ee07d7a9e18f62da051604">~NetManager</a>();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a9dcef281247169fc624d771f2a4ae01a" title="Required initialization functions.">initNetManager</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a8ec0340fa0eeffc5f4344589069e6058" title="Required to set TCP/UDP, port, and optional host.">addNetworkInfo</a>(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="PROTOCOL_ALL.">PROTOCOL_ALL</a>,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      Uint16 port = 0, <span class="keyword">const</span> <span class="keywordtype">char</span> *host = NULL);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ae6a832ed2ede5f5407b75abc584269b8" title="Control functions.">startServer</a>();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ab5b2ae812e37abbb03be5b604e34a60d" title="Launch a client on given/default port over given/default protocols and connected to given host server...">startClient</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a934ebfd8ca745a95263ba92c2ccf2b19" title="Scan once for activity on all TCP and UDP sockets.">scanForActivity</a>();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ac213dda2e72556e53450d5b1e2057f22" title="Poll for activity on all TCP and UDP sockets.">pollForActivity</a>(Uint32 timeout_ms = 5000);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#aff24a0ce0cf8a4a2450a70ad17e7ec76" title="Send a single message to all clients.">messageClients</a>(<span class="keywordtype">char</span> *buf = NULL, <span class="keywordtype">int</span> len = 0);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#aa4f48b88474c3f6a4422b3a94c07b674" title="Send a single message to the server.">messageServer</a>(<span class="keywordtype">char</span> *buf = NULL, <span class="keywordtype">int</span> len = 0);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0" title="Send a single message to a single client over a single protocol.">messageClient</a>(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol, <span class="keywordtype">int</span> clientDataIdx, <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a9e6957843f9cf05afbc38e23b9d46f52" title="Removes an established client from a running server.">dropClient</a>(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol, <span class="keywordtype">int</span> clientDataIdx);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#ac4d5cdb235713bea820ab5275a0da920" title="Shut down the running server on any or all protocols.">stopServer</a>(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="PROTOCOL_ALL.">PROTOCOL_ALL</a>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a55eb599a64a651d890641a256ab4db9a" title="Shut down the running client on any or all protocols.">stopClient</a>(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="PROTOCOL_ALL.">PROTOCOL_ALL</a>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#afcf943b4ab1e94ba479f4e3f0cd9da2e" title="Terminates all running servers or clients on all protocols.">close</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="comment">/* Getters and setters. */</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a444e45de6f806c4c27d7f9915f898329" title="Allows the dynamic addition of TCP or UDP to a running server or client.">addProtocol</a>(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#af370ee8343ff23121c0c2f180c34dabc" title="Set the protocol manually.">setProtocol</a>(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#af5db4e28511390202b17f6d711f42d83" title="Set the port manually.">setPort</a>(Uint16 port);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a47666370887fee3b2fa27ae7bff1065f">setHost</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *host);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  Uint32 <a class="code" href="classNetManager.html#a3c941b21b356a166f2ebbdd522dc792d" title="Returns the currently active protocols.">getProtocol</a>();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  Uint16 <a class="code" href="classNetManager.html#aa6924b10800963247c025870b1116a62" title="Returns the currently active port.">getPort</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  std::string <a class="code" href="classNetManager.html#abe7cce0db370157b36d4e16a903a0581" title="Returns the currently active host.">getHost</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="comment">// Public data members.</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="structMessageBuffer.html">MessageBuffer</a> serverData;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  std::vector&lt;MessageBuffer *&gt; tcpClientData;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  std::vector&lt;MessageBuffer *&gt; udpClientData;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// State management flag bits.</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    NET_UNINITIALIZED   = 0,</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    NET_INITIALIZED     = 1,</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    NET_WAITING         = 2,</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    NET_RESOLVED        = 4,</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    NET_TCP_OPEN        = 8,</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    NET_UDP_OPEN        = 16,</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    NET_TCP_ACCEPT      = 32,</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    NET_UDP_BOUND       = 64,</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    NET_SERVER          = 256,</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    NET_CLIENT          = 512,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/* ****************************************************************************</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * Class</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="classNetManager.html">   84</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNetManager.html" title="Networking wrapper for SDL_net for use in OGRE or similar engines.">NetManager</a> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">/* ***************************************************</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">   * Public</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="classNetManager.html#ac5af765a0303c73966c2e0743458f888">NetManager</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classNetManager.html#a862eebc070ee07d7a9e18f62da051604">~NetManager</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a9dcef281247169fc624d771f2a4ae01a">initNetManager</a>();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a8ec0340fa0eeffc5f4344589069e6058" title="Required to set TCP/UDP, port, and optional host.">addNetworkInfo</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="Combined bit flag.">PROTOCOL_ALL</a>,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      Uint16 port = 0, <span class="keyword">const</span> <span class="keywordtype">char</span> *host = NULL);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ae6a832ed2ede5f5407b75abc584269b8" title="Launch a server to listen on given/default port over given/default protocols.">startServer</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ab5b2ae812e37abbb03be5b604e34a60d" title="Launch a client on given/default port over given/default protocols and connected to given host server...">startClient</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a934ebfd8ca745a95263ba92c2ccf2b19" title="Scan once for activity on all TCP and UDP sockets.">scanForActivity</a>();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ac213dda2e72556e53450d5b1e2057f22" title="Poll for activity on all TCP and UDP sockets.">pollForActivity</a>(Uint32 timeout_ms = 5000);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#aff24a0ce0cf8a4a2450a70ad17e7ec76" title="Send a single message to all clients.">messageClients</a>(<span class="keywordtype">char</span> *buf = NULL, <span class="keywordtype">int</span> len = 0);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#aa4f48b88474c3f6a4422b3a94c07b674" title="Send a single message to the server.">messageServer</a>(<span class="keywordtype">char</span> *buf = NULL, <span class="keywordtype">int</span> len = 0);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0" title="Send a single message to a single client over a single protocol.">messageClient</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, <span class="keywordtype">int</span> clientDataIdx, <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#aaff19e422dc790a6ac4bad9aefc5749f" title="Removes an established client from a running server.">dropClient</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, Uint32 host);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#ac4d5cdb235713bea820ab5275a0da920" title="Shut down the running server on any or all protocols.">stopServer</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="Combined bit flag.">PROTOCOL_ALL</a>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a55eb599a64a651d890641a256ab4db9a" title="Shut down the running client on any or all protocols.">stopClient</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol = <a class="code" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43" title="Combined bit flag.">PROTOCOL_ALL</a>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#afcf943b4ab1e94ba479f4e3f0cd9da2e" title="Terminates all running servers or clients on all protocols.">close</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a444e45de6f806c4c27d7f9915f898329" title="Allows the dynamic addition of TCP or UDP to a running server or client.">addProtocol</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#af370ee8343ff23121c0c2f180c34dabc" title="Set the protocol manually.">setProtocol</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#af5db4e28511390202b17f6d711f42d83" title="Set the port manually.">setPort</a>(Uint16 port);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a47666370887fee3b2fa27ae7bff1065f">setHost</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *host);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  Uint32 <a class="code" href="classNetManager.html#a3c941b21b356a166f2ebbdd522dc792d" title="Returns the currently active protocols.">getProtocol</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  Uint16 <a class="code" href="classNetManager.html#aa6924b10800963247c025870b1116a62" title="Returns the currently active port.">getPort</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  std::string <a class="code" href="classNetManager.html#abe7cce0db370157b36d4e16a903a0581" title="Returns the currently active host.">getHost</a>();</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// Constants.</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    PORT_RANDOM         = 0,</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    PORT_DEFAULT        = 51215,</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    CHANNEL_AUTO        = -1,</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    CHANNEL_DEFAULT     = 1,</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    CHANNEL_MAX         = 2,    <span class="comment">// Low for testing. Set to 6+ before launch.</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    SOCKET_TCP_MAX      = 12,</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    SOCKET_UDP_MAX      = 12,</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    SOCKET_ALL_MAX      = SOCKET_TCP_MAX + SOCKET_UDP_MAX,</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    SOCKET_SELF         = SOCKET_ALL_MAX + 1,</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    MESSAGE_LENGTH      = 128</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  };</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="comment">// Direct SDL call wrappers with state and error checking.</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordtype">bool</span> openServer(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol, Uint16 port);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordtype">bool</span> openClient(<a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocol, std::string addr, Uint16 port);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordtype">bool</span> openTCPSocket (IPaddress *addr);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordtype">bool</span> openUDPSocket (Uint16 port);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordtype">bool</span> acceptTCP(TCPsocket server);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordtype">bool</span> bindUDPSocket (UDPsocket sock, <span class="keywordtype">int</span> channel, IPaddress *addr);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordtype">void</span> unbindUDPSocket(UDPsocket sock, <span class="keywordtype">int</span> channel);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">bool</span> sendTCP(TCPsocket sock, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">bool</span> sendUDP(UDPsocket sock, <span class="keywordtype">int</span> channel, UDPpacket *pack);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">bool</span> recvTCP(TCPsocket sock, <span class="keywordtype">void</span> *data, <span class="keywordtype">int</span> maxlen);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordtype">bool</span> recvUDP(UDPsocket sock, UDPpacket *pack);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordtype">bool</span> sendUDPV(UDPsocket sock, UDPpacket **packetV, <span class="keywordtype">int</span> npackets);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordtype">bool</span> recvUDPV(UDPsocket sock, UDPpacket **packetV);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">void</span> closeTCP(TCPsocket sock);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keywordtype">void</span> closeUDP(UDPsocket sock);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  IPaddress* queryTCPAddress(TCPsocket sock);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  IPaddress* queryUDPAddress(UDPsocket sock, <span class="keywordtype">int</span> channel);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="comment">// UDP packet management.</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  UDPpacket* craftUDPpacket(<span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  UDPpacket* allocUDPpacket(<span class="keywordtype">int</span> size);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">bool</span> resizeUDPpacket(UDPpacket *pack, <span class="keywordtype">int</span> size);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordtype">void</span> freeUDPpacket(UDPpacket **pack);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">void</span> processPacketData(<span class="keyword">const</span> <span class="keywordtype">char</span> *data);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="comment">// Socket registration and handling.</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">void</span> watchSocket(TCPsocket *sock);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">void</span> watchSocket(UDPsocket *sock);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">void</span> unwatchSocket(TCPsocket *sock);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordtype">void</span> unwatchSocket(UDPsocket *sock);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordtype">bool</span> checkSockets(Uint32 timeout_ms);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordtype">void</span> readTCPSocket(<span class="keywordtype">int</span> clientIdx);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keywordtype">void</span> readUDPSocket(<span class="keywordtype">int</span> clientIdx);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="comment">// Client addition and rejection.</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keywordtype">bool</span> addUDPClient(UDPpacket *pack);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordtype">void</span> rejectTCPClient(TCPsocket sock);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">void</span> rejectUDPClient(UDPpacket *pack);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="comment">// Helper functions.</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keywordtype">bool</span> statusCheck(<span class="keywordtype">int</span> state);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordtype">bool</span> statusCheck(<span class="keywordtype">int</span> state1, <span class="keywordtype">int</span> state2);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordtype">void</span> clearFlags(<span class="keywordtype">int</span> state);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keywordtype">void</span> resetManager();</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="comment">// Internal state information packaging.</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keyword">struct </span>ConnectionInfo {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordtype">int</span> tcpSocketIdx;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordtype">int</span> udpSocketIdx;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordtype">int</span> tcpClientIdx;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">int</span> udpClientIdx;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordtype">int</span> udpChannel;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> protocols;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    IPaddress address;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    std::string hostname;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  };</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="classNetManager.html#abca113fc17fe6251fa7ac5a1179ade3c">  123</a></span>&#160;  <a class="code" href="structClientData.html">ClientData</a> <a class="code" href="classNetManager.html#abca113fc17fe6251fa7ac5a1179ade3c">tcpServerData</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="classNetManager.html#a7db7fafed8aabbe088aa12c731842efd">  124</a></span>&#160;  <a class="code" href="structClientData.html">ClientData</a> <a class="code" href="classNetManager.html#a7db7fafed8aabbe088aa12c731842efd">udpServerData</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="classNetManager.html#a3303746abef87426cab748c92d58006b">  125</a></span>&#160;  std::vector&lt;ClientData *&gt; <a class="code" href="classNetManager.html#a3303746abef87426cab748c92d58006b">tcpClientData</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="classNetManager.html#a687d70a4e199c2cbe4cb955a2cd94b04">  126</a></span>&#160;  std::vector&lt;ClientData *&gt; <a class="code" href="classNetManager.html#a687d70a4e199c2cbe4cb955a2cd94b04">udpClientData</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="comment">/* ***************************************************</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">   * Private</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a085fbd45e5fb462d8915fb2f17a35d64">  137</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a085fbd45e5fb462d8915fb2f17a35d64">NET_UNINITIALIZED</a>   = 0,</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af26a6f0d447b04ad2cc57c080bc2e1f3">  138</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af26a6f0d447b04ad2cc57c080bc2e1f3">NET_INITIALIZED</a>     = 1,</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a54b1df101b4fb30060d47353aa98a473">  139</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a54b1df101b4fb30060d47353aa98a473">NET_WAITING</a>         = 2,</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a802372821b378b5a23ec6d6a7366012b">  140</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a802372821b378b5a23ec6d6a7366012b">NET_RESOLVED</a>        = 4,</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a66cd628d6f8ec81c2c1e185e47566fa6">  141</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a66cd628d6f8ec81c2c1e185e47566fa6">NET_TCP_OPEN</a>        = 8,</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a6513a7709f76f9e5213f2145da8f83b8">  142</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a6513a7709f76f9e5213f2145da8f83b8">NET_UDP_OPEN</a>        = 16,</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c">  143</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c">NET_TCP_ACCEPT</a>      = 32,</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5">  144</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5">NET_UDP_BOUND</a>       = 64,</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c">  145</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c">NET_SERVER</a>          = 256,</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca">  146</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca">NET_CLIENT</a>          = 512,</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077">  150</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077">PORT_RANDOM</a>         = 0,</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a72a392298efc424fdf2da299ef41992e">  151</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a72a392298efc424fdf2da299ef41992e">PORT_DEFAULT</a>        = 51215,</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a5150417e381f56f6b4f892317b81ee46">  152</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a5150417e381f56f6b4f892317b81ee46">CHANNEL_AUTO</a>        = -1,</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7df70a5b62f06128f0ff3f384a0b92bc">  153</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a7df70a5b62f06128f0ff3f384a0b92bc">CHANNEL_DEFAULT</a>     = 1,</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a">  154</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a">CHANNEL_MAX</a>         = 2,    <span class="comment">// Low for testing. Set to 6+ before launch.</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c">  155</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c">SOCKET_TCP_MAX</a>      = 12,</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459">  156</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459">SOCKET_UDP_MAX</a>      = 12,</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb">  157</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb">SOCKET_ALL_MAX</a>      = <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c">SOCKET_TCP_MAX</a> + <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459">SOCKET_UDP_MAX</a>,</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a2e78ae862faab68c752a933ad0910c34">  158</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a2e78ae862faab68c752a933ad0910c34">SOCKET_SELF</a>         = <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb">SOCKET_ALL_MAX</a> + 1,</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a9b24c9f03c8e0db705a1b43cc83fb35e">  159</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a9b24c9f03c8e0db705a1b43cc83fb35e">MESSAGE_COUNT</a>       = 10,</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e">  160</a></span>&#160;    <a class="code" href="classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e">MESSAGE_LENGTH</a>      = 128</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  };</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a369f5008d70957c6b3b60d59e453fbee" title="Launch a single server socket on a single protocol.">openServer</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, Uint16 port);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#afe3450801d77b53d99b38c8249f3d955" title="Launch a single client socket on a single protocol bound to hostname.">openClient</a>(<a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, std::string addr, Uint16 port);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a90fc6dc31d71fa956486243814352ac5" title="Opens a TCP socket.">openTCPSocket</a> (IPaddress *addr);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ae49266e3057c0f17cc3c89591cbcf3e1" title="Opens a UDP socket.">openUDPSocket</a> (Uint16 port);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#add2b0af706ca9c983f58c308f0577e5c" title="Finalizes a listening socket for a server.">acceptTCP</a>(TCPsocket server);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a6c0ceb2fde3906dfe2e8d8527aae7a00" title="Bind a UDP channel to a socket.">bindUDPSocket</a> (UDPsocket sock, <span class="keywordtype">int</span> channel, IPaddress *addr);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a1f4271094319fd56f3d20151ca51234b" title="Unbind a bound socket channel.">unbindUDPSocket</a>(UDPsocket sock, <span class="keywordtype">int</span> channel);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a570a5ce0bdbac7433fe650db23006509" title="Send a single message to a single target via TCP.">sendTCP</a>(TCPsocket sock, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ac0b9e9d77a598b14b6b30dc160ead039" title="Send a single message to a single target via UDP.">sendUDP</a>(UDPsocket sock, <span class="keywordtype">int</span> channel, UDPpacket *pack);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#aceb9567e9ca4ca5e09dde53b771e1b59" title="Receive a single message from a single target via TCP.">recvTCP</a>(TCPsocket sock, <span class="keywordtype">void</span> *data, <span class="keywordtype">int</span> maxlen);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a06b0916f8e98d29429cc61d90319174b" title="Receive a message from a random channel on a UDP socket.">recvUDP</a>(UDPsocket sock, UDPpacket *pack);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a5c1d2504835ad09e97cc2fd05ed8f83a" title="Send n packets from a packet vector using the specified socket.">sendUDPV</a>(UDPsocket sock, UDPpacket **packetV, <span class="keywordtype">int</span> npackets);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classNetManager.html#a06220534dd830f880ec24d86a6a86561" title="Receive up to len(packetV) packets from all channels on a socket.">recvUDPV</a>(UDPsocket sock, UDPpacket **packetV);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a675dccdb5b282d0353c6b261d0fb6615" title="Close a TCP socket.">closeTCP</a>(TCPsocket sock);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a40fe0a6c256bc0f2b891aa8715c519f3" title="Close a UDP socket.">closeUDP</a>(UDPsocket sock);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  IPaddress* <a class="code" href="classNetManager.html#abb912b135cb4916dd5bd2943f1ed2467" title="Look up an IPaddress by a TCP socket.">queryTCPAddress</a>(TCPsocket sock);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  IPaddress* <a class="code" href="classNetManager.html#a41f2077bd40f1d210406a07486843104" title="Look up an IPaddress by a UDP socket and channel.">queryUDPAddress</a>(UDPsocket sock, <span class="keywordtype">int</span> channel);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  UDPpacket* <a class="code" href="classNetManager.html#a5e53e36cb5fa09b218326c5a830269f4" title="Allocate and fill a UDPpacket with the given buffer of len bytes.">craftUDPpacket</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  UDPpacket* <a class="code" href="classNetManager.html#a75ce7beb5894c63e3af5e59c4fe67483" title="Allocate a new SDL-formatted UDP packet.">allocUDPpacket</a>(<span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  UDPpacket** <a class="code" href="classNetManager.html#a21e6fdda58659998dbb2e0959efefff5" title="Allocate a new, empty, and SDL-formatted UDP packet vector.">allocUDPpacketV</a>(<span class="keywordtype">int</span> count, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#ae9daa22fe531b7204b004d8136d00e0e" title="Resize a UDP packet.">resizeUDPpacket</a>(UDPpacket *pack, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#af3cc0529a2c40d959bdb624e9f3101c4" title="Free a UDP packet.">freeUDPpacket</a>(UDPpacket **pack);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a4c118ed195c8c3608b2758d6dd5da7ae" title="Free a UDP packet vector.">freeUDPpacketV</a>(UDPpacket ***pack);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a5927d55003a434ec69d8909dffe88575" title="Parse incoming data from server or clients for NetManager-specific commands.">processPacketData</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *data);</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="comment">// Private data members.</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordtype">bool</span> forceClientRandomUDP;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordtype">bool</span> acceptNewClients;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keywordtype">int</span> nextUDPChannel;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordtype">int</span> netStatus;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordtype">int</span> netPort;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <a class="code" href="NetManager_8h.html#ac5a1bd9a1ae33c413bb774e1ac32501c">Protocol</a> netProtocol;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  std::string netHost;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  ConnectionInfo netServer;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  std::vector&lt;ConnectionInfo *&gt; tcpClients;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  std::vector&lt;ConnectionInfo *&gt; udpClients;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  std::vector&lt;TCPsocket&gt; tcpSockets;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  std::vector&lt;UDPsocket&gt; udpSockets;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  SDLNet_SocketSet socketNursery;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;};</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* NETMANAGER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a1d3f54e43abe28d9804d3348bc0eacd8" title="Register a TCP socket to be watched for activity by SDL.">watchSocket</a>(TCPsocket *sock);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a1d3f54e43abe28d9804d3348bc0eacd8" title="Register a TCP socket to be watched for activity by SDL.">watchSocket</a>(UDPsocket *sock);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a74e382ac7ea8b8ce09d11ea43a464385" title="Remove a TCP socket from SDL&#39;s observation.">unwatchSocket</a>(TCPsocket *sock);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a74e382ac7ea8b8ce09d11ea43a464385" title="Remove a TCP socket from SDL&#39;s observation.">unwatchSocket</a>(UDPsocket *sock);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a64ca334dbe3e4b540236aa35dccc96df" title="Ask SDL to scan registered sockets once or for a given time period.">checkSockets</a>(Uint32 timeout_ms);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a80c34b6f1d22a0db77a6f5063e6d31d9" title="Receives a TCP socket and copies its data to the ClientData buffer.">readTCPSocket</a>(<span class="keywordtype">int</span> clientIdx);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a70c29117dc3c7fd49cee0444944a8eee" title="Receives a UDP socket and copies its data to the ClientData buffer.">readUDPSocket</a>(<span class="keywordtype">int</span> clientIdx);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#aff05c27b852dddd386e788bed7fa6d12" title="Adds a client discovered on a UDP socket.">addUDPClient</a>(UDPpacket *pack);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#ab7048f28558dec8046b9536ad6c094f8" title="Rejects a prospective TCP client.">rejectTCPClient</a>(TCPsocket sock);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#aae62147d4b4d06cccd992f30b6669ea5" title="Rejects a prospective UDP client.">rejectUDPClient</a>(UDPpacket *pack);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  ConnectionInfo* <a class="code" href="classNetManager.html#a9e98f4e0367b8811f241cb0038e9b077" title="Look up a TCP client by IPaddress host.">lookupTCPClient</a>(Uint32 host, <span class="keywordtype">bool</span> create);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  ConnectionInfo* <a class="code" href="classNetManager.html#aa9053c3f72215976089b89098935c6d1" title="Look up a UDP client by IPaddress host.">lookupUDPClient</a>(Uint32 host, <span class="keywordtype">bool</span> create);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a8eb8d5a292070e7269133bf1fc1499c4" title="A simple state (bit flag) check for early returns and error prints.">statusCheck</a>(<span class="keywordtype">int</span> state);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a8eb8d5a292070e7269133bf1fc1499c4" title="A simple state (bit flag) check for early returns and error prints.">statusCheck</a>(<span class="keywordtype">int</span> state1, <span class="keywordtype">int</span> state2);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a9f55bdec9b5c974d26354e680aa48d1e" title="Clears a given bit mask of state flags from the internal netStatus.">clearFlags</a>(<span class="keywordtype">int</span> state);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classNetManager.html#a60e404905712ff726f1a4f0e2542d06c" title="Clears all vectors and resets all data members to default values.">resetManager</a>();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html">  222</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> {</div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#adec7ce2d1065f2d024e3d676d80403af">  223</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structNetManager_1_1ConnectionInfo.html#adec7ce2d1065f2d024e3d676d80403af">tcpSocketIdx</a>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#a408661ba927eb5ba51871f97e3c05c0c">  224</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structNetManager_1_1ConnectionInfo.html#a408661ba927eb5ba51871f97e3c05c0c">udpSocketIdx</a>;</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#a390aac4c705a93cce4c52e08b76dd069">  225</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structNetManager_1_1ConnectionInfo.html#a390aac4c705a93cce4c52e08b76dd069">tcpClientIdx</a>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#ac396f741ea17871fb5789160a5083834">  226</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structNetManager_1_1ConnectionInfo.html#ac396f741ea17871fb5789160a5083834">udpClientIdx</a>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#a391068e7350c17c157e3350ca97276e1">  227</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structNetManager_1_1ConnectionInfo.html#a391068e7350c17c157e3350ca97276e1">tcpDataIdx</a>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#a12695be39254f2558420322989c93b81">  228</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structNetManager_1_1ConnectionInfo.html#a12695be39254f2558420322989c93b81">udpDataIdx</a>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#a4fe7f6a4976e2b4c7bb52d14c540f662">  229</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structNetManager_1_1ConnectionInfo.html#a4fe7f6a4976e2b4c7bb52d14c540f662">udpChannel</a>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#a24effad095fc7ed4ab1a774754676be4">  230</a></span>&#160;    <a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> <a class="code" href="structNetManager_1_1ConnectionInfo.html#a24effad095fc7ed4ab1a774754676be4">protocols</a>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="code" href="structNetManager_1_1ConnectionInfo.html#a7783e4a019bdc7a86fa79d0b4fc3c908">  231</a></span>&#160;    IPaddress <a class="code" href="structNetManager_1_1ConnectionInfo.html#a7783e4a019bdc7a86fa79d0b4fc3c908">address</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  };</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="code" href="classNetManager.html#a2e5fedf3835e7c392ccb8b1a23ade8d4">  235</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a2e5fedf3835e7c392ccb8b1a23ade8d4">forceClientRandomUDP</a>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="code" href="classNetManager.html#a67d25cdb043a462709f1d29e071a5ce8">  236</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classNetManager.html#a67d25cdb043a462709f1d29e071a5ce8">acceptNewClients</a>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="code" href="classNetManager.html#a7505bdde90a24b85b6cb1d8d81404c5f">  237</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classNetManager.html#a7505bdde90a24b85b6cb1d8d81404c5f">nextUDPChannel</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="code" href="classNetManager.html#acd2ec7262ea71478204c9007b23d9fff">  238</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classNetManager.html#acd2ec7262ea71478204c9007b23d9fff">netStatus</a>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="code" href="classNetManager.html#a2c14b6cf513287e5fb46a85ddb293201">  239</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classNetManager.html#a2c14b6cf513287e5fb46a85ddb293201">netPort</a>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno"><a class="code" href="classNetManager.html#ac24652f01ef284551be311bfc408be06">  240</a></span>&#160;  <a class="code" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> <a class="code" href="classNetManager.html#ac24652f01ef284551be311bfc408be06">netProtocol</a>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="code" href="classNetManager.html#a2e1aedc97e5fb2f633faeabd2aa266c3">  241</a></span>&#160;  std::string <a class="code" href="classNetManager.html#a2e1aedc97e5fb2f633faeabd2aa266c3">netHost</a>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="code" href="classNetManager.html#a002692771d60d8a4332941f33096fba0">  242</a></span>&#160;  <a class="code" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> <a class="code" href="classNetManager.html#a002692771d60d8a4332941f33096fba0">netServer</a>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="code" href="classNetManager.html#abf9491e48d6bc19eacb148d294613b35">  243</a></span>&#160;  std::vector&lt;ConnectionInfo *&gt; <a class="code" href="classNetManager.html#abf9491e48d6bc19eacb148d294613b35">tcpClients</a>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="code" href="classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d">  244</a></span>&#160;  std::vector&lt;ConnectionInfo *&gt; <a class="code" href="classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d">udpClients</a>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="code" href="classNetManager.html#a2314a1df7704bbc4c96d8d0133d78ee6">  245</a></span>&#160;  std::vector&lt;TCPsocket&gt; <a class="code" href="classNetManager.html#a2314a1df7704bbc4c96d8d0133d78ee6">tcpSockets</a>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="code" href="classNetManager.html#aa99d99b6fa90707d9101c4e1a1835018">  246</a></span>&#160;  std::vector&lt;UDPsocket&gt; <a class="code" href="classNetManager.html#aa99d99b6fa90707d9101c4e1a1835018">udpSockets</a>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="code" href="classNetManager.html#adc43306f83c33feb0fdd74e16c6583bb">  247</a></span>&#160;  SDLNet_SocketSet <a class="code" href="classNetManager.html#adc43306f83c33feb0fdd74e16c6583bb">socketNursery</a>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;};</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* NETMANAGER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 10 2014 21:27:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="NetManager_8h.html">NetManager.h</a></li>
+    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
 </body>
 </html>

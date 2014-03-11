@@ -1,0 +1,55 @@
+.TH "ClientData" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ClientData \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <NetManager\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Uint32 \fBhost\fP"
+.br
+.RI "\fITo differentiate bin owners\&. \fP"
+.ti -1c
+.RI "bool \fBupdated\fP"
+.br
+.RI "\fIIndicates new network output\&. \fP"
+.ti -1c
+.RI "char \fBoutput\fP [128]"
+.br
+.RI "\fIReceived network data\&. \fP"
+.ti -1c
+.RI "char \fBinput\fP [128]"
+.br
+.RI "\fITarget for automatic data pulls\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+External bins to which all received data is output and from which data may be automatically pulled as input\&. \fBThe\fP \fBuser\fP \fBis\fP \fBresponsible\fP \fBfor\fP \fBclearing\fP \fBthe\fP \fBupdated\fP \fBflag\fP \fBwhen\fP \fBdata\fP \fBis\fP \fBretrieved!\fP 
+.SH "Member Data Documentation"
+.PP 
+.SS "Uint32 ClientData::host"
+
+.PP
+To differentiate bin owners\&. 
+.SS "char ClientData::input[128]"
+
+.PP
+Target for automatic data pulls\&. 
+.SS "char ClientData::output[128]"
+
+.PP
+Received network data\&. 
+.SS "bool ClientData::updated"
+
+.PP
+Indicates new network output\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

@@ -1,0 +1,57 @@
+\hypertarget{structClientData}{\section{Client\-Data Struct Reference}
+\label{structClientData}\index{Client\-Data@{Client\-Data}}
+}
+
+
+{\ttfamily \#include $<$Net\-Manager.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Uint32 \hyperlink{structClientData_a80800ab1be736113d72ae920e2c206e5}{host}
+\begin{DoxyCompactList}\small\item\em To differentiate bin owners. \end{DoxyCompactList}\item 
+bool \hyperlink{structClientData_ac6a00858b77772f89feb087a87004176}{updated}
+\begin{DoxyCompactList}\small\item\em Indicates new network output. \end{DoxyCompactList}\item 
+char \hyperlink{structClientData_a9a56c37fe0e6a3dea909ab4efc7090b7}{output} \mbox{[}128\mbox{]}
+\begin{DoxyCompactList}\small\item\em Received network data. \end{DoxyCompactList}\item 
+char \hyperlink{structClientData_ac35c0f10a3464940d3cc884b384ff2f4}{input} \mbox{[}128\mbox{]}
+\begin{DoxyCompactList}\small\item\em Target for automatic data pulls. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+External bins to which all received data is output and from which data may be automatically pulled as input. {\bfseries The} {\bfseries user} {\bfseries is} {\bfseries responsible} {\bfseries for} {\bfseries clearing} {\bfseries the} {\bfseries updated} {\bfseries flag} {\bfseries when} {\bfseries data} {\bfseries is} {\bfseries retrieved!} 
+
+\subsection{Member Data Documentation}
+\hypertarget{structClientData_a80800ab1be736113d72ae920e2c206e5}{\index{Client\-Data@{Client\-Data}!host@{host}}
+\index{host@{host}!ClientData@{Client\-Data}}
+\subsubsection[{host}]{\setlength{\rightskip}{0pt plus 5cm}Uint32 Client\-Data\-::host}}\label{structClientData_a80800ab1be736113d72ae920e2c206e5}
+
+
+To differentiate bin owners. 
+
+\hypertarget{structClientData_ac35c0f10a3464940d3cc884b384ff2f4}{\index{Client\-Data@{Client\-Data}!input@{input}}
+\index{input@{input}!ClientData@{Client\-Data}}
+\subsubsection[{input}]{\setlength{\rightskip}{0pt plus 5cm}char Client\-Data\-::input\mbox{[}128\mbox{]}}}\label{structClientData_ac35c0f10a3464940d3cc884b384ff2f4}
+
+
+Target for automatic data pulls. 
+
+\hypertarget{structClientData_a9a56c37fe0e6a3dea909ab4efc7090b7}{\index{Client\-Data@{Client\-Data}!output@{output}}
+\index{output@{output}!ClientData@{Client\-Data}}
+\subsubsection[{output}]{\setlength{\rightskip}{0pt plus 5cm}char Client\-Data\-::output\mbox{[}128\mbox{]}}}\label{structClientData_a9a56c37fe0e6a3dea909ab4efc7090b7}
+
+
+Received network data. 
+
+\hypertarget{structClientData_ac6a00858b77772f89feb087a87004176}{\index{Client\-Data@{Client\-Data}!updated@{updated}}
+\index{updated@{updated}!ClientData@{Client\-Data}}
+\subsubsection[{updated}]{\setlength{\rightskip}{0pt plus 5cm}bool Client\-Data\-::updated}}\label{structClientData_ac6a00858b77772f89feb087a87004176}
+
+
+Indicates new network output. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{NetManager_8h}{Net\-Manager.\-h}\end{DoxyCompactItemize}
