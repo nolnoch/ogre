@@ -1,0 +1,68 @@
+\hypertarget{NetManager_8h}{\section{Net\-Manager.\-h File Reference}
+\label{NetManager_8h}\index{Net\-Manager.\-h@{Net\-Manager.\-h}}
+}
+
+
+Networking wrapper for S\-D\-L\-\_\-net created for O\-G\-R\-E engine use in C\-S 354\-R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. \begin{DoxyCopyright}{Copyright}
+G\-N\-U Public License. 
+\end{DoxyCopyright}
+ 
+
+
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$S\-D\-L/\-S\-D\-L\-\_\-net.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structMessageBuffer}{Message\-Buffer}
+\item 
+class \hyperlink{classNetManager}{Net\-Manager}
+\begin{DoxyCompactList}\small\item\em Networking wrapper for S\-D\-L\-\_\-net for use in O\-G\-R\-E or similar engines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \hyperlink{NetManager_8h_ac5a1bd9a1ae33c413bb774e1ac32501c}{Protocol}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P} = 1024, 
+\hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P} = 2048, 
+\hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L} = P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P $|$ P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Networking wrapper for S\-D\-L\-\_\-net created for O\-G\-R\-E engine use in C\-S 354\-R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. \begin{DoxyCopyright}{Copyright}
+G\-N\-U Public License. 
+\end{DoxyCopyright}
+\begin{DoxyDate}{Date}
+March 7, 2014 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Wade Burch (\href{mailto:nolnoch@cs.utexas.edu}{\tt nolnoch@cs.\-utexas.\-edu}) 
+\end{DoxyAuthor}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{NetManager_8h_ac5a1bd9a1ae33c413bb774e1ac32501c}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!Protocol@{Protocol}}
+\index{Protocol@{Protocol}!NetManager.h@{Net\-Manager.\-h}}
+\subsubsection[{Protocol}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Protocol}}}\label{NetManager_8h_ac5a1bd9a1ae33c413bb774e1ac32501c}
+Makes it clearer to users that though an integer is being used, it should be chosen from the P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-X\-X\-X enumerated values. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55b}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}}\item[{\em 
+\hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93}
+}]P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P. \index{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P}}\item[{\em 
+\hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7}
+}]P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P. \index{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L}}\item[{\em 
+\hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}
+}]P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L. \end{description}
+\end{Desc}
