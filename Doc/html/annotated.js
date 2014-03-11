@@ -5,6 +5,7 @@ var annotated =
     [ "BaseGame", "classBaseGame.html", "classBaseGame" ],
     [ "CameraMan", "classCameraMan.html", "classCameraMan" ],
     [ "ClientData", "structClientData.html", "structClientData" ],
+    [ "ConnectionInfo", "structConnectionInfo.html", "structConnectionInfo" ],
     [ "NetManager", "classNetManager.html", "classNetManager" ],
     [ "OgreMotionState", "classOgreMotionState.html", "classOgreMotionState" ],
     [ "Simulator", "classSimulator.html", "classSimulator" ],

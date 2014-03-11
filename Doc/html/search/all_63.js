@@ -23,7 +23,7 @@ var searchData=
   ['config_2eh',['config.h',['../config_8h.html',1,'']]],
   ['configure',['configure',['../classBaseGame.html#a3cd0f813571cb0f0aa1dd561b3846cad',1,'BaseGame::configure()'],['../classTileGame.html#a460265525565530c2d5d448a4f10cce1',1,'TileGame::configure()']]],
   ['congratspanel',['congratsPanel',['../classTileGame.html#a5e8deb9eb2903e1787a28699a9e6f346',1,'TileGame']]],
-  ['connectioninfo',['ConnectionInfo',['../structNetManager_1_1ConnectionInfo.html',1,'NetManager']]],
+  ['connectioninfo',['ConnectionInfo',['../structConnectionInfo.html',1,'']]],
   ['craftudppacket',['craftUDPpacket',['../classNetManager.html#a5e53e36cb5fa09b218326c5a830269f4',1,'NetManager']]],
   ['createbounds',['createBounds',['../classSimulator.html#a38c86f8f73f8aa4dac13555692c67eca',1,'Simulator']]],
   ['createcamera',['createCamera',['../classBaseGame.html#a0e5919f248f607ebb4845665604f8aaf',1,'BaseGame::createCamera()'],['../classTileGame.html#af68126fe7750735a9d3850f11cf93354',1,'TileGame::createCamera()']]],

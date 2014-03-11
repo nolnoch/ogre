@@ -11,13 +11,6 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .PP
 .PP
 \fC#include <NetManager\&.h>\fP
-.SS "Classes"
-
-.in +1c
-.ti -1c
-.RI "struct \fBConnectionInfo\fP"
-.br
-.in -1c
 .SS "Public Member Functions"
 
 .in +1c
@@ -66,11 +59,11 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fIPoll for activity on all TCP and UDP sockets\&. \fP"
 .ti -1c
-.RI "void \fBmessageClients\fP (char *buf=NULL, int len=0)"
+.RI "void \fBmessageClients\fP (const char *buf=NULL, int len=0)"
 .br
 .RI "\fISend a single message to all clients\&. \fP"
 .ti -1c
-.RI "void \fBmessageServer\fP (char *buf=NULL, int len=0)"
+.RI "void \fBmessageServer\fP (const char *buf=NULL, int len=0)"
 .br
 .RI "\fISend a single message to the server\&. \fP"
 .ti -1c
@@ -362,6 +355,9 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fIClears a given bit mask of state flags from the internal netStatus\&. \fP"
 .ti -1c
+.RI "void \fBprintError\fP (std::string errorText)"
+.br
+.ti -1c
 .RI "void \fBresetManager\fP ()"
 .br
 .RI "\fIClears all vectors and resets all data members to default values\&. \fP"
@@ -596,7 +592,7 @@ True on success, false on failure\&.
 .SS "bool NetManager::checkSockets (Uint32timeout_ms)\fC [private]\fP"
 
 .PP
-Ask SDL to scan registered sockets once or for a given time period\&. This function will automatically handle all activity discovered on TCP and UDP\&. New clients will be added, and data will be copied to the \fBClientData\fP buffers\&. \fIThe user should check the \fBClientData\fP arrays after calling this function!\fI Excess or unwanted clients will be rejected\&. 
+Ask SDL to scan registered sockets once or for a given time period\&. This function will automatically handle all activity discovered on TCP and UDP\&. New clients will be added, and data will be copied to the \fBClientData\fP buffers\&. \fIThe user should check the \fBClientData\fP arrays after calling this function!\fP Excess or unwanted clients will be rejected\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -608,7 +604,7 @@ Ask SDL to scan registered sockets once or for a given time period\&. This funct
 True if there was activity, false if there was not\&. 
 .RE
 .PP
-\fP\fP
+
 .SS "void NetManager::clearFlags (intstate)\fC [private]\fP"
 
 .PP
@@ -680,7 +676,7 @@ Removes an established client from a running server\&. Must be running as a serv
 .RS 4
 \fIprotocol\fP TCP, UDP, or ALL; given by PROTOCOL_XXX enum value\&. 
 .br
-\fIclientDataIdx\fP Index of the client into the tcp/udp \fBClientData\fP vector\&. 
+\fIhost\fP The IPaddress host of the droppee\&. 
 .RE
 .PP
 
@@ -798,7 +794,7 @@ Send a single message to a single client over a single protocol\&. Must be runni
 .RE
 .PP
 
-.SS "void NetManager::messageClients (char *buf = \fCNULL\fP, intlen = \fC0\fP)"
+.SS "void NetManager::messageClients (const char *buf = \fCNULL\fP, intlen = \fC0\fP)"
 
 .PP
 Send a single message to all clients\&. Must be running as a server to call this function\&. If no arguments are given, it will pull from each client's \fBClientData\fP \fBinput\fP field\&. 
@@ -811,10 +807,10 @@ Send a single message to all clients\&. Must be running as a server to call this
 .RE
 .PP
 
-.SS "void NetManager::messageServer (char *buf = \fCNULL\fP, intlen = \fC0\fP)"
+.SS "void NetManager::messageServer (const char *buf = \fCNULL\fP, intlen = \fC0\fP)"
 
 .PP
-Send a single message to the server\&. Must be running as a client to call this function\&. If no argumetns are given, it will pull from the server's \fBClientData\fP \fBinput\fP field\&. 
+Send a single message to the server\&. Must be running as a client to call this function\&. If no arguments are given, it will pull from the server's \fBClientData\fP \fBinput\fP field\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -928,6 +924,8 @@ True for activity, false for no activity\&.
 .RE
 .PP
 
+.SS "void NetManager::printError (std::stringerrorText)\fC [private]\fP"
+
 .SS "void NetManager::processPacketData (const char *data)\fC [private]\fP"
 
 .PP
@@ -1018,7 +1016,7 @@ Receive a message from a random channel on a UDP socket\&. A state-bound and err
 .RS 4
 \fIsock\fP The target's socket\&. 
 .br
-\fIdata\fP The SDL-formatted destination buffer for the received data\&. 
+\fIpack\fP The SDL-formatted destination buffer for the received data\&. 
 .RE
 .PP
 \fBReturns:\fP

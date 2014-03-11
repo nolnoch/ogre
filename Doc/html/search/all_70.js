@@ -17,10 +17,11 @@ var searchData=
   ['port_5fdefault',['PORT_DEFAULT',['../classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a72a392298efc424fdf2da299ef41992e',1,'NetManager']]],
   ['port_5frandom',['PORT_RANDOM',['../classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077',1,'NetManager']]],
   ['position',['position',['../classOgreMotionState.html#a89f91947e958b56b14bfc5ee881e9f66',1,'OgreMotionState']]],
+  ['printerror',['printError',['../classNetManager.html#af47665c6082b5f038350dcf4610929bf',1,'NetManager']]],
   ['processpacketdata',['processPacketData',['../classNetManager.html#a5927d55003a434ec69d8909dffe88575',1,'NetManager']]],
   ['protocol',['Protocol',['../NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f',1,'NetManager.h']]],
   ['protocol_5fall',['PROTOCOL_ALL',['../NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43',1,'NetManager.h']]],
   ['protocol_5ftcp',['PROTOCOL_TCP',['../NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93',1,'NetManager.h']]],
   ['protocol_5fudp',['PROTOCOL_UDP',['../NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7',1,'NetManager.h']]],
-  ['protocols',['protocols',['../structNetManager_1_1ConnectionInfo.html#a24effad095fc7ed4ab1a774754676be4',1,'NetManager::ConnectionInfo']]]
+  ['protocols',['protocols',['../structConnectionInfo.html#ad2f23f71b9b3e1a1ac56da62b7ef8ff0',1,'ConnectionInfo']]]
 ];

@@ -6,7 +6,7 @@ var hierarchy =
       [ "OgreMotionState", "classOgreMotionState.html", null ]
     ] ],
     [ "ClientData", "structClientData.html", null ],
-    [ "NetManager::ConnectionInfo", "structNetManager_1_1ConnectionInfo.html", null ],
+    [ "ConnectionInfo", "structConnectionInfo.html", null ],
     [ "FrameListener", null, [
       [ "BaseGame", "classBaseGame.html", [
         [ "TileGame", "classTileGame.html", null ]

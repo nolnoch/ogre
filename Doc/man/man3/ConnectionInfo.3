@@ -1,0 +1,95 @@
+.TH "ConnectionInfo" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConnectionInfo \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <NetManager\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "short \fBtcpSocketIdx\fP"
+.br
+.RI "\fIIndex into the tcpSocket vector\&. \fP"
+.ti -1c
+.RI "short \fBudpSocketIdx\fP"
+.br
+.RI "\fIIndex into the udpSocket vector\&. \fP"
+.ti -1c
+.RI "short \fBtcpClientIdx\fP"
+.br
+.RI "\fIIndex into the tcpClients vector\&. \fP"
+.ti -1c
+.RI "short \fBudpClientIdx\fP"
+.br
+.RI "\fIIndex into the udpClients vector\&. \fP"
+.ti -1c
+.RI "short \fBtcpDataIdx\fP"
+.br
+.RI "\fIIndex into the tcpClientData vector\&. \fP"
+.ti -1c
+.RI "short \fBudpDataIdx\fP"
+.br
+.RI "\fIIndex into the udpClientData vector\&. \fP"
+.ti -1c
+.RI "short \fBudpChannel\fP"
+.br
+.RI "\fIThe associated UDP channel\&. \fP"
+.ti -1c
+.RI "\fBProtocol\fP \fBprotocols\fP"
+.br
+.RI "\fIAssociated protocols\&. \fP"
+.ti -1c
+.RI "IPaddress \fBaddress\fP"
+.br
+.RI "\fIThis connection's IPaddress\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Internal state information packaging\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "IPaddress ConnectionInfo::address"
+
+.PP
+This connection's IPaddress\&. 
+.SS "\fBProtocol\fP ConnectionInfo::protocols"
+
+.PP
+Associated protocols\&. 
+.SS "short ConnectionInfo::tcpClientIdx"
+
+.PP
+Index into the tcpClients vector\&. 
+.SS "short ConnectionInfo::tcpDataIdx"
+
+.PP
+Index into the tcpClientData vector\&. 
+.SS "short ConnectionInfo::tcpSocketIdx"
+
+.PP
+Index into the tcpSocket vector\&. 
+.SS "short ConnectionInfo::udpChannel"
+
+.PP
+The associated UDP channel\&. 
+.SS "short ConnectionInfo::udpClientIdx"
+
+.PP
+Index into the udpClients vector\&. 
+.SS "short ConnectionInfo::udpDataIdx"
+
+.PP
+Index into the udpClientData vector\&. 
+.SS "short ConnectionInfo::udpSocketIdx"
+
+.PP
+Index into the udpSocket vector\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OGRE Game from the source code\&.

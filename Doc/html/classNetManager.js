@@ -1,6 +1,5 @@
 var classNetManager =
 [
-    [ "ConnectionInfo", "structNetManager_1_1ConnectionInfo.html", "structNetManager_1_1ConnectionInfo" ],
     [ "NET_UNINITIALIZED", "classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a085fbd45e5fb462d8915fb2f17a35d64", null ],
     [ "NET_INITIALIZED", "classNetManager.html#a8b6ac33bda181fb28896229528cd62b4af26a6f0d447b04ad2cc57c080bc2e1f3", null ],
     [ "NET_WAITING", "classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a54b1df101b4fb30060d47353aa98a473", null ],
@@ -47,13 +46,14 @@ var classNetManager =
     [ "lookupTCPClient", "classNetManager.html#a9e98f4e0367b8811f241cb0038e9b077", null ],
     [ "lookupUDPClient", "classNetManager.html#aa9053c3f72215976089b89098935c6d1", null ],
     [ "messageClient", "classNetManager.html#a165db41d5fa0692307f11cba589796d0", null ],
-    [ "messageClients", "classNetManager.html#aff24a0ce0cf8a4a2450a70ad17e7ec76", null ],
-    [ "messageServer", "classNetManager.html#aa4f48b88474c3f6a4422b3a94c07b674", null ],
+    [ "messageClients", "classNetManager.html#a9cd49a87e94f25467cc8056e33c23dc5", null ],
+    [ "messageServer", "classNetManager.html#a83862646172bbdcdbe4174de25837ffd", null ],
     [ "openClient", "classNetManager.html#afe3450801d77b53d99b38c8249f3d955", null ],
     [ "openServer", "classNetManager.html#a369f5008d70957c6b3b60d59e453fbee", null ],
     [ "openTCPSocket", "classNetManager.html#a90fc6dc31d71fa956486243814352ac5", null ],
     [ "openUDPSocket", "classNetManager.html#ae49266e3057c0f17cc3c89591cbcf3e1", null ],
     [ "pollForActivity", "classNetManager.html#ac213dda2e72556e53450d5b1e2057f22", null ],
+    [ "printError", "classNetManager.html#af47665c6082b5f038350dcf4610929bf", null ],
     [ "processPacketData", "classNetManager.html#a5927d55003a434ec69d8909dffe88575", null ],
     [ "queryTCPAddress", "classNetManager.html#abb912b135cb4916dd5bd2943f1ed2467", null ],
     [ "queryUDPAddress", "classNetManager.html#a41f2077bd40f1d210406a07486843104", null ],

@@ -22,7 +22,7 @@
  * Global Structures
  */
 /**
- * Allows integer manipulations of flags but signals to users that the value
+ * Allows integer manipulations of flags, but signals to users that the value
  * should be chosen from the PROTOCOL_XXX enumerated values.
  */
 typedef int Protocol;
@@ -36,7 +36,20 @@ enum {
   PROTOCOL_ALL        = PROTOCOL_TCP | PROTOCOL_UDP     //!< Combined bit flag.
 };
 
-struct ConnectionInfo;
+/**
+ * Internal state information packaging.
+ */
+struct ConnectionInfo {
+  short tcpSocketIdx;                 //!< Index into the tcpSocket vector.
+  short udpSocketIdx;                 //!< Index into the udpSocket vector.
+  short tcpClientIdx;                 //!< Index into the tcpClients vector.
+  short udpClientIdx;                 //!< Index into the udpClients vector.
+  short tcpDataIdx;                   //!< Index into the tcpClientData vector.
+  short udpDataIdx;                   //!< Index into the udpClientData vector.
+  short udpChannel;                   //!< The associated UDP channel.
+  Protocol protocols;                 //!< Associated protocols.
+  IPaddress address;                  //!< This connection's IPaddress.
+};
 
 /**
  * External bins to which all received data is output and from which data may
@@ -45,10 +58,10 @@ struct ConnectionInfo;
  * \b flag \b when \b data \b is \b retrieved!
  */
 struct ClientData {
-  Uint32 host;              //!< To differentiate bin owners.
-  bool updated;             //!< Indicates new network output.
-  char output[128];         //!< Received network data.
-  char input[128];          //!< Target for automatic data pulls.
+  Uint32 host;                        //!< To differentiate bin owners.
+  bool updated;                       //!< Indicates new network output.
+  char output[128];                   //!< Received network data.
+  char input[128];                    //!< Target for automatic data pulls.
 };
 
 
@@ -101,8 +114,8 @@ public:
   bool startClient();
   bool scanForActivity();
   bool pollForActivity(Uint32 timeout_ms = 5000);
-  void messageClients(char *buf = NULL, int len = 0);
-  void messageServer(char *buf = NULL, int len = 0);
+  void messageClients(const char *buf = NULL, int len = 0);
+  void messageServer(const char *buf = NULL, int len = 0);
   void messageClient(Protocol protocol, int clientDataIdx, char *buf, int len);
   void dropClient(Protocol protocol, Uint32 host);
   void stopServer(Protocol protocol = PROTOCOL_ALL);
@@ -130,7 +143,6 @@ private:
   /* ***************************************************
    * Private
    */
-
   enum {
     ///@{
     /** State management flag bits. */
@@ -213,24 +225,9 @@ private:
   bool statusCheck(int state);
   bool statusCheck(int state1, int state2);
   void clearFlags(int state);
+  void printError(std::string errorText);
   void resetManager();
   //! @}
-
-  /**
-   * Internal state information packaging.
-   */
-  struct ConnectionInfo {
-    short tcpSocketIdx;
-    short udpSocketIdx;
-    short tcpClientIdx;
-    short udpClientIdx;
-    short tcpDataIdx;
-    short udpDataIdx;
-    short udpChannel;
-    Protocol protocols;
-    IPaddress address;
-  };
-
 
   bool forceClientRandomUDP;
   bool acceptNewClients;

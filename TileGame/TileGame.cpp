@@ -61,11 +61,9 @@ bool TileGame::configure() {
 
   soundMgr = new SoundManager();
   soundMgr->initSoundManager();
-
   boing = soundMgr->loadSound("hit.wav");
   gong = soundMgr->loadSound("gong.wav");
   music = soundMgr->loadMusic("ambient.wav");
-
   soundMgr->playMusic();
 
   sim = new TileSimulator();
@@ -75,6 +73,7 @@ bool TileGame::configure() {
   ballMgr->initBallManager();
 
   netMgr = new NetManager();
+  netMgr->initNetManager();
 
   return ret;
 }

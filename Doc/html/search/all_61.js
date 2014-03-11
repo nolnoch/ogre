@@ -10,7 +10,7 @@ var searchData=
   ['addnetworkinfo',['addNetworkInfo',['../classNetManager.html#a8ec0340fa0eeffc5f4344589069e6058',1,'NetManager']]],
   ['addplanebound',['addPlaneBound',['../classSimulator.html#a043aa34df7dbd5046ed56407ba9b44de',1,'Simulator']]],
   ['addprotocol',['addProtocol',['../classNetManager.html#a444e45de6f806c4c27d7f9915f898329',1,'NetManager']]],
-  ['address',['address',['../structNetManager_1_1ConnectionInfo.html#a7783e4a019bdc7a86fa79d0b4fc3c908',1,'NetManager::ConnectionInfo']]],
+  ['address',['address',['../structConnectionInfo.html#af014df0a6739ea51a6a532ec352f7848',1,'ConnectionInfo']]],
   ['addtile',['addTile',['../classTileSimulator.html#af5290bb6e13b9c9dccced4d275b7cac7',1,'TileSimulator']]],
   ['addudpclient',['addUDPClient',['../classNetManager.html#aff05c27b852dddd386e788bed7fa6d12',1,'NetManager']]],
   ['allocudppacket',['allocUDPpacket',['../classNetManager.html#a75ce7beb5894c63e3af5e59c4fe67483',1,'NetManager']]],

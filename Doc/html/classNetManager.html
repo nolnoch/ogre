@@ -103,7 +103,6 @@ $(document).ready(function(){initNavTree('classNetManager.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
@@ -119,11 +118,6 @@ $(document).ready(function(){initNavTree('classNetManager.html','');});
 
 <p><code>#include &lt;<a class="el" href="NetManager_8h_source.html">NetManager.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5af765a0303c73966c2e0743458f888"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ac5af765a0303c73966c2e0743458f888">NetManager</a> ()</td></tr>
@@ -149,12 +143,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac213dda2e72556e53450d5b1e2057f22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ac213dda2e72556e53450d5b1e2057f22">pollForActivity</a> (Uint32 timeout_ms=5000)</td></tr>
 <tr class="memdesc:ac213dda2e72556e53450d5b1e2057f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll for activity on all TCP and UDP sockets.  <a href="#ac213dda2e72556e53450d5b1e2057f22">More...</a><br/></td></tr>
 <tr class="separator:ac213dda2e72556e53450d5b1e2057f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff24a0ce0cf8a4a2450a70ad17e7ec76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aff24a0ce0cf8a4a2450a70ad17e7ec76">messageClients</a> (char *buf=NULL, int len=0)</td></tr>
-<tr class="memdesc:aff24a0ce0cf8a4a2450a70ad17e7ec76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to all clients.  <a href="#aff24a0ce0cf8a4a2450a70ad17e7ec76">More...</a><br/></td></tr>
-<tr class="separator:aff24a0ce0cf8a4a2450a70ad17e7ec76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4f48b88474c3f6a4422b3a94c07b674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aa4f48b88474c3f6a4422b3a94c07b674">messageServer</a> (char *buf=NULL, int len=0)</td></tr>
-<tr class="memdesc:aa4f48b88474c3f6a4422b3a94c07b674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to the server.  <a href="#aa4f48b88474c3f6a4422b3a94c07b674">More...</a><br/></td></tr>
-<tr class="separator:aa4f48b88474c3f6a4422b3a94c07b674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd49a87e94f25467cc8056e33c23dc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9cd49a87e94f25467cc8056e33c23dc5">messageClients</a> (const char *buf=NULL, int len=0)</td></tr>
+<tr class="memdesc:a9cd49a87e94f25467cc8056e33c23dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to all clients.  <a href="#a9cd49a87e94f25467cc8056e33c23dc5">More...</a><br/></td></tr>
+<tr class="separator:a9cd49a87e94f25467cc8056e33c23dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83862646172bbdcdbe4174de25837ffd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a83862646172bbdcdbe4174de25837ffd">messageServer</a> (const char *buf=NULL, int len=0)</td></tr>
+<tr class="memdesc:a83862646172bbdcdbe4174de25837ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to the server.  <a href="#a83862646172bbdcdbe4174de25837ffd">More...</a><br/></td></tr>
+<tr class="separator:a83862646172bbdcdbe4174de25837ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a165db41d5fa0692307f11cba589796d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0">messageClient</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, int clientDataIdx, char *buf, int len)</td></tr>
 <tr class="memdesc:a165db41d5fa0692307f11cba589796d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to a single client over a single protocol.  <a href="#a165db41d5fa0692307f11cba589796d0">More...</a><br/></td></tr>
 <tr class="separator:a165db41d5fa0692307f11cba589796d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -346,10 +340,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:aae62147d4b4d06cccd992f30b6669ea5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aae62147d4b4d06cccd992f30b6669ea5">rejectUDPClient</a> (UDPpacket *pack)</td></tr>
 <tr class="memdesc:aae62147d4b4d06cccd992f30b6669ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rejects a prospective UDP client.  <a href="#aae62147d4b4d06cccd992f30b6669ea5">More...</a><br/></td></tr>
 <tr class="separator:aae62147d4b4d06cccd992f30b6669ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e98f4e0367b8811f241cb0038e9b077"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9e98f4e0367b8811f241cb0038e9b077">lookupTCPClient</a> (Uint32 host, bool create)</td></tr>
+<tr class="memitem:a9e98f4e0367b8811f241cb0038e9b077"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structConnectionInfo.html">ConnectionInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9e98f4e0367b8811f241cb0038e9b077">lookupTCPClient</a> (Uint32 host, bool create)</td></tr>
 <tr class="memdesc:a9e98f4e0367b8811f241cb0038e9b077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look up a TCP client by IPaddress host.  <a href="#a9e98f4e0367b8811f241cb0038e9b077">More...</a><br/></td></tr>
 <tr class="separator:a9e98f4e0367b8811f241cb0038e9b077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9053c3f72215976089b89098935c6d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aa9053c3f72215976089b89098935c6d1">lookupUDPClient</a> (Uint32 host, bool create)</td></tr>
+<tr class="memitem:aa9053c3f72215976089b89098935c6d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structConnectionInfo.html">ConnectionInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aa9053c3f72215976089b89098935c6d1">lookupUDPClient</a> (Uint32 host, bool create)</td></tr>
 <tr class="memdesc:aa9053c3f72215976089b89098935c6d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look up a UDP client by IPaddress host.  <a href="#aa9053c3f72215976089b89098935c6d1">More...</a><br/></td></tr>
 <tr class="separator:aa9053c3f72215976089b89098935c6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Helper Functions.</div></td></tr>
@@ -362,6 +356,8 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a9f55bdec9b5c974d26354e680aa48d1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9f55bdec9b5c974d26354e680aa48d1e">clearFlags</a> (int state)</td></tr>
 <tr class="memdesc:a9f55bdec9b5c974d26354e680aa48d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears a given bit mask of state flags from the internal netStatus.  <a href="#a9f55bdec9b5c974d26354e680aa48d1e">More...</a><br/></td></tr>
 <tr class="separator:a9f55bdec9b5c974d26354e680aa48d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47665c6082b5f038350dcf4610929bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#af47665c6082b5f038350dcf4610929bf">printError</a> (std::string errorText)</td></tr>
+<tr class="separator:af47665c6082b5f038350dcf4610929bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60e404905712ff726f1a4f0e2542d06c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a60e404905712ff726f1a4f0e2542d06c">resetManager</a> ()</td></tr>
 <tr class="memdesc:a60e404905712ff726f1a4f0e2542d06c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all vectors and resets all data members to default values.  <a href="#a60e404905712ff726f1a4f0e2542d06c">More...</a><br/></td></tr>
 <tr class="separator:a60e404905712ff726f1a4f0e2542d06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -382,11 +378,11 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ac24652f01ef284551be311bfc408be06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e1aedc97e5fb2f633faeabd2aa266c3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a2e1aedc97e5fb2f633faeabd2aa266c3">netHost</a></td></tr>
 <tr class="separator:a2e1aedc97e5fb2f633faeabd2aa266c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a002692771d60d8a4332941f33096fba0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a002692771d60d8a4332941f33096fba0">netServer</a></td></tr>
+<tr class="memitem:a002692771d60d8a4332941f33096fba0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structConnectionInfo.html">ConnectionInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a002692771d60d8a4332941f33096fba0">netServer</a></td></tr>
 <tr class="separator:a002692771d60d8a4332941f33096fba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf9491e48d6bc19eacb148d294613b35"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#abf9491e48d6bc19eacb148d294613b35">tcpClients</a></td></tr>
+<tr class="memitem:abf9491e48d6bc19eacb148d294613b35"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#abf9491e48d6bc19eacb148d294613b35">tcpClients</a></td></tr>
 <tr class="separator:abf9491e48d6bc19eacb148d294613b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5cbc9d5ddb14541adb07b748802446d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d">udpClients</a></td></tr>
+<tr class="memitem:ab5cbc9d5ddb14541adb07b748802446d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d">udpClients</a></td></tr>
 <tr class="separator:ab5cbc9d5ddb14541adb07b748802446d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2314a1df7704bbc4c96d8d0133d78ee6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; TCPsocket &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a2314a1df7704bbc4c96d8d0133d78ee6">tcpSockets</a></td></tr>
 <tr class="separator:a2314a1df7704bbc4c96d8d0133d78ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -533,7 +529,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finalizes a listening socket for a server. </p>
-<p>A state-bound and error-checked wrapper of the SDLNet_TCP_Accept call. New sockets for new clients are established here and added to the MessageInfo public vector. If a client already has a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> struct for a UDP connection, the TCP connection information will be added to it. </p>
+<p>A state-bound and error-checked wrapper of the SDLNet_TCP_Accept call. New sockets for new clients are established here and added to the MessageInfo public vector. If a client already has a <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> struct for a UDP connection, the TCP connection information will be added to it. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">server</td><td>The listening server socket. </td></tr>
@@ -763,7 +759,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Bind a UDP channel to a socket. </p>
-<p>Optional functionality from SDL that I've chosen to use. A maximum of 32 channels with different IPaddresses may be bound to any one socket, and reaping sockets will iterate through each of these channels separately. If a client already has a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> struct for a TCP connection, the UDP connection information will be added to it. </p>
+<p>Optional functionality from SDL that I've chosen to use. A maximum of 32 channels with different IPaddresses may be bound to any one socket, and reaping sockets will iterate through each of these channels separately. If a client already has a <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> struct for a TCP connection, the UDP connection information will be added to it. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sock</td><td>The UDP socket to be bound. </td></tr>
@@ -799,7 +795,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Ask SDL to scan registered sockets once or for a given time period. </p>
-<p>This function will automatically handle all activity discovered on TCP and UDP. New clients will be added, and data will be copied to the <a class="el" href="structClientData.html">ClientData</a> buffers. <em>The user should check the <a class="el" href="structClientData.html">ClientData</a> arrays after calling this function!<em> Excess or unwanted clients will be rejected. </p>
+<p>This function will automatically handle all activity discovered on TCP and UDP. New clients will be added, and data will be copied to the <a class="el" href="structClientData.html">ClientData</a> buffers. <em>The user should check the <a class="el" href="structClientData.html">ClientData</a> arrays after calling this function!</em> Excess or unwanted clients will be rejected. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout_ms</td><td>The time to scan in milliseconds. 0 is instant. </td></tr>
@@ -807,7 +803,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if there was activity, false if there was not. </dd></dl>
-<p></em></em></p>
 
 </div>
 </div>
@@ -1004,7 +999,7 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">protocol</td><td>TCP, UDP, or ALL; given by PROTOCOL_XXX enum value. </td></tr>
-    <tr><td class="paramname">clientDataIdx</td><td>Index of the client into the tcp/udp <a class="el" href="structClientData.html">ClientData</a> vector. </td></tr>
+    <tr><td class="paramname">host</td><td>The IPaddress host of the droppee. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1155,7 +1150,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * NetManager::lookupTCPClient </td>
+          <td class="memname"><a class="el" href="structConnectionInfo.html">ConnectionInfo</a> * NetManager::lookupTCPClient </td>
           <td>(</td>
           <td class="paramtype">Uint32&#160;</td>
           <td class="paramname"><em>host</em>, </td>
@@ -1180,11 +1175,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Look up a TCP client by IPaddress host. </p>
-<p>IPaddress host is available from almost anywhere, and this conversion to a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> pointer allows access to the correct index into all of the client's associated vectors. If the <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> does not already exist, the boolean allows a new instance to be returned instead. </p>
+<p>IPaddress host is available from almost anywhere, and this conversion to a <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> pointer allows access to the correct index into all of the client's associated vectors. If the <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> does not already exist, the boolean allows a new instance to be returned instead. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">host</td><td>The IPaddress host. </td></tr>
-    <tr><td class="paramname">create</td><td>True to return a new <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> instance, false for NULL. </td></tr>
+    <tr><td class="paramname">create</td><td>True to return a new <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> instance, false for NULL. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1200,7 +1195,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> * NetManager::lookupUDPClient </td>
+          <td class="memname"><a class="el" href="structConnectionInfo.html">ConnectionInfo</a> * NetManager::lookupUDPClient </td>
           <td>(</td>
           <td class="paramtype">Uint32&#160;</td>
           <td class="paramname"><em>host</em>, </td>
@@ -1225,11 +1220,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Look up a UDP client by IPaddress host. </p>
-<p>IPaddress host is available from almost anywhere, and this conversion to a <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> pointer allows access to the correct index into all of the client's associated vectors. If the <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> does not already exist, the boolean allows a new instance to be returned instead. </p>
+<p>IPaddress host is available from almost anywhere, and this conversion to a <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> pointer allows access to the correct index into all of the client's associated vectors. If the <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> does not already exist, the boolean allows a new instance to be returned instead. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">host</td><td>The IPaddress host. </td></tr>
-    <tr><td class="paramname">create</td><td>True to return a new <a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> instance, false for NULL. </td></tr>
+    <tr><td class="paramname">create</td><td>True to return a new <a class="el" href="structConnectionInfo.html">ConnectionInfo</a> instance, false for NULL. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1284,18 +1279,18 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#aff24a0ce0cf8a4a2450a70ad17e7ec76" title="Send a single message to all clients.">messageClients()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNetManager.html#a9cd49a87e94f25467cc8056e33c23dc5" title="Send a single message to all clients.">messageClients()</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="aff24a0ce0cf8a4a2450a70ad17e7ec76"></a>
+<a class="anchor" id="a9cd49a87e94f25467cc8056e33c23dc5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void NetManager::messageClients </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>buf</em> = <code>NULL</code>, </td>
         </tr>
         <tr>
@@ -1324,14 +1319,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa4f48b88474c3f6a4422b3a94c07b674"></a>
+<a class="anchor" id="a83862646172bbdcdbe4174de25837ffd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void NetManager::messageServer </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>buf</em> = <code>NULL</code>, </td>
         </tr>
         <tr>
@@ -1349,7 +1344,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Send a single message to the server. </p>
-<p>Must be running as a client to call this function. If no argumetns are given, it will pull from the server's <a class="el" href="structClientData.html">ClientData</a> <b>input</b> field. </p>
+<p>Must be running as a client to call this function. If no arguments are given, it will pull from the server's <a class="el" href="structClientData.html">ClientData</a> <b>input</b> field. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buf</td><td>Manually given data buffer. Default: NULL. </td></tr>
@@ -1556,6 +1551,30 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True for activity, false for no activity. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af47665c6082b5f038350dcf4610929bf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetManager::printError </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>errorText</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1823,7 +1842,7 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sock</td><td>The target's socket. </td></tr>
-    <tr><td class="paramname">data</td><td>The SDL-formatted destination buffer for the received data. </td></tr>
+    <tr><td class="paramname">pack</td><td>The SDL-formatted destination buffer for the received data. </td></tr>
   </table>
   </dd>
 </dl>
@@ -2713,7 +2732,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> NetManager::netServer</td>
+          <td class="memname"><a class="el" href="structConnectionInfo.html">ConnectionInfo</a> NetManager::netServer</td>
         </tr>
       </table>
   </td>
@@ -2805,7 +2824,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&gt; NetManager::tcpClients</td>
+          <td class="memname">std::vector&lt;<a class="el" href="structConnectionInfo.html">ConnectionInfo</a> *&gt; NetManager::tcpClients</td>
         </tr>
       </table>
   </td>
@@ -2869,7 +2888,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="structNetManager_1_1ConnectionInfo.html">ConnectionInfo</a> *&gt; NetManager::udpClients</td>
+          <td class="memname">std::vector&lt;<a class="el" href="structConnectionInfo.html">ConnectionInfo</a> *&gt; NetManager::udpClients</td>
         </tr>
       </table>
   </td>
@@ -2923,7 +2942,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classNetManager.html">NetManager</a></li>
-    <li class="footer">Generated on Tue Mar 11 2014 04:18:58 for OGRE Game by
+    <li class="footer">Generated on Tue Mar 11 2014 05:30:50 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

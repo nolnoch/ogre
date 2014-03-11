@@ -10,11 +10,6 @@ Networking wrapper for S\-D\-L\-\_\-net for use in O\-G\-R\-E or similar engines
 
 {\ttfamily \#include $<$Net\-Manager.\-h$>$}
 
-\subsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info}
-\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,9 +36,9 @@ bool \hyperlink{classNetManager_a934ebfd8ca745a95263ba92c2ccf2b19}{scan\-For\-Ac
 \begin{DoxyCompactList}\small\item\em Scan once for activity on all T\-C\-P and U\-D\-P sockets. \end{DoxyCompactList}\item 
 bool \hyperlink{classNetManager_ac213dda2e72556e53450d5b1e2057f22}{poll\-For\-Activity} (Uint32 timeout\-\_\-ms=5000)
 \begin{DoxyCompactList}\small\item\em Poll for activity on all T\-C\-P and U\-D\-P sockets. \end{DoxyCompactList}\item 
-void \hyperlink{classNetManager_aff24a0ce0cf8a4a2450a70ad17e7ec76}{message\-Clients} (char $\ast$buf=N\-U\-L\-L, int len=0)
+void \hyperlink{classNetManager_a9cd49a87e94f25467cc8056e33c23dc5}{message\-Clients} (const char $\ast$buf=N\-U\-L\-L, int len=0)
 \begin{DoxyCompactList}\small\item\em Send a single message to all clients. \end{DoxyCompactList}\item 
-void \hyperlink{classNetManager_aa4f48b88474c3f6a4422b3a94c07b674}{message\-Server} (char $\ast$buf=N\-U\-L\-L, int len=0)
+void \hyperlink{classNetManager_a83862646172bbdcdbe4174de25837ffd}{message\-Server} (const char $\ast$buf=N\-U\-L\-L, int len=0)
 \begin{DoxyCompactList}\small\item\em Send a single message to the server. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_a165db41d5fa0692307f11cba589796d0}{message\-Client} (\hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol} protocol, int client\-Data\-Idx, char $\ast$buf, int len)
 \begin{DoxyCompactList}\small\item\em Send a single message to a single client over a single protocol. \end{DoxyCompactList}\item 
@@ -205,9 +200,9 @@ void \hyperlink{classNetManager_ab7048f28558dec8046b9536ad6c094f8}{reject\-T\-C\
 \begin{DoxyCompactList}\small\item\em Rejects a prospective T\-C\-P client. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_aae62147d4b4d06cccd992f30b6669ea5}{reject\-U\-D\-P\-Client} (U\-D\-Ppacket $\ast$pack)
 \begin{DoxyCompactList}\small\item\em Rejects a prospective U\-D\-P client. \end{DoxyCompactList}\item 
-\hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} $\ast$ \hyperlink{classNetManager_a9e98f4e0367b8811f241cb0038e9b077}{lookup\-T\-C\-P\-Client} (Uint32 host, bool create)
+\hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ \hyperlink{classNetManager_a9e98f4e0367b8811f241cb0038e9b077}{lookup\-T\-C\-P\-Client} (Uint32 host, bool create)
 \begin{DoxyCompactList}\small\item\em Look up a T\-C\-P client by I\-Paddress host. \end{DoxyCompactList}\item 
-\hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} $\ast$ \hyperlink{classNetManager_aa9053c3f72215976089b89098935c6d1}{lookup\-U\-D\-P\-Client} (Uint32 host, bool create)
+\hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ \hyperlink{classNetManager_aa9053c3f72215976089b89098935c6d1}{lookup\-U\-D\-P\-Client} (Uint32 host, bool create)
 \begin{DoxyCompactList}\small\item\em Look up a U\-D\-P client by I\-Paddress host. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Helper Functions.}\par
@@ -219,6 +214,8 @@ bool \hyperlink{classNetManager_aa5616571aa520977c221d8a8a6471a1f}{status\-Check
 \begin{DoxyCompactList}\small\item\em A compound state (bit flag) check for early returns and error prints. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_a9f55bdec9b5c974d26354e680aa48d1e}{clear\-Flags} (int state)
 \begin{DoxyCompactList}\small\item\em Clears a given bit mask of state flags from the internal net\-Status. \end{DoxyCompactList}\item 
+void \hyperlink{classNetManager_af47665c6082b5f038350dcf4610929bf}{print\-Error} (std\-::string error\-Text)
+\item 
 void \hyperlink{classNetManager_a60e404905712ff726f1a4f0e2542d06c}{reset\-Manager} ()
 \begin{DoxyCompactList}\small\item\em Clears all vectors and resets all data members to default values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
@@ -239,11 +236,11 @@ int \hyperlink{classNetManager_a2c14b6cf513287e5fb46a85ddb293201}{net\-Port}
 \item 
 std\-::string \hyperlink{classNetManager_a2e1aedc97e5fb2f633faeabd2aa266c3}{net\-Host}
 \item 
-\hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} \hyperlink{classNetManager_a002692771d60d8a4332941f33096fba0}{net\-Server}
+\hyperlink{structConnectionInfo}{Connection\-Info} \hyperlink{classNetManager_a002692771d60d8a4332941f33096fba0}{net\-Server}
 \item 
-std\-::vector$<$ \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} $\ast$ $>$ \hyperlink{classNetManager_abf9491e48d6bc19eacb148d294613b35}{tcp\-Clients}
+std\-::vector$<$ \hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ $>$ \hyperlink{classNetManager_abf9491e48d6bc19eacb148d294613b35}{tcp\-Clients}
 \item 
-std\-::vector$<$ \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} $\ast$ $>$ \hyperlink{classNetManager_ab5cbc9d5ddb14541adb07b748802446d}{udp\-Clients}
+std\-::vector$<$ \hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ $>$ \hyperlink{classNetManager_ab5cbc9d5ddb14541adb07b748802446d}{udp\-Clients}
 \item 
 std\-::vector$<$ T\-C\-Psocket $>$ \hyperlink{classNetManager_a2314a1df7704bbc4c96d8d0133d78ee6}{tcp\-Sockets}
 \item 
@@ -344,7 +341,7 @@ Standard destruction. Calls \hyperlink{classNetManager_afcf943b4ab1e94ba479f4e3f
 
 Finalizes a listening socket for a server. 
 
-A state-\/bound and error-\/checked wrapper of the S\-D\-L\-Net\-\_\-\-T\-C\-P\-\_\-\-Accept call. New sockets for new clients are established here and added to the Message\-Info public vector. If a client already has a \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} struct for a U\-D\-P connection, the T\-C\-P connection information will be added to it. 
+A state-\/bound and error-\/checked wrapper of the S\-D\-L\-Net\-\_\-\-T\-C\-P\-\_\-\-Accept call. New sockets for new clients are established here and added to the Message\-Info public vector. If a client already has a \hyperlink{structConnectionInfo}{Connection\-Info} struct for a U\-D\-P connection, the T\-C\-P connection information will be added to it. 
 \begin{DoxyParams}{Parameters}
 {\em server} & The listening server socket. \\
 \hline
@@ -466,7 +463,7 @@ The new, empty U\-D\-P packet vector.
 
 Bind a U\-D\-P channel to a socket. 
 
-Optional functionality from S\-D\-L that I've chosen to use. A maximum of 32 channels with different I\-Paddresses may be bound to any one socket, and reaping sockets will iterate through each of these channels separately. If a client already has a \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} struct for a T\-C\-P connection, the U\-D\-P connection information will be added to it. 
+Optional functionality from S\-D\-L that I've chosen to use. A maximum of 32 channels with different I\-Paddresses may be bound to any one socket, and reaping sockets will iterate through each of these channels separately. If a client already has a \hyperlink{structConnectionInfo}{Connection\-Info} struct for a T\-C\-P connection, the U\-D\-P connection information will be added to it. 
 \begin{DoxyParams}{Parameters}
 {\em sock} & The U\-D\-P socket to be bound. \\
 \hline
@@ -489,7 +486,7 @@ True on success, false on failure.
 
 Ask S\-D\-L to scan registered sockets once or for a given time period. 
 
-This function will automatically handle all activity discovered on T\-C\-P and U\-D\-P. New clients will be added, and data will be copied to the \hyperlink{structClientData}{Client\-Data} buffers. {\itshape The user should check the \hyperlink{structClientData}{Client\-Data} arrays after calling this function!{\itshape  Excess or unwanted clients will be rejected. 
+This function will automatically handle all activity discovered on T\-C\-P and U\-D\-P. New clients will be added, and data will be copied to the \hyperlink{structClientData}{Client\-Data} buffers. {\itshape The user should check the \hyperlink{structClientData}{Client\-Data} arrays after calling this function!} Excess or unwanted clients will be rejected. 
 \begin{DoxyParams}{Parameters}
 {\em timeout\-\_\-ms} & The time to scan in milliseconds. 0 is instant. \\
 \hline
@@ -497,7 +494,7 @@ This function will automatically handle all activity discovered on T\-C\-P and U
 \begin{DoxyReturn}{Returns}
 True if there was activity, false if there was not. 
 \end{DoxyReturn}
-}}\hypertarget{classNetManager_a9f55bdec9b5c974d26354e680aa48d1e}{\index{Net\-Manager@{Net\-Manager}!clear\-Flags@{clear\-Flags}}
+\hypertarget{classNetManager_a9f55bdec9b5c974d26354e680aa48d1e}{\index{Net\-Manager@{Net\-Manager}!clear\-Flags@{clear\-Flags}}
 \index{clear\-Flags@{clear\-Flags}!NetManager@{Net\-Manager}}
 \subsubsection[{clear\-Flags}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::clear\-Flags (
 \begin{DoxyParamCaption}
@@ -599,7 +596,7 @@ Must be running as a server, and must give a connected client. May choose to dro
 \begin{DoxyParams}{Parameters}
 {\em protocol} & T\-C\-P, U\-D\-P, or A\-L\-L; given by P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-X\-X\-X enum value. \\
 \hline
-{\em client\-Data\-Idx} & Index of the client into the tcp/udp \hyperlink{structClientData}{Client\-Data} vector. \\
+{\em host} & The I\-Paddress host of the droppee. \\
 \hline
 \end{DoxyParams}
 \hypertarget{classNetManager_af3cc0529a2c40d959bdb624e9f3101c4}{\index{Net\-Manager@{Net\-Manager}!free\-U\-D\-Ppacket@{free\-U\-D\-Ppacket}}
@@ -698,11 +695,11 @@ True on success, false on failure.
 
 Look up a T\-C\-P client by I\-Paddress host. 
 
-I\-Paddress host is available from almost anywhere, and this conversion to a \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} pointer allows access to the correct index into all of the client's associated vectors. If the \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} does not already exist, the boolean allows a new instance to be returned instead. 
+I\-Paddress host is available from almost anywhere, and this conversion to a \hyperlink{structConnectionInfo}{Connection\-Info} pointer allows access to the correct index into all of the client's associated vectors. If the \hyperlink{structConnectionInfo}{Connection\-Info} does not already exist, the boolean allows a new instance to be returned instead. 
 \begin{DoxyParams}{Parameters}
 {\em host} & The I\-Paddress host. \\
 \hline
-{\em create} & True to return a new \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} instance, false for N\-U\-L\-L. \\
+{\em create} & True to return a new \hyperlink{structConnectionInfo}{Connection\-Info} instance, false for N\-U\-L\-L. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -720,11 +717,11 @@ Either the correct C\-Info, a new C\-Info, or null.
 
 Look up a U\-D\-P client by I\-Paddress host. 
 
-I\-Paddress host is available from almost anywhere, and this conversion to a \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} pointer allows access to the correct index into all of the client's associated vectors. If the \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} does not already exist, the boolean allows a new instance to be returned instead. 
+I\-Paddress host is available from almost anywhere, and this conversion to a \hyperlink{structConnectionInfo}{Connection\-Info} pointer allows access to the correct index into all of the client's associated vectors. If the \hyperlink{structConnectionInfo}{Connection\-Info} does not already exist, the boolean allows a new instance to be returned instead. 
 \begin{DoxyParams}{Parameters}
 {\em host} & The I\-Paddress host. \\
 \hline
-{\em create} & True to return a new \hyperlink{structNetManager_1_1ConnectionInfo}{Connection\-Info} instance, false for N\-U\-L\-L. \\
+{\em create} & True to return a new \hyperlink{structConnectionInfo}{Connection\-Info} instance, false for N\-U\-L\-L. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -756,16 +753,16 @@ Must be running as a server, and all fields must be provided by the user. This w
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See Also}
-\hyperlink{classNetManager_aff24a0ce0cf8a4a2450a70ad17e7ec76}{message\-Clients()} 
+\hyperlink{classNetManager_a9cd49a87e94f25467cc8056e33c23dc5}{message\-Clients()} 
 \end{DoxySeeAlso}
-\hypertarget{classNetManager_aff24a0ce0cf8a4a2450a70ad17e7ec76}{\index{Net\-Manager@{Net\-Manager}!message\-Clients@{message\-Clients}}
+\hypertarget{classNetManager_a9cd49a87e94f25467cc8056e33c23dc5}{\index{Net\-Manager@{Net\-Manager}!message\-Clients@{message\-Clients}}
 \index{message\-Clients@{message\-Clients}!NetManager@{Net\-Manager}}
 \subsubsection[{message\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::message\-Clients (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{buf = {\ttfamily NULL}, }
+\item[{const char $\ast$}]{buf = {\ttfamily NULL}, }
 \item[{int}]{len = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}}\label{classNetManager_aff24a0ce0cf8a4a2450a70ad17e7ec76}
+)}}\label{classNetManager_a9cd49a87e94f25467cc8056e33c23dc5}
 
 
 Send a single message to all clients. 
@@ -777,19 +774,19 @@ Must be running as a server to call this function. If no arguments are given, it
 {\em len} & Length of given buffer. Default\-: 0. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classNetManager_aa4f48b88474c3f6a4422b3a94c07b674}{\index{Net\-Manager@{Net\-Manager}!message\-Server@{message\-Server}}
+\hypertarget{classNetManager_a83862646172bbdcdbe4174de25837ffd}{\index{Net\-Manager@{Net\-Manager}!message\-Server@{message\-Server}}
 \index{message\-Server@{message\-Server}!NetManager@{Net\-Manager}}
 \subsubsection[{message\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::message\-Server (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{buf = {\ttfamily NULL}, }
+\item[{const char $\ast$}]{buf = {\ttfamily NULL}, }
 \item[{int}]{len = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}}\label{classNetManager_aa4f48b88474c3f6a4422b3a94c07b674}
+)}}\label{classNetManager_a83862646172bbdcdbe4174de25837ffd}
 
 
 Send a single message to the server. 
 
-Must be running as a client to call this function. If no argumetns are given, it will pull from the server's \hyperlink{structClientData}{Client\-Data} {\bfseries input} field. 
+Must be running as a client to call this function. If no arguments are given, it will pull from the server's \hyperlink{structClientData}{Client\-Data} {\bfseries input} field. 
 \begin{DoxyParams}{Parameters}
 {\em buf} & Manually given data buffer. Default\-: N\-U\-L\-L. \\
 \hline
@@ -914,6 +911,13 @@ If activity is detected, it will be automatically handled according to its proto
 \begin{DoxyReturn}{Returns}
 True for activity, false for no activity. 
 \end{DoxyReturn}
+\hypertarget{classNetManager_af47665c6082b5f038350dcf4610929bf}{\index{Net\-Manager@{Net\-Manager}!print\-Error@{print\-Error}}
+\index{print\-Error@{print\-Error}!NetManager@{Net\-Manager}}
+\subsubsection[{print\-Error}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::print\-Error (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{error\-Text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_af47665c6082b5f038350dcf4610929bf}
 \hypertarget{classNetManager_a5927d55003a434ec69d8909dffe88575}{\index{Net\-Manager@{Net\-Manager}!process\-Packet\-Data@{process\-Packet\-Data}}
 \index{process\-Packet\-Data@{process\-Packet\-Data}!NetManager@{Net\-Manager}}
 \subsubsection[{process\-Packet\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::process\-Packet\-Data (
@@ -1044,7 +1048,7 @@ A state-\/bound and error-\/checked wrapper of the S\-D\-L\-Net\-\_\-\-U\-D\-P\-
 \begin{DoxyParams}{Parameters}
 {\em sock} & The target's socket. \\
 \hline
-{\em data} & The S\-D\-L-\/formatted destination buffer for the received data. \\
+{\em pack} & The S\-D\-L-\/formatted destination buffer for the received data. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

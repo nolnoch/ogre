@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['udpchannel',['udpChannel',['../structNetManager_1_1ConnectionInfo.html#a4fe7f6a4976e2b4c7bb52d14c540f662',1,'NetManager::ConnectionInfo']]],
+  ['udpchannel',['udpChannel',['../structConnectionInfo.html#a04b5d2e6b358b6b9337b75dbeb01197e',1,'ConnectionInfo']]],
   ['udpclientdata',['udpClientData',['../classNetManager.html#a687d70a4e199c2cbe4cb955a2cd94b04',1,'NetManager']]],
-  ['udpclientidx',['udpClientIdx',['../structNetManager_1_1ConnectionInfo.html#ac396f741ea17871fb5789160a5083834',1,'NetManager::ConnectionInfo']]],
+  ['udpclientidx',['udpClientIdx',['../structConnectionInfo.html#a645bd416fa05c5b41ebe4fe06e3b6999',1,'ConnectionInfo']]],
   ['udpclients',['udpClients',['../classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d',1,'NetManager']]],
-  ['udpdataidx',['udpDataIdx',['../structNetManager_1_1ConnectionInfo.html#a12695be39254f2558420322989c93b81',1,'NetManager::ConnectionInfo']]],
+  ['udpdataidx',['udpDataIdx',['../structConnectionInfo.html#a77f71cc46ad9033a81184cae84170277',1,'ConnectionInfo']]],
   ['udpserverdata',['udpServerData',['../classNetManager.html#a7db7fafed8aabbe088aa12c731842efd',1,'NetManager']]],
-  ['udpsocketidx',['udpSocketIdx',['../structNetManager_1_1ConnectionInfo.html#a408661ba927eb5ba51871f97e3c05c0c',1,'NetManager::ConnectionInfo']]],
+  ['udpsocketidx',['udpSocketIdx',['../structConnectionInfo.html#ac52c36a648203e28b495cea6d7ad29ba',1,'ConnectionInfo']]],
   ['udpsockets',['udpSockets',['../classNetManager.html#aa99d99b6fa90707d9101c4e1a1835018',1,'NetManager']]],
   ['unbindudpsocket',['unbindUDPSocket',['../classNetManager.html#a1f4271094319fd56f3d20151ca51234b',1,'NetManager']]],
   ['unlockposition',['unlockPosition',['../classBall.html#ab4ad64bcaa75353124023b924de9ff98',1,'Ball']]],
