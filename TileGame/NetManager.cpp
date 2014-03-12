@@ -176,7 +176,7 @@ bool NetManager::startClient() {
  * @return True for activity, false for no activity.
  */
 bool NetManager::pollForActivity(Uint32 timeout_ms) {
-  if (statusCheck(NET_UDP_OPEN, NET_TCP_ACCEPT)) {
+  if (statusCheck(NET_UDP_OPEN, NET_TCP_OPEN)) {
     printError("NetManager: No established TCP or UDP sockets to poll.");
     return false;
   }
@@ -596,7 +596,6 @@ bool NetManager::openServer(Protocol protocol, Uint16 port) {
     printError("SDL_net: Failed to start server!");
   } else {
     netServer.protocols |= protocol;
-    netStatus ^= NET_WAITING;
     netStatus |= NET_RESOLVED;
   }
 
@@ -638,7 +637,6 @@ bool NetManager::openClient(Protocol protocol, std::string hostname, Uint16 port
     printError("SDL_net: Failed to resolve server!");
   } else {
     netServer.protocols |= protocol;
-    netStatus ^= NET_WAITING;
     netStatus |= NET_RESOLVED;
   }
 
@@ -703,7 +701,7 @@ bool NetManager::openUDPSocket(Uint16 port) {
     udpSockets.push_back(udpSock);
     watchSocket(&udpSock);
 
-    if (statusCheck(NET_UDP_OPEN)) {
+    if (!(netStatus & NET_UDP_OPEN)) {
       netServer.udpSocketIdx = udpSockets.size() - 1;
       netStatus |= NET_UDP_OPEN;
 
@@ -1195,7 +1193,7 @@ void NetManager::watchSocket(UDPsocket *sock) {
  */
 void NetManager::unwatchSocket(TCPsocket *sock) {
   if (-1 == SDLNet_TCP_DelSocket(socketNursery, sock))
-    printError("SDL_net: Unable to remove socket from SocketSet.");
+    printError("SDL_net: Unable to remove TCP socket from SocketSet.");
 }
 
 /**
@@ -1204,7 +1202,7 @@ void NetManager::unwatchSocket(TCPsocket *sock) {
  */
 void NetManager::unwatchSocket(UDPsocket *sock) {
   if (-1 == SDLNet_UDP_DelSocket(socketNursery, sock))
-    printError("SDL_net: Unable to remove socket from SocketSet.");
+    printError("SDL_net: Unable to remove UDP socket from SocketSet.");
 }
 
 /**
@@ -1233,7 +1231,8 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
     if (netServer.protocols & PROTOCOL_TCP) {
       if (netStatus & NET_SERVER) {
         if (SDLNet_SocketReady(tcpSockets[netServer.tcpSocketIdx])) {
-          acceptTCP(tcpSockets[netServer.tcpSocketIdx]);
+          if (acceptTCP(tcpSockets[netServer.tcpSocketIdx]))
+            printError("New client registered!");
           nReadySockets--;
         }
         for (i = 0; i < tcpClients.size() && nReadySockets; i++) {
@@ -1376,6 +1375,8 @@ bool NetManager::addUDPClient(UDPpacket *pack) {
     cData->updated = true;
   }
 
+  printError("New client registered!");
+
   return ret;
 }
 
@@ -1516,19 +1517,19 @@ void NetManager::printError(std::string errorText) {
 void NetManager::resetManager() {
   int i;
 
-  for (i = tcpClientData.size(); i >= 0; i--) {
+  for (i = tcpClientData.size() - 1; i >= 0; i--) {
     delete tcpClientData[i];
     tcpClientData.pop_back();
   }
-  for (i = udpClientData.size(); i >= 0; i--) {
+  for (i = udpClientData.size() - 1; i >= 0; i--) {
     delete udpClientData[i];
     udpClientData.pop_back();
   }
-  for (i = tcpClients.size(); i >= 0; i--) {
+  for (i = tcpClients.size() - 1; i >= 0; i--) {
     delete tcpClients[i];
     tcpClients.pop_back();
   }
-  for (i = udpClients.size(); i >= 0; i--) {
+  for (i = udpClients.size() - 1; i >= 0; i--) {
     delete udpClients[i];
     udpClients.pop_back();
   }
