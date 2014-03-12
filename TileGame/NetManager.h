@@ -13,6 +13,7 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <SDL/SDL_net.h>
 
@@ -115,7 +116,7 @@ public:
   bool scanForActivity();
   bool pollForActivity(Uint32 timeout_ms = 5000);
   void messageClients(const char *buf = NULL, int len = 0);
-  void messageServer(const char *buf = NULL, int len = 0);
+  void messageServer(Protocol protocol, const char *buf = NULL, int len = 0);
   void messageClient(Protocol protocol, int clientDataIdx, char *buf, int len);
   void dropClient(Protocol protocol, Uint32 host);
   void stopServer(Protocol protocol = PROTOCOL_ALL);
@@ -131,6 +132,8 @@ public:
   Uint32 getProtocol();
   Uint16 getPort();
   std::string getHost();
+  int getTCPClients();
+  int getUDPClients();
   //! @}
 
   ClientData tcpServerData;
@@ -204,10 +207,10 @@ private:
   //! @}
 
   /** @name Socket Registration & Handling.                          *////@{
-  void watchSocket(TCPsocket *sock);
-  void watchSocket(UDPsocket *sock);
-  void unwatchSocket(TCPsocket *sock);
-  void unwatchSocket(UDPsocket *sock);
+  void watchSocket(TCPsocket sock);
+  void watchSocket(UDPsocket sock);
+  void unwatchSocket(TCPsocket sock);
+  void unwatchSocket(UDPsocket sock);
   bool checkSockets(Uint32 timeout_ms);
   void readTCPSocket(int clientIdx);
   void readUDPSocket(int clientIdx);
