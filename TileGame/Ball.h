@@ -22,9 +22,9 @@ class Ball {
       node(n),
       mass(1)
   {
-      rB->setAngularFactor(0.0f);
-      rB->setRestitution(0.7);
-      rB->setDamping(0.5, 0.0);
+      rB->setAngularFactor(0.4f);
+      rB->setRestitution(0.93);
+      rB->setDamping(0.62, 0.08);
   }
 
     virtual ~Ball() {
@@ -33,7 +33,8 @@ class Ball {
     }
 
     void enableGravity() {
-      rigidBody->setMassProps(1, btVector3(0, 0, 0));
+      unlockPosition();
+
       rigidBody->setGravity(btVector3(0, -980, 0));
       rigidBody->activate(true);
     }
@@ -52,9 +53,13 @@ class Ball {
           btVector3(x, y, z)));
     }
 
-    void applyForce(double dx, double dy, double dz) {
+    void applyForce(double f, Ogre::Vector3 dir) {
+      btScalar force = btScalar(f);
+      btVector3 direction = btVector3(dir.x, dir.y, dir.z);
+      btVector3 cImpulse = direction * force;
+
       rigidBody->activate(true);
-      rigidBody->applyCentralImpulse(btVector3(dx, dy, dz));
+      rigidBody->applyCentralImpulse(cImpulse);
     }
 
     bool checkRigidBody(btRigidBody* ptr) {

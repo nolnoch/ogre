@@ -25,7 +25,8 @@ public:
   bool initSoundManager();
   bool loadMusic(const char *name);
   int loadSound(const char *name);
-  void setVolume(int vol);
+  int getVolume();
+  void setVolume(double vol);
   void playMusic();
   void playSound(int chunk);
   void pauseMusic();

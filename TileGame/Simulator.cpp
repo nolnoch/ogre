@@ -35,9 +35,10 @@ void Simulator::createBounds(const int offset) {
 }
 
 bool Simulator::simulateStep(double delay) {
-  bool ret = false;
+  bool ret = true;
+  int nSteps = 3;
 
-  dynamicsWorld->stepSimulation((1/60.f) - delay, 10);
+  ret = ret && dynamicsWorld->stepSimulation((1/60.f) - delay, nSteps);
 
   return ret;
 }
@@ -73,7 +74,7 @@ btRigidBody* Simulator::addBoxShape(Ogre::SceneNode* node, int xsize, int ysize,
 
 btRigidBody* Simulator::addBallShape(Ogre::SceneNode* node, int radius, int mass)  {
   btVector3 ballInertia(0, 0, 0);
-  btCollisionShape* ballShape = new btSphereShape(radius);
+  btCollisionShape* ballShape = new btSphereShape(radius * 0.9);
   ballShape->calculateLocalInertia(mass, ballInertia);
 
   OgreMotionState* ballMotionState = new OgreMotionState(btTransform(btQuaternion(0, 0, 0, 1.0),

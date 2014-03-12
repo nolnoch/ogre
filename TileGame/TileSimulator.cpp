@@ -13,20 +13,17 @@ void TileSimulator::initSimulator() {
 }
 
 bool TileSimulator::simulateStep(double delay) {
-  bool ret = Simulator::simulateStep(delay);
-  ret = targethit;
+  Simulator::simulateStep(delay);
+  bool ret = targethit;
 
   if (targethit) {
-    // std::cout << "Target hit: in simulateStep" << std::endl;
-
-    if (tiles.size() > 0) {
+    if (tiles.size() > 1) {
       tiles.pop_back();
-
-      if (tiles.size() > 0)
-        activetile = tiles.back();
-      else
-        activetile = NULL;
-    }
+      activetile = tiles.back();
+    } else if (!tiles.empty()) {
+      tiles.pop_back();
+    } else
+      activetile = NULL;
 
     targethit = false;
   }
@@ -56,7 +53,7 @@ void TileSimulator::setBallManager(BallManager *bM) {
 }
 
 bool TileSimulator::tileCallback(btManifoldPoint& cp, void *body0, void *body1) {
-  if (!activetile)
+  if (!activetile || targethit)
     return true;
 
   targethit = tileBallMgr->checkCollisions(activetile, body0, body1);

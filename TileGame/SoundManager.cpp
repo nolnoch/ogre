@@ -78,13 +78,20 @@ int SoundManager::loadSound(const char *name) {
   return idx;
 }
 
-void SoundManager::setVolume(int vol) {
+int SoundManager::getVolume() {
+  return Mix_Volume(-1, -1);
+}
+
+void SoundManager::setVolume(double vol) {
   if (!initialized) {
     std::cout << "SoundManager: Manager not initialized." << std::endl;
     return;
   }
+  int volume = MIX_MAX_VOLUME;
+  if (((int) vol) < volume)
+    volume = (int) (vol * MIX_MAX_VOLUME);
 
-  Mix_Volume(-1, vol);
+  Mix_Volume(-1, volume);
 }
 
 void SoundManager::playMusic() {

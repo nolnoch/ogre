@@ -43,7 +43,6 @@ NetManager::~NetManager() {
  * Public
  */
 
-
 /**
  * Initializes the SDL library if it has not started already, followed by the
  * SDL_net library. If both succeed, the internal SocketSet is allocated, and

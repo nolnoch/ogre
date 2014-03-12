@@ -59,21 +59,27 @@ TileGame::~TileGame(void) {
 bool TileGame::configure() {
   bool ret = BaseGame::configure();
 
+  // Sound //
   soundMgr = new SoundManager();
   soundMgr->initSoundManager();
+
   boing = soundMgr->loadSound("hit.wav");
   gong = soundMgr->loadSound("gong.wav");
   music = soundMgr->loadMusic("ambient.wav");
+
+  soundMgr->setVolume(.5);
   soundMgr->playMusic();
 
+  // Physics //
   sim = new TileSimulator();
   sim->initSimulator();
 
+  // Balls //
   ballMgr = new BallManager(sim);
   ballMgr->initBallManager();
 
+  // Networking //
   netMgr = new NetManager();
-  netMgr->initNetManager();
 
   return ret;
 }
@@ -197,49 +203,41 @@ void TileGame::createFrameListener(void) {
 bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   bool ret = BaseGame::frameRenderingQueued(evt);
 
-  if (paused) {
+  if (paused)
     slowdownval += 1/1800.f;
-    Ogre::Entity* tile = tileEntities[0];
-    tile->setMaterialName("Examples/Chrome");
-  } else {
-    Ogre::Entity* tile = tileEntities[0];
+  else {
     bool hit = sim->simulateStep(slowdownval);
 
     if (hit && !gameDone) {
       soundMgr->playSound(boing);
+      score++;
 
-      tileEntities.back()->setMaterialName("Examples/BumpyMetal");
-
-      if (tileEntities.size() > 0) {
+      if (!tileEntities.empty()) {
+        tileEntities.back()->setMaterialName("Examples/BumpyMetal");
         tileEntities.pop_back();
         tileSceneNodes.pop_back();
       }
-      score++;
 
-      if (tileEntities.size() == 0) {
+      if (tileEntities.empty()) {
         gameDone = true;
         winTimer = 0;
         congratsPanel->show();
-
         ballMgr->enableGravity();
       }
     }
   }
 
-  if (gameDone) {
-    winTimer++;
-
-    if (winTimer > 360) {
-      levelTearDown();
-      levelSetup(currLevel);
-      congratsPanel->hide();
-    }
+  if (gameDone && winTimer++ > 320) {
+    levelTearDown();
+    levelSetup(currLevel);
+    congratsPanel->hide();
   }
 
-  simonSaysAnim();
+  if (!animDone)
+    simonSaysAnim();
 
   if (isCharging && chargeShot < 10000)
-    chargeShot += 80;
+    chargeShot += 70;
 
   if (!mTrayMgr->isDialogVisible()) {
     scorePanel->setParamValue(0, Ogre::StringConverter::toString(score));
@@ -306,7 +304,7 @@ bool TileGame::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id 
     Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
     // std::cout << chargeShot << std::endl;
-    double force = chargeShot;
+    double force = chargeShot * 0.8f;
     chargeShot = 0;
 
     if(ballMgr->isGlobalBall())
@@ -319,7 +317,7 @@ bool TileGame::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id 
     ballMeshpc->setCastShadows(true);
     nodepc->attachObject(ballMeshpc);
     ballMgr->setGlobalBall(ballMgr->addBall(nodepc, x, y, z, 100));
-    ballMgr->globalBall->applyForce(force * direction.x, force * direction.y, force * direction.z);
+    ballMgr->globalBall->applyForce(force, direction);
     shotsFired++;
   }
 
