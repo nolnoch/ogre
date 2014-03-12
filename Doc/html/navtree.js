@@ -29,7 +29,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AppDelegate_8h.html",
-"classSoundManager.html#a099128ef18dacf43acd4942aedf712a2"
+"classSimulator.html#abf328154008d231ebff7a42a58791e5b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

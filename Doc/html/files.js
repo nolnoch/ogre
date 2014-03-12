@@ -17,6 +17,8 @@ var files =
     [ "config.h", "config_8h.html", "config_8h" ],
     [ "NetManager.cpp", "NetManager_8cpp.html", null ],
     [ "NetManager.h", "NetManager_8h.html", "NetManager_8h" ],
+    [ "NetTestClient.cpp", "NetTestClient_8cpp.html", "NetTestClient_8cpp" ],
+    [ "NetTestServer.cpp", "NetTestServer_8cpp.html", "NetTestServer_8cpp" ],
     [ "OgreMotionState.h", "OgreMotionState_8h.html", [
       [ "OgreMotionState", "classOgreMotionState.html", "classOgreMotionState" ]
     ] ],

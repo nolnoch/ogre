@@ -128,9 +128,9 @@ $(document).ready(function(){initNavTree('Ball_8h_source.html','');});
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">node</a>(n),</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classBall.html#aee2035d202321b658c0869f1e885766b">mass</a>(1)</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      rB-&gt;setAngularFactor(0.0f);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      rB-&gt;setRestitution(0.7);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      rB-&gt;setDamping(0.5, 0.0);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      rB-&gt;setAngularFactor(0.4f);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      rB-&gt;setRestitution(0.93);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      rB-&gt;setDamping(0.62, 0.08);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classBall.html#a20f2f6ac0bf648f406a8e12e63429fcd">   30</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classBall.html#a20f2f6ac0bf648f406a8e12e63429fcd">~Ball</a>() {</div>
@@ -139,56 +139,61 @@ $(document).ready(function(){initNavTree('Ball_8h_source.html','');});
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classBall.html#acc744032fcdb54f6555880296b899a1e">   35</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#acc744032fcdb54f6555880296b899a1e">enableGravity</a>() {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;setMassProps(1, btVector3(0, 0, 0));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;setGravity(btVector3(0, -980, 0));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;activate(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classBall.html#aca417b802b8bd765d6a06adc64b4cd1c">   41</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#aca417b802b8bd765d6a06adc64b4cd1c">lockPosition</a>() {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;setMassProps(0, btVector3(0, 0, 0));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classBall.html#ab4ad64bcaa75353124023b924de9ff98">   45</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#ab4ad64bcaa75353124023b924de9ff98">unlockPosition</a>() {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;setMassProps(<a class="code" href="classBall.html#aee2035d202321b658c0869f1e885766b">mass</a>, btVector3(0, 0, 0));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classBall.html#afe626f0cd58bb4e6e604f18be11ae6ca">   49</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#afe626f0cd58bb4e6e604f18be11ae6ca">setPosition</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">node</a>-&gt;setPosition(x, y, z);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;getMotionState()-&gt;setWorldTransform(btTransform(btQuaternion(0, 0, 0, 1),</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;          btVector3(x, y, z)));</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classBall.html#a8560c24afa515d3319cdf08dd918bf82">   55</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#a8560c24afa515d3319cdf08dd918bf82">applyForce</a>(<span class="keywordtype">double</span> dx, <span class="keywordtype">double</span> dy, <span class="keywordtype">double</span> dz) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;activate(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;applyCentralImpulse(btVector3(dx, dy, dz));</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classBall.html#a6364b72dcbf707a3ff649fdf731936d4">   60</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classBall.html#a6364b72dcbf707a3ff649fdf731936d4">checkRigidBody</a>(btRigidBody* ptr) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">return</span> ptr == <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classBall.html#a0dde8c947575a2f2edb671ef02326c50">   64</a></span>&#160;    btRigidBody* <a class="code" href="classBall.html#a0dde8c947575a2f2edb671ef02326c50">getRigidBody</a>() {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classBall.html#a80897cd66327c7b8664b5416021c9f12">   68</a></span>&#160;    Ogre::SceneNode* <a class="code" href="classBall.html#a80897cd66327c7b8664b5416021c9f12">getSceneNode</a>() {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">node</a>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">   73</a></span>&#160;    Ogre::SceneNode* <a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">node</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="classBall.html#aee2035d202321b658c0869f1e885766b">   74</a></span>&#160;    btScalar <a class="code" href="classBall.html#aee2035d202321b658c0869f1e885766b">mass</a>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">   75</a></span>&#160;    btRigidBody* <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  };</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BALL_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <a class="code" href="classBall.html#ab4ad64bcaa75353124023b924de9ff98">unlockPosition</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;setGravity(btVector3(0, -980, 0));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;activate(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classBall.html#aca417b802b8bd765d6a06adc64b4cd1c">   42</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#aca417b802b8bd765d6a06adc64b4cd1c">lockPosition</a>() {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;setMassProps(0, btVector3(0, 0, 0));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classBall.html#ab4ad64bcaa75353124023b924de9ff98">   46</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#ab4ad64bcaa75353124023b924de9ff98">unlockPosition</a>() {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;setMassProps(<a class="code" href="classBall.html#aee2035d202321b658c0869f1e885766b">mass</a>, btVector3(0, 0, 0));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classBall.html#afe626f0cd58bb4e6e604f18be11ae6ca">   50</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#afe626f0cd58bb4e6e604f18be11ae6ca">setPosition</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">node</a>-&gt;setPosition(x, y, z);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;getMotionState()-&gt;setWorldTransform(btTransform(btQuaternion(0, 0, 0, 1),</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;          btVector3(x, y, z)));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classBall.html#a902a1e615fa1c0f9b91c700a90f4f475">   56</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#a902a1e615fa1c0f9b91c700a90f4f475">applyForce</a>(<span class="keywordtype">double</span> f, Ogre::Vector3 dir) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      btScalar force = btScalar(f);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      btVector3 direction = btVector3(dir.x, dir.y, dir.z);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      btVector3 cImpulse = direction * force;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;activate(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;applyCentralImpulse(cImpulse);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="classBall.html#a6364b72dcbf707a3ff649fdf731936d4">   65</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classBall.html#a6364b72dcbf707a3ff649fdf731936d4">checkRigidBody</a>(btRigidBody* ptr) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">return</span> ptr == <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classBall.html#a0dde8c947575a2f2edb671ef02326c50">   69</a></span>&#160;    btRigidBody* <a class="code" href="classBall.html#a0dde8c947575a2f2edb671ef02326c50">getRigidBody</a>() {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="classBall.html#a80897cd66327c7b8664b5416021c9f12">   73</a></span>&#160;    Ogre::SceneNode* <a class="code" href="classBall.html#a80897cd66327c7b8664b5416021c9f12">getSceneNode</a>() {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">node</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">   78</a></span>&#160;    Ogre::SceneNode* <a class="code" href="classBall.html#af1e78462805ffd11789b6e6d3940068f">node</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="classBall.html#aee2035d202321b658c0869f1e885766b">   79</a></span>&#160;    btScalar <a class="code" href="classBall.html#aee2035d202321b658c0869f1e885766b">mass</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">   80</a></span>&#160;    btRigidBody* <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  };</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BALL_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="Ball_8h.html">Ball.h</a></li>
-    <li class="footer">Generated on Tue Mar 11 2014 05:30:50 for OGRE Game by
+    <li class="footer">Generated on Wed Mar 12 2014 05:40:58 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

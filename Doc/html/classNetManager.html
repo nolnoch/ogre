@@ -146,9 +146,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9cd49a87e94f25467cc8056e33c23dc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a9cd49a87e94f25467cc8056e33c23dc5">messageClients</a> (const char *buf=NULL, int len=0)</td></tr>
 <tr class="memdesc:a9cd49a87e94f25467cc8056e33c23dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to all clients.  <a href="#a9cd49a87e94f25467cc8056e33c23dc5">More...</a><br/></td></tr>
 <tr class="separator:a9cd49a87e94f25467cc8056e33c23dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83862646172bbdcdbe4174de25837ffd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a83862646172bbdcdbe4174de25837ffd">messageServer</a> (const char *buf=NULL, int len=0)</td></tr>
-<tr class="memdesc:a83862646172bbdcdbe4174de25837ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to the server.  <a href="#a83862646172bbdcdbe4174de25837ffd">More...</a><br/></td></tr>
-<tr class="separator:a83862646172bbdcdbe4174de25837ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bcbcfe3c01917c2211b692cf6615177"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a8bcbcfe3c01917c2211b692cf6615177">messageServer</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, const char *buf=NULL, int len=0)</td></tr>
+<tr class="memdesc:a8bcbcfe3c01917c2211b692cf6615177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to the server.  <a href="#a8bcbcfe3c01917c2211b692cf6615177">More...</a><br/></td></tr>
+<tr class="separator:a8bcbcfe3c01917c2211b692cf6615177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a165db41d5fa0692307f11cba589796d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a165db41d5fa0692307f11cba589796d0">messageClient</a> (<a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a> protocol, int clientDataIdx, char *buf, int len)</td></tr>
 <tr class="memdesc:a165db41d5fa0692307f11cba589796d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a single message to a single client over a single protocol.  <a href="#a165db41d5fa0692307f11cba589796d0">More...</a><br/></td></tr>
 <tr class="separator:a165db41d5fa0692307f11cba589796d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +185,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abe7cce0db370157b36d4e16a903a0581"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#abe7cce0db370157b36d4e16a903a0581">getHost</a> ()</td></tr>
 <tr class="memdesc:abe7cce0db370157b36d4e16a903a0581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently active host.  <a href="#abe7cce0db370157b36d4e16a903a0581">More...</a><br/></td></tr>
 <tr class="separator:abe7cce0db370157b36d4e16a903a0581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2488915365f983bafc310a13987bc0b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a2488915365f983bafc310a13987bc0b1">getTCPClients</a> ()</td></tr>
+<tr class="memdesc:a2488915365f983bafc310a13987bc0b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of connected TCP clients.  <a href="#a2488915365f983bafc310a13987bc0b1">More...</a><br/></td></tr>
+<tr class="separator:a2488915365f983bafc310a13987bc0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a785826341013e957efbff6d6581c6d56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a785826341013e957efbff6d6581c6d56">getUDPClients</a> ()</td></tr>
+<tr class="memdesc:a785826341013e957efbff6d6581c6d56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of connected UDP clients.  <a href="#a785826341013e957efbff6d6581c6d56">More...</a><br/></td></tr>
+<tr class="separator:a785826341013e957efbff6d6581c6d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -309,18 +315,18 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a5927d55003a434ec69d8909dffe88575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse incoming data from server or clients for NetManager-specific commands.  <a href="#a5927d55003a434ec69d8909dffe88575">More...</a><br/></td></tr>
 <tr class="separator:a5927d55003a434ec69d8909dffe88575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Socket Registration &amp; Handling.</div></td></tr>
-<tr class="memitem:a1d3f54e43abe28d9804d3348bc0eacd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a1d3f54e43abe28d9804d3348bc0eacd8">watchSocket</a> (TCPsocket *sock)</td></tr>
-<tr class="memdesc:a1d3f54e43abe28d9804d3348bc0eacd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a TCP socket to be watched for activity by SDL.  <a href="#a1d3f54e43abe28d9804d3348bc0eacd8">More...</a><br/></td></tr>
-<tr class="separator:a1d3f54e43abe28d9804d3348bc0eacd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d0c6dcf246d88b510a2230227dd0e0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a3d0c6dcf246d88b510a2230227dd0e0a">watchSocket</a> (UDPsocket *sock)</td></tr>
-<tr class="memdesc:a3d0c6dcf246d88b510a2230227dd0e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a UDP socket to be watched for activity by SDL.  <a href="#a3d0c6dcf246d88b510a2230227dd0e0a">More...</a><br/></td></tr>
-<tr class="separator:a3d0c6dcf246d88b510a2230227dd0e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74e382ac7ea8b8ce09d11ea43a464385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a74e382ac7ea8b8ce09d11ea43a464385">unwatchSocket</a> (TCPsocket *sock)</td></tr>
-<tr class="memdesc:a74e382ac7ea8b8ce09d11ea43a464385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a TCP socket from SDL's observation.  <a href="#a74e382ac7ea8b8ce09d11ea43a464385">More...</a><br/></td></tr>
-<tr class="separator:a74e382ac7ea8b8ce09d11ea43a464385"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46c2393e0deef57de2f3cda92d4ea9bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a46c2393e0deef57de2f3cda92d4ea9bd">unwatchSocket</a> (UDPsocket *sock)</td></tr>
-<tr class="memdesc:a46c2393e0deef57de2f3cda92d4ea9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a UDP socket from SDL's observation.  <a href="#a46c2393e0deef57de2f3cda92d4ea9bd">More...</a><br/></td></tr>
-<tr class="separator:a46c2393e0deef57de2f3cda92d4ea9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0bbb27a9593512aa2cff1a353316ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#add0bbb27a9593512aa2cff1a353316ac">watchSocket</a> (TCPsocket sock)</td></tr>
+<tr class="memdesc:add0bbb27a9593512aa2cff1a353316ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a TCP socket to be watched for activity by SDL.  <a href="#add0bbb27a9593512aa2cff1a353316ac">More...</a><br/></td></tr>
+<tr class="separator:add0bbb27a9593512aa2cff1a353316ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff38e9c6b4cc21b180d9285ed8ec9ea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aff38e9c6b4cc21b180d9285ed8ec9ea7">watchSocket</a> (UDPsocket sock)</td></tr>
+<tr class="memdesc:aff38e9c6b4cc21b180d9285ed8ec9ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a UDP socket to be watched for activity by SDL.  <a href="#aff38e9c6b4cc21b180d9285ed8ec9ea7">More...</a><br/></td></tr>
+<tr class="separator:aff38e9c6b4cc21b180d9285ed8ec9ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4db6d32d623b5a0a1bda8f3decb6aa6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a4db6d32d623b5a0a1bda8f3decb6aa6f">unwatchSocket</a> (TCPsocket sock)</td></tr>
+<tr class="memdesc:a4db6d32d623b5a0a1bda8f3decb6aa6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a TCP socket from SDL's observation.  <a href="#a4db6d32d623b5a0a1bda8f3decb6aa6f">More...</a><br/></td></tr>
+<tr class="separator:a4db6d32d623b5a0a1bda8f3decb6aa6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa90ba38c3605d8473292c5e7585bd20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#aaa90ba38c3605d8473292c5e7585bd20">unwatchSocket</a> (UDPsocket sock)</td></tr>
+<tr class="memdesc:aaa90ba38c3605d8473292c5e7585bd20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a UDP socket from SDL's observation.  <a href="#aaa90ba38c3605d8473292c5e7585bd20">More...</a><br/></td></tr>
+<tr class="separator:aaa90ba38c3605d8473292c5e7585bd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64ca334dbe3e4b540236aa35dccc96df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetManager.html#a64ca334dbe3e4b540236aa35dccc96df">checkSockets</a> (Uint32 timeout_ms)</td></tr>
 <tr class="memdesc:a64ca334dbe3e4b540236aa35dccc96df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ask SDL to scan registered sockets once or for a given time period.  <a href="#a64ca334dbe3e4b540236aa35dccc96df">More...</a><br/></td></tr>
 <tr class="separator:a64ca334dbe3e4b540236aa35dccc96df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1125,6 +1131,44 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2488915365f983bafc310a13987bc0b1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NetManager::getTCPClients </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The number of connected TCP clients. </p>
+<p>I added this primarily for testing, but it may come in handy. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of connected TCP clients. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a785826341013e957efbff6d6581c6d56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NetManager::getUDPClients </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The number of connected UDP clients. </p>
+<p>I added this primarily for testing, but it may come in handy. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of connected UDP clients. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a9dcef281247169fc624d771f2a4ae01a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1319,13 +1363,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a83862646172bbdcdbe4174de25837ffd"></a>
+<a class="anchor" id="a8bcbcfe3c01917c2211b692cf6615177"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void NetManager::messageServer </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="NetManager_8h.html#a9af285d1232beed01f31aac5d3a5469f">Protocol</a>&#160;</td>
+          <td class="paramname"><em>protocol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>buf</em> = <code>NULL</code>, </td>
         </tr>
@@ -2495,7 +2545,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a74e382ac7ea8b8ce09d11ea43a464385"></a>
+<a class="anchor" id="a4db6d32d623b5a0a1bda8f3decb6aa6f"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -2505,7 +2555,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void NetManager::unwatchSocket </td>
           <td>(</td>
-          <td class="paramtype">TCPsocket *&#160;</td>
+          <td class="paramtype">TCPsocket&#160;</td>
           <td class="paramname"><em>sock</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2527,7 +2577,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a46c2393e0deef57de2f3cda92d4ea9bd"></a>
+<a class="anchor" id="aaa90ba38c3605d8473292c5e7585bd20"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -2537,7 +2587,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void NetManager::unwatchSocket </td>
           <td>(</td>
-          <td class="paramtype">UDPsocket *&#160;</td>
+          <td class="paramtype">UDPsocket&#160;</td>
           <td class="paramname"><em>sock</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2559,7 +2609,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1d3f54e43abe28d9804d3348bc0eacd8"></a>
+<a class="anchor" id="add0bbb27a9593512aa2cff1a353316ac"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -2569,7 +2619,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void NetManager::watchSocket </td>
           <td>(</td>
-          <td class="paramtype">TCPsocket *&#160;</td>
+          <td class="paramtype">TCPsocket&#160;</td>
           <td class="paramname"><em>sock</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2591,7 +2641,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3d0c6dcf246d88b510a2230227dd0e0a"></a>
+<a class="anchor" id="aff38e9c6b4cc21b180d9285ed8ec9ea7"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -2601,7 +2651,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void NetManager::watchSocket </td>
           <td>(</td>
-          <td class="paramtype">UDPsocket *&#160;</td>
+          <td class="paramtype">UDPsocket&#160;</td>
           <td class="paramname"><em>sock</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2942,7 +2992,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classNetManager.html">NetManager</a></li>
-    <li class="footer">Generated on Tue Mar 11 2014 05:30:50 for OGRE Game by
+    <li class="footer">Generated on Wed Mar 12 2014 05:40:58 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

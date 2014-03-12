@@ -127,8 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab4ad64bcaa75353124023b924de9ff98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe626f0cd58bb4e6e604f18be11ae6ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBall.html#afe626f0cd58bb4e6e604f18be11ae6ca">setPosition</a> (int x, int y, int z)</td></tr>
 <tr class="separator:afe626f0cd58bb4e6e604f18be11ae6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8560c24afa515d3319cdf08dd918bf82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBall.html#a8560c24afa515d3319cdf08dd918bf82">applyForce</a> (double dx, double dy, double dz)</td></tr>
-<tr class="separator:a8560c24afa515d3319cdf08dd918bf82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a902a1e615fa1c0f9b91c700a90f4f475"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBall.html#a902a1e615fa1c0f9b91c700a90f4f475">applyForce</a> (double f, Ogre::Vector3 dir)</td></tr>
+<tr class="separator:a902a1e615fa1c0f9b91c700a90f4f475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6364b72dcbf707a3ff649fdf731936d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBall.html#a6364b72dcbf707a3ff649fdf731936d4">checkRigidBody</a> (btRigidBody *ptr)</td></tr>
 <tr class="separator:a6364b72dcbf707a3ff649fdf731936d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dde8c947575a2f2edb671ef02326c50"><td class="memItemLeft" align="right" valign="top">btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBall.html#a0dde8c947575a2f2edb671ef02326c50">getRigidBody</a> ()</td></tr>
@@ -222,7 +222,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a8560c24afa515d3319cdf08dd918bf82"></a>
+<a class="anchor" id="a902a1e615fa1c0f9b91c700a90f4f475"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -233,19 +233,13 @@ Private Attributes</h2></td></tr>
           <td class="memname">void Ball::applyForce </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>dx</em>, </td>
+          <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>dy</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>dz</em>&#160;</td>
+          <td class="paramtype">Ogre::Vector3&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -512,7 +506,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classBall.html">Ball</a></li>
-    <li class="footer">Generated on Tue Mar 11 2014 05:30:50 for OGRE Game by
+    <li class="footer">Generated on Wed Mar 12 2014 05:40:58 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

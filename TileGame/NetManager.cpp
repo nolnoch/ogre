@@ -1,8 +1,12 @@
-/*
- * NetManager.cpp
+/**
+ * @file NetManager.cpp
+ * @date March 7, 2014
+ * @author Wade Burch (nolnoch@cs.utexas.edu)
  *
- *  Created on: Mar 7, 2014
- *      Author: nolnoch
+ * @brief Networking wrapper for SDL_net created for OGRE engine use in CS 354R
+ * at the University of Texas at Austin, taught by Don Fussell in Spring 2014.
+ *
+ * @copyright GNU Public License
  */
 
 #include "NetManager.h"
@@ -574,11 +578,22 @@ std::string NetManager::getHost() {
 
   return netHost;
 }
-
+/**
+ * @brief The number of connected TCP clients.
+ *
+ * I added this primarily for testing, but it may come in handy.
+ * @return The number of connected TCP clients.
+ */
 int NetManager::getTCPClients() {
   return tcpClients.size();
 }
 
+/**
+ * @brief The number of connected UDP clients.
+ *
+ * I added this primarily for testing, but it may come in handy.
+ * @return The number of connected UDP clients.
+ */
 int NetManager::getUDPClients() {
   return udpClients.size();
 }

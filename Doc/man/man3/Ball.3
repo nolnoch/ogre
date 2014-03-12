@@ -1,4 +1,4 @@
-.TH "Ball" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.TH "Ball" 3 "Wed Mar 12 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,7 +30,7 @@ Ball \-
 .RI "void \fBsetPosition\fP (int x, int y, int z)"
 .br
 .ti -1c
-.RI "void \fBapplyForce\fP (double dx, double dy, double dz)"
+.RI "void \fBapplyForce\fP (double f, Ogre::Vector3 dir)"
 .br
 .ti -1c
 .RI "bool \fBcheckRigidBody\fP (btRigidBody *ptr)"
@@ -63,7 +63,7 @@ Ball \-
 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Ball::applyForce (doubledx, doubledy, doubledz)\fC [inline]\fP"
+.SS "void Ball::applyForce (doublef, Ogre::Vector3dir)\fC [inline]\fP"
 
 .SS "bool Ball::checkRigidBody (btRigidBody *ptr)\fC [inline]\fP"
 

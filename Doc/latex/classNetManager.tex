@@ -38,7 +38,7 @@ bool \hyperlink{classNetManager_ac213dda2e72556e53450d5b1e2057f22}{poll\-For\-Ac
 \begin{DoxyCompactList}\small\item\em Poll for activity on all T\-C\-P and U\-D\-P sockets. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_a9cd49a87e94f25467cc8056e33c23dc5}{message\-Clients} (const char $\ast$buf=N\-U\-L\-L, int len=0)
 \begin{DoxyCompactList}\small\item\em Send a single message to all clients. \end{DoxyCompactList}\item 
-void \hyperlink{classNetManager_a83862646172bbdcdbe4174de25837ffd}{message\-Server} (const char $\ast$buf=N\-U\-L\-L, int len=0)
+void \hyperlink{classNetManager_a8bcbcfe3c01917c2211b692cf6615177}{message\-Server} (\hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol} protocol, const char $\ast$buf=N\-U\-L\-L, int len=0)
 \begin{DoxyCompactList}\small\item\em Send a single message to the server. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_a165db41d5fa0692307f11cba589796d0}{message\-Client} (\hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol} protocol, int client\-Data\-Idx, char $\ast$buf, int len)
 \begin{DoxyCompactList}\small\item\em Send a single message to a single client over a single protocol. \end{DoxyCompactList}\item 
@@ -67,7 +67,11 @@ Uint32 \hyperlink{classNetManager_a3c941b21b356a166f2ebbdd522dc792d}{get\-Protoc
 Uint16 \hyperlink{classNetManager_aa6924b10800963247c025870b1116a62}{get\-Port} ()
 \begin{DoxyCompactList}\small\item\em Returns the currently active port. \end{DoxyCompactList}\item 
 std\-::string \hyperlink{classNetManager_abe7cce0db370157b36d4e16a903a0581}{get\-Host} ()
-\begin{DoxyCompactList}\small\item\em Returns the currently active host. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the currently active host. \end{DoxyCompactList}\item 
+int \hyperlink{classNetManager_a2488915365f983bafc310a13987bc0b1}{get\-T\-C\-P\-Clients} ()
+\begin{DoxyCompactList}\small\item\em The number of connected T\-C\-P clients. \end{DoxyCompactList}\item 
+int \hyperlink{classNetManager_a785826341013e957efbff6d6581c6d56}{get\-U\-D\-P\-Clients} ()
+\begin{DoxyCompactList}\small\item\em The number of connected U\-D\-P clients. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -176,13 +180,13 @@ void \hyperlink{classNetManager_a5927d55003a434ec69d8909dffe88575}{process\-Pack
 \begin{Indent}{\bf Socket Registration \& Handling.}\par
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{classNetManager_a1d3f54e43abe28d9804d3348bc0eacd8}{watch\-Socket} (T\-C\-Psocket $\ast$sock)
+void \hyperlink{classNetManager_add0bbb27a9593512aa2cff1a353316ac}{watch\-Socket} (T\-C\-Psocket sock)
 \begin{DoxyCompactList}\small\item\em Register a T\-C\-P socket to be watched for activity by S\-D\-L. \end{DoxyCompactList}\item 
-void \hyperlink{classNetManager_a3d0c6dcf246d88b510a2230227dd0e0a}{watch\-Socket} (U\-D\-Psocket $\ast$sock)
+void \hyperlink{classNetManager_aff38e9c6b4cc21b180d9285ed8ec9ea7}{watch\-Socket} (U\-D\-Psocket sock)
 \begin{DoxyCompactList}\small\item\em Register a U\-D\-P socket to be watched for activity by S\-D\-L. \end{DoxyCompactList}\item 
-void \hyperlink{classNetManager_a74e382ac7ea8b8ce09d11ea43a464385}{unwatch\-Socket} (T\-C\-Psocket $\ast$sock)
+void \hyperlink{classNetManager_a4db6d32d623b5a0a1bda8f3decb6aa6f}{unwatch\-Socket} (T\-C\-Psocket sock)
 \begin{DoxyCompactList}\small\item\em Remove a T\-C\-P socket from S\-D\-L's observation. \end{DoxyCompactList}\item 
-void \hyperlink{classNetManager_a46c2393e0deef57de2f3cda92d4ea9bd}{unwatch\-Socket} (U\-D\-Psocket $\ast$sock)
+void \hyperlink{classNetManager_aaa90ba38c3605d8473292c5e7585bd20}{unwatch\-Socket} (U\-D\-Psocket sock)
 \begin{DoxyCompactList}\small\item\em Remove a U\-D\-P socket from S\-D\-L's observation. \end{DoxyCompactList}\item 
 bool \hyperlink{classNetManager_a64ca334dbe3e4b540236aa35dccc96df}{check\-Sockets} (Uint32 timeout\-\_\-ms)
 \begin{DoxyCompactList}\small\item\em Ask S\-D\-L to scan registered sockets once or for a given time period. \end{DoxyCompactList}\item 
@@ -673,6 +677,34 @@ Returns the currently active protocols.
 \begin{DoxyReturn}{Returns}
 The currently active protocols. 
 \end{DoxyReturn}
+\hypertarget{classNetManager_a2488915365f983bafc310a13987bc0b1}{\index{Net\-Manager@{Net\-Manager}!get\-T\-C\-P\-Clients@{get\-T\-C\-P\-Clients}}
+\index{get\-T\-C\-P\-Clients@{get\-T\-C\-P\-Clients}!NetManager@{Net\-Manager}}
+\subsubsection[{get\-T\-C\-P\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}int Net\-Manager\-::get\-T\-C\-P\-Clients (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a2488915365f983bafc310a13987bc0b1}
+
+
+The number of connected T\-C\-P clients. 
+
+I added this primarily for testing, but it may come in handy. \begin{DoxyReturn}{Returns}
+The number of connected T\-C\-P clients. 
+\end{DoxyReturn}
+\hypertarget{classNetManager_a785826341013e957efbff6d6581c6d56}{\index{Net\-Manager@{Net\-Manager}!get\-U\-D\-P\-Clients@{get\-U\-D\-P\-Clients}}
+\index{get\-U\-D\-P\-Clients@{get\-U\-D\-P\-Clients}!NetManager@{Net\-Manager}}
+\subsubsection[{get\-U\-D\-P\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}int Net\-Manager\-::get\-U\-D\-P\-Clients (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a785826341013e957efbff6d6581c6d56}
+
+
+The number of connected U\-D\-P clients. 
+
+I added this primarily for testing, but it may come in handy. \begin{DoxyReturn}{Returns}
+The number of connected U\-D\-P clients. 
+\end{DoxyReturn}
 \hypertarget{classNetManager_a9dcef281247169fc624d771f2a4ae01a}{\index{Net\-Manager@{Net\-Manager}!init\-Net\-Manager@{init\-Net\-Manager}}
 \index{init\-Net\-Manager@{init\-Net\-Manager}!NetManager@{Net\-Manager}}
 \subsubsection[{init\-Net\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}bool Net\-Manager\-::init\-Net\-Manager (
@@ -774,14 +806,15 @@ Must be running as a server to call this function. If no arguments are given, it
 {\em len} & Length of given buffer. Default\-: 0. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classNetManager_a83862646172bbdcdbe4174de25837ffd}{\index{Net\-Manager@{Net\-Manager}!message\-Server@{message\-Server}}
+\hypertarget{classNetManager_a8bcbcfe3c01917c2211b692cf6615177}{\index{Net\-Manager@{Net\-Manager}!message\-Server@{message\-Server}}
 \index{message\-Server@{message\-Server}!NetManager@{Net\-Manager}}
 \subsubsection[{message\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::message\-Server (
 \begin{DoxyParamCaption}
+\item[{{\bf Protocol}}]{protocol, }
 \item[{const char $\ast$}]{buf = {\ttfamily NULL}, }
 \item[{int}]{len = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}}\label{classNetManager_a83862646172bbdcdbe4174de25837ffd}
+)}}\label{classNetManager_a8bcbcfe3c01917c2211b692cf6615177}
 
 
 Send a single message to the server. 
@@ -1409,13 +1442,13 @@ Unbind a bound socket channel.
 {\em channel} & The channel to be unbound. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classNetManager_a74e382ac7ea8b8ce09d11ea43a464385}{\index{Net\-Manager@{Net\-Manager}!unwatch\-Socket@{unwatch\-Socket}}
+\hypertarget{classNetManager_a4db6d32d623b5a0a1bda8f3decb6aa6f}{\index{Net\-Manager@{Net\-Manager}!unwatch\-Socket@{unwatch\-Socket}}
 \index{unwatch\-Socket@{unwatch\-Socket}!NetManager@{Net\-Manager}}
 \subsubsection[{unwatch\-Socket}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::unwatch\-Socket (
 \begin{DoxyParamCaption}
-\item[{T\-C\-Psocket $\ast$}]{sock}
+\item[{T\-C\-Psocket}]{sock}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a74e382ac7ea8b8ce09d11ea43a464385}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a4db6d32d623b5a0a1bda8f3decb6aa6f}
 
 
 Remove a T\-C\-P socket from S\-D\-L's observation. 
@@ -1425,13 +1458,13 @@ Remove a T\-C\-P socket from S\-D\-L's observation.
 {\em sock} & The socket to remove. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classNetManager_a46c2393e0deef57de2f3cda92d4ea9bd}{\index{Net\-Manager@{Net\-Manager}!unwatch\-Socket@{unwatch\-Socket}}
+\hypertarget{classNetManager_aaa90ba38c3605d8473292c5e7585bd20}{\index{Net\-Manager@{Net\-Manager}!unwatch\-Socket@{unwatch\-Socket}}
 \index{unwatch\-Socket@{unwatch\-Socket}!NetManager@{Net\-Manager}}
 \subsubsection[{unwatch\-Socket}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::unwatch\-Socket (
 \begin{DoxyParamCaption}
-\item[{U\-D\-Psocket $\ast$}]{sock}
+\item[{U\-D\-Psocket}]{sock}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a46c2393e0deef57de2f3cda92d4ea9bd}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_aaa90ba38c3605d8473292c5e7585bd20}
 
 
 Remove a U\-D\-P socket from S\-D\-L's observation. 
@@ -1441,13 +1474,13 @@ Remove a U\-D\-P socket from S\-D\-L's observation.
 {\em sock} & The socket to remove. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classNetManager_a1d3f54e43abe28d9804d3348bc0eacd8}{\index{Net\-Manager@{Net\-Manager}!watch\-Socket@{watch\-Socket}}
+\hypertarget{classNetManager_add0bbb27a9593512aa2cff1a353316ac}{\index{Net\-Manager@{Net\-Manager}!watch\-Socket@{watch\-Socket}}
 \index{watch\-Socket@{watch\-Socket}!NetManager@{Net\-Manager}}
 \subsubsection[{watch\-Socket}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::watch\-Socket (
 \begin{DoxyParamCaption}
-\item[{T\-C\-Psocket $\ast$}]{sock}
+\item[{T\-C\-Psocket}]{sock}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a1d3f54e43abe28d9804d3348bc0eacd8}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_add0bbb27a9593512aa2cff1a353316ac}
 
 
 Register a T\-C\-P socket to be watched for activity by S\-D\-L. 
@@ -1457,13 +1490,13 @@ Register a T\-C\-P socket to be watched for activity by S\-D\-L.
 {\em sock} & The socket to watch. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classNetManager_a3d0c6dcf246d88b510a2230227dd0e0a}{\index{Net\-Manager@{Net\-Manager}!watch\-Socket@{watch\-Socket}}
+\hypertarget{classNetManager_aff38e9c6b4cc21b180d9285ed8ec9ea7}{\index{Net\-Manager@{Net\-Manager}!watch\-Socket@{watch\-Socket}}
 \index{watch\-Socket@{watch\-Socket}!NetManager@{Net\-Manager}}
 \subsubsection[{watch\-Socket}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::watch\-Socket (
 \begin{DoxyParamCaption}
-\item[{U\-D\-Psocket $\ast$}]{sock}
+\item[{U\-D\-Psocket}]{sock}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a3d0c6dcf246d88b510a2230227dd0e0a}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_aff38e9c6b4cc21b180d9285ed8ec9ea7}
 
 
 Register a U\-D\-P socket to be watched for activity by S\-D\-L. 

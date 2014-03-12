@@ -2,7 +2,7 @@ var classBall =
 [
     [ "Ball", "classBall.html#aec238435b8abb83b6459dc811be703b9", null ],
     [ "~Ball", "classBall.html#a20f2f6ac0bf648f406a8e12e63429fcd", null ],
-    [ "applyForce", "classBall.html#a8560c24afa515d3319cdf08dd918bf82", null ],
+    [ "applyForce", "classBall.html#a902a1e615fa1c0f9b91c700a90f4f475", null ],
     [ "checkRigidBody", "classBall.html#a6364b72dcbf707a3ff649fdf731936d4", null ],
     [ "enableGravity", "classBall.html#acc744032fcdb54f6555880296b899a1e", null ],
     [ "getRigidBody", "classBall.html#a0dde8c947575a2f2edb671ef02326c50", null ],

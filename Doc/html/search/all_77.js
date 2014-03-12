@@ -7,7 +7,7 @@ var searchData=
   ['wallleft',['wallLeft',['../classTileGame.html#a92cc3d1944d2bd572198479508722577',1,'TileGame']]],
   ['wallright',['wallRight',['../classTileGame.html#ae7de21d4feafcb1cc6f2d0434ddcfa9c',1,'TileGame']]],
   ['wallup',['wallUp',['../classTileGame.html#a3679e7a4d3981c56c087f23f94b3b0ec',1,'TileGame']]],
-  ['watchsocket',['watchSocket',['../classNetManager.html#a1d3f54e43abe28d9804d3348bc0eacd8',1,'NetManager::watchSocket(TCPsocket *sock)'],['../classNetManager.html#a3d0c6dcf246d88b510a2230227dd0e0a',1,'NetManager::watchSocket(UDPsocket *sock)']]],
+  ['watchsocket',['watchSocket',['../classNetManager.html#add0bbb27a9593512aa2cff1a353316ac',1,'NetManager::watchSocket(TCPsocket sock)'],['../classNetManager.html#aff38e9c6b4cc21b180d9285ed8ec9ea7',1,'NetManager::watchSocket(UDPsocket sock)']]],
   ['win32_5flean_5fand_5fmean',['WIN32_LEAN_AND_MEAN',['../TileGame_8cpp.html#ac7bef5d85e3dcd73eef56ad39ffc84a9',1,'TileGame.cpp']]],
   ['windowclosed',['windowClosed',['../classBaseGame.html#adf1c158b4a92810f50c6c626be0d4757',1,'BaseGame']]],
   ['windowresized',['windowResized',['../classBaseGame.html#abac0b7115e172de2675b4bf09ba8ed47',1,'BaseGame']]],

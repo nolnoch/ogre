@@ -18,5 +18,5 @@ var searchData=
   ['alltileentities',['allTileEntities',['../classTileGame.html#a0308b658e89712b0dfbe5998495f9cec',1,'TileGame']]],
   ['animdone',['animDone',['../classTileGame.html#abdd2197b16e59e2035984882aaebf9e3',1,'TileGame']]],
   ['appdelegate_2eh',['AppDelegate.h',['../AppDelegate_8h.html',1,'']]],
-  ['applyforce',['applyForce',['../classBall.html#a8560c24afa515d3319cdf08dd918bf82',1,'Ball']]]
+  ['applyforce',['applyForce',['../classBall.html#a902a1e615fa1c0f9b91c700a90f4f475',1,'Ball']]]
 ];

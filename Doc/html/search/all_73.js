@@ -15,7 +15,7 @@ var searchData=
   ['setprotocol',['setProtocol',['../classNetManager.html#af370ee8343ff23121c0c2f180c34dabc',1,'NetManager']]],
   ['setup',['setup',['../classBaseGame.html#ae8b6fbfd480b0bfac0e260f03abf1b3e',1,'BaseGame']]],
   ['setupresources',['setupResources',['../classBaseGame.html#a5e0e6f03394f7d3c2a6b59e7f5f1a0ad',1,'BaseGame']]],
-  ['setvolume',['setVolume',['../classSoundManager.html#a0ac4dd6921e28b5e3c84fe04d8c21c0b',1,'SoundManager']]],
+  ['setvolume',['setVolume',['../classSoundManager.html#a203b898b68db005daabc199622daf860',1,'SoundManager']]],
   ['setworldtransform',['setWorldTransform',['../classOgreMotionState.html#a1b923f3fb6eadf733bf3dcea718a36e0',1,'OgreMotionState']]],
   ['shotsfired',['shotsFired',['../classTileGame.html#a23df8d17a61584279dbec39ef31092cc',1,'TileGame']]],
   ['sim',['sim',['../classBallManager.html#a4916de0948df0af060f6ada4d21284a7',1,'BallManager::sim()'],['../classTileGame.html#a2225cb84303358e59c6093b8a999e085',1,'TileGame::sim()']]],

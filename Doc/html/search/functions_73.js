@@ -12,7 +12,7 @@ var searchData=
   ['setprotocol',['setProtocol',['../classNetManager.html#af370ee8343ff23121c0c2f180c34dabc',1,'NetManager']]],
   ['setup',['setup',['../classBaseGame.html#ae8b6fbfd480b0bfac0e260f03abf1b3e',1,'BaseGame']]],
   ['setupresources',['setupResources',['../classBaseGame.html#a5e0e6f03394f7d3c2a6b59e7f5f1a0ad',1,'BaseGame']]],
-  ['setvolume',['setVolume',['../classSoundManager.html#a0ac4dd6921e28b5e3c84fe04d8c21c0b',1,'SoundManager']]],
+  ['setvolume',['setVolume',['../classSoundManager.html#a203b898b68db005daabc199622daf860',1,'SoundManager']]],
   ['setworldtransform',['setWorldTransform',['../classOgreMotionState.html#a1b923f3fb6eadf733bf3dcea718a36e0',1,'OgreMotionState']]],
   ['simonsaysanim',['simonSaysAnim',['../classTileGame.html#aabd8c2eb7913022c30119846d57eaba5',1,'TileGame']]],
   ['simulatestep',['simulateStep',['../classSimulator.html#a6abe3ee406909ab7f03930dfa537a42b',1,'Simulator::simulateStep()'],['../classTileSimulator.html#ae944141e1051b803018d6c4af47f2df9',1,'TileSimulator::simulateStep()']]],

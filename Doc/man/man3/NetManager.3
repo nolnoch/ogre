@@ -1,4 +1,4 @@
-.TH "NetManager" 3 "Tue Mar 11 2014" "OGRE Game" \" -*- nroff -*-
+.TH "NetManager" 3 "Wed Mar 12 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -63,7 +63,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fISend a single message to all clients\&. \fP"
 .ti -1c
-.RI "void \fBmessageServer\fP (const char *buf=NULL, int len=0)"
+.RI "void \fBmessageServer\fP (\fBProtocol\fP protocol, const char *buf=NULL, int len=0)"
 .br
 .RI "\fISend a single message to the server\&. \fP"
 .ti -1c
@@ -121,6 +121,14 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .RI "std::string \fBgetHost\fP ()"
 .br
 .RI "\fIReturns the currently active host\&. \fP"
+.ti -1c
+.RI "int \fBgetTCPClients\fP ()"
+.br
+.RI "\fIThe number of connected TCP clients\&. \fP"
+.ti -1c
+.RI "int \fBgetUDPClients\fP ()"
+.br
+.RI "\fIThe number of connected UDP clients\&. \fP"
 .in -1c
 .in -1c
 .SS "Public Attributes"
@@ -279,19 +287,19 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .in +1c
 .in +1c
 .ti -1c
-.RI "void \fBwatchSocket\fP (TCPsocket *sock)"
+.RI "void \fBwatchSocket\fP (TCPsocket sock)"
 .br
 .RI "\fIRegister a TCP socket to be watched for activity by SDL\&. \fP"
 .ti -1c
-.RI "void \fBwatchSocket\fP (UDPsocket *sock)"
+.RI "void \fBwatchSocket\fP (UDPsocket sock)"
 .br
 .RI "\fIRegister a UDP socket to be watched for activity by SDL\&. \fP"
 .ti -1c
-.RI "void \fBunwatchSocket\fP (TCPsocket *sock)"
+.RI "void \fBunwatchSocket\fP (TCPsocket sock)"
 .br
 .RI "\fIRemove a TCP socket from SDL's observation\&. \fP"
 .ti -1c
-.RI "void \fBunwatchSocket\fP (UDPsocket *sock)"
+.RI "void \fBunwatchSocket\fP (UDPsocket sock)"
 .br
 .RI "\fIRemove a UDP socket from SDL's observation\&. \fP"
 .ti -1c
@@ -727,6 +735,28 @@ The currently active protocols\&.
 .RE
 .PP
 
+.SS "int NetManager::getTCPClients ()"
+
+.PP
+The number of connected TCP clients\&. I added this primarily for testing, but it may come in handy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of connected TCP clients\&. 
+.RE
+.PP
+
+.SS "int NetManager::getUDPClients ()"
+
+.PP
+The number of connected UDP clients\&. I added this primarily for testing, but it may come in handy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of connected UDP clients\&. 
+.RE
+.PP
+
 .SS "bool NetManager::initNetManager ()"
 Initializes the SDL library if it has not started already, followed by the SDL_net library\&. If both succeed, the internal SocketSet is allocated, and the state is set to NET_INITIALIZED\&. 
 .PP
@@ -807,7 +837,7 @@ Send a single message to all clients\&. Must be running as a server to call this
 .RE
 .PP
 
-.SS "void NetManager::messageServer (const char *buf = \fCNULL\fP, intlen = \fC0\fP)"
+.SS "void NetManager::messageServer (\fBProtocol\fPprotocol, const char *buf = \fCNULL\fP, intlen = \fC0\fP)"
 
 .PP
 Send a single message to the server\&. Must be running as a client to call this function\&. If no arguments are given, it will pull from the server's \fBClientData\fP \fBinput\fP field\&. 
@@ -1293,7 +1323,7 @@ Unbind a bound socket channel\&. \fBParameters:\fP
 .RE
 .PP
 
-.SS "void NetManager::unwatchSocket (TCPsocket *sock)\fC [private]\fP"
+.SS "void NetManager::unwatchSocket (TCPsocketsock)\fC [private]\fP"
 
 .PP
 Remove a TCP socket from SDL's observation\&. \fBParameters:\fP
@@ -1302,7 +1332,7 @@ Remove a TCP socket from SDL's observation\&. \fBParameters:\fP
 .RE
 .PP
 
-.SS "void NetManager::unwatchSocket (UDPsocket *sock)\fC [private]\fP"
+.SS "void NetManager::unwatchSocket (UDPsocketsock)\fC [private]\fP"
 
 .PP
 Remove a UDP socket from SDL's observation\&. \fBParameters:\fP
@@ -1311,7 +1341,7 @@ Remove a UDP socket from SDL's observation\&. \fBParameters:\fP
 .RE
 .PP
 
-.SS "void NetManager::watchSocket (TCPsocket *sock)\fC [private]\fP"
+.SS "void NetManager::watchSocket (TCPsocketsock)\fC [private]\fP"
 
 .PP
 Register a TCP socket to be watched for activity by SDL\&. \fBParameters:\fP
@@ -1320,7 +1350,7 @@ Register a TCP socket to be watched for activity by SDL\&. \fBParameters:\fP
 .RE
 .PP
 
-.SS "void NetManager::watchSocket (UDPsocket *sock)\fC [private]\fP"
+.SS "void NetManager::watchSocket (UDPsocketsock)\fC [private]\fP"
 
 .PP
 Register a UDP socket to be watched for activity by SDL\&. \fBParameters:\fP

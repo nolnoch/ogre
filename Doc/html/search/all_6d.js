@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['main',['main',['../NetTestClient_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;NetTestClient.cpp'],['../NetTestServer_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;NetTestServer.cpp']]],
   ['mainballs',['mainBalls',['../classBallManager.html#a3de8a29f89c02241ef9dd1bc85bcb6f8',1,'BallManager']]],
   ['mass',['mass',['../classBall.html#aee2035d202321b658c0869f1e885766b',1,'Ball']]],
   ['mcamera',['mCamera',['../classBaseGame.html#ad3c279cdf94f77cd1652ad142a498a04',1,'BaseGame']]],
@@ -11,7 +12,7 @@ var searchData=
   ['message_5flength',['MESSAGE_LENGTH',['../classNetManager.html#a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e',1,'NetManager']]],
   ['messageclient',['messageClient',['../classNetManager.html#a165db41d5fa0692307f11cba589796d0',1,'NetManager']]],
   ['messageclients',['messageClients',['../classNetManager.html#a9cd49a87e94f25467cc8056e33c23dc5',1,'NetManager']]],
-  ['messageserver',['messageServer',['../classNetManager.html#a83862646172bbdcdbe4174de25837ffd',1,'NetManager']]],
+  ['messageserver',['messageServer',['../classNetManager.html#a8bcbcfe3c01917c2211b692cf6615177',1,'NetManager']]],
   ['minputmanager',['mInputManager',['../classBaseGame.html#abbc23b121d9cfee4a9c9f54b560f754f',1,'BaseGame']]],
   ['mkeyboard',['mKeyboard',['../classBaseGame.html#a95f75bc39e6e853ffe0c7e297447c8f0',1,'BaseGame']]],
   ['mmouse',['mMouse',['../classBaseGame.html#a7534267ce3a49769c0b1aea328aabd87',1,'BaseGame']]],
