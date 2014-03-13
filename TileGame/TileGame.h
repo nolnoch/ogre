@@ -75,10 +75,23 @@ protected:
   NetManager *netMgr;
 
   SoundFile boing, gong, music;
-  bool paused, gameStart, gameDone, animDone, isCharging;
+  bool paused, gameStart, gameDone, animDone, isCharging, connected, server;
+  bool netActive, invitePending, inviteAccepted;
   int score, shotsFired, currLevel, currTile, winTimer, tileCounter, chargeShot;
   double slowdownval;
+  std::string invite;
 
+
+  void joinServer() {
+    if (invitePending) {
+      std::string svrAddr = invite.substr(STR_OPEN.length());
+      netMgr->stopServer();
+      netMgr->initNetManager();
+      netMgr->addNetworkInfo(PROTOCOL_ALL, svrAddr.c_str());
+      netActive = netMgr->startClient();
+      connected = true;
+    }
+  }
 
   void ballSetup (int cubeSize) {
     float ballSize = 200;                   //diameter
@@ -243,6 +256,18 @@ protected:
     allTileEntities.clear();
 
     currLevel++;
+  }
+
+  void setLevel(int num) {
+    levelTearDown();
+    currLevel = num;
+    levelSetup(num);
+
+    // Set/reset scores and shotsFired here.
+  }
+
+  void startMultiplayer() {
+    setLevel(1);
   }
 
   void simonSaysAnim() {

@@ -22,7 +22,7 @@ virtual \hyperlink{classNetManager_a862eebc070ee07d7a9e18f62da051604}{$\sim$\-Ne
 \item 
 bool \hyperlink{classNetManager_a9dcef281247169fc624d771f2a4ae01a}{init\-Net\-Manager} ()
 \item 
-void \hyperlink{classNetManager_a8ec0340fa0eeffc5f4344589069e6058}{add\-Network\-Info} (\hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol} protocol=\hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L}, Uint16 port=0, const char $\ast$host=N\-U\-L\-L)
+void \hyperlink{classNetManager_af1228963af244b0fc75d6de780da719e}{add\-Network\-Info} (\hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol} protocol=\hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L}, const char $\ast$host=N\-U\-L\-L, Uint16 port=0)
 \begin{DoxyCompactList}\small\item\em Required to set T\-C\-P/\-U\-D\-P, port, and optional host. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Control Functions.}\par
@@ -66,12 +66,28 @@ Uint32 \hyperlink{classNetManager_a3c941b21b356a166f2ebbdd522dc792d}{get\-Protoc
 \begin{DoxyCompactList}\small\item\em Returns the currently active protocols. \end{DoxyCompactList}\item 
 Uint16 \hyperlink{classNetManager_aa6924b10800963247c025870b1116a62}{get\-Port} ()
 \begin{DoxyCompactList}\small\item\em Returns the currently active port. \end{DoxyCompactList}\item 
-std\-::string \hyperlink{classNetManager_abe7cce0db370157b36d4e16a903a0581}{get\-Host} ()
+std\-::string \hyperlink{classNetManager_a48f65145e8b867f413849e4dd413974e}{get\-Hostname} ()
 \begin{DoxyCompactList}\small\item\em Returns the currently active host. \end{DoxyCompactList}\item 
-int \hyperlink{classNetManager_a2488915365f983bafc310a13987bc0b1}{get\-T\-C\-P\-Clients} ()
+std\-::string \hyperlink{classNetManager_a96a48522e350bbf881f131e443c3079c}{get\-I\-Pstring} ()
+\begin{DoxyCompactList}\small\item\em Retrieve the string representation of the local I\-P address. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classNetManager_a3619e5825e0374cbef14531df09b6357}{get\-Masked\-I\-Pstring} (int subnet\-Mask)
+\begin{DoxyCompactList}\small\item\em Retrieve the string representation of the masked local I\-P address. \end{DoxyCompactList}\item 
+Uint32 \hyperlink{classNetManager_a0c1ce6d86b341f7586199fc1c3cdf933}{get\-I\-Pnbo} ()
+\begin{DoxyCompactList}\small\item\em Retrieve the network-\/byte-\/ordered local I\-P address. \end{DoxyCompactList}\item 
+int \hyperlink{classNetManager_a3a0e39e551ae5d3feb67834292ed8a77}{get\-Clients} ()
 \begin{DoxyCompactList}\small\item\em The number of connected T\-C\-P clients. \end{DoxyCompactList}\item 
 int \hyperlink{classNetManager_a785826341013e957efbff6d6581c6d56}{get\-U\-D\-P\-Clients} ()
-\begin{DoxyCompactList}\small\item\em The number of connected U\-D\-P clients. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\item 
+void \hyperlink{classNetManager_a50f4e84864428bc19f0a06109a8b7b30}{accept} ()
+\item 
+void \hyperlink{classNetManager_a2b644ad9f858c73ba78a7047fbb55abd}{deny} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Meta-\/functions.}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classNetManager_a6bbb485cb4ddab15dac4405df32f0482}{multi\-Player\-Init} ()
+\begin{DoxyCompactList}\small\item\em Initiates multiplayer functionality by launching the server instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -98,21 +114,18 @@ enum \{ \\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c}{N\-E\-T\-\_\-\-T\-C\-P\-\_\-\-A\-C\-C\-E\-P\-T} = 32, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5}{N\-E\-T\-\_\-\-U\-D\-P\-\_\-\-B\-O\-U\-N\-D} = 64, 
 \\*
-\hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c}{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R} = 256, 
-\hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca}{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T} = 512, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077}{P\-O\-R\-T\-\_\-\-R\-A\-N\-D\-O\-M} = 0, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a72a392298efc424fdf2da299ef41992e}{P\-O\-R\-T\-\_\-\-D\-E\-F\-A\-U\-L\-T} = 51215, 
-\\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a5150417e381f56f6b4f892317b81ee46}{C\-H\-A\-N\-N\-E\-L\-\_\-\-A\-U\-T\-O} = -\/1, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a7df70a5b62f06128f0ff3f384a0b92bc}{C\-H\-A\-N\-N\-E\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T} = 1, 
+\\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a}{C\-H\-A\-N\-N\-E\-L\-\_\-\-M\-A\-X} = 2, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c}{S\-O\-C\-K\-E\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X} = 12, 
-\\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459}{S\-O\-C\-K\-E\-T\-\_\-\-U\-D\-P\-\_\-\-M\-A\-X} = 12, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb}{S\-O\-C\-K\-E\-T\-\_\-\-A\-L\-L\-\_\-\-M\-A\-X} = S\-O\-C\-K\-E\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X + S\-O\-C\-K\-E\-T\-\_\-\-U\-D\-P\-\_\-\-M\-A\-X, 
+\\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a2e78ae862faab68c752a933ad0910c34}{S\-O\-C\-K\-E\-T\-\_\-\-S\-E\-L\-F} = S\-O\-C\-K\-E\-T\-\_\-\-A\-L\-L\-\_\-\-M\-A\-X + 1, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a9b24c9f03c8e0db705a1b43cc83fb35e}{M\-E\-S\-S\-A\-G\-E\-\_\-\-C\-O\-U\-N\-T} = 10, 
-\\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e}{M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-T\-H} = 128
  \}
 \end{DoxyCompactItemize}
@@ -204,14 +217,14 @@ void \hyperlink{classNetManager_ab7048f28558dec8046b9536ad6c094f8}{reject\-T\-C\
 \begin{DoxyCompactList}\small\item\em Rejects a prospective T\-C\-P client. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_aae62147d4b4d06cccd992f30b6669ea5}{reject\-U\-D\-P\-Client} (U\-D\-Ppacket $\ast$pack)
 \begin{DoxyCompactList}\small\item\em Rejects a prospective U\-D\-P client. \end{DoxyCompactList}\item 
-\hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ \hyperlink{classNetManager_a9e98f4e0367b8811f241cb0038e9b077}{lookup\-T\-C\-P\-Client} (Uint32 host, bool create)
-\begin{DoxyCompactList}\small\item\em Look up a T\-C\-P client by I\-Paddress host. \end{DoxyCompactList}\item 
-\hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ \hyperlink{classNetManager_aa9053c3f72215976089b89098935c6d1}{lookup\-U\-D\-P\-Client} (Uint32 host, bool create)
-\begin{DoxyCompactList}\small\item\em Look up a U\-D\-P client by I\-Paddress host. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ \hyperlink{classNetManager_afd504716ee545b2961db863abc7b229a}{lookup\-Client} (Uint32 host, bool create)
+\begin{DoxyCompactList}\small\item\em Look up a T\-C\-P client by I\-Paddress host. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Helper Functions.}\par
 \begin{DoxyCompactItemize}
 \item 
+std\-::string \hyperlink{classNetManager_a418badaeea81703a14e51bc31b2e145f}{ip\-To\-String} (Uint32 host, int subnet\-Mask)
+\begin{DoxyCompactList}\small\item\em Convert a network-\/byte-\/order host to dotted string representation. \end{DoxyCompactList}\item 
 bool \hyperlink{classNetManager_a8eb8d5a292070e7269133bf1fc1499c4}{status\-Check} (int state)
 \begin{DoxyCompactList}\small\item\em A simple state (bit flag) check for early returns and error prints. \end{DoxyCompactList}\item 
 bool \hyperlink{classNetManager_aa5616571aa520977c221d8a8a6471a1f}{status\-Check} (int state1, int state2)
@@ -236,15 +249,15 @@ int \hyperlink{classNetManager_acd2ec7262ea71478204c9007b23d9fff}{net\-Status}
 \item 
 int \hyperlink{classNetManager_a2c14b6cf513287e5fb46a85ddb293201}{net\-Port}
 \item 
+Uint32 \hyperlink{classNetManager_a91a6c464bfed9fbd7b0815d544a62d7d}{net\-Local\-Host}
+\item 
 \hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol} \hyperlink{classNetManager_ac24652f01ef284551be311bfc408be06}{net\-Protocol}
 \item 
-std\-::string \hyperlink{classNetManager_a2e1aedc97e5fb2f633faeabd2aa266c3}{net\-Host}
+std\-::string \hyperlink{classNetManager_ad3817c547216aaf6acddabc1d2944c01}{net\-Hostname}
 \item 
 \hyperlink{structConnectionInfo}{Connection\-Info} \hyperlink{classNetManager_a002692771d60d8a4332941f33096fba0}{net\-Server}
 \item 
-std\-::vector$<$ \hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ $>$ \hyperlink{classNetManager_abf9491e48d6bc19eacb148d294613b35}{tcp\-Clients}
-\item 
-std\-::vector$<$ \hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ $>$ \hyperlink{classNetManager_ab5cbc9d5ddb14541adb07b748802446d}{udp\-Clients}
+std\-::vector$<$ \hyperlink{structConnectionInfo}{Connection\-Info} $\ast$ $>$ \hyperlink{classNetManager_abe03f819c3ef02b983881db39e162003}{net\-Clients}
 \item 
 std\-::vector$<$ T\-C\-Psocket $>$ \hyperlink{classNetManager_a2314a1df7704bbc4c96d8d0133d78ee6}{tcp\-Sockets}
 \item 
@@ -286,10 +299,6 @@ Error and state checking was a priority in this implementation, so problems of t
 \hypertarget{classNetManager_a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c}{N\-E\-T\-\_\-\-T\-C\-P\-\_\-\-A\-C\-C\-E\-P\-T}\label{classNetManager_a8b6ac33bda181fb28896229528cd62b4af5696319a4b33b1c4e4bb42b942b779c}
 }]\index{N\-E\-T\-\_\-\-U\-D\-P\-\_\-\-B\-O\-U\-N\-D@{N\-E\-T\-\_\-\-U\-D\-P\-\_\-\-B\-O\-U\-N\-D}!Net\-Manager@{Net\-Manager}}\index{Net\-Manager@{Net\-Manager}!N\-E\-T\-\_\-\-U\-D\-P\-\_\-\-B\-O\-U\-N\-D@{N\-E\-T\-\_\-\-U\-D\-P\-\_\-\-B\-O\-U\-N\-D}}\item[{\em 
 \hypertarget{classNetManager_a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5}{N\-E\-T\-\_\-\-U\-D\-P\-\_\-\-B\-O\-U\-N\-D}\label{classNetManager_a8b6ac33bda181fb28896229528cd62b4a7545491a1eba62548d37397b6c5fa4a5}
-}]\index{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R@{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R}!Net\-Manager@{Net\-Manager}}\index{Net\-Manager@{Net\-Manager}!N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R@{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R}}\item[{\em 
-\hypertarget{classNetManager_a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c}{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R}\label{classNetManager_a8b6ac33bda181fb28896229528cd62b4aabef70e0bb8701bf61665f9a10e5560c}
-}]\index{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T@{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T}!Net\-Manager@{Net\-Manager}}\index{Net\-Manager@{Net\-Manager}!N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T@{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T}}\item[{\em 
-\hypertarget{classNetManager_a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca}{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T}\label{classNetManager_a8b6ac33bda181fb28896229528cd62b4af76b22d2524d8ad49488e6f8b23e49ca}
 }]\index{P\-O\-R\-T\-\_\-\-R\-A\-N\-D\-O\-M@{P\-O\-R\-T\-\_\-\-R\-A\-N\-D\-O\-M}!Net\-Manager@{Net\-Manager}}\index{Net\-Manager@{Net\-Manager}!P\-O\-R\-T\-\_\-\-R\-A\-N\-D\-O\-M@{P\-O\-R\-T\-\_\-\-R\-A\-N\-D\-O\-M}}\item[{\em 
 \hypertarget{classNetManager_a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077}{P\-O\-R\-T\-\_\-\-R\-A\-N\-D\-O\-M}\label{classNetManager_a8b6ac33bda181fb28896229528cd62b4a249374483050ce65e0c3d57381ec1077}
 }]Constants. \index{P\-O\-R\-T\-\_\-\-D\-E\-F\-A\-U\-L\-T@{P\-O\-R\-T\-\_\-\-D\-E\-F\-A\-U\-L\-T}!Net\-Manager@{Net\-Manager}}\index{Net\-Manager@{Net\-Manager}!P\-O\-R\-T\-\_\-\-D\-E\-F\-A\-U\-L\-T@{P\-O\-R\-T\-\_\-\-D\-E\-F\-A\-U\-L\-T}}\item[{\em 
@@ -334,6 +343,13 @@ Initialize changeable values to defaults. Nothing special. \hypertarget{classNet
 Standard destruction. Calls \hyperlink{classNetManager_afcf943b4ab1e94ba479f4e3f0cd9da2e}{close()}. 
 
 \subsection{Member Function Documentation}
+\hypertarget{classNetManager_a50f4e84864428bc19f0a06109a8b7b30}{\index{Net\-Manager@{Net\-Manager}!accept@{accept}}
+\index{accept@{accept}!NetManager@{Net\-Manager}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::accept (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a50f4e84864428bc19f0a06109a8b7b30}
 \hypertarget{classNetManager_add2b0af706ca9c983f58c308f0577e5c}{\index{Net\-Manager@{Net\-Manager}!accept\-T\-C\-P@{accept\-T\-C\-P}}
 \index{accept\-T\-C\-P@{accept\-T\-C\-P}!NetManager@{Net\-Manager}}
 \subsubsection[{accept\-T\-C\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool Net\-Manager\-::accept\-T\-C\-P (
@@ -353,15 +369,15 @@ A state-\/bound and error-\/checked wrapper of the S\-D\-L\-Net\-\_\-\-T\-C\-P\-
 \begin{DoxyReturn}{Returns}
 True on success, false on failure. 
 \end{DoxyReturn}
-\hypertarget{classNetManager_a8ec0340fa0eeffc5f4344589069e6058}{\index{Net\-Manager@{Net\-Manager}!add\-Network\-Info@{add\-Network\-Info}}
+\hypertarget{classNetManager_af1228963af244b0fc75d6de780da719e}{\index{Net\-Manager@{Net\-Manager}!add\-Network\-Info@{add\-Network\-Info}}
 \index{add\-Network\-Info@{add\-Network\-Info}!NetManager@{Net\-Manager}}
 \subsubsection[{add\-Network\-Info}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::add\-Network\-Info (
 \begin{DoxyParamCaption}
 \item[{{\bf Protocol}}]{protocol = {\ttfamily {\bf P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L}}, }
-\item[{Uint16}]{port = {\ttfamily 0}, }
-\item[{const char $\ast$}]{host = {\ttfamily NULL}}
+\item[{const char $\ast$}]{host = {\ttfamily NULL}, }
+\item[{Uint16}]{port = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}}\label{classNetManager_a8ec0340fa0eeffc5f4344589069e6058}
+)}}\label{classNetManager_af1228963af244b0fc75d6de780da719e}
 
 
 Required to set T\-C\-P/\-U\-D\-P, port, and optional host. 
@@ -370,9 +386,9 @@ Allows user to set preferred protocol, port, and optional host. If a host is giv
 \begin{DoxyParams}{Parameters}
 {\em protocol} & Desired protocols for server or client. Default\-: A\-L\-L. \\
 \hline
-{\em port} & Desired port for server or client. Default\-: 51215 \\
-\hline
 {\em host} & Host server if starting client. Default\-: N\-U\-L\-L (begin server). \\
+\hline
+{\em port} & Desired port for server or client. Default\-: 51215 \\
 \hline
 \end{DoxyParams}
 \hypertarget{classNetManager_a444e45de6f806c4c27d7f9915f898329}{\index{Net\-Manager@{Net\-Manager}!add\-Protocol@{add\-Protocol}}
@@ -584,6 +600,13 @@ If \hyperlink{classNetManager_a75ce7beb5894c63e3af5e59c4fe67483}{alloc\-U\-D\-Pp
 \begin{DoxyReturn}{Returns}
 An allocated and filled U\-D\-Ppacket. 
 \end{DoxyReturn}
+\hypertarget{classNetManager_a2b644ad9f858c73ba78a7047fbb55abd}{\index{Net\-Manager@{Net\-Manager}!deny@{deny}}
+\index{deny@{deny}!NetManager@{Net\-Manager}}
+\subsubsection[{deny}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::deny (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a2b644ad9f858c73ba78a7047fbb55abd}
 \hypertarget{classNetManager_aaff19e422dc790a6ac4bad9aefc5749f}{\index{Net\-Manager@{Net\-Manager}!drop\-Client@{drop\-Client}}
 \index{drop\-Client@{drop\-Client}!NetManager@{Net\-Manager}}
 \subsubsection[{drop\-Client}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::drop\-Client (
@@ -635,19 +658,80 @@ Free a U\-D\-P packet vector.
 {\em pack} & The packet vector to be freed. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classNetManager_abe7cce0db370157b36d4e16a903a0581}{\index{Net\-Manager@{Net\-Manager}!get\-Host@{get\-Host}}
-\index{get\-Host@{get\-Host}!NetManager@{Net\-Manager}}
-\subsubsection[{get\-Host}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Net\-Manager\-::get\-Host (
+\hypertarget{classNetManager_a3a0e39e551ae5d3feb67834292ed8a77}{\index{Net\-Manager@{Net\-Manager}!get\-Clients@{get\-Clients}}
+\index{get\-Clients@{get\-Clients}!NetManager@{Net\-Manager}}
+\subsubsection[{get\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}int Net\-Manager\-::get\-Clients (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classNetManager_abe7cce0db370157b36d4e16a903a0581}
+)}}\label{classNetManager_a3a0e39e551ae5d3feb67834292ed8a77}
+
+
+The number of connected T\-C\-P clients. 
+
+I added this primarily for testing, but it may come in handy. \begin{DoxyReturn}{Returns}
+The number of connected T\-C\-P clients. 
+\end{DoxyReturn}
+\hypertarget{classNetManager_a48f65145e8b867f413849e4dd413974e}{\index{Net\-Manager@{Net\-Manager}!get\-Hostname@{get\-Hostname}}
+\index{get\-Hostname@{get\-Hostname}!NetManager@{Net\-Manager}}
+\subsubsection[{get\-Hostname}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Net\-Manager\-::get\-Hostname (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a48f65145e8b867f413849e4dd413974e}
 
 
 Returns the currently active host. 
 
 Must be running as a client to call this function; servers do not have hosts. \begin{DoxyReturn}{Returns}
 The currently active host. 
+\end{DoxyReturn}
+\hypertarget{classNetManager_a0c1ce6d86b341f7586199fc1c3cdf933}{\index{Net\-Manager@{Net\-Manager}!get\-I\-Pnbo@{get\-I\-Pnbo}}
+\index{get\-I\-Pnbo@{get\-I\-Pnbo}!NetManager@{Net\-Manager}}
+\subsubsection[{get\-I\-Pnbo}]{\setlength{\rightskip}{0pt plus 5cm}Uint32 Net\-Manager\-::get\-I\-Pnbo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a0c1ce6d86b341f7586199fc1c3cdf933}
+
+
+Retrieve the network-\/byte-\/ordered local I\-P address. 
+
+\begin{DoxyReturn}{Returns}
+Local I\-P address in network byte order. 
+\end{DoxyReturn}
+\hypertarget{classNetManager_a96a48522e350bbf881f131e443c3079c}{\index{Net\-Manager@{Net\-Manager}!get\-I\-Pstring@{get\-I\-Pstring}}
+\index{get\-I\-Pstring@{get\-I\-Pstring}!NetManager@{Net\-Manager}}
+\subsubsection[{get\-I\-Pstring}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Net\-Manager\-::get\-I\-Pstring (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a96a48522e350bbf881f131e443c3079c}
+
+
+Retrieve the string representation of the local I\-P address. 
+
+\begin{DoxyReturn}{Returns}
+Local I\-P address in decimal-\/separated, string format. 
+\end{DoxyReturn}
+\hypertarget{classNetManager_a3619e5825e0374cbef14531df09b6357}{\index{Net\-Manager@{Net\-Manager}!get\-Masked\-I\-Pstring@{get\-Masked\-I\-Pstring}}
+\index{get\-Masked\-I\-Pstring@{get\-Masked\-I\-Pstring}!NetManager@{Net\-Manager}}
+\subsubsection[{get\-Masked\-I\-Pstring}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Net\-Manager\-::get\-Masked\-I\-Pstring (
+\begin{DoxyParamCaption}
+\item[{int}]{mask}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a3619e5825e0374cbef14531df09b6357}
+
+
+Retrieve the string representation of the masked local I\-P address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & Bit-\/depth of the subnet mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Local I\-P address in decimal-\/separated, string format. 
 \end{DoxyReturn}
 \hypertarget{classNetManager_aa6924b10800963247c025870b1116a62}{\index{Net\-Manager@{Net\-Manager}!get\-Port@{get\-Port}}
 \index{get\-Port@{get\-Port}!NetManager@{Net\-Manager}}
@@ -677,20 +761,6 @@ Returns the currently active protocols.
 \begin{DoxyReturn}{Returns}
 The currently active protocols. 
 \end{DoxyReturn}
-\hypertarget{classNetManager_a2488915365f983bafc310a13987bc0b1}{\index{Net\-Manager@{Net\-Manager}!get\-T\-C\-P\-Clients@{get\-T\-C\-P\-Clients}}
-\index{get\-T\-C\-P\-Clients@{get\-T\-C\-P\-Clients}!NetManager@{Net\-Manager}}
-\subsubsection[{get\-T\-C\-P\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}int Net\-Manager\-::get\-T\-C\-P\-Clients (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{classNetManager_a2488915365f983bafc310a13987bc0b1}
-
-
-The number of connected T\-C\-P clients. 
-
-I added this primarily for testing, but it may come in handy. \begin{DoxyReturn}{Returns}
-The number of connected T\-C\-P clients. 
-\end{DoxyReturn}
 \hypertarget{classNetManager_a785826341013e957efbff6d6581c6d56}{\index{Net\-Manager@{Net\-Manager}!get\-U\-D\-P\-Clients@{get\-U\-D\-P\-Clients}}
 \index{get\-U\-D\-P\-Clients@{get\-U\-D\-P\-Clients}!NetManager@{Net\-Manager}}
 \subsubsection[{get\-U\-D\-P\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}int Net\-Manager\-::get\-U\-D\-P\-Clients (
@@ -698,13 +768,6 @@ The number of connected T\-C\-P clients.
 {}
 \end{DoxyParamCaption}
 )}}\label{classNetManager_a785826341013e957efbff6d6581c6d56}
-
-
-The number of connected U\-D\-P clients. 
-
-I added this primarily for testing, but it may come in handy. \begin{DoxyReturn}{Returns}
-The number of connected U\-D\-P clients. 
-\end{DoxyReturn}
 \hypertarget{classNetManager_a9dcef281247169fc624d771f2a4ae01a}{\index{Net\-Manager@{Net\-Manager}!init\-Net\-Manager@{init\-Net\-Manager}}
 \index{init\-Net\-Manager@{init\-Net\-Manager}!NetManager@{Net\-Manager}}
 \subsubsection[{init\-Net\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}bool Net\-Manager\-::init\-Net\-Manager (
@@ -715,39 +778,39 @@ The number of connected U\-D\-P clients.
 Initializes the S\-D\-L library if it has not started already, followed by the S\-D\-L\-\_\-net library. If both succeed, the internal Socket\-Set is allocated, and the state is set to N\-E\-T\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-D. \begin{DoxyReturn}{Returns}
 True on success, false on failure. 
 \end{DoxyReturn}
-\hypertarget{classNetManager_a9e98f4e0367b8811f241cb0038e9b077}{\index{Net\-Manager@{Net\-Manager}!lookup\-T\-C\-P\-Client@{lookup\-T\-C\-P\-Client}}
-\index{lookup\-T\-C\-P\-Client@{lookup\-T\-C\-P\-Client}!NetManager@{Net\-Manager}}
-\subsubsection[{lookup\-T\-C\-P\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection\-Info} $\ast$ Net\-Manager\-::lookup\-T\-C\-P\-Client (
+\hypertarget{classNetManager_a418badaeea81703a14e51bc31b2e145f}{\index{Net\-Manager@{Net\-Manager}!ip\-To\-String@{ip\-To\-String}}
+\index{ip\-To\-String@{ip\-To\-String}!NetManager@{Net\-Manager}}
+\subsubsection[{ip\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Net\-Manager\-::ip\-To\-String (
 \begin{DoxyParamCaption}
 \item[{Uint32}]{host, }
-\item[{bool}]{create}
+\item[{int}]{subnet\-Mask}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a9e98f4e0367b8811f241cb0038e9b077}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a418badaeea81703a14e51bc31b2e145f}
 
 
-Look up a T\-C\-P client by I\-Paddress host. 
+Convert a network-\/byte-\/order host to dotted string representation. 
 
-I\-Paddress host is available from almost anywhere, and this conversion to a \hyperlink{structConnectionInfo}{Connection\-Info} pointer allows access to the correct index into all of the client's associated vectors. If the \hyperlink{structConnectionInfo}{Connection\-Info} does not already exist, the boolean allows a new instance to be returned instead. 
+Stepping mask for /8, /16, /24, and /32 address preservation. 
 \begin{DoxyParams}{Parameters}
-{\em host} & The I\-Paddress host. \\
+{\em host} & The desired host. \\
 \hline
-{\em create} & True to return a new \hyperlink{structConnectionInfo}{Connection\-Info} instance, false for N\-U\-L\-L. \\
+{\em subnet\-Mask} & The bit-\/depth of I\-P subnet mask (8/16/24/32). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Either the correct C\-Info, a new C\-Info, or null. 
+The decimal-\/separated string representation. 
 \end{DoxyReturn}
-\hypertarget{classNetManager_aa9053c3f72215976089b89098935c6d1}{\index{Net\-Manager@{Net\-Manager}!lookup\-U\-D\-P\-Client@{lookup\-U\-D\-P\-Client}}
-\index{lookup\-U\-D\-P\-Client@{lookup\-U\-D\-P\-Client}!NetManager@{Net\-Manager}}
-\subsubsection[{lookup\-U\-D\-P\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection\-Info} $\ast$ Net\-Manager\-::lookup\-U\-D\-P\-Client (
+\hypertarget{classNetManager_afd504716ee545b2961db863abc7b229a}{\index{Net\-Manager@{Net\-Manager}!lookup\-Client@{lookup\-Client}}
+\index{lookup\-Client@{lookup\-Client}!NetManager@{Net\-Manager}}
+\subsubsection[{lookup\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection\-Info} $\ast$ Net\-Manager\-::lookup\-Client (
 \begin{DoxyParamCaption}
 \item[{Uint32}]{host, }
 \item[{bool}]{create}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_aa9053c3f72215976089b89098935c6d1}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_afd504716ee545b2961db863abc7b229a}
 
 
-Look up a U\-D\-P client by I\-Paddress host. 
+Look up a T\-C\-P client by I\-Paddress host. 
 
 I\-Paddress host is available from almost anywhere, and this conversion to a \hyperlink{structConnectionInfo}{Connection\-Info} pointer allows access to the correct index into all of the client's associated vectors. If the \hyperlink{structConnectionInfo}{Connection\-Info} does not already exist, the boolean allows a new instance to be returned instead. 
 \begin{DoxyParams}{Parameters}
@@ -826,6 +889,20 @@ Must be running as a client to call this function. If no arguments are given, it
 {\em len} & Length of given buffer. Default\-: 0. \\
 \hline
 \end{DoxyParams}
+\hypertarget{classNetManager_a6bbb485cb4ddab15dac4405df32f0482}{\index{Net\-Manager@{Net\-Manager}!multi\-Player\-Init@{multi\-Player\-Init}}
+\index{multi\-Player\-Init@{multi\-Player\-Init}!NetManager@{Net\-Manager}}
+\subsubsection[{multi\-Player\-Init}]{\setlength{\rightskip}{0pt plus 5cm}bool Net\-Manager\-::multi\-Player\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetManager_a6bbb485cb4ddab15dac4405df32f0482}
+
+
+Initiates multiplayer functionality by launching the server instance. 
+
+Adds the T\-C\-P protocol to this instance and enables acceptance of new clients. Then the local I\-P address is retrieved and broadcasted to a /24 mask of itself. The clients will respond and register automatically on the server. \begin{DoxyReturn}{Returns}
+Success of the broadcast\-: true if the server receives its own packet. 
+\end{DoxyReturn}
 \hypertarget{classNetManager_afe3450801d77b53d99b38c8249f3d955}{\index{Net\-Manager@{Net\-Manager}!open\-Client@{open\-Client}}
 \index{open\-Client@{open\-Client}!NetManager@{Net\-Manager}}
 \subsubsection[{open\-Client}]{\setlength{\rightskip}{0pt plus 5cm}bool Net\-Manager\-::open\-Client (
@@ -898,7 +975,7 @@ The success or failure of the following T\-C\-P or U\-D\-P socket call.
 
 Opens a T\-C\-P socket. 
 
-A state-\/bound and error-\/checked wrapper of the S\-D\-L\-Net\-\_\-\-T\-C\-P\-\_\-\-Open call. To reduce user calls, it will chain into \hyperlink{classNetManager_add2b0af706ca9c983f58c308f0577e5c}{accept\-T\-C\-P()} iff this is a server. 
+A state-\/bound and error-\/checked wrapper of the S\-D\-L\-Net\-\_\-\-T\-C\-P\-\_\-\-Open call. 
 \begin{DoxyParams}{Parameters}
 {\em addr} & The I\-Paddress upon which to open the socket. \\
 \hline
@@ -1307,7 +1384,7 @@ Currently useless as a public function. This cannot be safely executed after a s
 
 Set the protocol manually. 
 
-This is currently useless as a public function given the structured use of \hyperlink{classNetManager_a8ec0340fa0eeffc5f4344589069e6058}{add\-Network\-Info()} and \hyperlink{classNetManager_a444e45de6f806c4c27d7f9915f898329}{add\-Protocol()}. It is only public because it seems like it should be. 
+This is currently useless as a public function given the structured use of \hyperlink{classNetManager_af1228963af244b0fc75d6de780da719e}{add\-Network\-Info()} and \hyperlink{classNetManager_a444e45de6f806c4c27d7f9915f898329}{add\-Protocol()}. It is only public because it seems like it should be. 
 \begin{DoxyParams}{Parameters}
 {\em protocol} & T\-C\-P, U\-D\-P, or A\-L\-L; given by P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-X\-X\-X enum value. \\
 \hline
@@ -1392,7 +1469,7 @@ True if either state is lacking, false if both states achieved.
 
 Shut down the running client on any or all protocols. 
 
-Must be running as a client to call this function. If after completing the requested removal there are no active protocols, all data structures will be emptied, freed, and reset to default values. The state of the instance will return to N\-E\-T\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-D, allowing for start of new client or server after another call to \hyperlink{classNetManager_a8ec0340fa0eeffc5f4344589069e6058}{add\-Network\-Info()}. 
+Must be running as a client to call this function. If after completing the requested removal there are no active protocols, all data structures will be emptied, freed, and reset to default values. The state of the instance will return to N\-E\-T\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-D, allowing for start of new client or server after another call to \hyperlink{classNetManager_af1228963af244b0fc75d6de780da719e}{add\-Network\-Info()}. 
 \begin{DoxyParams}{Parameters}
 {\em protocol} & T\-C\-P, U\-D\-P, or all; given by P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-X\-X\-X enum value \\
 \hline
@@ -1413,7 +1490,7 @@ Must be running as a client to call this function. If after completing the reque
 
 Shut down the running server on any or all protocols. 
 
-Must be running as a server to call this function. If after completing the requested removal there are no active protocols, all data structures will be emptied, freed, and reset to default values. The state of the instance will return to N\-E\-T\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-D, allowing for start of new client or server after another call to \hyperlink{classNetManager_a8ec0340fa0eeffc5f4344589069e6058}{add\-Network\-Info()}. 
+Must be running as a server to call this function. If after completing the requested removal there are no active protocols, all data structures will be emptied, freed, and reset to default values. The state of the instance will return to N\-E\-T\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-D, allowing for start of new client or server after another call to \hyperlink{classNetManager_af1228963af244b0fc75d6de780da719e}{add\-Network\-Info()}. 
 \begin{DoxyParams}{Parameters}
 {\em protocol} & T\-C\-P, U\-D\-P, or all; given by P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-X\-X\-X enum value \\
 \hline
@@ -1515,9 +1592,15 @@ Register a U\-D\-P socket to be watched for activity by S\-D\-L.
 \hypertarget{classNetManager_a2e5fedf3835e7c392ccb8b1a23ade8d4}{\index{Net\-Manager@{Net\-Manager}!force\-Client\-Random\-U\-D\-P@{force\-Client\-Random\-U\-D\-P}}
 \index{force\-Client\-Random\-U\-D\-P@{force\-Client\-Random\-U\-D\-P}!NetManager@{Net\-Manager}}
 \subsubsection[{force\-Client\-Random\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool Net\-Manager\-::force\-Client\-Random\-U\-D\-P\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a2e5fedf3835e7c392ccb8b1a23ade8d4}
-\hypertarget{classNetManager_a2e1aedc97e5fb2f633faeabd2aa266c3}{\index{Net\-Manager@{Net\-Manager}!net\-Host@{net\-Host}}
-\index{net\-Host@{net\-Host}!NetManager@{Net\-Manager}}
-\subsubsection[{net\-Host}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Net\-Manager\-::net\-Host\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a2e1aedc97e5fb2f633faeabd2aa266c3}
+\hypertarget{classNetManager_abe03f819c3ef02b983881db39e162003}{\index{Net\-Manager@{Net\-Manager}!net\-Clients@{net\-Clients}}
+\index{net\-Clients@{net\-Clients}!NetManager@{Net\-Manager}}
+\subsubsection[{net\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Connection\-Info} $\ast$$>$ Net\-Manager\-::net\-Clients\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_abe03f819c3ef02b983881db39e162003}
+\hypertarget{classNetManager_ad3817c547216aaf6acddabc1d2944c01}{\index{Net\-Manager@{Net\-Manager}!net\-Hostname@{net\-Hostname}}
+\index{net\-Hostname@{net\-Hostname}!NetManager@{Net\-Manager}}
+\subsubsection[{net\-Hostname}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Net\-Manager\-::net\-Hostname\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_ad3817c547216aaf6acddabc1d2944c01}
+\hypertarget{classNetManager_a91a6c464bfed9fbd7b0815d544a62d7d}{\index{Net\-Manager@{Net\-Manager}!net\-Local\-Host@{net\-Local\-Host}}
+\index{net\-Local\-Host@{net\-Local\-Host}!NetManager@{Net\-Manager}}
+\subsubsection[{net\-Local\-Host}]{\setlength{\rightskip}{0pt plus 5cm}Uint32 Net\-Manager\-::net\-Local\-Host\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a91a6c464bfed9fbd7b0815d544a62d7d}
 \hypertarget{classNetManager_a2c14b6cf513287e5fb46a85ddb293201}{\index{Net\-Manager@{Net\-Manager}!net\-Port@{net\-Port}}
 \index{net\-Port@{net\-Port}!NetManager@{Net\-Manager}}
 \subsubsection[{net\-Port}]{\setlength{\rightskip}{0pt plus 5cm}int Net\-Manager\-::net\-Port\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_a2c14b6cf513287e5fb46a85ddb293201}
@@ -1539,9 +1622,6 @@ Register a U\-D\-P socket to be watched for activity by S\-D\-L.
 \hypertarget{classNetManager_a3303746abef87426cab748c92d58006b}{\index{Net\-Manager@{Net\-Manager}!tcp\-Client\-Data@{tcp\-Client\-Data}}
 \index{tcp\-Client\-Data@{tcp\-Client\-Data}!NetManager@{Net\-Manager}}
 \subsubsection[{tcp\-Client\-Data}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Client\-Data} $\ast$$>$ Net\-Manager\-::tcp\-Client\-Data}}\label{classNetManager_a3303746abef87426cab748c92d58006b}
-\hypertarget{classNetManager_abf9491e48d6bc19eacb148d294613b35}{\index{Net\-Manager@{Net\-Manager}!tcp\-Clients@{tcp\-Clients}}
-\index{tcp\-Clients@{tcp\-Clients}!NetManager@{Net\-Manager}}
-\subsubsection[{tcp\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Connection\-Info} $\ast$$>$ Net\-Manager\-::tcp\-Clients\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_abf9491e48d6bc19eacb148d294613b35}
 \hypertarget{classNetManager_abca113fc17fe6251fa7ac5a1179ade3c}{\index{Net\-Manager@{Net\-Manager}!tcp\-Server\-Data@{tcp\-Server\-Data}}
 \index{tcp\-Server\-Data@{tcp\-Server\-Data}!NetManager@{Net\-Manager}}
 \subsubsection[{tcp\-Server\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client\-Data} Net\-Manager\-::tcp\-Server\-Data}}\label{classNetManager_abca113fc17fe6251fa7ac5a1179ade3c}
@@ -1551,9 +1631,6 @@ Register a U\-D\-P socket to be watched for activity by S\-D\-L.
 \hypertarget{classNetManager_a687d70a4e199c2cbe4cb955a2cd94b04}{\index{Net\-Manager@{Net\-Manager}!udp\-Client\-Data@{udp\-Client\-Data}}
 \index{udp\-Client\-Data@{udp\-Client\-Data}!NetManager@{Net\-Manager}}
 \subsubsection[{udp\-Client\-Data}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Client\-Data} $\ast$$>$ Net\-Manager\-::udp\-Client\-Data}}\label{classNetManager_a687d70a4e199c2cbe4cb955a2cd94b04}
-\hypertarget{classNetManager_ab5cbc9d5ddb14541adb07b748802446d}{\index{Net\-Manager@{Net\-Manager}!udp\-Clients@{udp\-Clients}}
-\index{udp\-Clients@{udp\-Clients}!NetManager@{Net\-Manager}}
-\subsubsection[{udp\-Clients}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Connection\-Info} $\ast$$>$ Net\-Manager\-::udp\-Clients\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_ab5cbc9d5ddb14541adb07b748802446d}
 \hypertarget{classNetManager_a7db7fafed8aabbe088aa12c731842efd}{\index{Net\-Manager@{Net\-Manager}!udp\-Server\-Data@{udp\-Server\-Data}}
 \index{udp\-Server\-Data@{udp\-Server\-Data}!NetManager@{Net\-Manager}}
 \subsubsection[{udp\-Server\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client\-Data} Net\-Manager\-::udp\-Server\-Data}}\label{classNetManager_a7db7fafed8aabbe088aa12c731842efd}

@@ -6,5 +6,6 @@ var searchData=
   ['initsoundmanager',['initSoundManager',['../classSoundManager.html#ad1787c39537a0fc19215e7baacf04439',1,'SoundManager']]],
   ['injectkeydown',['injectKeyDown',['../classCameraMan.html#af07ab2df48c7f19df495f5c91ad67d19',1,'CameraMan']]],
   ['injectkeyup',['injectKeyUp',['../classCameraMan.html#aa77267e520d2a0465368a2b13cdd72e2',1,'CameraMan']]],
+  ['iptostring',['ipToString',['../classNetManager.html#a418badaeea81703a14e51bc31b2e145f',1,'NetManager']]],
   ['isglobalball',['isGlobalBall',['../classBallManager.html#a72cf25f9ffa0152ca83103ed96ce1fe9',1,'BallManager']]]
 ];

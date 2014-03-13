@@ -1,4 +1,4 @@
-.TH "NetManager.h" 3 "Wed Mar 12 2014" "OGRE Game" \" -*- nroff -*-
+.TH "NetManager.h" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -45,7 +45,20 @@ Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the Uni
 
 .in +1c
 .ti -1c
-.RI "enum { \fBPROTOCOL_TCP\fP = 1024, \fBPROTOCOL_UDP\fP = 2048, \fBPROTOCOL_ALL\fP = PROTOCOL_TCP | PROTOCOL_UDP }"
+.RI "enum { \fBNET_SERVER\fP = 256, \fBNET_CLIENT\fP = 512, \fBPROTOCOL_TCP\fP = 1024, \fBPROTOCOL_UDP\fP = 2048, \fBPROTOCOL_ALL\fP = PROTOCOL_TCP | PROTOCOL_UDP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "static const std::string \fBSTR_DENY\fP ('TG_SERVER_DENY')"
+.br
+.ti -1c
+.RI "static const std::string \fBSTR_OPEN\fP ('TG_SERVER_OPEN')"
+.br
+.ti -1c
+.RI "static const std::string \fBSTR_BEGIN\fP ('TG_GAME_BEGIN')"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -75,10 +88,16 @@ Allows integer manipulations of flags, but signals to users that the value shoul
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "anonymous enum"
-These should be used whenever type Protocol is requested\&. 
+Flags exposed to the user for function calls\&. 
 .PP
 \fBEnumerator\fP
 .in +1c
+.TP
+\fB\fINET_SERVER \fP\fP
+Server bit flag\&. 
+.TP
+\fB\fINET_CLIENT \fP\fP
+Client bit flag\&. 
 .TP
 \fB\fIPROTOCOL_TCP \fP\fP
 TCP bit flag\&. 
@@ -88,6 +107,14 @@ UDP bit flag\&.
 .TP
 \fB\fIPROTOCOL_ALL \fP\fP
 Combined bit flag\&. 
+.SH "Function Documentation"
+.PP 
+.SS "static const std::string STR_BEGIN ('TG_GAME_BEGIN')\fC [static]\fP"
+
+.SS "static const std::string STR_DENY ('TG_SERVER_DENY')\fC [static]\fP"
+
+.SS "static const std::string STR_OPEN ('TG_SERVER_OPEN')\fC [static]\fP"
+
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for OGRE Game from the source code\&.

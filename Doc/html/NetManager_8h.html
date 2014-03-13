@@ -103,7 +103,8 @@ $(document).ready(function(){initNavTree('NetManager_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">NetManager.h File Reference</div>  </div>
 </div><!--header-->
@@ -136,11 +137,25 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93">PROTOCOL_TCP</a> = 1024, 
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
+&#160;&#160;<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba734cf14d087d322da7035901ba01cbd8">NET_SERVER</a> = 256, 
+<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bac0e26a27bc6a21634f0dcfd08b5d1e4b">NET_CLIENT</a> = 512, 
+<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93">PROTOCOL_TCP</a> = 1024, 
 <a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7">PROTOCOL_UDP</a> = 2048, 
-<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a> = PROTOCOL_TCP | PROTOCOL_UDP
+<br/>
+&#160;&#160;<a class="el" href="NetManager_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43">PROTOCOL_ALL</a> = PROTOCOL_TCP | PROTOCOL_UDP
+<br/>
  }</td></tr>
 <tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a4cc69f51b723ed3756cb24529faacf94"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a4cc69f51b723ed3756cb24529faacf94">STR_DENY</a> (&quot;TG_SERVER_DENY&quot;)</td></tr>
+<tr class="separator:a4cc69f51b723ed3756cb24529faacf94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6a130ab206e6c62fe162b8d44e30b89"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89">STR_OPEN</a> (&quot;TG_SERVER_OPEN&quot;)</td></tr>
+<tr class="separator:af6a130ab206e6c62fe162b8d44e30b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a091b06ac88c35029c42a7a5d92a1ae16"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a091b06ac88c35029c42a7a5d92a1ae16">STR_BEGIN</a> (&quot;TG_GAME_BEGIN&quot;)</td></tr>
+<tr class="separator:a091b06ac88c35029c42a7a5d92a1ae16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. </p>
@@ -171,9 +186,15 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>These should be used whenever type Protocol is requested. </p>
+<p>Flags exposed to the user for function calls. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93"></a>PROTOCOL_TCP</em>&nbsp;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55ba734cf14d087d322da7035901ba01cbd8"></a>NET_SERVER</em>&nbsp;</td><td class="fielddoc">
+<p>Server bit flag. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55bac0e26a27bc6a21634f0dcfd08b5d1e4b"></a>NET_CLIENT</em>&nbsp;</td><td class="fielddoc">
+<p>Client bit flag. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93"></a>PROTOCOL_TCP</em>&nbsp;</td><td class="fielddoc">
 <p>TCP bit flag. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7"></a>PROTOCOL_UDP</em>&nbsp;</td><td class="fielddoc">
@@ -186,13 +207,86 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a091b06ac88c35029c42a7a5d92a1ae16"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::string STR_BEGIN </td>
+          <td>(</td>
+          <td class="paramtype">&quot;TG_GAME_BEGIN&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4cc69f51b723ed3756cb24529faacf94"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::string STR_DENY </td>
+          <td>(</td>
+          <td class="paramtype">&quot;TG_SERVER_DENY&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af6a130ab206e6c62fe162b8d44e30b89"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::string STR_OPEN </td>
+          <td>(</td>
+          <td class="paramtype">&quot;TG_SERVER_OPEN&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="NetManager_8h.html">NetManager.h</a></li>
-    <li class="footer">Generated on Wed Mar 12 2014 05:40:58 for OGRE Game by
+    <li class="footer">Generated on Thu Mar 13 2014 04:57:23 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

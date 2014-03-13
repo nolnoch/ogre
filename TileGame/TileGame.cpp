@@ -25,10 +25,6 @@ This source file is part of the
 TileGame::TileGame(void) :
 mDirection(Ogre::Vector3::ZERO),
 gameStart(true),
-gameDone(false),
-animDone(false),
-isCharging(false),
-paused(false),
 currLevel(1),
 headNode(0),
 ballMgr(0),
@@ -43,6 +39,8 @@ boing(0),
 music(0),
 gong(0)
 {
+  gameDone = animDone = isCharging = paused = connected = server = netActive =
+      invitePending = inviteAccepted = false;
   mSpeed = score = shotsFired = tileCounter = winTimer = chargeShot =
       slowdownval = currTile = 0;
 
@@ -53,6 +51,7 @@ gong(0)
 TileGame::~TileGame(void) {
   delete soundMgr;
   delete ballMgr;
+  delete netMgr;
   delete sim;
 }
 //-------------------------------------------------------------------------------------
@@ -80,6 +79,9 @@ bool TileGame::configure() {
 
   // Networking //
   netMgr = new NetManager();
+  netMgr->initNetManager();
+  netMgr->addNetworkInfo(PROTOCOL_UDP);
+  netActive = netMgr->startServer();
 
   return ret;
 }
@@ -257,19 +259,52 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     chargePanel->setCaption(scharge.str());
   }
 
+  if (netActive) {
+    if (netMgr->scanForActivity()) {
+      if (!server) {
+        if (!connected) {
+          invite = std::string(netMgr->udpServerData.output);
+          if (std::string::npos != invite.find(STR_OPEN)) {
+            invitePending = true;
+          }
+        } else {
+          std::string cmd = std::string(netMgr->udpServerData.output);
+          if (0 == cmd.compare(STR_BEGIN)) {
+            startMultiplayer();
+          }
+        }
+      }
+      if (invitePending) {
+        // Invited! Do we want to join the server in a multiplayer instance?
+        // Display something to give the user a choice to join or not join.
+        // Can continue to receive updates (e.g. the number of clients joined).
+        if (inviteAccepted) {
+          joinServer();
+        }
+      }
+      if (server && !connected) {
+        // Currently inviting clients. Display something to show join progress?
+        // Should we pause or let the user continue playing solo until launch?
+      }
+    }
+  }
+
   return ret;
 }
 //-------------------------------------------------------------------------------------
 bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
-  if (arg.key == OIS::KC_ESCAPE)
-  {
+  if (arg.key == OIS::KC_ESCAPE) {
     mShutDown = true;
   }
-  else if (arg.key == OIS::KC_SPACE)
-  {
+  else if (arg.key == OIS::KC_SPACE) {
   }
-  else if (arg.key == OIS::KC_P)
-  {
+  else if (arg.key == OIS::KC_B) {
+    if (server && connected) {
+      startMultiplayer();
+      netMgr->messageClients(STR_BEGIN.c_str(), STR_BEGIN.length());
+    }
+  }
+  else if (arg.key == OIS::KC_P) {
     paused = !paused;
     slowdownval = 0.0;
 
@@ -278,8 +313,18 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
   else if (arg.key == OIS::KC_M) {
     soundMgr->toggleSound();
   }
-  else if (arg.key == OIS::KC_Q)
-  {
+  else if (arg.key == OIS::KC_O) {
+    if (netActive) {
+      if (!server) {
+        server = netMgr->multiPlayerInit();
+      } else {
+        // netMgr->close();
+        std::cout << "TileGame: Net deactivated." << std::endl;
+        server = connected = netActive = false;
+      }
+    }
+  }
+  else if (arg.key == OIS::KC_Q) {
     if(currTile >= -1)
       tileEntities[currTile+1]->setMaterialName("Examples/Chrome");
     currTile = tileEntities.size() - 1;

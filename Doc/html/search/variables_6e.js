@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['nethost',['netHost',['../classNetManager.html#a2e1aedc97e5fb2f633faeabd2aa266c3',1,'NetManager']]],
+  ['netactive',['netActive',['../classTileGame.html#a475333f8fc083d4ea2fea31506834382',1,'TileGame']]],
+  ['netclients',['netClients',['../classNetManager.html#abe03f819c3ef02b983881db39e162003',1,'NetManager']]],
+  ['nethostname',['netHostname',['../classNetManager.html#ad3817c547216aaf6acddabc1d2944c01',1,'NetManager']]],
+  ['netlocalhost',['netLocalHost',['../classNetManager.html#a91a6c464bfed9fbd7b0815d544a62d7d',1,'NetManager']]],
   ['netmgr',['netMgr',['../classTileGame.html#a691f85c8b3c30335e6b8f6f83a8910ad',1,'TileGame']]],
   ['netport',['netPort',['../classNetManager.html#a2c14b6cf513287e5fb46a85ddb293201',1,'NetManager']]],
   ['netprotocol',['netProtocol',['../classNetManager.html#ac24652f01ef284551be311bfc408be06',1,'NetManager']]],

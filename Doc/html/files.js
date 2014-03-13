@@ -15,7 +15,7 @@ var files =
       [ "CameraMan", "classCameraMan.html", "classCameraMan" ]
     ] ],
     [ "config.h", "config_8h.html", "config_8h" ],
-    [ "NetManager.cpp", "NetManager_8cpp.html", null ],
+    [ "NetManager.cpp", "NetManager_8cpp.html", "NetManager_8cpp" ],
     [ "NetManager.h", "NetManager_8h.html", "NetManager_8h" ],
     [ "NetTestClient.cpp", "NetTestClient_8cpp.html", "NetTestClient_8cpp" ],
     [ "NetTestServer.cpp", "NetTestServer_8cpp.html", "NetTestServer_8cpp" ],

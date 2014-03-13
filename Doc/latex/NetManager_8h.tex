@@ -28,10 +28,23 @@ typedef int \hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \{ \hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P} = 1024, 
+enum \{ \\*
+\hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba734cf14d087d322da7035901ba01cbd8}{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R} = 256, 
+\hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bac0e26a27bc6a21634f0dcfd08b5d1e4b}{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T} = 512, 
+\hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P} = 1024, 
 \hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P} = 2048, 
+\\*
 \hyperlink{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L} = P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P $|$ P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P
  \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const std\-::string \hyperlink{NetManager_8h_a4cc69f51b723ed3756cb24529faacf94}{S\-T\-R\-\_\-\-D\-E\-N\-Y} (\char`\"{}T\-G\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-D\-E\-N\-Y\char`\"{})
+\item 
+static const std\-::string \hyperlink{NetManager_8h_af6a130ab206e6c62fe162b8d44e30b89}{S\-T\-R\-\_\-\-O\-P\-E\-N} (\char`\"{}T\-G\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-O\-P\-E\-N\char`\"{})
+\item 
+static const std\-::string \hyperlink{NetManager_8h_a091b06ac88c35029c42a7a5d92a1ae16}{S\-T\-R\-\_\-\-B\-E\-G\-I\-N} (\char`\"{}T\-G\-\_\-\-G\-A\-M\-E\-\_\-\-B\-E\-G\-I\-N\char`\"{})
 \end{DoxyCompactItemize}
 
 
@@ -55,10 +68,14 @@ Allows integer manipulations of flags, but signals to users that the value shoul
 
 \subsection{Enumeration Type Documentation}
 \hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55b}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55b}
-These should be used whenever type Protocol is requested. \begin{Desc}
+Flags exposed to the user for function calls. \begin{Desc}
 \item[Enumerator]\par
 \begin{description}
-\index{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}}\item[{\em 
+\index{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R@{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R@{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R}}\item[{\em 
+\hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba734cf14d087d322da7035901ba01cbd8}{N\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba734cf14d087d322da7035901ba01cbd8}
+}]Server bit flag. \index{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T@{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T@{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T}}\item[{\em 
+\hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bac0e26a27bc6a21634f0dcfd08b5d1e4b}{N\-E\-T\-\_\-\-C\-L\-I\-E\-N\-T}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bac0e26a27bc6a21634f0dcfd08b5d1e4b}
+}]Client bit flag. \index{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}}\item[{\em 
 \hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-T\-C\-P}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55bae991c7cad918269624b3c28147e18a93}
 }]T\-C\-P bit flag. \index{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P}!Net\-Manager.\-h@{Net\-Manager.\-h}}\index{Net\-Manager.\-h@{Net\-Manager.\-h}!P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P@{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P}}\item[{\em 
 \hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-U\-D\-P}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba3c79df624160aa6dbeeb4e2c13ca3dc7}
@@ -66,3 +83,27 @@ These should be used whenever type Protocol is requested. \begin{Desc}
 \hypertarget{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}{P\-R\-O\-T\-O\-C\-O\-L\-\_\-\-A\-L\-L}\label{NetManager_8h_a06fc87d81c62e9abb8790b6e5713c55ba78c8c360e9d58fb53829c58ac0ae6a43}
 }]Combined bit flag. \end{description}
 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{NetManager_8h_a091b06ac88c35029c42a7a5d92a1ae16}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!S\-T\-R\-\_\-\-B\-E\-G\-I\-N@{S\-T\-R\-\_\-\-B\-E\-G\-I\-N}}
+\index{S\-T\-R\-\_\-\-B\-E\-G\-I\-N@{S\-T\-R\-\_\-\-B\-E\-G\-I\-N}!NetManager.h@{Net\-Manager.\-h}}
+\subsubsection[{S\-T\-R\-\_\-\-B\-E\-G\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}static const std\-::string S\-T\-R\-\_\-\-B\-E\-G\-I\-N (
+\begin{DoxyParamCaption}
+\item[{\char`\"{}T\-G\-\_\-\-G\-A\-M\-E\-\_\-\-B\-E\-G\-I\-N\char`\"{}}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_a091b06ac88c35029c42a7a5d92a1ae16}
+\hypertarget{NetManager_8h_a4cc69f51b723ed3756cb24529faacf94}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!S\-T\-R\-\_\-\-D\-E\-N\-Y@{S\-T\-R\-\_\-\-D\-E\-N\-Y}}
+\index{S\-T\-R\-\_\-\-D\-E\-N\-Y@{S\-T\-R\-\_\-\-D\-E\-N\-Y}!NetManager.h@{Net\-Manager.\-h}}
+\subsubsection[{S\-T\-R\-\_\-\-D\-E\-N\-Y}]{\setlength{\rightskip}{0pt plus 5cm}static const std\-::string S\-T\-R\-\_\-\-D\-E\-N\-Y (
+\begin{DoxyParamCaption}
+\item[{\char`\"{}T\-G\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-D\-E\-N\-Y\char`\"{}}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_a4cc69f51b723ed3756cb24529faacf94}
+\hypertarget{NetManager_8h_af6a130ab206e6c62fe162b8d44e30b89}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!S\-T\-R\-\_\-\-O\-P\-E\-N@{S\-T\-R\-\_\-\-O\-P\-E\-N}}
+\index{S\-T\-R\-\_\-\-O\-P\-E\-N@{S\-T\-R\-\_\-\-O\-P\-E\-N}!NetManager.h@{Net\-Manager.\-h}}
+\subsubsection[{S\-T\-R\-\_\-\-O\-P\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}static const std\-::string S\-T\-R\-\_\-\-O\-P\-E\-N (
+\begin{DoxyParamCaption}
+\item[{\char`\"{}T\-G\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-O\-P\-E\-N\char`\"{}}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_af6a130ab206e6c62fe162b8d44e30b89}

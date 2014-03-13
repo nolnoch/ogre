@@ -31,9 +31,11 @@
 typedef int Protocol;
 
 /**
- * These should be used whenever type Protocol is requested.
+ * Flags exposed to the user for function calls.
  */
 enum {
+  NET_SERVER          = 256,                            //!< Server bit flag.
+  NET_CLIENT          = 512,                            //!< Client bit flag.
   PROTOCOL_TCP        = 1024,                           //!< TCP bit flag.
   PROTOCOL_UDP        = 2048,                           //!< UDP bit flag.
   PROTOCOL_ALL        = PROTOCOL_TCP | PROTOCOL_UDP     //!< Combined bit flag.
@@ -45,11 +47,10 @@ enum {
 struct ConnectionInfo {
   short tcpSocketIdx;                 //!< Index into the tcpSocket vector.
   short udpSocketIdx;                 //!< Index into the udpSocket vector.
-  short tcpClientIdx;                 //!< Index into the tcpClients vector.
-  short udpClientIdx;                 //!< Index into the udpClients vector.
   short tcpDataIdx;                   //!< Index into the tcpClientData vector.
   short udpDataIdx;                   //!< Index into the udpClientData vector.
   short udpChannel;                   //!< The associated UDP channel.
+  short clientIdx;                 //!< Index into the tcpClients vector.
   Protocol protocols;                 //!< Associated protocols.
   IPaddress address;                  //!< This connection's IPaddress.
 };
@@ -66,6 +67,10 @@ struct ClientData {
   char output[128];                   //!< Received network data.
   char input[128];                    //!< Target for automatic data pulls.
 };
+
+static const std::string STR_DENY("TG_SERVER_DENY");
+static const std::string STR_OPEN("TG_SERVER_OPEN");
+static const std::string STR_BEGIN("TG_GAME_BEGIN");
 
 
 
@@ -109,7 +114,7 @@ public:
   /** @name Required Initialization Functions.                      *////@{
   bool initNetManager();
   void addNetworkInfo(Protocol protocol = PROTOCOL_ALL,
-      Uint16 port = 0, const char *host = NULL);
+      const char *host = NULL, Uint16 port = 0);
   //! @}
 
   /** @name Control Functions.                                      *////@{
@@ -133,9 +138,18 @@ public:
   void setHost(const char *host);
   Uint32 getProtocol();
   Uint16 getPort();
-  std::string getHost();
-  int getTCPClients();
+  std::string getHostname();
+  std::string getIPstring();
+  std::string getMaskedIPstring(int subnetMask);
+  Uint32 getIPnbo();
+  int getClients();
   int getUDPClients();
+  void accept();
+  void deny();
+  //! @}
+
+  /** @name Meta-functions.                                         *////@{
+  bool multiPlayerInit();
   //! @}
 
   ClientData tcpServerData;
@@ -159,8 +173,6 @@ private:
     NET_UDP_OPEN        = 16,
     NET_TCP_ACCEPT      = 32,
     NET_UDP_BOUND       = 64,
-    NET_SERVER          = 256,
-    NET_CLIENT          = 512,
     ///@}
     ///@{
     /** Constants.                  */
@@ -222,11 +234,11 @@ private:
   bool addUDPClient(UDPpacket *pack);
   void rejectTCPClient(TCPsocket sock);
   void rejectUDPClient(UDPpacket *pack);
-  ConnectionInfo* lookupTCPClient(Uint32 host, bool create);
-  ConnectionInfo* lookupUDPClient(Uint32 host, bool create);
+  ConnectionInfo* lookupClient(Uint32 host, bool create);
   //! @}
 
   /** @name Helper Functions.                                        *////@{
+  std::string ipToString(Uint32 host, int subnetMask);
   bool statusCheck(int state);
   bool statusCheck(int state1, int state2);
   void clearFlags(int state);
@@ -239,11 +251,11 @@ private:
   int nextUDPChannel;
   int netStatus;
   int netPort;
+  Uint32 netLocalHost;
   Protocol netProtocol;
-  std::string netHost;
+  std::string netHostname;
   ConnectionInfo netServer;
-  std::vector<ConnectionInfo *> tcpClients;
-  std::vector<ConnectionInfo *> udpClients;
+  std::vector<ConnectionInfo *> netClients;
   std::vector<TCPsocket> tcpSockets;
   std::vector<UDPsocket> udpSockets;
   SDLNet_SocketSet socketNursery;

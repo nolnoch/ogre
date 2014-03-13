@@ -1,4 +1,4 @@
-.TH "NetManager" 3 "Wed Mar 12 2014" "OGRE Game" \" -*- nroff -*-
+.TH "NetManager" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,7 +31,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .RI "bool \fBinitNetManager\fP ()"
 .br
 .ti -1c
-.RI "void \fBaddNetworkInfo\fP (\fBProtocol\fP protocol=\fBPROTOCOL_ALL\fP, Uint16 port=0, const char *host=NULL)"
+.RI "void \fBaddNetworkInfo\fP (\fBProtocol\fP protocol=\fBPROTOCOL_ALL\fP, const char *host=NULL, Uint16 port=0)"
 .br
 .RI "\fIRequired to set TCP/UDP, port, and optional host\&. \fP"
 .in -1c
@@ -118,17 +118,46 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fIReturns the currently active port\&. \fP"
 .ti -1c
-.RI "std::string \fBgetHost\fP ()"
+.RI "std::string \fBgetHostname\fP ()"
 .br
 .RI "\fIReturns the currently active host\&. \fP"
 .ti -1c
-.RI "int \fBgetTCPClients\fP ()"
+.RI "std::string \fBgetIPstring\fP ()"
+.br
+.RI "\fIRetrieve the string representation of the local IP address\&. \fP"
+.ti -1c
+.RI "std::string \fBgetMaskedIPstring\fP (int subnetMask)"
+.br
+.RI "\fIRetrieve the string representation of the masked local IP address\&. \fP"
+.ti -1c
+.RI "Uint32 \fBgetIPnbo\fP ()"
+.br
+.RI "\fIRetrieve the network-byte-ordered local IP address\&. \fP"
+.ti -1c
+.RI "int \fBgetClients\fP ()"
 .br
 .RI "\fIThe number of connected TCP clients\&. \fP"
 .ti -1c
 .RI "int \fBgetUDPClients\fP ()"
 .br
-.RI "\fIThe number of connected UDP clients\&. \fP"
+.ti -1c
+.RI "void \fBaccept\fP ()"
+.br
+.ti -1c
+.RI "void \fBdeny\fP ()"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBMeta-functions\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBmultiPlayerInit\fP ()"
+.br
+.RI "\fIInitiates multiplayer functionality by launching the server instance\&. \fP"
 .in -1c
 .in -1c
 .SS "Public Attributes"
@@ -151,7 +180,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 
 .in +1c
 .ti -1c
-.RI "enum { \fBNET_UNINITIALIZED\fP = 0, \fBNET_INITIALIZED\fP = 1, \fBNET_WAITING\fP = 2, \fBNET_RESOLVED\fP = 4, \fBNET_TCP_OPEN\fP = 8, \fBNET_UDP_OPEN\fP = 16, \fBNET_TCP_ACCEPT\fP = 32, \fBNET_UDP_BOUND\fP = 64, \fBNET_SERVER\fP = 256, \fBNET_CLIENT\fP = 512, \fBPORT_RANDOM\fP = 0, \fBPORT_DEFAULT\fP = 51215, \fBCHANNEL_AUTO\fP = -1, \fBCHANNEL_DEFAULT\fP = 1, \fBCHANNEL_MAX\fP = 2, \fBSOCKET_TCP_MAX\fP = 12, \fBSOCKET_UDP_MAX\fP = 12, \fBSOCKET_ALL_MAX\fP = SOCKET_TCP_MAX + SOCKET_UDP_MAX, \fBSOCKET_SELF\fP = SOCKET_ALL_MAX + 1, \fBMESSAGE_COUNT\fP = 10, \fBMESSAGE_LENGTH\fP = 128 }"
+.RI "enum { \fBNET_UNINITIALIZED\fP = 0, \fBNET_INITIALIZED\fP = 1, \fBNET_WAITING\fP = 2, \fBNET_RESOLVED\fP = 4, \fBNET_TCP_OPEN\fP = 8, \fBNET_UDP_OPEN\fP = 16, \fBNET_TCP_ACCEPT\fP = 32, \fBNET_UDP_BOUND\fP = 64, \fBPORT_RANDOM\fP = 0, \fBPORT_DEFAULT\fP = 51215, \fBCHANNEL_AUTO\fP = -1, \fBCHANNEL_DEFAULT\fP = 1, \fBCHANNEL_MAX\fP = 2, \fBSOCKET_TCP_MAX\fP = 12, \fBSOCKET_UDP_MAX\fP = 12, \fBSOCKET_ALL_MAX\fP = SOCKET_TCP_MAX + SOCKET_UDP_MAX, \fBSOCKET_SELF\fP = SOCKET_ALL_MAX + 1, \fBMESSAGE_COUNT\fP = 10, \fBMESSAGE_LENGTH\fP = 128 }"
 .br
 .in -1c
 .PP
@@ -335,13 +364,9 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fIRejects a prospective UDP client\&. \fP"
 .ti -1c
-.RI "\fBConnectionInfo\fP * \fBlookupTCPClient\fP (Uint32 host, bool create)"
+.RI "\fBConnectionInfo\fP * \fBlookupClient\fP (Uint32 host, bool create)"
 .br
 .RI "\fILook up a TCP client by IPaddress host\&. \fP"
-.ti -1c
-.RI "\fBConnectionInfo\fP * \fBlookupUDPClient\fP (Uint32 host, bool create)"
-.br
-.RI "\fILook up a UDP client by IPaddress host\&. \fP"
 .in -1c
 .in -1c
 .PP
@@ -350,6 +375,10 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 
 .in +1c
 .in +1c
+.ti -1c
+.RI "std::string \fBipToString\fP (Uint32 host, int subnetMask)"
+.br
+.RI "\fIConvert a network-byte-order host to dotted string representation\&. \fP"
 .ti -1c
 .RI "bool \fBstatusCheck\fP (int state)"
 .br
@@ -390,19 +419,19 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .RI "int \fBnetPort\fP"
 .br
 .ti -1c
+.RI "Uint32 \fBnetLocalHost\fP"
+.br
+.ti -1c
 .RI "\fBProtocol\fP \fBnetProtocol\fP"
 .br
 .ti -1c
-.RI "std::string \fBnetHost\fP"
+.RI "std::string \fBnetHostname\fP"
 .br
 .ti -1c
 .RI "\fBConnectionInfo\fP \fBnetServer\fP"
 .br
 .ti -1c
-.RI "std::vector< \fBConnectionInfo\fP * > \fBtcpClients\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBConnectionInfo\fP * > \fBudpClients\fP"
+.RI "std::vector< \fBConnectionInfo\fP * > \fBnetClients\fP"
 .br
 .ti -1c
 .RI "std::vector< TCPsocket > \fBtcpSockets\fP"
@@ -450,10 +479,6 @@ State management flag bits\&.
 .TP
 \fB\fINET_UDP_BOUND \fP\fP
 .TP
-\fB\fINET_SERVER \fP\fP
-.TP
-\fB\fINET_CLIENT \fP\fP
-.TP
 \fB\fIPORT_RANDOM \fP\fP
 Constants\&. 
 .TP
@@ -484,6 +509,8 @@ Initialize changeable values to defaults\&. Nothing special\&.
 Standard destruction\&. Calls \fBclose()\fP\&. 
 .SH "Member Function Documentation"
 .PP 
+.SS "void NetManager::accept ()"
+
 .SS "bool NetManager::acceptTCP (TCPsocketserver)\fC [private]\fP"
 
 .PP
@@ -500,7 +527,7 @@ True on success, false on failure\&.
 .RE
 .PP
 
-.SS "void NetManager::addNetworkInfo (\fBProtocol\fPprotocol = \fC\fBPROTOCOL_ALL\fP\fP, Uint16port = \fC0\fP, const char *host = \fCNULL\fP)"
+.SS "void NetManager::addNetworkInfo (\fBProtocol\fPprotocol = \fC\fBPROTOCOL_ALL\fP\fP, const char *host = \fCNULL\fP, Uint16port = \fC0\fP)"
 
 .PP
 Required to set TCP/UDP, port, and optional host\&. Allows user to set preferred protocol, port, and optional host\&. If a host is given, it is assumed to be the server, and a client initialization is expected\&. If no host is given, only a server initialization is possible and will be expected\&. Protocol and port are given default values if either or both are not specified\&. 
@@ -509,9 +536,9 @@ Required to set TCP/UDP, port, and optional host\&. Allows user to set preferred
 .RS 4
 \fIprotocol\fP Desired protocols for server or client\&. Default: ALL\&. 
 .br
-\fIport\fP Desired port for server or client\&. Default: 51215 
-.br
 \fIhost\fP Host server if starting client\&. Default: NULL (begin server)\&. 
+.br
+\fIport\fP Desired port for server or client\&. Default: 51215 
 .RE
 .PP
 
@@ -675,6 +702,8 @@ An allocated and filled UDPpacket\&.
 .RE
 .PP
 
+.SS "void NetManager::deny ()"
+
 .SS "void NetManager::dropClient (\fBProtocol\fPprotocol, Uint32host)"
 
 .PP
@@ -706,7 +735,18 @@ Free a UDP packet vector\&. \fBParameters:\fP
 .RE
 .PP
 
-.SS "std::string NetManager::getHost ()"
+.SS "int NetManager::getClients ()"
+
+.PP
+The number of connected TCP clients\&. I added this primarily for testing, but it may come in handy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of connected TCP clients\&. 
+.RE
+.PP
+
+.SS "std::string NetManager::getHostname ()"
 
 .PP
 Returns the currently active host\&. Must be running as a client to call this function; servers do not have hosts\&. 
@@ -714,6 +754,38 @@ Returns the currently active host\&. Must be running as a client to call this fu
 \fBReturns:\fP
 .RS 4
 The currently active host\&. 
+.RE
+.PP
+
+.SS "Uint32 NetManager::getIPnbo ()"
+
+.PP
+Retrieve the network-byte-ordered local IP address\&. \fBReturns:\fP
+.RS 4
+Local IP address in network byte order\&. 
+.RE
+.PP
+
+.SS "std::string NetManager::getIPstring ()"
+
+.PP
+Retrieve the string representation of the local IP address\&. \fBReturns:\fP
+.RS 4
+Local IP address in decimal-separated, string format\&. 
+.RE
+.PP
+
+.SS "std::string NetManager::getMaskedIPstring (intmask)"
+
+.PP
+Retrieve the string representation of the masked local IP address\&. \fBParameters:\fP
+.RS 4
+\fImask\fP Bit-depth of the subnet mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Local IP address in decimal-separated, string format\&. 
 .RE
 .PP
 
@@ -735,27 +807,7 @@ The currently active protocols\&.
 .RE
 .PP
 
-.SS "int NetManager::getTCPClients ()"
-
-.PP
-The number of connected TCP clients\&. I added this primarily for testing, but it may come in handy\&. 
-.PP
-\fBReturns:\fP
-.RS 4
-The number of connected TCP clients\&. 
-.RE
-.PP
-
 .SS "int NetManager::getUDPClients ()"
-
-.PP
-The number of connected UDP clients\&. I added this primarily for testing, but it may come in handy\&. 
-.PP
-\fBReturns:\fP
-.RS 4
-The number of connected UDP clients\&. 
-.RE
-.PP
 
 .SS "bool NetManager::initNetManager ()"
 Initializes the SDL library if it has not started already, followed by the SDL_net library\&. If both succeed, the internal SocketSet is allocated, and the state is set to NET_INITIALIZED\&. 
@@ -766,28 +818,28 @@ True on success, false on failure\&.
 .RE
 .PP
 
-.SS "\fBConnectionInfo\fP * NetManager::lookupTCPClient (Uint32host, boolcreate)\fC [private]\fP"
+.SS "std::string NetManager::ipToString (Uint32host, intsubnetMask)\fC [private]\fP"
 
 .PP
-Look up a TCP client by IPaddress host\&. IPaddress host is available from almost anywhere, and this conversion to a \fBConnectionInfo\fP pointer allows access to the correct index into all of the client's associated vectors\&. If the \fBConnectionInfo\fP does not already exist, the boolean allows a new instance to be returned instead\&. 
+Convert a network-byte-order host to dotted string representation\&. Stepping mask for /8, /16, /24, and /32 address preservation\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIhost\fP The IPaddress host\&. 
+\fIhost\fP The desired host\&. 
 .br
-\fIcreate\fP True to return a new \fBConnectionInfo\fP instance, false for NULL\&. 
+\fIsubnetMask\fP The bit-depth of IP subnet mask (8/16/24/32)\&. 
 .RE
 .PP
 \fBReturns:\fP
 .RS 4
-Either the correct CInfo, a new CInfo, or null\&. 
+The decimal-separated string representation\&. 
 .RE
 .PP
 
-.SS "\fBConnectionInfo\fP * NetManager::lookupUDPClient (Uint32host, boolcreate)\fC [private]\fP"
+.SS "\fBConnectionInfo\fP * NetManager::lookupClient (Uint32host, boolcreate)\fC [private]\fP"
 
 .PP
-Look up a UDP client by IPaddress host\&. IPaddress host is available from almost anywhere, and this conversion to a \fBConnectionInfo\fP pointer allows access to the correct index into all of the client's associated vectors\&. If the \fBConnectionInfo\fP does not already exist, the boolean allows a new instance to be returned instead\&. 
+Look up a TCP client by IPaddress host\&. IPaddress host is available from almost anywhere, and this conversion to a \fBConnectionInfo\fP pointer allows access to the correct index into all of the client's associated vectors\&. If the \fBConnectionInfo\fP does not already exist, the boolean allows a new instance to be returned instead\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -850,6 +902,17 @@ Send a single message to the server\&. Must be running as a client to call this 
 .RE
 .PP
 
+.SS "bool NetManager::multiPlayerInit ()"
+
+.PP
+Initiates multiplayer functionality by launching the server instance\&. Adds the TCP protocol to this instance and enables acceptance of new clients\&. Then the local IP address is retrieved and broadcasted to a /24 mask of itself\&. The clients will respond and register automatically on the server\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the broadcast: true if the server receives its own packet\&. 
+.RE
+.PP
+
 .SS "bool NetManager::openClient (\fBProtocol\fPprotocol, std::stringhostname, Uint16port)\fC [private]\fP"
 
 .PP
@@ -909,7 +972,7 @@ The success or failure of the following TCP or UDP socket call\&.
 .SS "bool NetManager::openTCPSocket (IPaddress *addr)\fC [private]\fP"
 
 .PP
-Opens a TCP socket\&. A state-bound and error-checked wrapper of the SDLNet_TCP_Open call\&. To reduce user calls, it will chain into \fBacceptTCP()\fP iff this is a server\&. 
+Opens a TCP socket\&. A state-bound and error-checked wrapper of the SDLNet_TCP_Open call\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -1365,7 +1428,11 @@ Register a UDP socket to be watched for activity by SDL\&. \fBParameters:\fP
 
 .SS "bool NetManager::forceClientRandomUDP\fC [private]\fP"
 
-.SS "std::string NetManager::netHost\fC [private]\fP"
+.SS "std::vector<\fBConnectionInfo\fP *> NetManager::netClients\fC [private]\fP"
+
+.SS "std::string NetManager::netHostname\fC [private]\fP"
+
+.SS "Uint32 NetManager::netLocalHost\fC [private]\fP"
 
 .SS "int NetManager::netPort\fC [private]\fP"
 
@@ -1381,15 +1448,11 @@ Register a UDP socket to be watched for activity by SDL\&. \fBParameters:\fP
 
 .SS "std::vector<\fBClientData\fP *> NetManager::tcpClientData"
 
-.SS "std::vector<\fBConnectionInfo\fP *> NetManager::tcpClients\fC [private]\fP"
-
 .SS "\fBClientData\fP NetManager::tcpServerData"
 
 .SS "std::vector<TCPsocket> NetManager::tcpSockets\fC [private]\fP"
 
 .SS "std::vector<\fBClientData\fP *> NetManager::udpClientData"
-
-.SS "std::vector<\fBConnectionInfo\fP *> NetManager::udpClients\fC [private]\fP"
 
 .SS "\fBClientData\fP NetManager::udpServerData"
 

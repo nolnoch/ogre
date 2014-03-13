@@ -16,14 +16,34 @@ int main(int argc, char **argv) {
   std::string testMsg = "From server to client; here's hoping you get this.";
   std::clock_t start;
   double duration;
-  int i;
+  int i = 0;
 
   netMgr->initNetManager();
-  netMgr->addNetworkInfo();
+  netMgr->addNetworkInfo(PROTOCOL_UDP);
   netMgr->startServer();
 
 
+  //----------------------------------------------------------------------
+
+  netMgr->multiPlayerInit();
+
+  start = std::clock();
+  do {
+    duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+  } while (duration < 10.0f);
+
+  netMgr->scanForActivity();
+
+
   //<-------- Connecting ---------->//
+  /*
+
+
+  start = std::clock();
+  do {
+    duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+  } while (duration < 10.0f);
+
 
   std::cout << "\n\nPolling for clients...\n\n" << std::endl;
 
@@ -75,6 +95,8 @@ int main(int argc, char **argv) {
 
 
   std::cout << "\n\nTest complete.\n" << std::endl;
+
+   */
 
   netMgr->close();
 }

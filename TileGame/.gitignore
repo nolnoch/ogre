@@ -6,3 +6,9 @@
 /OgreApp-TileSimulator.o
 /Ogre.log
 /OgreApp
+/OgreApp-BaseGame.o
+/netserver
+/OgreApp-NetManager.o
+/OgreApp-SoundManager.o
+/OgreApp-TileGame.o
+/autom4te.cache

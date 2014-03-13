@@ -7,6 +7,7 @@ var searchData=
   ['setballmanager',['setBallManager',['../classTileSimulator.html#a6c90f655f570b9c80642007c6c97f1aa',1,'TileSimulator']]],
   ['setglobalball',['setGlobalBall',['../classBallManager.html#a7e16e93759654ab1511acf0696e49d44',1,'BallManager']]],
   ['sethost',['setHost',['../classNetManager.html#a47666370887fee3b2fa27ae7bff1065f',1,'NetManager']]],
+  ['setlevel',['setLevel',['../classTileGame.html#ab59731a2c682beeda91ad1a89229a3f0',1,'TileGame']]],
   ['setport',['setPort',['../classNetManager.html#af5db4e28511390202b17f6d711f42d83',1,'NetManager']]],
   ['setposition',['setPosition',['../classBall.html#afe626f0cd58bb4e6e604f18be11ae6ca',1,'Ball']]],
   ['setprotocol',['setProtocol',['../classNetManager.html#af370ee8343ff23121c0c2f180c34dabc',1,'NetManager']]],
@@ -19,8 +20,12 @@ var searchData=
   ['simulator',['Simulator',['../classSimulator.html#a031573bfcfe2e0f5c9539bcc1c7fc5d9',1,'Simulator']]],
   ['soundmanager',['SoundManager',['../classSoundManager.html#abcc1fbf3488be5788a42c9a4fe56df35',1,'SoundManager']]],
   ['startclient',['startClient',['../classNetManager.html#ab5b2ae812e37abbb03be5b604e34a60d',1,'NetManager']]],
+  ['startmultiplayer',['startMultiplayer',['../classTileGame.html#a1ee23b22f33fa11b9bb4854d16d19653',1,'TileGame']]],
   ['startserver',['startServer',['../classNetManager.html#ae6a832ed2ede5f5407b75abc584269b8',1,'NetManager']]],
   ['statuscheck',['statusCheck',['../classNetManager.html#a8eb8d5a292070e7269133bf1fc1499c4',1,'NetManager::statusCheck(int state)'],['../classNetManager.html#aa5616571aa520977c221d8a8a6471a1f',1,'NetManager::statusCheck(int state1, int state2)']]],
   ['stopclient',['stopClient',['../classNetManager.html#a55eb599a64a651d890641a256ab4db9a',1,'NetManager']]],
-  ['stopserver',['stopServer',['../classNetManager.html#ac4d5cdb235713bea820ab5275a0da920',1,'NetManager']]]
+  ['stopserver',['stopServer',['../classNetManager.html#ac4d5cdb235713bea820ab5275a0da920',1,'NetManager']]],
+  ['str_5fbegin',['STR_BEGIN',['../NetManager_8h.html#a091b06ac88c35029c42a7a5d92a1ae16',1,'NetManager.h']]],
+  ['str_5fdeny',['STR_DENY',['../NetManager_8h.html#a4cc69f51b723ed3756cb24529faacf94',1,'NetManager.h']]],
+  ['str_5fopen',['STR_OPEN',['../NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89',1,'NetManager.h']]]
 ];

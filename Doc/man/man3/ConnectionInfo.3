@@ -1,4 +1,4 @@
-.TH "ConnectionInfo" 3 "Wed Mar 12 2014" "OGRE Game" \" -*- nroff -*-
+.TH "ConnectionInfo" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -20,14 +20,6 @@ ConnectionInfo \-
 .br
 .RI "\fIIndex into the udpSocket vector\&. \fP"
 .ti -1c
-.RI "short \fBtcpClientIdx\fP"
-.br
-.RI "\fIIndex into the tcpClients vector\&. \fP"
-.ti -1c
-.RI "short \fBudpClientIdx\fP"
-.br
-.RI "\fIIndex into the udpClients vector\&. \fP"
-.ti -1c
 .RI "short \fBtcpDataIdx\fP"
 .br
 .RI "\fIIndex into the tcpClientData vector\&. \fP"
@@ -39,6 +31,10 @@ ConnectionInfo \-
 .RI "short \fBudpChannel\fP"
 .br
 .RI "\fIThe associated UDP channel\&. \fP"
+.ti -1c
+.RI "short \fBclientIdx\fP"
+.br
+.RI "\fIIndex into the tcpClients vector\&. \fP"
 .ti -1c
 .RI "\fBProtocol\fP \fBprotocols\fP"
 .br
@@ -57,14 +53,14 @@ Internal state information packaging\&.
 
 .PP
 This connection's IPaddress\&. 
+.SS "short ConnectionInfo::clientIdx"
+
+.PP
+Index into the tcpClients vector\&. 
 .SS "\fBProtocol\fP ConnectionInfo::protocols"
 
 .PP
 Associated protocols\&. 
-.SS "short ConnectionInfo::tcpClientIdx"
-
-.PP
-Index into the tcpClients vector\&. 
 .SS "short ConnectionInfo::tcpDataIdx"
 
 .PP
@@ -77,10 +73,6 @@ Index into the tcpSocket vector\&.
 
 .PP
 The associated UDP channel\&. 
-.SS "short ConnectionInfo::udpClientIdx"
-
-.PP
-Index into the udpClients vector\&. 
 .SS "short ConnectionInfo::udpDataIdx"
 
 .PP

@@ -2,8 +2,6 @@ var searchData=
 [
   ['targethit',['targethit',['../TileSimulator_8h.html#a3320ef0071e65baf620c5a0b89aa5391',1,'TileSimulator.h']]],
   ['tcpclientdata',['tcpClientData',['../classNetManager.html#a3303746abef87426cab748c92d58006b',1,'NetManager']]],
-  ['tcpclientidx',['tcpClientIdx',['../structConnectionInfo.html#ae70551f232fc576d4f52e0c610c5d62c',1,'ConnectionInfo']]],
-  ['tcpclients',['tcpClients',['../classNetManager.html#abf9491e48d6bc19eacb148d294613b35',1,'NetManager']]],
   ['tcpdataidx',['tcpDataIdx',['../structConnectionInfo.html#ae74bd85133eb1b4c3cec7431c280fa13',1,'ConnectionInfo']]],
   ['tcpserverdata',['tcpServerData',['../classNetManager.html#abca113fc17fe6251fa7ac5a1179ade3c',1,'NetManager']]],
   ['tcpsocketidx',['tcpSocketIdx',['../structConnectionInfo.html#a1e837b6519e7035ad689232289931e82',1,'ConnectionInfo']]],

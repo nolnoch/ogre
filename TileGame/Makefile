@@ -104,7 +104,7 @@ am_OgreApp_OBJECTS = OgreApp-BaseGame.$(OBJEXT) \
 OgreApp_OBJECTS = $(am_OgreApp_OBJECTS)
 am__DEPENDENCIES_1 =
 OgreApp_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
@@ -263,6 +263,8 @@ PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
 PKG_CONFIG_PATH = 
 RANLIB = ranlib
+SDL_CFLAGS = -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL  
+SDL_LIBS = -lSDL_mixer -lSDL_net -lSDL  
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
@@ -328,7 +330,7 @@ noinst_HEADERS = BaseGame.h TileGame.h Simulator.h TileSimulator.h BallManager.h
 OgreApp_CPPFLAGS = -I$(top_srcdir)
 OgreApp_SOURCES = BaseGame.cpp TileGame.cpp Simulator.cpp TileSimulator.cpp BallManager.cpp SoundManager.cpp NetManager.cpp
 OgreApp_CXXFLAGS = $(OGRE_CFLAGS) $(OIS_CFLAGS) $(bullet_CFLAGS)
-OgreApp_LDADD = $(OGRE_LIBS) $(OIS_LIBS) $(bullet_LIBS) -lSDL -lSDL_mixer -lSDL_net
+OgreApp_LDADD = $(OGRE_LIBS) $(OIS_LIBS) $(bullet_LIBS) $(SDL_LIBS)
 EXTRA_DIST = buildit makeit
 AUTOMAKE_OPTIONS = foreign
 all: config.h

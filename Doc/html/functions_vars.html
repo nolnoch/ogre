@@ -178,6 +178,9 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>chunks
 : <a class="el" href="classSoundManager.html#a591ec09cf6486bc6ff62c458b1718630">SoundManager</a>
 </li>
+<li>clientIdx
+: <a class="el" href="structConnectionInfo.html#a57fe4cd91d04afd5f802957aef5cd835">ConnectionInfo</a>
+</li>
 <li>collisionConfiguration
 : <a class="el" href="classSimulator.html#ae128785e92d1f8cac37b7008ff6c0cf7">Simulator</a>
 </li>
@@ -186,6 +189,9 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </li>
 <li>congratsPanel
 : <a class="el" href="classTileGame.html#a5e8deb9eb2903e1787a28699a9e6f346">TileGame</a>
+</li>
+<li>connected
+: <a class="el" href="classTileGame.html#aa5b3986f4fdfaefddd5a85b796be3a36">TileGame</a>
 </li>
 <li>currLevel
 : <a class="el" href="classTileGame.html#ade2ff1b55b30e055c67907574805c711">TileGame</a>
@@ -248,6 +254,15 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </li>
 <li>input
 : <a class="el" href="structClientData.html#ac35c0f10a3464940d3cc884b384ff2f4">ClientData</a>
+</li>
+<li>invite
+: <a class="el" href="classTileGame.html#a2aeaa1575631d37600e5c66bb2388a7b">TileGame</a>
+</li>
+<li>inviteAccepted
+: <a class="el" href="classTileGame.html#abeb262bc462d088865945f3bb4bff513">TileGame</a>
+</li>
+<li>invitePending
+: <a class="el" href="classTileGame.html#ae23eafd71c3ecbccded93d7776c21445">TileGame</a>
 </li>
 <li>isCharging
 : <a class="el" href="classTileGame.html#ac1c6b430452c30f0c546ac15918b765f">TileGame</a>
@@ -324,8 +339,17 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 
 <h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
-<li>netHost
-: <a class="el" href="classNetManager.html#a2e1aedc97e5fb2f633faeabd2aa266c3">NetManager</a>
+<li>netActive
+: <a class="el" href="classTileGame.html#a475333f8fc083d4ea2fea31506834382">TileGame</a>
+</li>
+<li>netClients
+: <a class="el" href="classNetManager.html#abe03f819c3ef02b983881db39e162003">NetManager</a>
+</li>
+<li>netHostname
+: <a class="el" href="classNetManager.html#ad3817c547216aaf6acddabc1d2944c01">NetManager</a>
+</li>
+<li>netLocalHost
+: <a class="el" href="classNetManager.html#a91a6c464bfed9fbd7b0815d544a62d7d">NetManager</a>
 </li>
 <li>netMgr
 : <a class="el" href="classTileGame.html#a691f85c8b3c30335e6b8f6f83a8910ad">TileGame</a>
@@ -394,6 +418,9 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>scorePanel
 : <a class="el" href="classTileGame.html#a9a4d1b4dfacca55fdeacf454af04fa0c">TileGame</a>
 </li>
+<li>server
+: <a class="el" href="classTileGame.html#a8f1f5171595cb9819f47ad2c9849e810">TileGame</a>
+</li>
 <li>shotsFired
 : <a class="el" href="classTileGame.html#a23df8d17a61584279dbec39ef31092cc">TileGame</a>
 </li>
@@ -422,12 +449,6 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
 <li>tcpClientData
 : <a class="el" href="classNetManager.html#a3303746abef87426cab748c92d58006b">NetManager</a>
-</li>
-<li>tcpClientIdx
-: <a class="el" href="structConnectionInfo.html#ae70551f232fc576d4f52e0c610c5d62c">ConnectionInfo</a>
-</li>
-<li>tcpClients
-: <a class="el" href="classNetManager.html#abf9491e48d6bc19eacb148d294613b35">NetManager</a>
 </li>
 <li>tcpDataIdx
 : <a class="el" href="structConnectionInfo.html#ae74bd85133eb1b4c3cec7431c280fa13">ConnectionInfo</a>
@@ -468,12 +489,6 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </li>
 <li>udpClientData
 : <a class="el" href="classNetManager.html#a687d70a4e199c2cbe4cb955a2cd94b04">NetManager</a>
-</li>
-<li>udpClientIdx
-: <a class="el" href="structConnectionInfo.html#a645bd416fa05c5b41ebe4fe06e3b6999">ConnectionInfo</a>
-</li>
-<li>udpClients
-: <a class="el" href="classNetManager.html#ab5cbc9d5ddb14541adb07b748802446d">NetManager</a>
 </li>
 <li>udpDataIdx
 : <a class="el" href="structConnectionInfo.html#a77f71cc46ad9033a81184cae84170277">ConnectionInfo</a>
@@ -521,7 +536,7 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Mar 12 2014 05:40:58 for OGRE Game by
+    <li class="footer">Generated on Thu Mar 13 2014 04:57:23 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

@@ -1,4 +1,4 @@
-.TH "TileGame" 3 "Wed Mar 12 2014" "OGRE Game" \" -*- nroff -*-
+.TH "TileGame" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -60,6 +60,9 @@ Inherits \fBBaseGame\fP\&.
 .RI "virtual bool \fBmouseReleased\fP (const OIS::MouseEvent &arg, OIS::MouseButtonID id)"
 .br
 .ti -1c
+.RI "void \fBjoinServer\fP ()"
+.br
+.ti -1c
 .RI "void \fBballSetup\fP (int cubeSize)"
 .br
 .ti -1c
@@ -67,6 +70,12 @@ Inherits \fBBaseGame\fP\&.
 .br
 .ti -1c
 .RI "void \fBlevelTearDown\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetLevel\fP (int num)"
+.br
+.ti -1c
+.RI "void \fBstartMultiplayer\fP ()"
 .br
 .ti -1c
 .RI "void \fBsimonSaysAnim\fP ()"
@@ -172,6 +181,21 @@ Inherits \fBBaseGame\fP\&.
 .RI "bool \fBisCharging\fP"
 .br
 .ti -1c
+.RI "bool \fBconnected\fP"
+.br
+.ti -1c
+.RI "bool \fBserver\fP"
+.br
+.ti -1c
+.RI "bool \fBnetActive\fP"
+.br
+.ti -1c
+.RI "bool \fBinvitePending\fP"
+.br
+.ti -1c
+.RI "bool \fBinviteAccepted\fP"
+.br
+.ti -1c
 .RI "int \fBscore\fP"
 .br
 .ti -1c
@@ -194,6 +218,9 @@ Inherits \fBBaseGame\fP\&.
 .br
 .ti -1c
 .RI "double \fBslowdownval\fP"
+.br
+.ti -1c
+.RI "std::string \fBinvite\fP"
 .br
 .in -1c
 .SH "Constructor & Destructor Documentation"
@@ -234,6 +261,8 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "Ogre::RenderWindow* TileGame::getWindow (void)\fC [inline]\fP"
 
+.SS "void TileGame::joinServer ()\fC [inline]\fP, \fC [protected]\fP"
+
 .SS "bool TileGame::keyPressed (const OIS::KeyEvent &arg)\fC [protected]\fP, \fC [virtual]\fP"
 
 .PP
@@ -250,7 +279,11 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .PP
 Reimplemented from \fBBaseGame\fP\&.
+.SS "void TileGame::setLevel (intnum)\fC [inline]\fP, \fC [protected]\fP"
+
 .SS "void TileGame::simonSaysAnim ()\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "void TileGame::startMultiplayer ()\fC [inline]\fP, \fC [protected]\fP"
 
 .SH "Member Data Documentation"
 .PP 
@@ -270,6 +303,8 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "OgreBites::Label* TileGame::congratsPanel\fC [protected]\fP"
 
+.SS "bool TileGame::connected\fC [protected]\fP"
+
 .SS "int TileGame::currLevel\fC [protected]\fP"
 
 .SS "int TileGame::currTile\fC [protected]\fP"
@@ -282,6 +317,12 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "Ogre::SceneNode* TileGame::headNode\fC [protected]\fP"
 
+.SS "std::string TileGame::invite\fC [protected]\fP"
+
+.SS "bool TileGame::inviteAccepted\fC [protected]\fP"
+
+.SS "bool TileGame::invitePending\fC [protected]\fP"
+
 .SS "bool TileGame::isCharging\fC [protected]\fP"
 
 .SS "Ogre::Vector3 TileGame::mDirection\fC [protected]\fP"
@@ -292,6 +333,8 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "\fBSoundFile\fP TileGame::music\fC [protected]\fP"
 
+.SS "bool TileGame::netActive\fC [protected]\fP"
+
 .SS "\fBNetManager\fP* TileGame::netMgr\fC [protected]\fP"
 
 .SS "Ogre::Light* TileGame::panelLight\fC [protected]\fP"
@@ -301,6 +344,8 @@ Reimplemented from \fBBaseGame\fP\&.
 .SS "int TileGame::score\fC [protected]\fP"
 
 .SS "OgreBites::ParamsPanel* TileGame::scorePanel\fC [protected]\fP"
+
+.SS "bool TileGame::server\fC [protected]\fP"
 
 .SS "int TileGame::shotsFired\fC [protected]\fP"
 
