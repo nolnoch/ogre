@@ -149,7 +149,8 @@ public:
   //! @}
 
   /** @name Meta-functions.                                         *////@{
-  bool multiPlayerInit();
+  bool multiPlayerInit(int maskDepth);
+  bool joinMultiPlayer(std::string invitation);
   //! @}
 
   ClientData tcpServerData;

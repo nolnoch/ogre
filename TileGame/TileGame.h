@@ -82,17 +82,6 @@ protected:
   std::string invite;
 
 
-  void joinServer() {
-    if (invitePending) {
-      std::string svrAddr = invite.substr(STR_OPEN.length());
-      netMgr->stopServer();
-      netMgr->initNetManager();
-      netMgr->addNetworkInfo(PROTOCOL_ALL, svrAddr.c_str());
-      netActive = netMgr->startClient();
-      connected = true;
-    }
-  }
-
   void ballSetup (int cubeSize) {
     float ballSize = 200;                   //diameter
     float meshSize =  ballSize / 200;       //200 is size of the mesh.

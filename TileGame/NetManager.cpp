@@ -647,7 +647,7 @@ void NetManager::deny() {
  * itself. The clients will respond and register automatically on the server.
  * @return Success of the broadcast: true if the server receives its own packet.
  */
-bool NetManager::multiPlayerInit() {
+bool NetManager::multiPlayerInit(int maskDepth) {
   std::ostringstream broadcast;
   std::string data;
   IPaddress addr;
@@ -656,7 +656,7 @@ bool NetManager::multiPlayerInit() {
   addProtocol(PROTOCOL_TCP);
   accept();
 
-  SDLNet_ResolveHost(&addr, getMaskedIPstring(24).c_str(), 51215);
+  SDLNet_ResolveHost(&addr, getMaskedIPstring(maskDepth).c_str(), PORT_DEFAULT);
 
   broadcast << STR_OPEN << getIPstring();
   data = broadcast.str();
@@ -669,7 +669,14 @@ bool NetManager::multiPlayerInit() {
   return scanForActivity();
 }
 
+bool NetManager::joinMultiPlayer(std::string invitation) {
+  std::string svrAddr = invitation.substr(STR_OPEN.length());
+  stopServer();
+  initNetManager();
+  addNetworkInfo(PROTOCOL_ALL, svrAddr.c_str());
 
+  return startClient();
+}
 
 
 /* ****************************************************************************

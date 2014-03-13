@@ -261,30 +261,56 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
   if (netActive) {
     if (netMgr->scanForActivity()) {
+      /*
+       * Received an update!
+       */
+
       if (!server) {
         if (!connected) {
-          invite = std::string(netMgr->udpServerData.output);
-          if (std::string::npos != invite.find(STR_OPEN)) {
-            invitePending = true;
+          /*
+           * Running as single player or as client waiting to connect.
+           */
+          if (!invitePending) {
+            // Accept only the first invitation received if spammed.
+            invite = std::string(netMgr->udpServerData.output);
+            if (std::string::npos != invite.find(STR_OPEN)) {
+              invitePending = true;
+            }
+          } else {
+            // Invited! Do we want to join the server in a multiplayer instance?
+            // Display something to give the user a choice to join or not join.
+            // Can continue to receive updates (e.g. number of clients joined).
+            if (inviteAccepted) {
+              connected = netMgr->joinMultiPlayer(invite);
+              if (!connected) {
+                std::cout << "TileGame: Failed to join server." << std::endl;
+                netMgr->close();
+                netActive = false;
+              }
+            }
           }
         } else {
+          /*
+           * Currently connected to a game as a client.
+           */
           std::string cmd = std::string(netMgr->udpServerData.output);
           if (0 == cmd.compare(STR_BEGIN)) {
             startMultiplayer();
           }
         }
-      }
-      if (invitePending) {
-        // Invited! Do we want to join the server in a multiplayer instance?
-        // Display something to give the user a choice to join or not join.
-        // Can continue to receive updates (e.g. the number of clients joined).
-        if (inviteAccepted) {
-          joinServer();
+      } else {
+        if (!connected) {
+          /*
+           * Initiated a server, but no game started.
+           */
+          // Currently inviting clients. Display something to show join progress?
+          // Should we pause or let the user continue playing solo until launch?
+        } else {
+          /*
+           * Currently hosting a game as a server.
+           */
+          // Do stuff.
         }
-      }
-      if (server && !connected) {
-        // Currently inviting clients. Display something to show join progress?
-        // Should we pause or let the user continue playing solo until launch?
       }
     }
   }
@@ -316,7 +342,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
   else if (arg.key == OIS::KC_O) {
     if (netActive) {
       if (!server) {
-        server = netMgr->multiPlayerInit();
+        server = netMgr->multiPlayerInit(24);
       } else {
         // netMgr->close();
         std::cout << "TileGame: Net deactivated." << std::endl;
