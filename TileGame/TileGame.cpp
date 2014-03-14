@@ -347,6 +347,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
               playerData.push_back(newPlayer);
               nPlayers = playerData.size() + 2;
+              std::cout << "Player added." << std::endl;
             }
 
             netMgr->tcpServerData.updated = false;
@@ -366,7 +367,10 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
               client->newPos = Ogre::Vector3::ZERO;
               playerData.push_back(client);
             }
+            std::cout << "Player added." << std::endl;
             notifyPlayers();
+
+            std::cout << "Players notified." << std::endl;
           }
 
         } else {                    /* Currently hosting a game as a server. */
@@ -447,8 +451,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
       mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->hide();
       invitePending = false;
     }
-  }
-  else if (arg.key == OIS::KC_B) {
+  } else if (arg.key == OIS::KC_B) {
     if (server && !connected && nPlayers > 0) {
       connected = true;
       netMgr->messageClients(PROTOCOL_TCP, STR_BEGIN.c_str(), STR_BEGIN.length());
@@ -458,8 +461,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
       startMultiplayer();
       std::cout << "Multiplayer started." << std::endl;
     }
-  }
-  else if (arg.key == OIS::KC_P) {
+  } else if (arg.key == OIS::KC_P) {
     paused = !paused;
     slowdownval = 0.0;
 

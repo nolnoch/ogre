@@ -294,7 +294,7 @@ protected:
       ringNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(playerName.str());
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
-      ringNode->setScale(200, 200, 200);
+      ringNode->setScale(120, 120, 120);
       ringNode->rotate(Ogre::Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_X));
 
       playerNodes.push_back(ringNode);
