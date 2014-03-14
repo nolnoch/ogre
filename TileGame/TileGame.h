@@ -295,7 +295,7 @@ protected:
       ringNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(playerName.str());
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
-      ringNode->setScale(120, 120, 120);
+      ringNode->setScale(100, 100, 100);
       ringNode->rotate(Ogre::Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_X));
 
       playerNodes.push_back(ringNode);
@@ -321,9 +321,11 @@ protected:
   }
 
   void startMultiplayer() {
+    std::cout << "Multiplayer starting." << std::endl;
     setLevel(1);
 
     drawPlayers();
+    std::cout << "Multiplayer started." << std::endl;
   }
 
   void notifyPlayers() {

@@ -299,7 +299,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   if (netActive) {
 
     /*  Received an update!  */
-    if (!(limiter % 1000) && netMgr->scanForActivity()) {
+    if (!(limiter % 500) && netMgr->scanForActivity()) {
       std::string cmd, cmdArgs;
 
       if (!server) {
@@ -321,9 +321,10 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           if (netMgr->udpServerData.updated) {
             cmd = std::string(netMgr->udpServerData.output);
 
-            if (0 == cmd.compare(STR_BEGIN)) {
+            if (-1 < cmd.find(STR_OPEN)) {
               //startMultiplayer();
             } else if (-1 < cmd.find(STR_ADDPL)) {
+              std::cout << "Adding player." << std::endl;
               PlayerData *newPlayer = new PlayerData;
 
               cmdArgs = cmd.substr(STR_ADDPL.length());
@@ -341,8 +342,10 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             cmd = std::string(netMgr->tcpServerData.output);
 
             if (0 == cmd.compare(STR_BEGIN)) {
+              std::cout << "Beginning multiplayer game." << std::endl;
               startMultiplayer();
             } else if (-1 < cmd.find(STR_ADDPL)) {
+              std::cout << "Adding player." << std::endl;
               PlayerData *newPlayer = new PlayerData;
 
               cmdArgs = cmd.substr(STR_ADDPL.length());
@@ -464,7 +467,6 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
       mTrayMgr->destroyWidget("ServerStartPanel");
 
       startMultiplayer();
-      std::cout << "Multiplayer started." << std::endl;
     }
   } else if (arg.key == OIS::KC_P) {
     paused = !paused;
