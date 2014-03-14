@@ -323,8 +323,8 @@ protected:
   }
 
   void startMultiplayer() {
-    // setLevel(1);
-
+    gameDone = true;
+    setLevel(1);
     drawPlayers();
     std::cout << "Multiplayer started." << std::endl;
   }
