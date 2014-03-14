@@ -325,9 +325,6 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           if (netMgr->udpServerData.updated) {
             data = (Uint32 *) netMgr->udpServerData.output;
 
-            test << *data;
-            std::cout << test.str() << std::endl;
-
             if (*data == UINT_ADDPL) {
               std::cout << "Adding player." << std::endl;
               PlayerData *newPlayer = new PlayerData;
@@ -335,7 +332,11 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
               memcpy(newPlayer, ++data, sizeof(PlayerData));
 
               playerData.push_back(newPlayer);
-              nPlayers = playerData.size() + 2;
+              nPlayers = playerData.size();
+
+              test << newPlayer->host;
+              std::cout << test.str() << std::endl;
+
               std::cout << "Player added." << std::endl;
             }
 
