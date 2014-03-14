@@ -322,8 +322,6 @@ protected:
     setLevel(1);
 
     drawPlayers();
-
-    //XXX Create objects to represent each player.
   }
 
   void notifyPlayers() {
