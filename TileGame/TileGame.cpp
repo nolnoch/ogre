@@ -24,8 +24,6 @@ This source file is part of the
 //-------------------------------------------------------------------------------------
 TileGame::TileGame(void) :
 mDirection(Ogre::Vector3::ZERO),
-gameStart(true),
-currLevel(1),
 headNode(0),
 ballMgr(0),
 soundMgr(0),
@@ -35,14 +33,22 @@ panelLight(0),
 scorePanel(0),
 congratsPanel(0),
 chargePanel(0),
+clientAcceptDescPanel(0),
+clientAcceptOptPanel(0),
+serverStartPanel(0),
+playersWaitingPanel(0),
+crosshairOverlay(0),
 boing(0),
 music(0),
 gong(0)
 {
   gameDone = animDone = isCharging = paused = connected = server = netActive =
       invitePending = inviteAccepted = false;
+  gameStart = true;
+
   mSpeed = score = shotsFired = tileCounter = winTimer = chargeShot =
-      slowdownval = currTile = 0;
+      slowdownval = currTile = nPlayers = 0;
+  currLevel = 1;
 
   mTimer = OGRE_NEW Ogre::Timer();
   mTimer->reset();
@@ -183,27 +189,46 @@ void TileGame::createFrameListener(void) {
   scorelist.push_back("Score");
   scorelist.push_back("Shots Fired");
   scorelist.push_back("Current Level");
-  scorePanel = mTrayMgr->createParamsPanel(OgreBites::TL_TOPLEFT, "ScorePanel", 200, scorelist);
+  Ogre::StringVector playerCountTag;
+  playerCountTag.push_back("Current Players:");
 
-  congratsPanel = mTrayMgr->createLabel(OgreBites::TL_TOP, "CongratsPanel", "this is dumb", 300);
+  scorePanel = mTrayMgr->createParamsPanel(OgreBites::TL_TOPLEFT,
+      "ScorePanel", 200, scorelist);
+  congratsPanel = mTrayMgr->createLabel(OgreBites::TL_TOP,
+      "CongratsPanel", "NULL", 300);
+  chargePanel = mTrayMgr->createLabel(OgreBites::TL_BOTTOM,
+      "Chargepanel", "|", 300);
+  serverStartPanel = mTrayMgr->createLabel(OgreBites::TL_TOPRIGHT,
+      "ServerStartPanel", "Press (B) to start when ready.", 300);
+  clientAcceptDescPanel = mTrayMgr->createLabel(OgreBites::TL_TOPRIGHT,
+      "ClientAcceptDescPanel", "Join multiplayer game?", 200);
+  clientAcceptOptPanel = mTrayMgr->createLabel(OgreBites::TL_TOPRIGHT,
+      "ClientAcceptOptPanel", "(Y)es or (N)o", 150);
+  playersWaitingPanel = mTrayMgr->createParamsPanel(OgreBites::TL_BOTTOMRIGHT,
+      "PlayersWaitingPanel", 200, playerCountTag);
+
   congratsPanel->hide();
-
-  chargePanel = mTrayMgr->createLabel(OgreBites::TL_BOTTOM, "Chargepanel", "|", 300);
+  serverStartPanel->hide();
+  clientAcceptDescPanel->hide();
+  clientAcceptOptPanel->hide();
+  // playersWaitingPanel->hide();
 
   Ogre::OverlayManager& overlayMgr = Ogre::OverlayManager::getSingleton();
-  Ogre::Overlay* overlay = overlayMgr.create("Crosshair");
+  crosshairOverlay = overlayMgr.create("Crosshair");
 
   Ogre::OverlayContainer* panel = static_cast<Ogre::OverlayContainer*>(
       overlayMgr.createOverlayElement("Panel", "PanelName"));
   panel->setPosition(0.488, 0.475);
   panel->setDimensions(0.025, 0.0375);
   panel->setMaterialName("Examples/Crosshair");
-  overlay->add2D(panel);
-  overlay->show();
+  crosshairOverlay->add2D(panel);
+  crosshairOverlay->show();
 }
 //-------------------------------------------------------------------------------------
 bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   bool ret = BaseGame::frameRenderingQueued(evt);
+
+  int i;
 
   if (paused)
     slowdownval += 1/1800.f;
@@ -229,7 +254,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     }
   }
 
-  if (gameDone && winTimer++ > 320) {
+  if (gameDone && !paused && winTimer++ > 320) {
     levelTearDown();
     levelSetup(currLevel);
     congratsPanel->hide();
@@ -241,45 +266,53 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   if (isCharging && chargeShot < 10000)
     chargeShot += 70;
 
+  /* Update SDKTrays panels. */
   if (!mTrayMgr->isDialogVisible()) {
+    // ScorePanel
     scorePanel->setParamValue(0, Ogre::StringConverter::toString(score));
     scorePanel->setParamValue(1, Ogre::StringConverter::toString(shotsFired));
     scorePanel->setParamValue(2, Ogre::StringConverter::toString(currLevel));
+
+    // Level complete notification.
     std::stringstream grats;
     grats << "Moving to level ";
     grats << (currLevel + 1);
     grats << "...";
     congratsPanel->setCaption(grats.str());
 
-
+    // Charge shot meter.
     std::stringstream scharge;
     scharge << "|";
     for(int i = 1000; i < chargeShot; i += 160)
       scharge << "|";
     chargePanel->setCaption(scharge.str());
+
+    // Number of players in the game.
+    playersWaitingPanel->setParamValue(0,
+        Ogre::StringConverter::toString(nPlayers + 1));
   }
 
+  /* ***********************************************************************
+   * Multiplayer Code
+   */
+  int limiter = 0;
   if (netActive) {
-    if (netMgr->scanForActivity()) {
-      /*
-       * Received an update!
-       */
+    if (!(limiter % 100) && netMgr->scanForActivity()) {
+      std::string cmd, cmdArgs;
+      /*  Received an update!  */
 
       if (!server) {
-        if (!connected) {
-          /*
-           * Running as single player or as client waiting to connect.
-           */
+        if (!connected) {                       /* Running as single player. */
           if (!invitePending) {
             // Accept only the first invitation received if spammed.
             invite = std::string(netMgr->udpServerData.output);
             if (std::string::npos != invite.find(STR_OPEN)) {
+              clientAcceptDescPanel->show();
+              clientAcceptOptPanel->show();
               invitePending = true;
             }
           } else {
             // Invited! Do we want to join the server in a multiplayer instance?
-            // Display something to give the user a choice to join or not join.
-            // Can continue to receive updates (e.g. number of clients joined).
             if (inviteAccepted) {
               connected = netMgr->joinMultiPlayer(invite);
               if (!connected) {
@@ -289,30 +322,75 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
               }
             }
           }
-        } else {
-          /*
-           * Currently connected to a game as a client.
-           */
-          std::string cmd = std::string(netMgr->udpServerData.output);
-          if (0 == cmd.compare(STR_BEGIN)) {
-            startMultiplayer();
+        } else {              /* Currently connected to a game as a client. */
+          // Process UDP messages.
+          if (netMgr->udpServerData.updated) {
+            cmd = std::string(netMgr->udpServerData.output);
+            if (0 == cmd.compare(STR_BEGIN)) {
+              startMultiplayer();
+            }
+            if (-1 < cmd.find(STR_ADDPL)) {
+              cmdArgs = cmd.substr(STR_ADDPL.length());
+              std::cout << cmdArgs << std::endl;
+              // PlayerData *newPlayer = new PlayerData;
+              // memcpy(newPlayer, cmdArgs.c_str(), cmdArgs.length());
+            }
+
+            netMgr->udpServerData.updated = false;
+          }
+          // Process TCP messages.
+          if (netMgr->tcpServerData.updated) {
+            cmd = std::string(netMgr->tcpServerData.output);
+            if (0 == cmd.compare(STR_BEGIN)) {
+              startMultiplayer();
+            } else if (-1 < cmd.find(STR_ADDPL)) {
+              cmdArgs = cmd.substr(STR_ADDPL.length());
+              std::cout << cmdArgs << std::endl;
+              // PlayerData *newPlayer = new PlayerData;
+              // memcpy(newPlayer, cmdArgs.c_str(), cmdArgs.length());
+            }
+
+            netMgr->tcpServerData.updated = false;
           }
         }
       } else {
-        if (!connected) {
-          /*
-           * Initiated a server, but no game started.
-           */
-          // Currently inviting clients. Display something to show join progress?
-          // Should we pause or let the user continue playing solo until launch?
-        } else {
-          /*
-           * Currently hosting a game as a server.
-           */
-          // Do stuff.
+        if (!connected) {        /* Initiated a server, but no game started. */
+          nPlayers = netMgr->getClients();
+        } else {                    /* Currently hosting a game as a server. */
+          // Process UDP messages.
+          if (netMgr->udpServerData.updated) {
+            cmd = std::string(netMgr->udpServerData.output);
+            // Compare cmd to command tag or use raw data.
+
+            netMgr->udpServerData.updated = false;
+          }
+          // Process TCP messages.
+          if (netMgr->tcpServerData.updated) {
+            cmd = std::string(netMgr->tcpServerData.output);
+            // Compare cmd to command tag or use raw data.
+
+            netMgr->tcpServerData.updated = false;
+          }
         }
       }
+    } else {                                       /*  No updates received.  */
+      // What do we do?
     }
+
+    /*
+     * Message clients with global positions.
+     */
+
+
+    /*
+     * Update clients' positions locally.
+     */
+    for (i = 0; i < nPlayers; i++) {
+      // Set position.
+    }
+
+    if (limiter++ > 10000)
+      limiter = 0;
   }
 
   return ret;
@@ -324,10 +402,30 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
   }
   else if (arg.key == OIS::KC_SPACE) {
   }
+  else if (arg.key == OIS::KC_Y) {
+    if (invitePending) {
+      inviteAccepted = true;
+
+      clientAcceptDescPanel->hide();
+      clientAcceptOptPanel->hide();
+      invitePending = false;
+    }
+  }
+  else if (arg.key == OIS::KC_N) {
+    if (invitePending) {
+      clientAcceptDescPanel->hide();
+      clientAcceptOptPanel->hide();
+      invitePending = false;
+    }
+  }
   else if (arg.key == OIS::KC_B) {
-    if (server && connected) {
-      startMultiplayer();
+    if (server && !connected) {
       netMgr->messageClients(STR_BEGIN.c_str(), STR_BEGIN.length());
+      netMgr->denyConnections();
+      serverStartPanel->hide();
+      connected = true;
+
+      startMultiplayer();
     }
   }
   else if (arg.key == OIS::KC_P) {
@@ -343,10 +441,21 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
     if (netActive) {
       if (!server) {
         server = netMgr->multiPlayerInit(24);
-      } else {
-        // netMgr->close();
-        std::cout << "TileGame: Net deactivated." << std::endl;
-        server = connected = netActive = false;
+        if (server) {
+          playersWaitingPanel->show();
+          serverStartPanel->show();
+        }
+      } else if (connected) {
+        std::cout << "TileGame: Exiting multiplayer game. Resuming single"
+            " player mode at current level." << std::endl;
+
+        netMgr->close();
+        netMgr->initNetManager();
+        netMgr->addNetworkInfo(PROTOCOL_UDP);
+        netActive = netMgr->startServer();
+
+        server = connected = false;
+        setLevel(currLevel);
       }
     }
   }

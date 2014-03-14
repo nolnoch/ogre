@@ -631,11 +631,17 @@ int NetManager::getClients() {
   return netClients.size();
 }
 
-void NetManager::accept() {
+/**
+ * @brief Accept new clients.
+ */
+void NetManager::acceptConnections() {
   acceptNewClients = true;
 }
 
-void NetManager::deny() {
+/**
+ * @brief Deny new clients.
+ */
+void NetManager::denyConnections() {
   acceptNewClients = false;
 }
 
@@ -654,7 +660,7 @@ bool NetManager::multiPlayerInit(int maskDepth) {
   UDPpacket *packet;
 
   addProtocol(PROTOCOL_TCP);
-  accept();
+  acceptConnections();
 
   SDLNet_ResolveHost(&addr, getMaskedIPstring(maskDepth).c_str(), PORT_DEFAULT);
 

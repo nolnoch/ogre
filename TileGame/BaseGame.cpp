@@ -114,8 +114,8 @@ void BaseGame::createFrameListener(void)
   Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
 
   mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, mMouse, this);
-  mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-  mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
+  mTrayMgr->hideFrameStats();
+  mTrayMgr->hideLogo();
   mTrayMgr->hideCursor();
 
   // create a params panel for displaying sample details
@@ -331,6 +331,7 @@ bool BaseGame::keyPressed( const OIS::KeyEvent &arg )
         newVal = "Bilinear";
         tfo = Ogre::TFO_BILINEAR;
         aniso = 1;
+        break;
     }
 
     Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);
