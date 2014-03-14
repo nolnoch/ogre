@@ -126,7 +126,7 @@ public:
   bool startClient();
   bool scanForActivity();
   bool pollForActivity(Uint32 timeout_ms = 5000);
-  void messageClients(const char *buf = NULL, int len = 0);
+  void messageClients(Protocol protocol, const char *buf = NULL, int len = 0);
   void messageServer(Protocol protocol, const char *buf = NULL, int len = 0);
   void messageClient(Protocol protocol, int clientDataIdx, char *buf, int len);
   void dropClient(Protocol protocol, Uint32 host);
@@ -152,8 +152,9 @@ public:
   void denyConnections();
   //! @}
 
-  /** @name Meta-functions.                                         *////@{
-  bool multiPlayerInit(int maskDepth);
+  /** @name Game-functions.                                         *////@{
+  bool multiPlayerInit(int maskDepth = MASK_DEPTH);
+  bool broadcastUDPInvitation(int maskDepth = MASK_DEPTH);
   bool joinMultiPlayer(std::string invitation);
   //! @}
 
@@ -191,7 +192,8 @@ private:
     SOCKET_ALL_MAX      = SOCKET_TCP_MAX + SOCKET_UDP_MAX,
     SOCKET_SELF         = SOCKET_ALL_MAX + 1,
     MESSAGE_COUNT       = 10,
-    MESSAGE_LENGTH      = 128
+    MESSAGE_LENGTH      = 128,
+    MASK_DEPTH          = 24
     ///@}
   };
 

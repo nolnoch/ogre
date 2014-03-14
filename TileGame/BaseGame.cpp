@@ -118,6 +118,8 @@ void BaseGame::createFrameListener(void)
   mTrayMgr->hideLogo();
   mTrayMgr->hideCursor();
 
+  Ogre::FontManager::getSingleton().getByName("SdkTrays/Caption")->load();
+
   // create a params panel for displaying sample details
   Ogre::StringVector items;
   items.push_back("cam.pX");

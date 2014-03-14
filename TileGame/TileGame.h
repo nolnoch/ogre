@@ -289,11 +289,12 @@ protected:
     std::ostringstream playerName;
     int i;
 
-    for (i = 0; i < nPlayers; i++) {
-      playerName << netMgr->udpClientData[i]->host;
+    for (i = 0; i < playerData.size(); i++) {
+      playerName << playerData[i]->host;
       ringNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(playerName.str());
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
+      ringNode->setScale(200, 200, 200);
 
       playerNodes.push_back(ringNode);
       playerEntities.push_back(ringEnt);
@@ -323,6 +324,23 @@ protected:
     drawPlayers();
 
     //XXX Create objects to represent each player.
+  }
+
+  void notifyPlayers() {
+    PlayerData single;
+    int i;
+
+    // Self
+    single.host = netMgr->getIPnbo();
+    single.newPos = mCamera->getPosition();
+    memcpy(netMgr->tcpServerData.input, &single, sizeof(PlayerData));
+    netMgr->messageClients(PROTOCOL_UDP);
+
+    // Clients
+    for (i = 0; i < playerData.size(); i++) {
+      memcpy(netMgr->tcpServerData.input, &playerData[i], sizeof(PlayerData));
+      netMgr->messageClients(PROTOCOL_UDP);
+    }
   }
 
   void simonSaysAnim() {

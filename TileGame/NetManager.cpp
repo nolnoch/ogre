@@ -214,7 +214,7 @@ bool NetManager::scanForActivity() {
  * @param buf Manually given data buffer. Default: NULL.
  * @param len Length of given buffer. Default: 0.
  */
-void NetManager::messageClients(const char *buf, int len) {
+void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
   int i, length;
   char *data;
 
@@ -230,10 +230,10 @@ void NetManager::messageClients(const char *buf, int len) {
 
   if (buf && (0 < len) && (len < MESSAGE_LENGTH)) {
     for (i = 0; i < netClients.size(); i++) {
-      if (netServer.protocols & (netClients[i]->protocols & PROTOCOL_TCP)) {
+      if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
         sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], buf, len);
       }
-      if (netServer.protocols & (netClients[i]->protocols & PROTOCOL_UDP)) {
+      if (protocol & (netClients[i]->protocols & PROTOCOL_UDP)) {
         UDPpacket *pack = craftUDPpacket(buf, len);
         if (pack) {
           sendUDP(udpSockets[netClients[i]->udpSocketIdx],
@@ -246,11 +246,11 @@ void NetManager::messageClients(const char *buf, int len) {
     UDPpacket *pack;
 
     for (i = 0; i < netClients.size(); i++) {
-      if (netServer.protocols & (netClients[i]->protocols & PROTOCOL_TCP)) {
+      if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
         data = tcpClientData[netClients[i]->tcpDataIdx]->input;
         sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], data, length);
       }
-      if (netServer.protocols & (netClients[i]->protocols & PROTOCOL_UDP)) {
+      if (protocol & (netClients[i]->protocols & PROTOCOL_UDP)) {
         data = udpClientData[netClients[i]->udpDataIdx]->input;
         pack = craftUDPpacket(data, length);
         if (pack) {
@@ -661,6 +661,15 @@ bool NetManager::multiPlayerInit(int maskDepth) {
 
   addProtocol(PROTOCOL_TCP);
   acceptConnections();
+
+  return broadcastUDPInvitation(maskDepth);
+}
+
+bool NetManager::broadcastUDPInvitation(int maskDepth) {
+  std::ostringstream broadcast;
+  std::string data;
+  IPaddress addr;
+  UDPpacket *packet;
 
   SDLNet_ResolveHost(&addr, getMaskedIPstring(maskDepth).c_str(), PORT_DEFAULT);
 
