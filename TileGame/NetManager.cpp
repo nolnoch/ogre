@@ -1405,13 +1405,11 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
       }
     }
     if (netServer.protocols & PROTOCOL_UDP) {
-      std::cout << "1" << std::endl;
       if (SDLNet_SocketReady(udpSockets[netServer.udpSocketIdx])) {
         readUDPSocket(SOCKET_SELF);
         nReadySockets--;
       }
       if (netStatus & NET_SERVER) {
-        std::cout << "2" << std::endl;
         for (i = 0; i < netClients.size() && nReadySockets; i++) {
           if ((netClients[i]->protocols & PROTOCOL_UDP) &&
               SDLNet_SocketReady(udpSockets[netClients[i]->udpSocketIdx])) {
