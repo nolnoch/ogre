@@ -320,7 +320,6 @@ protected:
   }
 
   void startMultiplayer() {
-    std::cout << "Multiplayer starting." << std::endl;
     setLevel(1);
 
     drawPlayers();
@@ -332,18 +331,18 @@ protected:
     int i, pdSize, tagSize;
 
     pdSize = sizeof(PlayerData);
-    tagSize = STR_ADDPL.length();
+    tagSize = sizeof(Uint32);
 
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    memcpy(netMgr->tcpServerData.input, STR_ADDPL.c_str(), tagSize);
+    memcpy(netMgr->tcpServerData.input, &UINT_ADDPL, tagSize);
     memcpy((netMgr->tcpServerData.input + tagSize), &single, pdSize);
     netMgr->messageClients(PROTOCOL_UDP);
 
     // Clients
     for (i = 0; i < playerData.size(); i++) {
-      memcpy(netMgr->tcpServerData.input, STR_ADDPL.c_str(), tagSize);
+      memcpy(netMgr->tcpServerData.input, &UINT_ADDPL, tagSize);
       memcpy((netMgr->tcpServerData.input + tagSize), &playerData[i], pdSize);
       netMgr->messageClients(PROTOCOL_UDP);
     }

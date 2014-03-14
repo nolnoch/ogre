@@ -301,6 +301,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     /*  Received an update!  */
     if (!(limiter % 500) && netMgr->scanForActivity()) {
       std::string cmd, cmdArgs;
+      Uint32 *data;
 
       if (!server) {
         if (!connected) {                       /* Running as single player. */
@@ -320,16 +321,13 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           std::cout << "1" << std::endl;
           // Process UDP messages.
           if (netMgr->udpServerData.updated) {
-            cmd = std::string(netMgr->udpServerData.output);
+            data = netMgr->udpServerData.output;
 
-            if (-1 < cmd.find(STR_OPEN)) {
-              //startMultiplayer();
-            } else if (-1 < cmd.find(STR_ADDPL)) {
+            if (*data == UINT_ADDPL) {
               std::cout << "Adding player." << std::endl;
               PlayerData *newPlayer = new PlayerData;
 
-              cmdArgs = cmd.substr(STR_ADDPL.length());
-              memcpy(newPlayer, cmdArgs.c_str(), cmdArgs.length());
+              memcpy(newPlayer, ++data, sizeof(PlayerData));
 
               playerData.push_back(newPlayer);
               nPlayers = playerData.size() + 2;
@@ -344,20 +342,9 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             cmd = std::string(netMgr->tcpServerData.output);
 
             if (0 == cmd.compare(STR_BEGIN)) {
-              std::cout << "Beginning multiplayer game." << std::endl;
               mTrayMgr->destroyWidget("ServerStartPanel");
               mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
               startMultiplayer();
-            } else if (-1 < cmd.find(STR_ADDPL)) {
-              std::cout << "Adding player." << std::endl;
-              PlayerData *newPlayer = new PlayerData;
-
-              cmdArgs = cmd.substr(STR_ADDPL.length());
-              memcpy(newPlayer, cmdArgs.c_str(), cmdArgs.length());
-
-              playerData.push_back(newPlayer);
-              nPlayers = playerData.size() + 2;
-              std::cout << "Player added." << std::endl;
             }
 
             netMgr->tcpServerData.updated = false;
@@ -474,6 +461,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
       netMgr->denyConnections();
       mTrayMgr->destroyWidget("ServerStartPanel");
       mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
+      delete netTimer;
 
       startMultiplayer();
     }
