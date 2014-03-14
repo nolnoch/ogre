@@ -390,7 +390,7 @@ protected:
     memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
     netMgr->messageClients(PROTOCOL_UDP);
 
-    std::cout << single.host << std::endl;
+    std::cout << "Server sending " << single.host << std::endl;
 
     // Clients
     for (i = 0; i < playerData.size(); i++) {
@@ -402,7 +402,7 @@ protected:
 
   void notifyServer() {
     PlayerData single;
-    int i, pdSize, tagSize;
+    int pdSize, tagSize;
 
     pdSize = sizeof(PlayerData);
     tagSize = sizeof(Uint32);
@@ -414,7 +414,7 @@ protected:
     memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
     netMgr->messageServer(PROTOCOL_UDP);
 
-    std::cout << single.host << std::endl;
+    std::cout << "Client sending " << single.host << std::endl;
   }
 
   void simonSaysAnim() {

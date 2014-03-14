@@ -333,7 +333,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
               nPlayers = playerData.size();
 
               test << newPlayer->host;
-              std::cout << test.str() << std::endl;
+              std::cout << "Client reading " << test.str() << std::endl;
 
               std::cout << "Player added." << std::endl;
             }
@@ -370,7 +370,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                 playerData.push_back(client);
 
                 test << client->host;
-                std::cout << test.str() << std::endl;
+                std::cout << "Server sending " << test.str() << std::endl;
                 std::cout << "Player added." << std::endl;
                 notifyPlayers();
               } else {
