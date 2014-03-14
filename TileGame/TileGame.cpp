@@ -321,7 +321,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           std::cout << "1" << std::endl;
           // Process UDP messages.
           if (netMgr->udpServerData.updated) {
-            data = netMgr->udpServerData.output;
+            data = (Uint32 *) netMgr->udpServerData.output;
 
             if (*data == UINT_ADDPL) {
               std::cout << "Adding player." << std::endl;
@@ -374,7 +374,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           std::cout << "3" << std::endl;
           // Process UDP messages.
           if (netMgr->udpServerData.updated) {
-            cmd = std::string(netMgr->udpServerData.output);
+            data = (Uint32 *) netMgr->udpServerData.output;
             // Compare cmd to command tag or use raw data.
 
             netMgr->udpServerData.updated = false;
