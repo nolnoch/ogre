@@ -1500,6 +1500,13 @@ void NetManager::readUDPSocket(int clientIdx) {
           cData = udpClientData[client->udpDataIdx];
           memcpy(cData->output, bufV[i]->data, bufV[i]->len);
           cData->updated = true;
+
+          std::ostringstream ss;
+          Uint32 *data;
+          data = (Uint32 *) cData->output;
+          ss << *data++;
+          ss << *data;
+          std::cout << ss.str() << std::endl;
         } else {
           printError("NetManager: Failed to look up existing client.");
         }
