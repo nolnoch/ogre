@@ -61,7 +61,7 @@ protected:
   virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
   virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
 
-  Ogre::Timer *mTimer, timer;
+  Ogre::Timer *mTimer, timer, *netTimer;
   Ogre::SceneNode* headNode;
   Ogre::Light* panelLight;
   Ogre::Vector3 mDirection;

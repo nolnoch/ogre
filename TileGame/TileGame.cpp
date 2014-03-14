@@ -52,6 +52,9 @@ gong(0)
 
   mTimer = OGRE_NEW Ogre::Timer();
   mTimer->reset();
+
+  netTimer = OGRE_NEW Ogre::Timer();
+  netTimer->reset();
 }
 //-------------------------------------------------------------------------------------
 TileGame::~TileGame(void) {
@@ -296,7 +299,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   if (netActive) {
 
     /*  Received an update!  */
-    if (!(limiter % 100) && netMgr->scanForActivity()) {
+    if (!(limiter % 1000) && netMgr->scanForActivity()) {
       std::string cmd, cmdArgs;
 
       if (!server) {
@@ -384,9 +387,10 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
      * Outside of TCP/UDP update, what do we need to do if netActive?
      */
 
-    if (!(limiter % 100) && server && !connected) {
+    if (server && !connected && (netTimer->getMilliseconds() > 5000)) {
       if (!netMgr->broadcastUDPInvitation())
         std::cout << "Failed to send broadcast." << std::endl;
+      netTimer->reset();
     }
 
 
@@ -436,6 +440,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
   else if (arg.key == OIS::KC_N) {
     if (invitePending) {
       mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
+      mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->hide();
       invitePending = false;
     }
   }
