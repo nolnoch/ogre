@@ -342,14 +342,14 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    memcpy(netMgr->tcpServerData.input, &UINT_ADDPL, tagSize);
-    memcpy((netMgr->tcpServerData.input + tagSize), &single, pdSize);
+    memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
+    memcpy((netMgr->udpServerData.input + tagSize), &single, pdSize);
     netMgr->messageClients(PROTOCOL_UDP);
 
     // Clients
     for (i = 0; i < playerData.size(); i++) {
-      memcpy(netMgr->tcpServerData.input, &UINT_ADDPL, tagSize);
-      memcpy((netMgr->tcpServerData.input + tagSize), &playerData[i], pdSize);
+      memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
+      memcpy((netMgr->udpServerData.input + tagSize), &playerData[i], pdSize);
       netMgr->messageClients(PROTOCOL_UDP);
     }
   }

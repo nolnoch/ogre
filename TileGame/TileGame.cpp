@@ -325,7 +325,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           if (netMgr->udpServerData.updated) {
             data = (Uint32 *) netMgr->udpServerData.output;
 
-            test << SDLNet_Read32(*data);
+            test << *data;
             std::cout << test.str() << std::endl;
 
             if (*data == UINT_ADDPL) {

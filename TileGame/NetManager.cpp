@@ -247,11 +247,11 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
 
     for (i = 0; i < netClients.size(); i++) {
       if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
-        data = tcpClientData[netClients[i]->tcpDataIdx]->input;
+        data = tcpServerData.input;
         sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], data, length);
       }
       if (protocol & (netClients[i]->protocols & PROTOCOL_UDP)) {
-        data = udpClientData[netClients[i]->udpDataIdx]->input;
+        data = udpServerData.input;
         pack = craftUDPpacket(data, length);
         if (pack) {
           sendUDP(udpSockets[netClients[i]->udpSocketIdx],
