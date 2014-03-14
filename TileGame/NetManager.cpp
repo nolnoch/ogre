@@ -243,7 +243,6 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
     }
   } else {
     length = MESSAGE_LENGTH;
-    UDPpacket *pack;
 
     for (i = 0; i < netClients.size(); i++) {
       if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
@@ -252,7 +251,7 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
       }
       if (protocol & (netClients[i]->protocols & PROTOCOL_UDP)) {
         data = udpServerData.input;
-        pack = craftUDPpacket(data, length);
+        UDPpacket *pack = craftUDPpacket(data, length);
         if (pack) {
           sendUDP(udpSockets[netClients[i]->udpSocketIdx],
               netClients[i]->udpChannel, pack);

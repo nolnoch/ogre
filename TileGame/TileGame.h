@@ -390,7 +390,8 @@ protected:
     memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
     netMgr->messageClients(PROTOCOL_UDP);
 
-    std::cout << "Server sending " << single.host << std::endl;
+    PlayerData *test = (PlayerData *) (netMgr->udpServerData.input + 4);
+    std::cout << "Server sending " << test->host << std::endl;
 
     // Clients
     for (i = 0; i < playerData.size(); i++) {
