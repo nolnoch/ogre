@@ -301,6 +301,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     /*  Received an update!  */
     if (!(limiter % 500) && netMgr->scanForActivity()) {
       std::string cmd, cmdArgs;
+      std::ostringstream test;
       Uint32 *data;
 
       if (!server) {
@@ -318,15 +319,12 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             }
           }
         } else {              /* Currently connected to a game as a client. */
-          std::cout << "1" << std::endl;
-          std::ostringstream test;
 
           // Process UDP messages.
           if (netMgr->udpServerData.updated) {
             data = (Uint32 *) netMgr->udpServerData.output;
 
             if (*data == UINT_ADDPL) {
-              std::cout << "Adding player." << std::endl;
               PlayerData *newPlayer = new PlayerData;
 
               memcpy(newPlayer, ++data, sizeof(PlayerData));
@@ -342,7 +340,6 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
             netMgr->udpServerData.updated = false;
           }
-          std::cout << "2" << std::endl;
           // Process TCP messages.
           if (netMgr->tcpServerData.updated) {
             cmd = std::string(netMgr->tcpServerData.output);
@@ -367,16 +364,24 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           // If new players, add to own list and notify clients.
           if (nPlayers > playerData.size()) {
             int newClients = nPlayers - playerData.size();
-            for (i = 1; i <= newClients; i++) {
-              PlayerData *client = new PlayerData;
-              client->host = netMgr->tcpClientData[nPlayers-i]->host;
-              client->newPos = Ogre::Vector3::ZERO;
-              playerData.push_back(client);
-            }
-            std::cout << "Player added." << std::endl;
-            notifyPlayers();
 
-            std::cout << "Players notified." << std::endl;
+            for (i = 1; i <= newClients; i++) {
+              data = (Uint32 *) netMgr->udpClientData[nPlayers-i]->output;
+              if (*data == UINT_ADDPL) {
+                PlayerData *client = new PlayerData;
+                memcpy(client, ++data, sizeof(PlayerData));
+                playerData.push_back(client);
+
+                test << client->host;
+                std::cout << test.str() << std::endl;
+                std::cout << "Player added." << std::endl;
+                notifyPlayers();
+              } else {
+                std::cout << "Failed to add player." << std::endl;
+              }
+            }
+
+            netMgr->udpServerData.updated = false;
           }
 
         } else {                    /* Currently hosting a game as a server. */
@@ -430,9 +435,9 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
         netActive = false;
         inviteAccepted = false;
       } else {
-        netMgr->messageServer(PROTOCOL_UDP, STR_ACPT.c_str(), STR_ACPT.length());
+        notifyServer();
         serverStartPanel = mTrayMgr->createLabel(OgreBites::TL_TOP,
-                      "ServerStartPanel", "Waiting on server...", 300);
+            "ServerStartPanel", "Waiting on server...", 300);
         mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
       }
     }

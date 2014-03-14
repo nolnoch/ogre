@@ -1037,7 +1037,6 @@ bool NetManager::recvTCP(TCPsocket sock, void *data, int maxlen) {
 
   if (0 >= SDLNet_TCP_Recv(sock, data, maxlen)) {
     printError("SDL_net: Failed to receive TCP data.");
-    printError(SDLNet_GetError());
     ret = false;
   }
 
@@ -1441,7 +1440,12 @@ void NetManager::readTCPSocket(int clientIdx) {
       MESSAGE_LENGTH);
 
   if (!result) {
-    printError("NetManager: Failed to read TCP packet from tcpClient");
+    printError("NetManager: Failed to read TCP packet.");
+    if (netStatus & NET_CLIENT) {
+      close();
+    } else {
+      dropClient(PROTOCOL_ALL, cData->host);
+    }
   } else
     cData->updated = true;
 }

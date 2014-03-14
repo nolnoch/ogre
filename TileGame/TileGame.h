@@ -297,8 +297,9 @@ protected:
       ringNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(playerName.str());
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
-      ringNode->setScale(100, 100, 100);
       ringNode->rotate(Ogre::Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_X));
+      ringNode->setScale(100, 100, 100);
+      ringNode->setPosition(playerData[i]->newPos);
 
       playerNodes.push_back(ringNode);
       playerEntities.push_back(ringEnt);
@@ -343,7 +344,7 @@ protected:
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
     memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-    memcpy((netMgr->udpServerData.input + tagSize), &single, pdSize);
+    memcpy((netMgr->udpServerData.input + 1), &single, pdSize);
     netMgr->messageClients(PROTOCOL_UDP);
 
     std::cout << single.host << std::endl;
@@ -351,9 +352,26 @@ protected:
     // Clients
     for (i = 0; i < playerData.size(); i++) {
       memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-      memcpy((netMgr->udpServerData.input + tagSize), &playerData[i], pdSize);
+      memcpy((netMgr->udpServerData.input + 1), &playerData[i], pdSize);
       netMgr->messageClients(PROTOCOL_UDP);
     }
+  }
+
+  void notifyServer() {
+    PlayerData single;
+    int i, pdSize, tagSize;
+
+    pdSize = sizeof(PlayerData);
+    tagSize = sizeof(Uint32);
+
+    // Self
+    single.host = netMgr->getIPnbo();
+    single.newPos = mCamera->getPosition();
+    memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
+    memcpy((netMgr->udpServerData.input + 1), &single, pdSize);
+    netMgr->messageServer(PROTOCOL_UDP);
+
+    std::cout << single.host << std::endl;
   }
 
   void simonSaysAnim() {
