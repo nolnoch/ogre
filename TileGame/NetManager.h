@@ -161,7 +161,7 @@ public:
   //! @}
 
   ClientData tcpServerData;
-  ClientData udpServerData;
+  ClientData udpServerData[10];
   std::vector<ClientData *> tcpClientData;
   std::vector<ClientData *> udpClientData;
 

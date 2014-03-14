@@ -215,7 +215,7 @@ bool NetManager::scanForActivity() {
  * @param len Length of given buffer. Default: 0.
  */
 void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
-  int i, length;
+  int i, j, length;
   char *data;
 
   if (statusCheck(NET_SERVER)) {
@@ -243,6 +243,7 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
     }
   } else {
     length = MESSAGE_LENGTH;
+    UDPpacket *pack;
 
     for (i = 0; i < netClients.size(); i++) {
       if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
@@ -250,11 +251,16 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
         sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], data, length);
       }
       if (protocol & (netClients[i]->protocols & PROTOCOL_UDP)) {
-        data = udpServerData.input;
-        UDPpacket *pack = craftUDPpacket(data, length);
-        if (pack) {
-          sendUDP(udpSockets[netClients[i]->udpSocketIdx],
-              netClients[i]->udpChannel, pack);
+        for (j = 0; j < MESSAGE_COUNT; j++) {
+          if (udpServerData[j].updated) {
+            data = udpServerData[j].input;
+            pack = craftUDPpacket(data, length);
+            if (pack) {
+              sendUDP(udpSockets[netClients[i]->udpSocketIdx],
+                  netClients[i]->udpChannel, pack);
+            }
+            udpServerData[j].updated = false;
+          }
         }
       }
     }
@@ -301,7 +307,7 @@ void NetManager::messageServer(Protocol protocol, const char *buf, int len) {
       sendTCP(tcpSockets[netServer.tcpSocketIdx], data, length);
     }
     if (protocol & PROTOCOL_UDP) {
-      data = udpServerData.input;
+      data = udpServerData[0].input;
       UDPpacket *pack = craftUDPpacket(data, length);
       if (pack)
         sendUDP(udpSockets[netServer.udpSocketIdx], netServer.udpChannel, pack);
@@ -1463,7 +1469,7 @@ void NetManager::readUDPSocket(int clientIdx) {
   ConnectionInfo *client;
   int idxSocket, numPackets,  i;
 
-  cData = &udpServerData;
+  cData = udpServerData;
   idxSocket = (clientIdx == SOCKET_SELF) ? netServer.udpSocketIdx :
       netClients[clientIdx]->udpSocketIdx;
 
@@ -1487,20 +1493,14 @@ void NetManager::readUDPSocket(int clientIdx) {
           printError("NetManager: Connection rejected.");
         } else if (!addUDPClient(bufV[i])) {
           // Try to add the client; if not, at least copy the data.
-          memcpy(cData->output, bufV[i]->data, bufV[i]->len);
-          cData->updated = true;
+          memcpy(cData[i].output, bufV[i]->data, bufV[i]->len);
+          cData[i].updated = true;
         }
       } else {                                               // Bound sender.
         if (netStatus & NET_CLIENT) {
           // Message comes from server, cData default is good (above).
-          memcpy(cData->output, bufV[i]->data, bufV[i]->len);
-          cData->updated = true;
-          std::ostringstream ss;
-          Uint32 *data;
-          data = (Uint32 *) cData->output;
-          ss << *data++;
-          ss << *data;
-          std::cout << ss.str() << std::endl;
+          memcpy(cData[i].output, bufV[i]->data, bufV[i]->len);
+          cData[i].updated = true;
         } else if ((client = lookupClient(bufV[i]->address.host, false))) {
           // Message comes from client, lookup new cData.
           cData = udpClientData[client->udpDataIdx];

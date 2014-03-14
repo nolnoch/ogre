@@ -335,16 +335,18 @@ protected:
     single.newPos = mCamera->getPosition();
     single.shotForce = force;
     single.shotDir = dir;
-    memcpy(netMgr->udpServerData.input, &UINT_UPDPL, tagSize);
-    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
+    memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
+    memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
+    netMgr->udpServerData[0].updated = true;
     netMgr->messageClients(PROTOCOL_UDP);
 
     // Clients
     for (i = 0; i < playerData.size() && !force; i++) {
-      memcpy(netMgr->udpServerData.input, &UINT_UPDPL, tagSize);
-      memcpy((netMgr->udpServerData.input + 4), &playerData[i], pdSize);
-      netMgr->messageClients(PROTOCOL_UDP);
+      memcpy(netMgr->udpServerData[i].input, &UINT_UPDPL, tagSize);
+      memcpy((netMgr->udpServerData[i].input + 4), playerData[i], pdSize);
+      netMgr->udpServerData[i].updated = true;
     }
+    netMgr->messageClients(PROTOCOL_UDP);
   }
 
   void updateServer(double force = 0, Ogre::Vector3 dir = Ogre::Vector3::ZERO) {
@@ -359,8 +361,8 @@ protected:
     single.newPos = mCamera->getPosition();
     single.shotForce = force;
     single.shotDir = dir;
-    memcpy(netMgr->udpServerData.input, &UINT_UPDPL, tagSize);
-    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
+    memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
+    memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->messageServer(PROTOCOL_UDP);
   }
 
@@ -386,19 +388,20 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
+    memcpy(netMgr->udpServerData[0].input, &UINT_ADDPL, tagSize);
+    memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
+    netMgr->udpServerData[0].updated = true;
     netMgr->messageClients(PROTOCOL_UDP);
 
-    PlayerData *test = (PlayerData *) (netMgr->udpServerData.input + 4);
-    std::cout << "Server sending " << test->host << std::endl;
+    std::cout << "Server sending " << single.host << std::endl;
 
     // Clients
     for (i = 0; i < playerData.size(); i++) {
-      memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-      memcpy((netMgr->udpServerData.input + 4), &playerData[i], pdSize);
-      netMgr->messageClients(PROTOCOL_UDP);
+      memcpy(netMgr->udpServerData[i].input, &UINT_ADDPL, tagSize);
+      memcpy((netMgr->udpServerData[i].input + 4), playerData[i], pdSize);
+      netMgr->udpServerData[i].updated = true;
     }
+    netMgr->messageClients(PROTOCOL_UDP);
   }
 
   void notifyServer() {
@@ -411,8 +414,8 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
+    memcpy(netMgr->udpServerData[0].input, &UINT_ADDPL, tagSize);
+    memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->messageServer(PROTOCOL_UDP);
 
     std::cout << "Client sending " << single.host << std::endl;
