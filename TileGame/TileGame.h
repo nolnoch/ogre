@@ -33,10 +33,10 @@ const static int NUM_TILES_WALL = NUM_TILES_ROW * NUM_TILES_ROW;    // number of
 const static int TILE_WIDTH = WALL_SIZE / NUM_TILES_ROW;
 
 struct PlayerData {
+  Uint32 host;
   Ogre::Vector3 newPos;
   Ogre::Vector3 shotDir;
   double shotForce;
-  Uint32 host;
 };
 
 
@@ -295,6 +295,7 @@ protected:
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
       ringNode->setScale(200, 200, 200);
+      ringNode->rotate(Ogre::Quaternion(90, Ogre::Vector3::UNIT_X));
 
       playerNodes.push_back(ringNode);
       playerEntities.push_back(ringEnt);
@@ -326,18 +327,23 @@ protected:
 
   void notifyPlayers() {
     PlayerData single;
-    int i;
+    int i, pdSize, tagSize;
+
+    pdSize = sizeof(PlayerData);
+    tagSize = STR_ADDPL.length();
 
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    memcpy(netMgr->tcpServerData.input, &single, sizeof(PlayerData));
-    netMgr->messageClients(PROTOCOL_UDP);
+    memcpy(netMgr->tcpServerData.input, STR_ADDPL.c_str(), tagSize);
+    memcpy((netMgr->tcpServerData.input + tagSize), &single, pdSize);
+    netMgr->messageClients(PROTOCOL_TCP);
 
     // Clients
     for (i = 0; i < playerData.size(); i++) {
-      memcpy(netMgr->tcpServerData.input, &playerData[i], sizeof(PlayerData));
-      netMgr->messageClients(PROTOCOL_UDP);
+      memcpy(netMgr->tcpServerData.input, STR_ADDPL.c_str(), tagSize);
+      memcpy((netMgr->tcpServerData.input + tagSize), &playerData[i], pdSize);
+      netMgr->messageClients(PROTOCOL_TCP);
     }
   }
 
