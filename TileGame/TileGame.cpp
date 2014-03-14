@@ -403,14 +403,16 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     /* Independent of TCP/UDP update, we do these constantly. */
 
 
-    /* Message clients or server with global positions. */
-    if (server)
-      updatePlayers();
-    else
-      updateServer();
+    if (multiplayerStarted) {
+      /* Message clients or server with global positions. */
+      if (server)
+        updatePlayers();
+      else
+        updateServer();
 
-    /* Update clients' positions locally. */
-    movePlayers();
+      /* Update clients' positions locally. */
+      movePlayers();
+    }
 
 
     // Server will broadcast game invitation every 10 seconds until launch.
