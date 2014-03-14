@@ -1495,18 +1495,17 @@ void NetManager::readUDPSocket(int clientIdx) {
           // Message comes from server, cData default is good (above).
           memcpy(cData->output, bufV[i]->data, bufV[i]->len);
           cData->updated = true;
-        } else if ((client = lookupClient(bufV[i]->address.host, false))) {
-          // Message comes from client, lookup new cData.
-          cData = udpClientData[client->udpDataIdx];
-          memcpy(cData->output, bufV[i]->data, bufV[i]->len);
-          cData->updated = true;
-
           std::ostringstream ss;
           Uint32 *data;
           data = (Uint32 *) cData->output;
           ss << *data++;
           ss << *data;
           std::cout << ss.str() << std::endl;
+        } else if ((client = lookupClient(bufV[i]->address.host, false))) {
+          // Message comes from client, lookup new cData.
+          cData = udpClientData[client->udpDataIdx];
+          memcpy(cData->output, bufV[i]->data, bufV[i]->len);
+          cData->updated = true;
         } else {
           printError("NetManager: Failed to look up existing client.");
         }
