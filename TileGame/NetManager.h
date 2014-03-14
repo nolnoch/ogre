@@ -73,6 +73,7 @@ static const std::string STR_OPEN("TG_SERVER_OPEN");
 static const std::string STR_ACPT("TG_SERVER_JOIN");
 static const std::string STR_BEGIN("TG_GAME_BEGIN");
 static const std::string STR_NXLVL("TG_NEXT_LEVEL");
+static const std::string STR_TLHIT("TG_NEXT_TILE");
 static const Uint32 UINT_ADDPL(0xFF000001);
 static const Uint32 UINT_UPDPL(0xFF000010);
 static const Uint32 UINT_UPDSV(0xFF000020);

@@ -89,7 +89,7 @@ protected:
 
   SoundFile boing, gong, music;
   bool paused, gameStart, gameDone, animDone, isCharging, connected, server,
-  netActive, invitePending, inviteAccepted;
+  netActive, invitePending, inviteAccepted, multiplayerStarted;
   int score, shotsFired, currLevel, currTile, winTimer, tileCounter, chargeShot,
   nPlayers;
   double slowdownval;
@@ -306,7 +306,7 @@ protected:
     }
   }
 
-  void updatePlayers() {
+  void movePlayers() {
     std::ostringstream playerName;
     Ogre::Vector3 newPos;
     int i;
@@ -323,14 +323,57 @@ protected:
     }
   }
 
+  void updatePlayers(double force = 0, Ogre::Vector3 dir = Ogre::Vector3::ZERO) {
+    PlayerData single;
+    int i, pdSize, tagSize;
+
+    pdSize = sizeof(PlayerData);
+    tagSize = sizeof(Uint32);
+
+    // Self
+    single.host = netMgr->getIPnbo();
+    single.newPos = mCamera->getPosition();
+    single.shotForce = force;
+    single.shotDir = dir;
+    memcpy(netMgr->udpServerData.input, &UINT_UPDPL, tagSize);
+    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
+    netMgr->messageClients(PROTOCOL_UDP);
+
+    // Clients
+    for (i = 0; i < playerData.size() && !force; i++) {
+      memcpy(netMgr->udpServerData.input, &UINT_UPDPL, tagSize);
+      memcpy((netMgr->udpServerData.input + 4), &playerData[i], pdSize);
+      netMgr->messageClients(PROTOCOL_UDP);
+    }
+  }
+
+  void updateServer(double force = 0, Ogre::Vector3 dir = Ogre::Vector3::ZERO) {
+    PlayerData single;
+    int i, pdSize, tagSize;
+
+    pdSize = sizeof(PlayerData);
+    tagSize = sizeof(Uint32);
+
+    // Self
+    single.host = netMgr->getIPnbo();
+    single.newPos = mCamera->getPosition();
+    single.shotForce = force;
+    single.shotDir = dir;
+    memcpy(netMgr->udpServerData.input, &UINT_UPDPL, tagSize);
+    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
+    netMgr->messageServer(PROTOCOL_UDP);
+  }
+
   void startMultiplayer() {
     tileEntities.clear();
     tileSceneNodes.clear();
     sim->clearTiles();
     gameDone = true;
+
     setLevel(1);
     drawPlayers();
-    std::cout << "Multiplayer started." << std::endl;
+
+    multiplayerStarted = true;
   }
 
   void notifyPlayers() {
@@ -344,7 +387,7 @@ protected:
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
     memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-    memcpy((netMgr->udpServerData.input + 1), &single, pdSize);
+    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
     netMgr->messageClients(PROTOCOL_UDP);
 
     std::cout << single.host << std::endl;

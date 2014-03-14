@@ -43,7 +43,7 @@ music(0),
 gong(0)
 {
   gameDone = animDone = isCharging = paused = connected = server = netActive =
-      invitePending = inviteAccepted = false;
+      invitePending = inviteAccepted = multiplayerStarted = false;
   gameStart = true;
 
   mSpeed = score = shotsFired = tileCounter = winTimer = chargeShot =
@@ -400,26 +400,25 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
       }
     }
 
-    /*
-     * Outside of TCP/UDP update, what do we need to do if netActive?
-     */
+    /* Independent of TCP/UDP update, we do these constantly. */
 
+
+    /* Message clients or server with global positions. */
+    if (server)
+      updatePlayers();
+    else
+      updateServer();
+
+    /* Update clients' positions locally. */
+    movePlayers();
+
+
+    // Server will broadcast game invitation every 10 seconds until launch.
     if (server && !connected && (netTimer->getMilliseconds() > 10000)) {
       if (!netMgr->broadcastUDPInvitation())
         std::cout << "Failed to send broadcast." << std::endl;
       netTimer->reset();
     }
-
-
-    /* Message clients or server with global positions.
-    for (i = 0; i < playerData.size(); i++) {
-      // Set position.
-    }
-
-    /* Update clients' positions locally.
-    for (i = 0; i < playerData.size(); i++) {
-      // Set position.
-    }*/
 
     // Client triggers this to connect to server.
     if (inviteAccepted && !connected) {
@@ -544,6 +543,13 @@ bool TileGame::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id 
     ballMgr->setGlobalBall(ballMgr->addBall(nodepc, x, y, z, 100));
     ballMgr->globalBall->applyForce(force, direction);
     shotsFired++;
+
+    if (multiplayerStarted && connected) {
+      if (!server)
+        updateServer(force, Ogre::Vector3(x, y, z));
+      else
+        updatePlayers(force, Ogre::Vector3(x, y, z));
+    }
   }
 
   return BaseGame::mouseReleased(arg, id);
