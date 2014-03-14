@@ -299,7 +299,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   if (netActive) {
 
     /*  Received an update!  */
-    if (!(limiter % 500) && netMgr->scanForActivity()) {
+    if (netMgr->scanForActivity()) {
       std::string cmd, cmdArgs;
       std::ostringstream test;
       Uint32 *data;
