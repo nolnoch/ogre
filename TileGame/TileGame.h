@@ -352,7 +352,7 @@ protected:
     // Clients
     for (i = 0; i < playerData.size(); i++) {
       memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-      memcpy((netMgr->udpServerData.input + 1), &playerData[i], pdSize);
+      memcpy((netMgr->udpServerData.input + 4), &playerData[i], pdSize);
       netMgr->messageClients(PROTOCOL_UDP);
     }
   }
@@ -368,7 +368,7 @@ protected:
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
     memcpy(netMgr->udpServerData.input, &UINT_ADDPL, tagSize);
-    memcpy((netMgr->udpServerData.input + 1), &single, pdSize);
+    memcpy((netMgr->udpServerData.input + 4), &single, pdSize);
     netMgr->messageServer(PROTOCOL_UDP);
 
     std::cout << single.host << std::endl;

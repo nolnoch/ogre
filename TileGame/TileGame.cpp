@@ -76,7 +76,7 @@ bool TileGame::configure() {
   music = soundMgr->loadMusic("ambient.wav");
 
   soundMgr->playMusic();
-  soundMgr->setVolume(.3);
+  soundMgr->setVolume(.25);
 
   // Physics //
   sim = new TileSimulator();
@@ -344,9 +344,6 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           if (netMgr->tcpServerData.updated) {
             cmd = std::string(netMgr->tcpServerData.output);
 
-            test << cmd;
-            std::cout << test.str() << std::endl;
-
             if (0 == cmd.compare(STR_BEGIN)) {
               mTrayMgr->destroyWidget("ServerStartPanel");
               mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
@@ -385,7 +382,6 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           }
 
         } else {                    /* Currently hosting a game as a server. */
-          std::cout << "3" << std::endl;
           // Process UDP messages.
           if (netMgr->udpServerData.updated) {
             data = (Uint32 *) netMgr->udpServerData.output;
@@ -393,7 +389,6 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
             netMgr->udpServerData.updated = false;
           }
-          std::cout << "4" << std::endl;
           // Process TCP messages.
           if (netMgr->tcpServerData.updated) {
             cmd = std::string(netMgr->tcpServerData.output);
