@@ -72,8 +72,8 @@ bool TileGame::configure() {
   gong = soundMgr->loadSound("gong.wav");
   music = soundMgr->loadMusic("ambient.wav");
 
-  soundMgr->setVolume(.3);
   soundMgr->playMusic();
+  soundMgr->setVolume(.3);
 
   // Physics //
   sim = new TileSimulator();
@@ -439,7 +439,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
     }
   }
   else if (arg.key == OIS::KC_B) {
-    if (server && !connected && nPlayers > 1) {
+    if (server && !connected && nPlayers > 0) {
       netMgr->messageClients(PROTOCOL_ALL, STR_BEGIN.c_str(), STR_BEGIN.length());
       netMgr->denyConnections();
       mTrayMgr->destroyWidget("ServerStartPanel");
@@ -471,6 +471,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
         }
       } else {
         if (!connected) {
+          mTrayMgr->destroyWidget("ServerStartPanel");
           netMgr->stopServer(PROTOCOL_TCP);
           server = false;
           std::cout << "TileGame: Canceling multiplayer game. Resuming single"
