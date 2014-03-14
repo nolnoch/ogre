@@ -307,10 +307,13 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
       if (!server) {
         if (!connected) {                       /* Running as single player. */
           if (!invitePending) {
+            std::cout << "1" << std::endl;
             // Accept only the first invitation received if spammed.
             if (netMgr->udpServerData[0].updated) {
+              std::cout << "2" << std::endl;
               invite = std::string(netMgr->udpServerData[0].output);
               if (std::string::npos != invite.find(STR_OPEN)) {
+                std::cout << "3" << std::endl;
                 mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->show();
                 mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->show();
                 invitePending = true;
