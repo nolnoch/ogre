@@ -322,13 +322,16 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             cmd = std::string(netMgr->udpServerData.output);
 
             if (0 == cmd.compare(STR_BEGIN)) {
-              // startMultiplayer();
+              //startMultiplayer();
             } else if (-1 < cmd.find(STR_ADDPL)) {
-              // cmdArgs = cmd.substr(STR_ADDPL.length());
-              // std::cout << cmdArgs << std::endl;
-              // PlayerData *newPlayer = new PlayerData;
-              // memcpy(newPlayer, cmdArgs.c_str(), cmdArgs.length());
-              // nPlayers = playerData.size() + 2;
+              PlayerData *newPlayer = new PlayerData;
+
+              cmdArgs = cmd.substr(STR_ADDPL.length());
+              memcpy(newPlayer, cmdArgs.c_str(), cmdArgs.length());
+
+              playerData.push_back(newPlayer);
+              nPlayers = playerData.size() + 2;
+              std::cout << "Player added." << std::endl;
             }
 
             netMgr->udpServerData.updated = false;
@@ -365,6 +368,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
               PlayerData *client = new PlayerData;
               client->host = netMgr->tcpClientData[nPlayers-i]->host;
               client->newPos = Ogre::Vector3::ZERO;
+              client->end = '\0';
               playerData.push_back(client);
             }
             std::cout << "Player added." << std::endl;
@@ -396,7 +400,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
      * Outside of TCP/UDP update, what do we need to do if netActive?
      */
 
-    if (server && !connected && (netTimer->getMilliseconds() > 8000)) {
+    if (server && !connected && (netTimer->getMilliseconds() > 10000)) {
       if (!netMgr->broadcastUDPInvitation())
         std::cout << "Failed to send broadcast." << std::endl;
       netTimer->reset();
@@ -421,7 +425,8 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
         netMgr->close();
         netActive = false;
         inviteAccepted = false;
-      }
+      } else
+        netMgr->messageServer(PROTOCOL_UDP, STR_ACPT.c_str(), STR_ACPT.length());
     }
 
     if (limiter++ > 10098)

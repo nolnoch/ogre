@@ -70,6 +70,7 @@ struct ClientData {
 
 static const std::string STR_DENY("TG_SERVER_DENY");
 static const std::string STR_OPEN("TG_SERVER_OPEN");
+static const std::string STR_ACPT("TG_SERVER_JOIN");
 static const std::string STR_BEGIN("TG_GAME_BEGIN");
 static const std::string STR_ADDPL("TG_NEW_PLAYER");
 static const std::string STR_UPDPL("TG_UPDATE_CLI");
