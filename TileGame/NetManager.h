@@ -50,7 +50,7 @@ struct ConnectionInfo {
   short tcpDataIdx;                   //!< Index into the tcpClientData vector.
   short udpDataIdx;                   //!< Index into the udpClientData vector.
   short udpChannel;                   //!< The associated UDP channel.
-  short clientIdx;                 //!< Index into the tcpClients vector.
+  short clientIdx;                    //!< Index into the tcpClients vector.
   Protocol protocols;                 //!< Associated protocols.
   IPaddress address;                  //!< This connection's IPaddress.
 };

@@ -92,6 +92,8 @@ void SoundManager::setVolume(double vol) {
     volume = (int) (vol * MIX_MAX_VOLUME);
 
   Mix_Volume(-1, volume);
+  Mix_Volume(0, volume);
+  Mix_Volume(1, volume);
 }
 
 void SoundManager::playMusic() {
