@@ -1482,6 +1482,7 @@ void NetManager::readUDPSocket(int clientIdx) {
   } else {
 
     for (i = 0; i < numPackets; i++) {
+      std::cout << "3" << std::endl;
 
       if (bufV[i]->channel == -1) {                         // Unbound sender.
         if (bufV[i]->address.host == getIPnbo() || (netStatus & NET_CLIENT)) {
@@ -1492,6 +1493,7 @@ void NetManager::readUDPSocket(int clientIdx) {
           // Received rejection packet.  Don't process it (for now).
           printError("NetManager: Connection rejected.");
         } else if (!addUDPClient(bufV[i])) {
+          std::cout << "4" << std::endl;
           // Try to add the client; if not, at least copy the data.
           memcpy(cData[i].output, bufV[i]->data, bufV[i]->len);
           cData[i].updated = true;
