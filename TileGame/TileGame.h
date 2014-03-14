@@ -323,6 +323,9 @@ protected:
   }
 
   void startMultiplayer() {
+    tileEntities.clear();
+    tileSceneNodes.clear();
+    sim->clearTiles();
     gameDone = true;
     setLevel(1);
     drawPlayers();

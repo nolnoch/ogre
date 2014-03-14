@@ -34,6 +34,7 @@ public:
   virtual btRigidBody* addBallShape(Ogre::SceneNode *n, int r);
   btRigidBody* addTile(Ogre::SceneNode *n, int x, int y, int z);
   void setBallManager(BallManager *bM);
+  void clearTiles();
 
   static bool tileCallback(btManifoldPoint& cp, void *body0, void *body1);
 

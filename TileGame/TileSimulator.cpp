@@ -52,6 +52,13 @@ void TileSimulator::setBallManager(BallManager *bM) {
   tileBallMgr = bM;
 }
 
+void TileSimulator::clearTiles() {
+  while (!tiles.empty()) {
+    delete tiles.back();
+    tiles.pop_back();
+  }
+}
+
 bool TileSimulator::tileCallback(btManifoldPoint& cp, void *body0, void *body1) {
   if (!activetile || targethit)
     return true;
