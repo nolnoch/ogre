@@ -134,7 +134,10 @@ protected:
   void levelSetup(int num) {
     if(num > 50)
       num = 50;
-    srand(time(0));
+    if (!connected)
+      srand(time(0));
+    else
+      srand(1);
 
     Ogre::Plane wallTile = Ogre::Plane(Ogre::Vector3::UNIT_X, -PLANE_DIST +1);
 
@@ -322,7 +325,7 @@ protected:
   void startMultiplayer() {
     setLevel(1);
 
-    drawPlayers();
+    // drawPlayers();
     std::cout << "Multiplayer started." << std::endl;
   }
 

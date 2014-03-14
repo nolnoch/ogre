@@ -424,6 +424,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
         netMgr->messageServer(PROTOCOL_UDP, STR_ACPT.c_str(), STR_ACPT.length());
         serverStartPanel = mTrayMgr->createLabel(OgreBites::TL_TOP,
                       "ServerStartPanel", "Waiting on server...", 300);
+        mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
       }
     }
 
@@ -443,8 +444,6 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
   else if (arg.key == OIS::KC_Y) {
     if (invitePending) {
       inviteAccepted = true;
-
-      mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
       invitePending = false;
     }
   }
@@ -461,7 +460,6 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
       netMgr->denyConnections();
       mTrayMgr->destroyWidget("ServerStartPanel");
       mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
-      delete netTimer;
 
       startMultiplayer();
     }
