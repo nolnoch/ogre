@@ -37,7 +37,6 @@ struct PlayerData {
   Ogre::Vector3 newPos;
   Ogre::Vector3 shotDir;
   double shotForce;
-  char end;
 };
 
 
@@ -338,7 +337,6 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    single.end = '\0';
     memcpy(netMgr->tcpServerData.input, STR_ADDPL.c_str(), tagSize);
     memcpy((netMgr->tcpServerData.input + tagSize), &single, pdSize);
     netMgr->messageClients(PROTOCOL_UDP);
