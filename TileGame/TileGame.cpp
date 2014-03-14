@@ -392,7 +392,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
      * Outside of TCP/UDP update, what do we need to do if netActive?
      */
 
-    if (server && !connected && (netTimer->getMilliseconds() > 5000)) {
+    if (server && !connected && (netTimer->getMilliseconds() > 8000)) {
       if (!netMgr->broadcastUDPInvitation())
         std::cout << "Failed to send broadcast." << std::endl;
       netTimer->reset();
@@ -450,10 +450,10 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
   }
   else if (arg.key == OIS::KC_B) {
     if (server && !connected && nPlayers > 0) {
+      connected = true;
       netMgr->messageClients(PROTOCOL_TCP, STR_BEGIN.c_str(), STR_BEGIN.length());
       netMgr->denyConnections();
       mTrayMgr->destroyWidget("ServerStartPanel");
-      connected = true;
 
       startMultiplayer();
       std::cout << "Multiplayer started." << std::endl;
