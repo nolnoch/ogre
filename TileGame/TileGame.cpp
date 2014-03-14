@@ -325,9 +325,9 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             if (netMgr->udpServerData[i].updated) {
               data = (Uint32 *) netMgr->udpServerData[i].output;
 
-              if ((*data == UINT_ADDPL) && (*++data != netMgr->getIPnbo())) {
+              if ((data[0] == UINT_ADDPL) && (data[1] != netMgr->getIPnbo())) {
                 PlayerData *newPlayer = new PlayerData;
-                memcpy(newPlayer, data, sizeof(PlayerData));
+                memcpy(newPlayer, ++data, sizeof(PlayerData));
                 playerData.push_back(newPlayer);
                 nPlayers = playerData.size();
 
@@ -335,12 +335,12 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                 std::cout << "Client reading " << test.str() << std::endl;
                 std::cout << "Player added." << std::endl;
 
-              } else if ((*data == UINT_UPDPL) && (*++data != netMgr->getIPnbo())) {
+              } else if ((data[0] == UINT_UPDPL) && (data[1] != netMgr->getIPnbo())) {
                 PlayerData *player;
 
                 for (i = 0; i < nPlayers; i++) {
                   if (*data == playerData[i]->host)
-                    memcpy(player, data, sizeof(PlayerData));
+                    memcpy(player, ++data, sizeof(PlayerData));
                 }
               }
 
@@ -393,11 +393,11 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           for (i = 0; i < 10; i++) {
             if (netMgr->udpServerData[i].updated) {
               data = (Uint32 *) netMgr->udpServerData[i].output;
-              if ((*data == UINT_UPDPL) && (*++data != netMgr->getIPnbo())) {
+              if ((data[0] == UINT_UPDPL) && (data[1] != netMgr->getIPnbo())) {
                 PlayerData *player;
                 for (i = 0; i < nPlayers; i++) {
-                  if (*data == playerData[i]->host) {
-                    memcpy(player, data, sizeof(PlayerData));
+                  if (data[1] == playerData[i]->host) {
+                    memcpy(player, ++data, sizeof(PlayerData));
                   }
                 }
               }
@@ -419,7 +419,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     /* Independent of TCP/UDP update, we do these constantly. */
 
 
-    if (multiplayerStarted) {
+    if (multiplayerStarted && !(limiter % 1000)) {
       /* Message clients or server with global positions. */
       if (server)
         updatePlayers();
