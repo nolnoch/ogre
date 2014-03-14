@@ -864,6 +864,11 @@ bool NetManager::acceptTCP(TCPsocket server) {
   if (statusCheck(NET_SERVER | NET_TCP_OPEN))
     return false;
 
+  if (!acceptNewClients || (tcpSockets.size() >= SOCKET_TCP_MAX)) {
+    printError("NetManager: TCP client rejected. Not accepting new clients.");
+    return false;
+  }
+
   TCPsocket tcpSock = SDLNet_TCP_Accept(server);
 
   if (!tcpSock) {
@@ -1474,7 +1479,7 @@ void NetManager::readUDPSocket(int clientIdx) {
           //   Our own packet from broadcast    OR  non-server to a client.
           if (netStatus & NET_CLIENT)
             printError("NetManager: Invalid packet source.");
-        } else if (0 == STR_DENY.compare((const char *) &bufV[i]->data)) {
+        } else if (0 == STR_DENY.compare((const char *) bufV[i]->data)) {
           // Received rejection packet.  Don't process it (for now).
           printError("NetManager: Connection rejected.");
         } else if (!addUDPClient(bufV[i])) {
