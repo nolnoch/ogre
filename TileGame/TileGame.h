@@ -323,9 +323,9 @@ protected:
   }
 
   void startMultiplayer() {
-    setLevel(1);
+    // setLevel(1);
 
-    // drawPlayers();
+    drawPlayers();
     std::cout << "Multiplayer started." << std::endl;
   }
 
