@@ -1388,13 +1388,16 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
     std::cout << "Ready sockets: " << nReadySockets << "\n" << std::endl;
 
     if (netServer.protocols & PROTOCOL_TCP) {                           // TCP
+      std::cout << "1" << std::endl;
       if (netStatus & NET_SERVER) {                                    //Server
         if (SDLNet_SocketReady(tcpSockets[netServer.tcpSocketIdx])) {
+          std::cout << "a" << std::endl;
           if (acceptTCP(tcpSockets[netServer.tcpSocketIdx]))
             printError("New TCP client registered!");
           nReadySockets--;
         }
         for (i = 0; i < netClients.size() && nReadySockets; i++) {
+          std::cout << "b" << std::endl;
           if ((netClients[i]->protocols & PROTOCOL_TCP) &&
               SDLNet_SocketReady(tcpSockets[netClients[i]->tcpSocketIdx])) {
             readTCPSocket(i);
@@ -1402,6 +1405,7 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
           }
         }
       } else if (netStatus & NET_CLIENT) {                            // Client
+        std::cout << "c" << std::endl;
         if (SDLNet_SocketReady(tcpSockets[netServer.tcpSocketIdx])) {
           readTCPSocket(SOCKET_SELF);
           nReadySockets--;
@@ -1409,13 +1413,14 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
       }
     }
     if (netServer.protocols & PROTOCOL_UDP) {                           // UDP
-      std::cout << "1" << std::endl;
+      std::cout << "2" << std::endl;
       if (SDLNet_SocketReady(udpSockets[netServer.udpSocketIdx])) {
+        std::cout << "d" << std::endl;
         readUDPSocket(SOCKET_SELF);
         nReadySockets--;
       }
       if (netStatus & NET_SERVER) {                                   // Server
-        std::cout << "2" << std::endl;
+        std::cout << "e" << std::endl;
         for (i = 0; i < netClients.size() && nReadySockets; i++) {
           if ((netClients[i]->protocols & PROTOCOL_UDP) &&
               SDLNet_SocketReady(udpSockets[netClients[i]->udpSocketIdx])) {

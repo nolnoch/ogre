@@ -388,6 +388,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                 std::cout << "Failed to add player." << std::endl;
               }
             }
+            serverStartPanel->setCaption("Press (B) to start when ready.");
 
           }
 
@@ -506,7 +507,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
       if (!server) {
         if ((server = netMgr->multiPlayerInit())) {
           serverStartPanel = mTrayMgr->createLabel(OgreBites::TL_TOP,
-              "ServerStartPanel", "Press (B) to start when ready.", 300);
+              "ServerStartPanel", "Waiting for clients...", 300);
           mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->show();
           mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
         } else {
