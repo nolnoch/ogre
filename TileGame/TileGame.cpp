@@ -516,6 +516,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
       } else {
         if (!connected) {
           mTrayMgr->destroyWidget("ServerStartPanel");
+          mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
           netMgr->stopServer(PROTOCOL_TCP);
           server = false;
           std::cout << "TileGame: Canceling multiplayer game. Resuming single"
