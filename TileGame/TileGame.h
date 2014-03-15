@@ -417,8 +417,6 @@ protected:
     memcpy(netMgr->udpServerData[0].input, &UINT_ADDPL, tagSize);
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->messageServer(PROTOCOL_UDP);
-
-    std::cout << "Client sending " << single.host << std::endl;
   }
 
   void simonSaysAnim() {
