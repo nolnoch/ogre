@@ -1142,10 +1142,9 @@ int NetManager::recvUDPV(UDPsocket sock, UDPpacket **packetV) {
  */
 void NetManager::closeTCP(TCPsocket sock) {
   SDLNet_TCP_Close(sock);
-  clearFlags(NET_TCP_ACCEPT | NET_TCP_OPEN);
 
   if (!tcpSockets.size()) {
-    netServer.protocols ^= PROTOCOL_TCP;
+    clearFlags(NET_TCP_ACCEPT | NET_TCP_OPEN);
     if (!netServer.protocols)
       close();
   }
@@ -1159,10 +1158,9 @@ void NetManager::closeTCP(TCPsocket sock) {
  */
 void NetManager::closeUDP(UDPsocket sock) {
   SDLNet_UDP_Close(sock);
-  clearFlags(NET_UDP_BOUND | NET_UDP_OPEN);
 
   if (!udpSockets.size()) {
-    netServer.protocols ^= PROTOCOL_UDP;
+    clearFlags(NET_UDP_BOUND | NET_UDP_OPEN);
     if (!netServer.protocols)
       close();
   }
@@ -1391,6 +1389,7 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
     int i = 0;
 
     std::cout << "Ready sockets: " << nReadySockets << "\n" << std::endl;
+    std::cout << "NetServer protocols: " << netServer.protocols << std::endl;
 
     if (netServer.protocols & PROTOCOL_TCP) {                           // TCP
       if (netStatus & NET_SERVER) {                                    //Server
