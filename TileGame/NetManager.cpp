@@ -1461,6 +1461,8 @@ void NetManager::readTCPSocket(int clientIdx) {
     cData = tcpClientData[netClients[clientIdx]->tcpDataIdx];
   }
 
+  memset(cData->output, 0, MESSAGE_LENGTH);
+
   result = recvTCP(tcpSockets[idxSocket], cData->output,
       MESSAGE_LENGTH);
 
