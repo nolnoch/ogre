@@ -398,6 +398,14 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                   }
                 }
                 std::cout << "Received client update." << std::endl;
+              } else {
+                std::ostringstream s;
+                s << *data++;
+                s << " : ";
+                s << *data;
+                std::cout << s.str();
+                //PlayerData *p = (PlayerData *) ++data;
+
               }
 
               netMgr->udpServerData[i].updated = false;
