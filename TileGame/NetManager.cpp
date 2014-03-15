@@ -1518,8 +1518,10 @@ int NetManager::readUDPSocket(int clientIdx) {
           //   Our own packet from broadcast    OR  non-server to a client.
           if (netStatus & NET_CLIENT)
             printError("NetManager: Invalid packet source.");
+          ret--;
         } else if (0 == STR_DENY.compare((const char *) bufV[i]->data)) {
           // Received rejection packet.  Don't process it (for now).
+          ret--;
         } else if (!addUDPClient(bufV[i])) {
           // Try to add the client; if not, at least copy the data.
           memcpy(cData[i].output, bufV[i]->data, bufV[i]->len);

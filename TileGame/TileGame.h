@@ -34,6 +34,8 @@ const static int TILE_WIDTH = WALL_SIZE / NUM_TILES_ROW;
 
 int ticks = 0;
 
+const Ogre::Quaternion RING_FLIP(Ogre::Degree(90), Ogre::Vector3::UNIT_X);
+
 struct PlayerData {
   Uint32 host;
   Ogre::Quaternion newOrient;
@@ -300,8 +302,8 @@ protected:
       ringNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(playerName.str());
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
-      ringNode->rotate(Ogre::Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_X));
-      ringNode->setOrientation(playerData[i]->newOrient);
+      ringNode->rotate(RING_FLIP);
+      ringNode->rotate(playerData[i]->newOrient);
       ringNode->setScale(100, 100, 100);
       ringNode->setPosition(playerData[i]->newPos);
 
@@ -321,7 +323,7 @@ protected:
       newPos = playerData[i]->newPos;
       playerName << playerData[i]->host;
       node = mSceneMgr->getSceneNode(playerName.str());
-      node->setOrientation(playerData[i]->newOrient);
+      node->rotate(Ogre::Quaternion::Slerp(0.5, node->getOrientation(), playerData[i]->newOrient));
       oldPos = node->getPosition();
       delta = newPos - oldPos;
       if (!delta.isZeroLength()) {
@@ -350,6 +352,7 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
+    single.newOrient = mCamera->getOrientation();
     single.shotForce = force;
     single.shotDir = dir;
     memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
@@ -364,6 +367,8 @@ protected:
       netMgr->udpServerData[i].updated = true;
     }
     netMgr->messageClients(PROTOCOL_UDP);
+
+    std::cout << "Clients updated." << std::endl;
   }
 
   void updateServer(double force = 0, Ogre::Vector3 dir = Ogre::Vector3::ZERO) {
@@ -376,12 +381,15 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
+    single.newOrient = mCamera->getOrientation();
     single.shotForce = force;
     single.shotDir = dir;
     memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->udpServerData[0].updated = true;
     netMgr->messageServer(PROTOCOL_UDP);
+
+    std::cout << "Server updated." << std::endl;
   }
 
   void startMultiplayer() {
