@@ -342,8 +342,8 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                     memcpy(player, ++data, sizeof(PlayerData));
                   }
                 }
+                std::cout << "Received server update." << std::endl;
               }
-              std::cout << "Received server update." << std::endl;
 
               netMgr->udpServerData[i].updated = false;
             }
@@ -397,8 +397,8 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                     memcpy(player, ++data, sizeof(PlayerData));
                   }
                 }
+                std::cout << "Received client update." << std::endl;
               }
-              std::cout << "Received client update." << std::endl;
 
               netMgr->udpServerData[i].updated = false;
             }
