@@ -374,14 +374,14 @@ void NetManager::dropClient(Protocol protocol, Uint32 host) {
 
   ConnectionInfo *cInfo = lookupClient(host, false);
 
-  if ((protocol & PROTOCOL_TCP) && cInfo) {
+  if (cInfo && (protocol & cInfo->protocols & PROTOCOL_TCP)) {
     int idx = cInfo->clientIdx;
     TCPsocket client = tcpSockets[idx];
     unwatchSocket(client);
     closeTCP(client);
     tcpSockets.erase(tcpSockets.begin() + idx);
   }
-  if ((protocol & PROTOCOL_UDP) && cInfo) {
+  if (cInfo && (protocol & cInfo->protocols & PROTOCOL_UDP)) {
     UDPsocket client = udpSockets[cInfo->udpSocketIdx];
     unbindUDPSocket(client, cInfo->udpChannel);
 
@@ -1417,7 +1417,6 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
           }
         }
       } else if (netStatus & NET_CLIENT) {                            // Client
-        std::cout << "Checking for TCP packet from server." << std::endl;
         if (SDLNet_SocketReady(tcpSockets[netServer.tcpSocketIdx])) {
           readTCPSocket(SOCKET_SELF);
           nReadySockets--;

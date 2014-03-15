@@ -375,6 +375,7 @@ protected:
     setLevel(1);
     drawPlayers();
 
+    std::cout << "Multiplayer started." << std::endl;
     multiplayerStarted = true;
   }
 

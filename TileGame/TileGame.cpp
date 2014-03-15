@@ -353,7 +353,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
             std::cout << "TCP message: " << cmd << std::endl;
 
-            if (-1 < cmd.find(STR_BEGIN)) {
+            if (0 == cmd.find(STR_BEGIN)) {
               mTrayMgr->destroyWidget("ServerStartPanel");
               mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
               startMultiplayer();
