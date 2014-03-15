@@ -335,9 +335,6 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                 memcpy(newPlayer, ++data, sizeof(PlayerData));
                 playerData.push_back(newPlayer);
                 nPlayers = playerData.size();
-
-                std::cout << newPlayer->host << std::endl;
-
               } else if ((data[0] == UINT_UPDPL) && (data[1] != netMgr->getIPnbo())) {
                 PlayerData *player;
                 for (i = 0; i < nPlayers; i++) {
@@ -353,6 +350,8 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
           // Process TCP messages.
           if (netMgr->tcpServerData.updated) {
             cmd = std::string(netMgr->tcpServerData.output);
+
+            std::cout << "TCP message: " << cmd << std::endl;
 
             if (0 == cmd.compare(STR_BEGIN)) {
               mTrayMgr->destroyWidget("ServerStartPanel");

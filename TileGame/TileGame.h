@@ -393,8 +393,6 @@ protected:
     netMgr->udpServerData[0].updated = true;
     netMgr->messageClients(PROTOCOL_UDP);
 
-    std::cout << "Server sending " << single.host << std::endl;
-
     // Clients
     for (i = 0; i < playerData.size(); i++) {
       memcpy(netMgr->udpServerData[i].input, &UINT_ADDPL, tagSize);

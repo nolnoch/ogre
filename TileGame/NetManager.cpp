@@ -1417,6 +1417,7 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
           }
         }
       } else if (netStatus & NET_CLIENT) {                            // Client
+        std::cout << "Checking for TCP packet from server." << std::endl;
         if (SDLNet_SocketReady(tcpSockets[netServer.tcpSocketIdx])) {
           readTCPSocket(SOCKET_SELF);
           nReadySockets--;
@@ -1470,8 +1471,10 @@ void NetManager::readTCPSocket(int clientIdx) {
     } else {
       dropClient(PROTOCOL_ALL, cData->host);
     }
-  } else
+  } else {
+    std::cout << "Received TCP packet from server." << std::endl;
     cData->updated = true;
+  }
 }
 
 /**
