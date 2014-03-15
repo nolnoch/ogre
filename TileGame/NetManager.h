@@ -45,14 +45,14 @@ enum {
  * Internal state information packaging.
  */
 struct ConnectionInfo {
-  short tcpSocketIdx;                 //!< Index into the tcpSocket vector.
-  short udpSocketIdx;                 //!< Index into the udpSocket vector.
-  short tcpDataIdx;                   //!< Index into the tcpClientData vector.
-  short udpDataIdx;                   //!< Index into the udpClientData vector.
-  short udpChannel;                   //!< The associated UDP channel.
-  short clientIdx;                    //!< Index into the tcpClients vector.
-  Protocol protocols;                 //!< Associated protocols.
   IPaddress address;                  //!< This connection's IPaddress.
+  Protocol protocols;                 //!< Associated protocols.
+  int tcpSocketIdx;                   //!< Index into the tcpSocket vector.
+  int udpSocketIdx;                   //!< Index into the udpSocket vector.
+  int tcpDataIdx;                     //!< Index into the tcpClientData vector.
+  int udpDataIdx;                     //!< Index into the udpClientData vector.
+  int udpChannel;                     //!< The associated UDP channel.
+  int clientIdx;                      //!< Index into the tcpClients vector.
 };
 
 /**

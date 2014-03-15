@@ -72,6 +72,11 @@ bool NetManager::initNetManager() {
   } else {
     netServer.tcpSocketIdx = -1;
     netServer.udpSocketIdx = -1;
+    netServer.udpChannel = -1;
+    netServer.tcpDataIdx = -1;
+    netServer.udpDataIdx = -1;
+    netServer.clientIdx = -1;
+    netServer.protocols = 0;
     for (i = 0; i < MESSAGE_COUNT; i++) {
       udpServerData[i].updated = false;
     }
