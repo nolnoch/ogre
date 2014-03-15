@@ -1400,7 +1400,7 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
     ret = true;
     int i = 0;
 
-    std::cout << "Starting with packet(s) in NetManager." << std::endl;
+    //std::cout << "Starting with packet(s) in NetManager." << std::endl;
 
     if (netServer.protocols & PROTOCOL_TCP) {                           // TCP
       if (netStatus & NET_SERVER) {                                    //Server

@@ -307,7 +307,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
       std::ostringstream test;
       Uint32 *data;
 
-      std::cout << "Following up in TileGame." << std::endl;
+      //std::cout << "Following up in TileGame." << std::endl;
 
       if (!server) {
         if (!connected) {                       /* Running as single player. */
@@ -335,6 +335,9 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                 memcpy(newPlayer, ++data, sizeof(PlayerData));
                 playerData.push_back(newPlayer);
                 nPlayers = playerData.size();
+
+                std::cout << newPlayer->host << std::endl;
+
               } else if ((data[0] == UINT_UPDPL) && (data[1] != netMgr->getIPnbo())) {
                 PlayerData *player;
                 for (i = 0; i < nPlayers; i++) {
