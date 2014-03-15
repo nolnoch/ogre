@@ -36,6 +36,7 @@ int ticks = 0;
 
 struct PlayerData {
   Uint32 host;
+  Ogre::Quaternion newOrient;
   Ogre::Vector3 newPos;
   Ogre::Vector3 shotDir;
   double shotForce;
@@ -300,6 +301,7 @@ protected:
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
       ringNode->rotate(Ogre::Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_X));
+      ringNode->setOrientation(playerData[i]->newOrient);
       ringNode->setScale(100, 100, 100);
       ringNode->setPosition(playerData[i]->newPos);
 
@@ -319,14 +321,16 @@ protected:
       newPos = playerData[i]->newPos;
       playerName << playerData[i]->host;
       node = mSceneMgr->getSceneNode(playerName.str());
-      if (!node || node->getName().compare(playerName.str())) {
-        std::cout << "Could not find player node to update." << std::endl;
-      } else {
-        oldPos = node->getPosition();
-        delta = newPos - oldPos;
+      node->setOrientation(playerData[i]->newOrient);
+      oldPos = node->getPosition();
+      delta = newPos - oldPos;
+      if (!delta.isZeroLength()) {
         node->translate(delta);
-        //node->setPosition(newPos);
-      }
+        std::cout << "Node has been moved!" << std::endl;
+      } else
+        std::cout << "No position update." << std::endl;
+
+      //node->setPosition(newPos);
 
       // mSceneMgr->getSceneNode(playerName.str())->setPosition(newPos);
 
@@ -376,6 +380,7 @@ protected:
     single.shotDir = dir;
     memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
+    netMgr->udpServerData[0].updated = true;
     netMgr->messageServer(PROTOCOL_UDP);
   }
 
@@ -402,6 +407,9 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
+    single.newOrient = mCamera->getOrientation();
+    single.shotForce = 0;
+    single.shotDir = Ogre::Vector3::ZERO;
     memcpy(netMgr->udpServerData[0].input, &UINT_ADDPL, tagSize);
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->udpServerData[0].updated = true;
@@ -426,8 +434,12 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
+    single.newOrient = mCamera->getOrientation();
+    single.shotForce = 0;
+    single.shotDir = Ogre::Vector3::ZERO;
     memcpy(netMgr->udpServerData[0].input, &UINT_ADDPL, tagSize);
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
+    netMgr->udpServerData[0].updated = true;
     netMgr->messageServer(PROTOCOL_UDP);
   }
 

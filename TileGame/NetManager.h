@@ -68,6 +68,7 @@ struct ClientData {
   char input[128];                    //!< Target for automatic data pulls.
 };
 
+
 static const std::string STR_DENY("TG_SERVER_DENY");
 static const std::string STR_OPEN("TG_SERVER_OPEN");
 static const std::string STR_ACPT("TG_SERVER_JOIN");

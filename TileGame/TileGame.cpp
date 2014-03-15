@@ -397,6 +397,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                   }
                 }
               }
+              std::cout << "Received player update." << std::endl;
 
               netMgr->udpServerData[i].updated = false;
             }
@@ -418,13 +419,17 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
     if (multiplayerStarted) {                      /* In a multiplayer game. */
       // Message clients or server with global positions.
-      server ? updatePlayers() : updateServer();
+      if (server) {
+        updatePlayers();
+      } else {
+        updateServer();
+      }
 
       // Update clients' positions locally.
       movePlayers();
 
     } else {                               /* Not yet in a multiplayer game. */
-      // Server will broadcast game invitation every 10 seconds until launch.
+      // Server will broadcast game invitation every 8 seconds until launch.
       if (server && !connected && (ticks++ > broad_ticks)) {
         if (!netMgr->broadcastUDPInvitation())
           std::cout << "Failed to send broadcast." << std::endl;

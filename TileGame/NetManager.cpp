@@ -320,7 +320,7 @@ void NetManager::messageServer(Protocol protocol, const char *buf, int len) {
       UDPpacket *pack = craftUDPpacket(data, length);
       if (pack)
         sendUDP(udpSockets[netServer.udpSocketIdx], netServer.udpChannel, pack);
-      udpServerData[0].updated = false;;
+      udpServerData[0].updated = false;
     }
   }
 }
