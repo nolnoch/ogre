@@ -308,14 +308,25 @@ protected:
 
   void movePlayers() {
     std::ostringstream playerName;
-    Ogre::Vector3 newPos;
+    Ogre::Vector3 oldPos, newPos, delta;
+    Ogre::SceneNode *node;
     int i;
 
     for (i = 0; i < nPlayers; i++) {
       // Update position.
       newPos = playerData[i]->newPos;
       playerName << playerData[i]->host;
-      mSceneMgr->getSceneNode(playerName.str())->setPosition(newPos);
+      node = mSceneMgr->getRootSceneNode()->getChild(playerName.str());
+      if (!node || node->getName().compare(playerName.str())) {
+        std::cout << "Could not find player node to update." << std::endl;
+      } else {
+        //oldPos = node->getPosition();
+        //delta = newPos - oldPos;
+        //node->translate(delta);
+        node->setPosition(newPos);
+      }
+
+      //mSceneMgr->getSceneNode(playerName.str())->setPosition(newPos);
 
       // Did they launch a ball?
       if (playerData[i]->shotForce)
