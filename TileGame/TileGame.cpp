@@ -338,7 +338,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                 nPlayers = playerData.size();
               } else if ((data[0] == UINT_UPDPL) && (data[1] != netMgr->getIPnbo())) {
                 for (j = 0; j < nPlayers; j++) {
-                  if (*data == playerData[j]->host) {
+                  if (data[1] == playerData[j]->host) {
                     memcpy(playerData[j], ++data, sizeof(PlayerData));
                   }
                 }

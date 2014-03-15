@@ -324,15 +324,7 @@ protected:
       playerName << playerData[i]->host;
       node = mSceneMgr->getSceneNode(playerName.str());
       node->setDirection(playerData[i]->newDir);
-      oldPos = node->getPosition();
-      delta = newPos - oldPos;
-      if (!delta.isZeroLength()) {
-        node->translate(delta);
-        std::cout << "Node has been moved!" << std::endl;
-      } else
-        std::cout << "No position update." << std::endl;
-
-      //node->setPosition(newPos);
+      node->setPosition(newPos);
 
       std::cout << playerData[i]->newPos << std::endl;
 
@@ -355,23 +347,23 @@ protected:
     single.newDir = mCamera->getDirection();
     single.shotForce = force;
     single.shotDir = dir;
-    memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
-    memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
-    netMgr->udpServerData[0].updated = true;
-    netMgr->messageClients(PROTOCOL_UDP);
+    memcpy(netMgr->udpServerData[nPlayers].input, &UINT_UPDPL, tagSize);
+    memcpy((netMgr->udpServerData[nPlayers].input + 4), &single, pdSize);
+    netMgr->udpServerData[nPlayers].updated = true;
 
     // Clients
-    for (i = 0; i < playerData.size() && !force; i++) {
+    for (i = 0; i < playerData.size(); i++) {
       memcpy(netMgr->udpServerData[i].input, &UINT_UPDPL, tagSize);
       memcpy((netMgr->udpServerData[i].input + 4), playerData[i], pdSize);
       netMgr->udpServerData[i].updated = true;
     }
+
     netMgr->messageClients(PROTOCOL_UDP);
   }
 
   void updateServer(double force = 0, Ogre::Vector3 dir = Ogre::Vector3::ZERO) {
     PlayerData single;
-    int i, pdSize, tagSize;
+    int pdSize, tagSize;
 
     pdSize = sizeof(PlayerData);
     tagSize = sizeof(Uint32);
@@ -414,10 +406,9 @@ protected:
     single.newDir = mCamera->getDirection();
     single.shotForce = 0;
     single.shotDir = Ogre::Vector3::ZERO;
-    memcpy(netMgr->udpServerData[0].input, &UINT_ADDPL, tagSize);
-    memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
-    netMgr->udpServerData[0].updated = true;
-    netMgr->messageClients(PROTOCOL_UDP);
+    memcpy(netMgr->udpServerData[nPlayers].input, &UINT_ADDPL, tagSize);
+    memcpy((netMgr->udpServerData[nPlayers].input + 4), &single, pdSize);
+    netMgr->udpServerData[nPlayers].updated = true;
 
     std::cout << single.newPos << std::endl;
 
@@ -427,6 +418,7 @@ protected:
       memcpy((netMgr->udpServerData[i].input + 4), playerData[i], pdSize);
       netMgr->udpServerData[i].updated = true;
     }
+
     netMgr->messageClients(PROTOCOL_UDP);
   }
 
