@@ -326,8 +326,6 @@ protected:
       node->setDirection(playerData[i]->newDir);
       node->setPosition(newPos);
 
-      std::cout << playerData[i]->newPos << std::endl;
-
       // Did they launch a ball?
       if (playerData[i]->shotForce)
         shootBall(newPos.x, newPos.y, newPos.z, playerData[i]->shotForce);
@@ -389,7 +387,6 @@ protected:
     setLevel(1);
     drawPlayers();
 
-    std::cout << "Multiplayer started." << std::endl;
     multiplayerStarted = true;
   }
 

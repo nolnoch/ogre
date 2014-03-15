@@ -294,7 +294,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   /* ***********************************************************************
    * Multiplayer Code
    */
-  int sweep_ms = 500;
+  int sweep_ms = 200;
   int broad_ms = 8000;
   int broad_ticks = (broad_ms / sweep_ms);
 
@@ -421,7 +421,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
         updateServer();
       }
 
-      // Update clients' positions locally.
+      // Update players' positions locally.
       movePlayers();
 
     } else {                               /* Not yet in a multiplayer game. */
