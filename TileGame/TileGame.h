@@ -367,8 +367,6 @@ protected:
       netMgr->udpServerData[i].updated = true;
     }
     netMgr->messageClients(PROTOCOL_UDP);
-
-    std::cout << single.newPos << std::endl;
   }
 
   void updateServer(double force = 0, Ogre::Vector3 dir = Ogre::Vector3::ZERO) {
@@ -388,8 +386,6 @@ protected:
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->udpServerData[0].updated = true;
     netMgr->messageServer(PROTOCOL_UDP);
-
-    std::cout << "Server updated." << std::endl;
   }
 
   void startMultiplayer() {
@@ -423,6 +419,8 @@ protected:
     netMgr->udpServerData[0].updated = true;
     netMgr->messageClients(PROTOCOL_UDP);
 
+    std::cout << single.newPos << std::endl;
+
     // Clients
     for (i = 0; i < playerData.size(); i++) {
       memcpy(netMgr->udpServerData[i].input, &UINT_ADDPL, tagSize);
@@ -449,6 +447,8 @@ protected:
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->udpServerData[0].updated = true;
     netMgr->messageServer(PROTOCOL_UDP);
+
+    std::cout << single.newPos << std::endl;
   }
 
   void simonSaysAnim() {
