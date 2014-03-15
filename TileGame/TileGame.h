@@ -314,6 +314,8 @@ protected:
     Ogre::SceneNode *node;
     int i;
 
+    std::cout << "Moving players." <<std::endl;
+
     for (i = 0; i < nPlayers; i++) {
       // Update position.
       newPos = playerData[i]->newPos;

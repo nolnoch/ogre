@@ -418,10 +418,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
     if (multiplayerStarted) {                      /* In a multiplayer game. */
       // Message clients or server with global positions.
-      if (server)
-        updatePlayers();
-      else
-        updateServer();
+      server ? updatePlayers() : updateServer();
 
       // Update clients' positions locally.
       movePlayers();

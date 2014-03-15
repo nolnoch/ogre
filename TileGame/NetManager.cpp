@@ -411,10 +411,11 @@ void NetManager::stopServer(Protocol protocol) {
 
   for (i = 0; i < netClients.size(); i++) {
     if (protocol & netClients[i]->protocols & PROTOCOL_TCP) {
-      TCPsocket client = tcpSockets[i];
+      int idx = netClients[i]->tcpSocketIdx;
+      TCPsocket client = tcpSockets[idx];
       unwatchSocket(client);
       closeTCP(client);
-      tcpSockets.erase(tcpSockets.begin() + i);
+      tcpSockets.erase(tcpSockets.begin() + idx);
     }
     if (protocol & netClients[i]->protocols & PROTOCOL_UDP) {
       ConnectionInfo *cInfo = netClients[i];
@@ -434,6 +435,8 @@ void NetManager::stopServer(Protocol protocol) {
   }
 
   if (netServer.protocols & PROTOCOL_TCP & protocol) {
+    closeTCP(tcpSockets[netServer.tcpSocketIdx]);
+    tcpSockets.clear();
     netServer.protocols ^= PROTOCOL_TCP;
     clearFlags(NET_TCP_OPEN | NET_TCP_ACCEPT);
   }
