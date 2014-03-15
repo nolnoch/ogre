@@ -1539,6 +1539,7 @@ int NetManager::readUDPSocket(int clientIdx) {
           cData->updated = true;
         } else {
           printError("NetManager: Failed to look up existing client.");
+          ret--;
         }
       }
 

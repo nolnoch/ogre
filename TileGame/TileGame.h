@@ -334,7 +334,7 @@ protected:
 
       //node->setPosition(newPos);
 
-      // mSceneMgr->getSceneNode(playerName.str())->setPosition(newPos);
+      std::cout << playerData[i]->newPos << std::endl;
 
       // Did they launch a ball?
       if (playerData[i]->shotForce)
@@ -368,7 +368,7 @@ protected:
     }
     netMgr->messageClients(PROTOCOL_UDP);
 
-    std::cout << "Clients updated." << std::endl;
+    std::cout << single.newPos << std::endl;
   }
 
   void updateServer(double force = 0, Ogre::Vector3 dir = Ogre::Vector3::ZERO) {

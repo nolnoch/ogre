@@ -309,7 +309,8 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
       //std::cout << "Following up in TileGame." << std::endl;
 
-      if (!server) {
+      if (!server) {  /* **************      CLIENT      ******************* */
+
         if (!connected) {                       /* Running as single player. */
           if (!invitePending) {
             // Accept only the first invitation received if spammed.
@@ -323,7 +324,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
               netMgr->udpServerData[0].updated = false;
             }
           }
-        } else {              /* Currently connected to a game as a client. */
+        } else {                           /* Connected and running in game. */
 
           // Process UDP messages.
           for (i = 0; i < nUp; i++) {
@@ -342,9 +343,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
                     memcpy(player, ++data, sizeof(PlayerData));
                   }
                 }
-                std::cout << "Received server update." << std::endl;
               }
-
               netMgr->udpServerData[i].updated = false;
             }
           }
@@ -361,7 +360,8 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             netMgr->tcpServerData.updated = false;
           }
         }
-      } else {
+      } else {  /* ****************      SERVER      *********************** */
+
         if (!connected) {        /* Initiated a server, but no game started. */
           // Update player count.
           nPlayers = netMgr->getClients();
@@ -373,51 +373,40 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             for (i = 1; i <= newClients; i++) {
               data = (Uint32 *) netMgr->udpClientData[nPlayers-i]->output;
               if (data[0] == UINT_ADDPL) {
-                PlayerData *client = new PlayerData;
-                memcpy(client, ++data, sizeof(PlayerData));
-                playerData.push_back(client);
+                PlayerData *player = new PlayerData;
+                memcpy(player, ++data, sizeof(PlayerData));
+                playerData.push_back(player);
                 notifyPlayers();
                 netMgr->udpClientData[nPlayers-i]->updated = false;
               }
             }
             serverStartPanel->setCaption("Press (B) to start when ready.");
-
           }
 
-        } else {                    /* Currently hosting a game as a server. */
-          // Process UDP messages.
-          for (i = 0; i < nUp; i++) {
-            if (netMgr->udpServerData[i].updated) {
-              data = (Uint32 *) netMgr->udpServerData[i].output;
+        } else {                      /* Hosting a running game as a server. */
 
+          for (i = 0; i < nPlayers; i++) {
+            // Process UDP messages.
+            if (netMgr->udpClientData[i]->updated) {
+              data = (Uint32 *) netMgr->udpClientData[i]->output;
               if ((data[0] == UINT_UPDPL) && (data[1] != netMgr->getIPnbo())) {
                 PlayerData *player;
-                for (i = 0; i < nPlayers; i++) {
-                  if (data[1] == playerData[i]->host) {
-                    memcpy(player, ++data, sizeof(PlayerData));
+                for (j = 0; j < nPlayers; j++) {
+                  if (data[1] == playerData[j]->host) {
+                    memcpy(playerData[j], ++data, sizeof(PlayerData));
                   }
                 }
-                std::cout << "Received client update." << std::endl;
-              } else {
-                std::ostringstream s;
-                s << *data++;
-                s << " : ";
-                s << *data;
-                std::cout << s.str();
-                //PlayerData *p = (PlayerData *) ++data;
-
               }
-
-              netMgr->udpServerData[i].updated = false;
+              netMgr->udpClientData[i]->updated = false;
             }
-          }
 
-          // Process TCP messages.
-          if (netMgr->tcpServerData.updated) {
-            cmd = std::string(netMgr->tcpServerData.output);
-            // Compare cmd to command tag or use raw data.
+            // Process TCP messages.
+            if (netMgr->tcpClientData[i]->updated) {
+              cmd = std::string(netMgr->tcpClientData[i]->output);
+              // Compare cmd to command tag or use raw data.
 
-            netMgr->tcpServerData.updated = false;
+              netMgr->tcpClientData[i]->updated = false;
+            }
           }
         }
       }
