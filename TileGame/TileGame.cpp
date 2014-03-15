@@ -299,7 +299,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   if (netActive) {
 
     /*  Received an update!  */
-    if (!(limiter % 500) && netMgr->scanForActivity()) {
+    if (!(limiter % 1000) && netMgr->scanForActivity()) {
       std::string cmd, cmdArgs;
       std::ostringstream test;
       Uint32 *data;
@@ -307,13 +307,10 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
       if (!server) {
         if (!connected) {                       /* Running as single player. */
           if (!invitePending) {
-            std::cout << "1" << std::endl;
             // Accept only the first invitation received if spammed.
             if (netMgr->udpServerData[0].updated) {
-              std::cout << "2" << std::endl;
               invite = std::string(netMgr->udpServerData[0].output);
               if (std::string::npos != invite.find(STR_OPEN)) {
-                std::cout << "3" << std::endl;
                 mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->show();
                 mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->show();
                 invitePending = true;
@@ -510,6 +507,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
               "ServerStartPanel", "Waiting for clients...", 300);
           mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->show();
           mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
+          netTimer->reset();
         } else {
           std::cout << "TileGame: Failed to start multiplayer game. Resuming"
               " single player mode." << std::endl;

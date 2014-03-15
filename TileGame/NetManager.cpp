@@ -61,6 +61,7 @@ NetManager::~NetManager() {
  */
 bool NetManager::initNetManager() {
   bool ret = true;
+  int i;
 
   socketNursery = SDLNet_AllocSocketSet(SOCKET_ALL_MAX);
 
@@ -71,6 +72,9 @@ bool NetManager::initNetManager() {
   } else {
     netServer.tcpSocketIdx = -1;
     netServer.udpSocketIdx = -1;
+    for (i = 0; i < MESSAGE_COUNT; i++) {
+      udpServerData[i].updated = false;
+    }
     netStatus |= NET_INITIALIZED;
   }
 
@@ -311,6 +315,7 @@ void NetManager::messageServer(Protocol protocol, const char *buf, int len) {
       UDPpacket *pack = craftUDPpacket(data, length);
       if (pack)
         sendUDP(udpSockets[netServer.udpSocketIdx], netServer.udpChannel, pack);
+      udpServerData[0].updated = false;;
     }
   }
 }
@@ -1388,16 +1393,13 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
     std::cout << "Ready sockets: " << nReadySockets << "\n" << std::endl;
 
     if (netServer.protocols & PROTOCOL_TCP) {                           // TCP
-      std::cout << "1" << std::endl;
       if (netStatus & NET_SERVER) {                                    //Server
         if (SDLNet_SocketReady(tcpSockets[netServer.tcpSocketIdx])) {
-          std::cout << "a" << std::endl;
           if (acceptTCP(tcpSockets[netServer.tcpSocketIdx]))
             printError("New TCP client registered!");
           nReadySockets--;
         }
         for (i = 0; i < netClients.size() && nReadySockets; i++) {
-          std::cout << "b" << std::endl;
           if ((netClients[i]->protocols & PROTOCOL_TCP) &&
               SDLNet_SocketReady(tcpSockets[netClients[i]->tcpSocketIdx])) {
             readTCPSocket(i);
@@ -1405,7 +1407,6 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
           }
         }
       } else if (netStatus & NET_CLIENT) {                            // Client
-        std::cout << "c" << std::endl;
         if (SDLNet_SocketReady(tcpSockets[netServer.tcpSocketIdx])) {
           readTCPSocket(SOCKET_SELF);
           nReadySockets--;
@@ -1413,14 +1414,11 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
       }
     }
     if (netServer.protocols & PROTOCOL_UDP) {                           // UDP
-      std::cout << "2" << std::endl;
       if (SDLNet_SocketReady(udpSockets[netServer.udpSocketIdx])) {
-        std::cout << "d" << std::endl;
         readUDPSocket(SOCKET_SELF);
         nReadySockets--;
       }
       if (netStatus & NET_SERVER) {                                   // Server
-        std::cout << "e" << std::endl;
         for (i = 0; i < netClients.size() && nReadySockets; i++) {
           if ((netClients[i]->protocols & PROTOCOL_UDP) &&
               SDLNet_SocketReady(udpSockets[netClients[i]->udpSocketIdx])) {
@@ -1494,8 +1492,6 @@ void NetManager::readUDPSocket(int clientIdx) {
 
     for (i = 0; i < numPackets; i++) {
 
-      std::cout << "3" << std::endl;
-
       if (bufV[i]->channel == -1) {                         // Unbound sender.
         if (bufV[i]->address.host == getIPnbo() || (netStatus & NET_CLIENT)) {
           //   Our own packet from broadcast    OR  non-server to a client.
@@ -1503,9 +1499,7 @@ void NetManager::readUDPSocket(int clientIdx) {
             printError("NetManager: Invalid packet source.");
         } else if (0 == STR_DENY.compare((const char *) bufV[i]->data)) {
           // Received rejection packet.  Don't process it (for now).
-          printError("NetManager: Connection rejected.");
         } else if (!addUDPClient(bufV[i])) {
-          std::cout << "4" << std::endl;
           // Try to add the client; if not, at least copy the data.
           memcpy(cData[i].output, bufV[i]->data, bufV[i]->len);
           cData[i].updated = true;
@@ -1544,7 +1538,7 @@ bool NetManager::addUDPClient(UDPpacket *pack) {
   int socketIdx;
 
   if (!acceptNewClients) {
-    printError("NetManager: UDP client rejected. Not accepting new clients.");
+    //printError("NetManager: UDP client rejected. Not accepting new clients.");
     rejectUDPClient(pack);
     return false;
   }
