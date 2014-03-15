@@ -430,9 +430,13 @@ void NetManager::stopServer(Protocol protocol) {
       udpSockets.pop_back();
     }
     netServer.protocols ^= PROTOCOL_UDP;
+    clearFlags(NET_UDP_OPEN | NET_UDP_BOUND);
   }
-  if (netServer.protocols & PROTOCOL_TCP & protocol)
+
+  if (netServer.protocols & PROTOCOL_TCP & protocol) {
     netServer.protocols ^= PROTOCOL_TCP;
+    clearFlags(NET_TCP_OPEN | NET_TCP_ACCEPT);
+  }
 
 
   if (!netServer.protocols)
@@ -979,7 +983,16 @@ bool NetManager::bindUDPSocket (UDPsocket sock, int channel, IPaddress *addr) {
  * @param channel The channel to be unbound.
  */
 void NetManager::unbindUDPSocket(UDPsocket sock, int channel) {
+  bool found;
+  std::vector<ConnectionInfo *>::iterator it;
+
   SDLNet_UDP_Unbind(sock, channel);
+
+  for (it = netClients.begin(); it != netClients.end() && !found; it++) {
+    if ((*it)->udpChannel == channel) {
+      netClients.erase(it);
+    }
+  }
 }
 
 /**
@@ -1026,7 +1039,9 @@ bool NetManager::sendUDP(UDPsocket sock, int channel, UDPpacket *pack) {
 
   if (!SDLNet_UDP_Send(sock, channel, pack)) {
     printError("SDL_net: Failed to send UDP data.");
-    printError(SDLNet_GetError());
+    if (channel != -1) {
+      unbindUDPSocket(sock, channel);
+    }
     ret = false;
   }
 
@@ -1148,11 +1163,7 @@ int NetManager::recvUDPV(UDPsocket sock, UDPpacket **packetV) {
 void NetManager::closeTCP(TCPsocket sock) {
   SDLNet_TCP_Close(sock);
 
-  if (!tcpSockets.size()) {
-    clearFlags(NET_TCP_ACCEPT | NET_TCP_OPEN);
-    if (!netServer.protocols)
-      close();
-  }
+  // Checks removed for now.
 }
 
 /**
@@ -1164,11 +1175,7 @@ void NetManager::closeTCP(TCPsocket sock) {
 void NetManager::closeUDP(UDPsocket sock) {
   SDLNet_UDP_Close(sock);
 
-  if (!udpSockets.size()) {
-    clearFlags(NET_UDP_BOUND | NET_UDP_OPEN);
-    if (!netServer.protocols)
-      close();
-  }
+  // Checks removed for now.
 }
 
 /**
@@ -1392,9 +1399,6 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
   } else if (nReadySockets) {
     ret = true;
     int i = 0;
-
-    std::cout << "Ready sockets: " << nReadySockets << "\n" << std::endl;
-    std::cout << "NetServer protocols: " << netServer.protocols << std::endl;
 
     if (netServer.protocols & PROTOCOL_TCP) {                           // TCP
       if (netStatus & NET_SERVER) {                                    //Server
