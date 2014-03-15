@@ -195,7 +195,7 @@ bool NetManager::startClient() {
  * @param timeout_ms Time in milliseconds to block and poll. Default: 5 seconds.
  * @return True for activity, false for no activity.
  */
-bool NetManager::pollForActivity(Uint32 timeout_ms) {
+int NetManager::pollForActivity(Uint32 timeout_ms) {
   if (statusCheck(NET_UDP_OPEN, NET_TCP_OPEN)) {
     printError("NetManager: No established TCP or UDP sockets to poll.");
     return false;
@@ -211,7 +211,7 @@ bool NetManager::pollForActivity(Uint32 timeout_ms) {
  * @return True for activity, false for no activity.
  * @see pollForActivity()
  */
-bool NetManager::scanForActivity() {
+int NetManager::scanForActivity() {
   return pollForActivity(0);
 }
 
@@ -1387,18 +1387,19 @@ void NetManager::unwatchSocket(UDPsocket sock) {
  * @param timeout_ms The time to scan in milliseconds. 0 is instant.
  * @return True if there was activity, false if there was not.
  */
-bool NetManager::checkSockets(Uint32 timeout_ms) {
-  int nReadySockets;
-  bool ret = false;
+int NetManager::checkSockets(Uint32 timeout_ms) {
+  int ret, nReadySockets;
 
   nReadySockets = SDLNet_CheckSockets(socketNursery, timeout_ms);
 
   if (nReadySockets == -1) {
     printError("SDL_net: System error in CheckSockets.");
     printError(SDLNet_GetError());
+    ret = 0;
   } else if (nReadySockets) {
-    ret = true;
-    int i = 0;
+    int i, udp;
+    ret = nReadySockets;
+    i = udp = 0;
 
     //std::cout << "Starting with packet(s) in NetManager." << std::endl;
 
@@ -1425,19 +1426,20 @@ bool NetManager::checkSockets(Uint32 timeout_ms) {
     }
     if (netServer.protocols & PROTOCOL_UDP) {                           // UDP
       if (SDLNet_SocketReady(udpSockets[netServer.udpSocketIdx])) {
-        readUDPSocket(SOCKET_SELF);
+        udp += readUDPSocket(SOCKET_SELF);
         nReadySockets--;
       }
       if (netStatus & NET_SERVER) {                                   // Server
         for (i = 0; i < netClients.size() && nReadySockets; i++) {
           if ((netClients[i]->protocols & PROTOCOL_UDP) &&
               SDLNet_SocketReady(udpSockets[netClients[i]->udpSocketIdx])) {
-            readUDPSocket(i);
+            udp += readUDPSocket(i);
             nReadySockets--;
           }
         }
       }
     }
+    ret = udp ? : ret;
   }
 
   return ret;
@@ -1486,11 +1488,11 @@ void NetManager::readTCPSocket(int clientIdx) {
  * might arrive in one sweep of the socket. New clients are added, if possible.
  * @param clientIdx An index into the udpClients vector.
  */
-void NetManager::readUDPSocket(int clientIdx) {
+int NetManager::readUDPSocket(int clientIdx) {
   UDPpacket **bufV;
   ClientData *cData;
   ConnectionInfo *client;
-  int idxSocket, numPackets,  i;
+  int idxSocket, numPackets, ret, i;
 
   cData = udpServerData;
   idxSocket = (clientIdx == SOCKET_SELF) ? netServer.udpSocketIdx :
@@ -1502,7 +1504,9 @@ void NetManager::readUDPSocket(int clientIdx) {
 
   if (numPackets < 0) {
     printError("NetManager: Failed to read UDP packet.");
+    ret = 0;
   } else {
+    ret = numPackets;
 
     for (i = 0; i < numPackets; i++) {
 
@@ -1538,6 +1542,8 @@ void NetManager::readUDPSocket(int clientIdx) {
 
   if (bufV)
     freeUDPpacketV(&bufV);
+
+  return ret;
 }
 
 /**

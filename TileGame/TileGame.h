@@ -32,6 +32,8 @@ const static int NUM_TILES_ROW = 5;                                 // number of
 const static int NUM_TILES_WALL = NUM_TILES_ROW * NUM_TILES_ROW;    // number of total tiles on a wall.
 const static int TILE_WIDTH = WALL_SIZE / NUM_TILES_ROW;
 
+int ticks = 0;
+
 struct PlayerData {
   Uint32 host;
   Ogre::Vector3 newPos;

@@ -294,18 +294,18 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
   /* ***********************************************************************
    * Multiplayer Code
    */
-  int sweep_ms = 200;
+  int sweep_ms = 500;
   int broad_ms = 8000;
   int broad_ticks = (broad_ms / sweep_ms);
-  int ticks = 0;
 
   if (netActive && (netTimer->getMilliseconds() > sweep_ms)) {
+    std::string cmd, cmdArgs;
+    std::ostringstream test;
+    Uint32 *data;
+    int nUp;
 
     /*  Received an update!  */
-    if (netMgr->scanForActivity()) {
-      std::string cmd, cmdArgs;
-      std::ostringstream test;
-      Uint32 *data;
+    if ((nUp = netMgr->scanForActivity())) {
 
       //std::cout << "Following up in TileGame." << std::endl;
 
@@ -326,7 +326,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
         } else {              /* Currently connected to a game as a client. */
 
           // Process UDP messages.
-          for (i = 0; i < 10; i++) {
+          for (i = 0; i < nUp; i++) {
             if (netMgr->udpServerData[i].updated) {
               data = (Uint32 *) netMgr->udpServerData[i].output;
 
@@ -385,7 +385,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
         } else {                    /* Currently hosting a game as a server. */
           // Process UDP messages.
-          for (i = 0; i < 10; i++) {
+          for (i = 0; i < nUp; i++) {
             if (netMgr->udpServerData[i].updated) {
               data = (Uint32 *) netMgr->udpServerData[i].output;
 
@@ -503,6 +503,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
           mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->show();
           mTrayMgr->getTrayContainer(OgreBites::TL_TOPRIGHT)->hide();
           netTimer->reset();
+          ticks = 0;
         } else {
           std::cout << "TileGame: Failed to start multiplayer game. Resuming"
               " single player mode." << std::endl;
