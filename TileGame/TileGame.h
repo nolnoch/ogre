@@ -314,8 +314,6 @@ protected:
     Ogre::SceneNode *node;
     int i;
 
-    std::cout << "Moving players." <<std::endl;
-
     for (i = 0; i < nPlayers; i++) {
       // Update position.
       newPos = playerData[i]->newPos;
@@ -324,10 +322,10 @@ protected:
       if (!node || node->getName().compare(playerName.str())) {
         std::cout << "Could not find player node to update." << std::endl;
       } else {
-        //oldPos = node->getPosition();
-        //delta = newPos - oldPos;
-        //node->translate(delta);
-        node->setPosition(newPos);
+        oldPos = node->getPosition();
+        delta = newPos - oldPos;
+        node->translate(delta);
+        //node->setPosition(newPos);
       }
 
       // mSceneMgr->getSceneNode(playerName.str())->setPosition(newPos);
