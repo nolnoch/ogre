@@ -316,7 +316,7 @@ protected:
       // Update position.
       newPos = playerData[i]->newPos;
       playerName << playerData[i]->host;
-      node = mSceneMgr->getRootSceneNode()->getChild(playerName.str());
+      node = mSceneMgr->getSceneNode(playerName.str());
       if (!node || node->getName().compare(playerName.str())) {
         std::cout << "Could not find player node to update." << std::endl;
       } else {
@@ -326,7 +326,7 @@ protected:
         node->setPosition(newPos);
       }
 
-      //mSceneMgr->getSceneNode(playerName.str())->setPosition(newPos);
+      // mSceneMgr->getSceneNode(playerName.str())->setPosition(newPos);
 
       // Did they launch a ball?
       if (playerData[i]->shotForce)
