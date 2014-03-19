@@ -264,7 +264,7 @@ PKG_CONFIG_LIBDIR =
 PKG_CONFIG_PATH = 
 RANLIB = ranlib
 SDL_CFLAGS = -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL  
-SDL_LIBS = -lSDL_mixer -lSDL_net -lSDL  
+SDL_LIBS = -lSDL_mixer -lSDL  
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
@@ -330,7 +330,7 @@ noinst_HEADERS = BaseGame.h TileGame.h Simulator.h TileSimulator.h BallManager.h
 OgreApp_CPPFLAGS = -I$(top_srcdir)
 OgreApp_SOURCES = BaseGame.cpp TileGame.cpp Simulator.cpp TileSimulator.cpp BallManager.cpp SoundManager.cpp NetManager.cpp
 OgreApp_CXXFLAGS = $(OGRE_CFLAGS) $(OIS_CFLAGS) $(bullet_CFLAGS)
-OgreApp_LDADD = $(OGRE_LIBS) $(OIS_LIBS) $(bullet_LIBS) $(SDL_LIBS) -lboost_system
+OgreApp_LDADD = -L. $(OGRE_LIBS) $(OIS_LIBS) $(bullet_LIBS) $(SDL_LIBS) -lSDL_net -lboost_system
 EXTRA_DIST = buildit makeit
 AUTOMAKE_OPTIONS = foreign
 all: config.h

@@ -5,7 +5,6 @@ bin_PROGRAMS= OgreApp
 OgreApp_CPPFLAGS= -I$(top_srcdir)
 OgreApp_SOURCES= BaseGame.cpp TileGame.cpp Simulator.cpp TileSimulator.cpp BallManager.cpp SoundManager.cpp NetManager.cpp
 OgreApp_CXXFLAGS= $(OGRE_CFLAGS) $(OIS_CFLAGS) $(bullet_CFLAGS)
-OgreApp_LDADD= $(OGRE_LIBS) $(OIS_LIBS) $(bullet_LIBS) $(SDL_LIBS) -lboost_system
-
+OgreApp_LDADD= -L. $(OGRE_LIBS) $(OIS_LIBS) $(bullet_LIBS) $(SDL_LIBS) -lSDL_net -lboost_system
 EXTRA_DIST= buildit makeit
 AUTOMAKE_OPTIONS= foreign
