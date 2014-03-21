@@ -1410,13 +1410,13 @@ void NetManager::unwatchSocket(UDPsocket sock) {
  */
 int NetManager::checkSockets(Uint32 timeout_ms) {
   int ret, nReadySockets;
+  ret = 0;
 
   nReadySockets = SDLNet_CheckSockets(socketNursery, timeout_ms);
 
   if (nReadySockets == -1) {
     printError("SDL_net: System error in CheckSockets.");
     printError(SDLNet_GetError());
-    ret = 0;
   } else if (nReadySockets) {
     int i, udp;
     ret = nReadySockets;
