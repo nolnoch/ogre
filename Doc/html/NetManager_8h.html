@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('NetManager_8h.html','');});
 <code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
-<code>#include &lt;SDL/SDL_net.h&gt;</code><br/>
+<code>#include &quot;SDLnet/SDL_net.h&quot;</code><br/>
 </div>
 <p><a href="NetManager_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -154,8 +154,20 @@ Functions</h2></td></tr>
 <tr class="separator:a4cc69f51b723ed3756cb24529faacf94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6a130ab206e6c62fe162b8d44e30b89"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89">STR_OPEN</a> (&quot;TG_SERVER_OPEN&quot;)</td></tr>
 <tr class="separator:af6a130ab206e6c62fe162b8d44e30b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59af1e71042a1c1f7245b9f1355a9d49"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a59af1e71042a1c1f7245b9f1355a9d49">STR_ACPT</a> (&quot;TG_SERVER_JOIN&quot;)</td></tr>
+<tr class="separator:a59af1e71042a1c1f7245b9f1355a9d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a091b06ac88c35029c42a7a5d92a1ae16"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a091b06ac88c35029c42a7a5d92a1ae16">STR_BEGIN</a> (&quot;TG_GAME_BEGIN&quot;)</td></tr>
 <tr class="separator:a091b06ac88c35029c42a7a5d92a1ae16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26fc6d96c2e5c42864f42ae237d435f"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#ae26fc6d96c2e5c42864f42ae237d435f">STR_NXLVL</a> (&quot;TG_NEXT_LEVEL&quot;)</td></tr>
+<tr class="separator:ae26fc6d96c2e5c42864f42ae237d435f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad93bfb0e396e66ab5c3013ff12ea1ea2"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#ad93bfb0e396e66ab5c3013ff12ea1ea2">STR_TLHIT</a> (&quot;TG_NEXT_TILE&quot;)</td></tr>
+<tr class="separator:ad93bfb0e396e66ab5c3013ff12ea1ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac80e04d2db459bedde1b3279e6c7dfc4"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#ac80e04d2db459bedde1b3279e6c7dfc4">UINT_ADDPL</a> (0xFF000001)</td></tr>
+<tr class="separator:ac80e04d2db459bedde1b3279e6c7dfc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19065404c496b4308fc16886cf744ec8"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a19065404c496b4308fc16886cf744ec8">UINT_UPDPL</a> (0xFF000010)</td></tr>
+<tr class="separator:a19065404c496b4308fc16886cf744ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204b3917ebafa4878ad546a580aa1b49"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a204b3917ebafa4878ad546a580aa1b49">UINT_UPDSV</a> (0xFF000020)</td></tr>
+<tr class="separator:a204b3917ebafa4878ad546a580aa1b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. </p>
@@ -208,6 +220,30 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a59af1e71042a1c1f7245b9f1355a9d49"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::string STR_ACPT </td>
+          <td>(</td>
+          <td class="paramtype">&quot;TG_SERVER_JOIN&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a091b06ac88c35029c42a7a5d92a1ae16"></a>
 <div class="memitem">
 <div class="memproto">
@@ -256,6 +292,30 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae26fc6d96c2e5c42864f42ae237d435f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::string STR_NXLVL </td>
+          <td>(</td>
+          <td class="paramtype">&quot;TG_NEXT_LEVEL&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="af6a130ab206e6c62fe162b8d44e30b89"></a>
 <div class="memitem">
 <div class="memproto">
@@ -280,13 +340,109 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad93bfb0e396e66ab5c3013ff12ea1ea2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::string STR_TLHIT </td>
+          <td>(</td>
+          <td class="paramtype">&quot;TG_NEXT_TILE&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac80e04d2db459bedde1b3279e6c7dfc4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const Uint32 UINT_ADDPL </td>
+          <td>(</td>
+          <td class="paramtype">0xFF000001&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a19065404c496b4308fc16886cf744ec8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const Uint32 UINT_UPDPL </td>
+          <td>(</td>
+          <td class="paramtype">0xFF000010&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a204b3917ebafa4878ad546a580aa1b49"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const Uint32 UINT_UPDSV </td>
+          <td>(</td>
+          <td class="paramtype">0xFF000020&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="NetManager_8h.html">NetManager.h</a></li>
-    <li class="footer">Generated on Thu Mar 13 2014 04:57:23 for OGRE Game by
+    <li class="footer">Generated on Fri Mar 21 2014 03:57:31 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

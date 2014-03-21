@@ -11,5 +11,5 @@ var searchData=
   ['have_5fsys_5ftypes_5fh',['HAVE_SYS_TYPES_H',['../config_8h.html#a69dc70bea5d1f8bd2be9740e974fa666',1,'config.h']]],
   ['have_5funistd_5fh',['HAVE_UNISTD_H',['../config_8h.html#a219b06937831d0da94d801ab13987639',1,'config.h']]],
   ['headnode',['headNode',['../classTileGame.html#abea2ef2d450d7813d7faab4f8a3a8af6',1,'TileGame']]],
-  ['host',['host',['../structClientData.html#a80800ab1be736113d72ae920e2c206e5',1,'ClientData']]]
+  ['host',['host',['../structClientData.html#a80800ab1be736113d72ae920e2c206e5',1,'ClientData::host()'],['../structPlayerData.html#afedaac99a073198e7347fb41df68bbdf',1,'PlayerData::host()']]]
 ];

@@ -1,4 +1,4 @@
-.TH "NetManager" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
+.TH "NetManager" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -51,15 +51,15 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fILaunch a client on given/default port over given/default protocols and connected to given host server\&. \fP"
 .ti -1c
-.RI "bool \fBscanForActivity\fP ()"
+.RI "int \fBscanForActivity\fP ()"
 .br
 .RI "\fIScan once for activity on all TCP and UDP sockets\&. \fP"
 .ti -1c
-.RI "bool \fBpollForActivity\fP (Uint32 timeout_ms=5000)"
+.RI "int \fBpollForActivity\fP (Uint32 timeout_ms=5000)"
 .br
 .RI "\fIPoll for activity on all TCP and UDP sockets\&. \fP"
 .ti -1c
-.RI "void \fBmessageClients\fP (const char *buf=NULL, int len=0)"
+.RI "void \fBmessageClients\fP (\fBProtocol\fP protocol, const char *buf=NULL, int len=0)"
 .br
 .RI "\fISend a single message to all clients\&. \fP"
 .ti -1c
@@ -141,23 +141,33 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .RI "int \fBgetUDPClients\fP ()"
 .br
 .ti -1c
-.RI "void \fBaccept\fP ()"
+.RI "void \fBacceptConnections\fP ()"
 .br
+.RI "\fIAccept new clients\&. \fP"
 .ti -1c
-.RI "void \fBdeny\fP ()"
+.RI "void \fBdenyConnections\fP ()"
 .br
+.RI "\fIDeny new clients\&. \fP"
 .in -1c
 .in -1c
 .PP
-.RI "\fBMeta-functions\&.\fP"
+.RI "\fBGame-functions\&.\fP"
 .br
 
 .in +1c
 .in +1c
 .ti -1c
-.RI "bool \fBmultiPlayerInit\fP ()"
+.RI "bool \fBmultiPlayerInit\fP (int maskDepth=\fBMASK_DEPTH\fP)"
 .br
 .RI "\fIInitiates multiplayer functionality by launching the server instance\&. \fP"
+.ti -1c
+.RI "bool \fBbroadcastUDPInvitation\fP (int maskDepth=\fBMASK_DEPTH\fP)"
+.br
+.RI "\fIBroadcasts the host address via UDP\&. \fP"
+.ti -1c
+.RI "bool \fBjoinMultiPlayer\fP (std::string invitation)"
+.br
+.RI "\fIAccepts a host's broadcasted invitation\&. \fP"
 .in -1c
 .in -1c
 .SS "Public Attributes"
@@ -167,7 +177,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .RI "\fBClientData\fP \fBtcpServerData\fP"
 .br
 .ti -1c
-.RI "\fBClientData\fP \fBudpServerData\fP"
+.RI "\fBClientData\fP \fBudpServerData\fP [10]"
 .br
 .ti -1c
 .RI "std::vector< \fBClientData\fP * > \fBtcpClientData\fP"
@@ -180,7 +190,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 
 .in +1c
 .ti -1c
-.RI "enum { \fBNET_UNINITIALIZED\fP = 0, \fBNET_INITIALIZED\fP = 1, \fBNET_WAITING\fP = 2, \fBNET_RESOLVED\fP = 4, \fBNET_TCP_OPEN\fP = 8, \fBNET_UDP_OPEN\fP = 16, \fBNET_TCP_ACCEPT\fP = 32, \fBNET_UDP_BOUND\fP = 64, \fBPORT_RANDOM\fP = 0, \fBPORT_DEFAULT\fP = 51215, \fBCHANNEL_AUTO\fP = -1, \fBCHANNEL_DEFAULT\fP = 1, \fBCHANNEL_MAX\fP = 2, \fBSOCKET_TCP_MAX\fP = 12, \fBSOCKET_UDP_MAX\fP = 12, \fBSOCKET_ALL_MAX\fP = SOCKET_TCP_MAX + SOCKET_UDP_MAX, \fBSOCKET_SELF\fP = SOCKET_ALL_MAX + 1, \fBMESSAGE_COUNT\fP = 10, \fBMESSAGE_LENGTH\fP = 128 }"
+.RI "enum { \fBNET_UNINITIALIZED\fP = 0, \fBNET_INITIALIZED\fP = 1, \fBNET_WAITING\fP = 2, \fBNET_RESOLVED\fP = 4, \fBNET_TCP_OPEN\fP = 8, \fBNET_UDP_OPEN\fP = 16, \fBNET_TCP_ACCEPT\fP = 32, \fBNET_UDP_BOUND\fP = 64, \fBPORT_RANDOM\fP = 0, \fBPORT_DEFAULT\fP = 51215, \fBCHANNEL_AUTO\fP = -1, \fBCHANNEL_DEFAULT\fP = 1, \fBCHANNEL_MAX\fP = 2, \fBSOCKET_TCP_MAX\fP = 12, \fBSOCKET_UDP_MAX\fP = 12, \fBSOCKET_ALL_MAX\fP = SOCKET_TCP_MAX + SOCKET_UDP_MAX, \fBSOCKET_SELF\fP = SOCKET_ALL_MAX + 1, \fBMESSAGE_COUNT\fP = 10, \fBMESSAGE_LENGTH\fP = 128, \fBMASK_DEPTH\fP = 24 }"
 .br
 .in -1c
 .PP
@@ -332,7 +342,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fIRemove a UDP socket from SDL's observation\&. \fP"
 .ti -1c
-.RI "bool \fBcheckSockets\fP (Uint32 timeout_ms)"
+.RI "int \fBcheckSockets\fP (Uint32 timeout_ms)"
 .br
 .RI "\fIAsk SDL to scan registered sockets once or for a given time period\&. \fP"
 .ti -1c
@@ -340,7 +350,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .br
 .RI "\fIReceives a TCP socket and copies its data to the \fBClientData\fP buffer\&. \fP"
 .ti -1c
-.RI "void \fBreadUDPSocket\fP (int clientIdx)"
+.RI "int \fBreadUDPSocket\fP (int clientIdx)"
 .br
 .RI "\fIReceives a UDP socket and copies its data to the \fBClientData\fP buffer\&. \fP"
 .in -1c
@@ -501,6 +511,8 @@ Constants\&.
 \fB\fIMESSAGE_COUNT \fP\fP
 .TP
 \fB\fIMESSAGE_LENGTH \fP\fP
+.TP
+\fB\fIMASK_DEPTH \fP\fP
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "NetManager::NetManager ()"
@@ -509,8 +521,10 @@ Initialize changeable values to defaults\&. Nothing special\&.
 Standard destruction\&. Calls \fBclose()\fP\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void NetManager::accept ()"
+.SS "void NetManager::acceptConnections ()"
 
+.PP
+Accept new clients\&. 
 .SS "bool NetManager::acceptTCP (TCPsocketserver)\fC [private]\fP"
 
 .PP
@@ -624,7 +638,23 @@ True on success, false on failure\&.
 .RE
 .PP
 
-.SS "bool NetManager::checkSockets (Uint32timeout_ms)\fC [private]\fP"
+.SS "bool NetManager::broadcastUDPInvitation (intmaskDepth = \fC\fBMASK_DEPTH\fP\fP)"
+
+.PP
+Broadcasts the host address via UDP\&. Isolates the UDP broadcast from \fBmultiPlayerInit()\fP so that it can be called on a loop for continuous invitation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaskDepth\fP The depth of subnet bits to preserve\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the broadcast: true if the server receives its own packet\&. 
+.RE
+.PP
+
+.SS "int NetManager::checkSockets (Uint32timeout_ms)\fC [private]\fP"
 
 .PP
 Ask SDL to scan registered sockets once or for a given time period\&. This function will automatically handle all activity discovered on TCP and UDP\&. New clients will be added, and data will be copied to the \fBClientData\fP buffers\&. \fIThe user should check the \fBClientData\fP arrays after calling this function!\fP Excess or unwanted clients will be rejected\&. 
@@ -702,8 +732,10 @@ An allocated and filled UDPpacket\&.
 .RE
 .PP
 
-.SS "void NetManager::deny ()"
+.SS "void NetManager::denyConnections ()"
 
+.PP
+Deny new clients\&. 
 .SS "void NetManager::dropClient (\fBProtocol\fPprotocol, Uint32host)"
 
 .PP
@@ -836,6 +868,22 @@ The decimal-separated string representation\&.
 .RE
 .PP
 
+.SS "bool NetManager::joinMultiPlayer (std::stringinvitation)"
+
+.PP
+Accepts a host's broadcasted invitation\&. Stops the dummy server and reinitializes as a client against the target host\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinvitation\fP The host's IP address from the UDP packet\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of starting the client against the target host\&. 
+.RE
+.PP
+
 .SS "\fBConnectionInfo\fP * NetManager::lookupClient (Uint32host, boolcreate)\fC [private]\fP"
 
 .PP
@@ -876,13 +924,15 @@ Send a single message to a single client over a single protocol\&. Must be runni
 .RE
 .PP
 
-.SS "void NetManager::messageClients (const char *buf = \fCNULL\fP, intlen = \fC0\fP)"
+.SS "void NetManager::messageClients (\fBProtocol\fPprotocol, const char *buf = \fCNULL\fP, intlen = \fC0\fP)"
 
 .PP
 Send a single message to all clients\&. Must be running as a server to call this function\&. If no arguments are given, it will pull from each client's \fBClientData\fP \fBinput\fP field\&. 
 .PP
 \fBParameters:\fP
 .RS 4
+\fIprotocol\fP TCP, UDP, or ALL as given by PROTOCOL_XXX enum value\&. 
+.br
 \fIbuf\fP Manually given data buffer\&. Default: NULL\&. 
 .br
 \fIlen\fP Length of given buffer\&. Default: 0\&. 
@@ -896,16 +946,23 @@ Send a single message to the server\&. Must be running as a client to call this 
 .PP
 \fBParameters:\fP
 .RS 4
+\fIprotocol\fP TCP, UDP, or ALL as given by PROTOCOL_XXX enum value\&. 
+.br
 \fIbuf\fP Manually given data buffer\&. Default: NULL\&. 
 .br
 \fIlen\fP Length of given buffer\&. Default: 0\&. 
 .RE
 .PP
 
-.SS "bool NetManager::multiPlayerInit ()"
+.SS "bool NetManager::multiPlayerInit (intmaskDepth = \fC\fBMASK_DEPTH\fP\fP)"
 
 .PP
 Initiates multiplayer functionality by launching the server instance\&. Adds the TCP protocol to this instance and enables acceptance of new clients\&. Then the local IP address is retrieved and broadcasted to a /24 mask of itself\&. The clients will respond and register automatically on the server\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaskDepth\fP The depth of subnet bits to preserve\&. 
+.RE
 .PP
 \fBReturns:\fP
 .RS 4
@@ -1001,7 +1058,7 @@ True on success, false on failure\&.
 .RE
 .PP
 
-.SS "bool NetManager::pollForActivity (Uint32timeout_ms = \fC5000\fP)"
+.SS "int NetManager::pollForActivity (Uint32timeout_ms = \fC5000\fP)"
 
 .PP
 Poll for activity on all TCP and UDP sockets\&. If activity is detected, it will be automatically handled according to its protocol and the server or client configuration\&. New clients and data will be processed before this function returns\&. If the return is \fBtrue\fP, the \fI user should immediately scan the external MessageInfo bins \fP for newly output data\&. 
@@ -1069,7 +1126,7 @@ Receives a TCP socket and copies its data to the \fBClientData\fP buffer\&. \fBP
 .RE
 .PP
 
-.SS "void NetManager::readUDPSocket (intclientIdx)\fC [private]\fP"
+.SS "int NetManager::readUDPSocket (intclientIdx)\fC [private]\fP"
 
 .PP
 Receives a UDP socket and copies its data to the \fBClientData\fP buffer\&. Because many channels may be bound to a single socket, the vector versions of UDPpacket and udpRecv are used to gather anything and everything that might arrive in one sweep of the socket\&. New clients are added, if possible\&. 
@@ -1178,7 +1235,7 @@ True on success, false on failure\&.
 .RE
 .PP
 
-.SS "bool NetManager::scanForActivity ()"
+.SS "int NetManager::scanForActivity ()"
 
 .PP
 Scan once for activity on all TCP and UDP sockets\&. This calls pollForActivity with a time of 0 milliseconds (instant)\&. 
@@ -1454,7 +1511,7 @@ Register a UDP socket to be watched for activity by SDL\&. \fBParameters:\fP
 
 .SS "std::vector<\fBClientData\fP *> NetManager::udpClientData"
 
-.SS "\fBClientData\fP NetManager::udpServerData"
+.SS "\fBClientData\fP NetManager::udpServerData[10]"
 
 .SS "std::vector<UDPsocket> NetManager::udpSockets\fC [private]\fP"
 

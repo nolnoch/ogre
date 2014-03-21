@@ -220,6 +220,7 @@ int NetManager::scanForActivity() {
  *
  * Must be running as a server to call this function. If no arguments are given,
  * it will pull from each client's ClientData \b input field.
+ * @param protocol TCP, UDP, or ALL as given by PROTOCOL_XXX enum value.
  * @param buf Manually given data buffer. Default: NULL.
  * @param len Length of given buffer. Default: 0.
  */
@@ -281,6 +282,7 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
  *
  * Must be running as a client to call this function. If no arguments are given,
  * it will pull from the server's ClientData \b input field.
+ * @param protocol TCP, UDP, or ALL as given by PROTOCOL_XXX enum value.
  * @param buf Manually given data buffer. Default: NULL.
  * @param len Length of given buffer. Default: 0.
  */
@@ -673,6 +675,7 @@ void NetManager::denyConnections() {
  * Adds the TCP protocol to this instance and enables acceptance of new clients.
  * Then the local IP address is retrieved and broadcasted to a /24 mask of
  * itself. The clients will respond and register automatically on the server.
+ * @param maskDepth The depth of subnet bits to preserve.
  * @return Success of the broadcast: true if the server receives its own packet.
  */
 bool NetManager::multiPlayerInit(int maskDepth) {
@@ -687,6 +690,14 @@ bool NetManager::multiPlayerInit(int maskDepth) {
   return broadcastUDPInvitation(maskDepth);
 }
 
+/**
+ * @brief Broadcasts the host address via UDP.
+ *
+ * Isolates the UDP broadcast from multiPlayerInit() so that it can be called
+ * on a loop for continuous invitation.
+ * @param maskDepth The depth of subnet bits to preserve.
+ * @return Success of the broadcast: true if the server receives its own packet.
+ */
 bool NetManager::broadcastUDPInvitation(int maskDepth) {
   std::ostringstream broadcast;
   std::string data;
@@ -706,6 +717,13 @@ bool NetManager::broadcastUDPInvitation(int maskDepth) {
   return scanForActivity();
 }
 
+/**
+ * @brief Accepts a host's broadcasted invitation.
+ *
+ * Stops the dummy server and reinitializes as a client against the target host.
+ * @param invitation The host's IP address from the UDP packet.
+ * @return Success of starting the client against the target host.
+ */
 bool NetManager::joinMultiPlayer(std::string invitation) {
   std::string svrAddr = invitation.substr(STR_OPEN.length());
   stopServer();

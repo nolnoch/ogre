@@ -1,4 +1,4 @@
-.TH "TileGame.h" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
+.TH "TileGame.h" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,12 +18,24 @@ TileGame.h \-
 .br
 \fC#include <vector>\fP
 .br
+\fC#include <string>\fP
+.br
 
 .SS "Classes"
 
 .in +1c
 .ti -1c
+.RI "struct \fBPlayerData\fP"
+.br
+.ti -1c
 .RI "class \fBTileGame\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "const Ogre::Quaternion \fBRING_FLIP\fP (Ogre::Degree(90), Ogre::Vector3::UNIT_X)"
 .br
 .in -1c
 .SS "Variables"
@@ -44,7 +56,14 @@ TileGame.h \-
 .ti -1c
 .RI "static const int \fBTILE_WIDTH\fP = \fBWALL_SIZE\fP / \fBNUM_TILES_ROW\fP"
 .br
+.ti -1c
+.RI "int \fBticks\fP = 0"
+.br
 .in -1c
+.SH "Function Documentation"
+.PP 
+.SS "const Ogre::Quaternion RING_FLIP (Ogre::Degree90, Ogre::Vector3::UNIT_X)"
+
 .SH "Variable Documentation"
 .PP 
 .SS "const int NUM_TILES_ROW = 5\fC [static]\fP"
@@ -52,6 +71,8 @@ TileGame.h \-
 .SS "const int NUM_TILES_WALL = \fBNUM_TILES_ROW\fP * \fBNUM_TILES_ROW\fP\fC [static]\fP"
 
 .SS "const int PLANE_DIST = \fBWALL_SIZE\fP / 2\fC [static]\fP"
+
+.SS "int ticks = 0"
 
 .SS "const int TILE_WIDTH = \fBWALL_SIZE\fP / \fBNUM_TILES_ROW\fP\fC [static]\fP"
 

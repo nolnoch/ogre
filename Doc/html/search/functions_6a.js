@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['joinserver',['joinServer',['../classTileGame.html#a529758a31f24d19ab735fc6955511f5a',1,'TileGame']]]
+  ['joinmultiplayer',['joinMultiPlayer',['../classNetManager.html#a42ee979c13d39ff6ec2ffbfd7c8f6d2a',1,'NetManager']]]
 ];

@@ -102,6 +102,7 @@ $(document).ready(function(){initNavTree('TileGame_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">TileGame.h File Reference</div>  </div>
@@ -113,13 +114,21 @@ $(document).ready(function(){initNavTree('TileGame_8h.html','');});
 <code>#include &quot;<a class="el" href="NetManager_8h_source.html">NetManager.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="CameraMan_8h_source.html">CameraMan.h</a>&quot;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
 </div>
 <p><a href="TileGame_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPlayerData.html">PlayerData</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html">TileGame</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac594719aaa5c567b84bce2c4ce100446"><td class="memItemLeft" align="right" valign="top">const Ogre::Quaternion&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TileGame_8h.html#ac594719aaa5c567b84bce2c4ce100446">RING_FLIP</a> (Ogre::Degree(90), Ogre::Vector3::UNIT_X)</td></tr>
+<tr class="separator:ac594719aaa5c567b84bce2c4ce100446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -133,7 +142,36 @@ Variables</h2></td></tr>
 <tr class="separator:a9886187819d57faaaf244a02b0ec4f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9308a8ccab88ca272b896567bf38e736"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TileGame_8h.html#a9308a8ccab88ca272b896567bf38e736">TILE_WIDTH</a> = <a class="el" href="TileGame_8h.html#afa6282f16d0eef0153ea87002008628a">WALL_SIZE</a> / <a class="el" href="TileGame_8h.html#a1ee1f1650c9b3637a34b45af7bc9571c">NUM_TILES_ROW</a></td></tr>
 <tr class="separator:a9308a8ccab88ca272b896567bf38e736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d0065299615176169ceac2c65f38365"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TileGame_8h.html#a8d0065299615176169ceac2c65f38365">ticks</a> = 0</td></tr>
+<tr class="separator:a8d0065299615176169ceac2c65f38365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ac594719aaa5c567b84bce2c4ce100446"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Ogre::Quaternion RING_FLIP </td>
+          <td>(</td>
+          <td class="paramtype">Ogre::&#160;</td>
+          <td class="paramname"><em>Degree</em>90, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Ogre::Vector3::UNIT_X&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a class="anchor" id="a1ee1f1650c9b3637a34b45af7bc9571c"></a>
 <div class="memitem">
@@ -195,6 +233,18 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8d0065299615176169ceac2c65f38365"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ticks = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a9308a8ccab88ca272b896567bf38e736"></a>
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +291,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="TileGame_8h.html">TileGame.h</a></li>
-    <li class="footer">Generated on Thu Mar 13 2014 04:57:23 for OGRE Game by
+    <li class="footer">Generated on Fri Mar 21 2014 03:57:31 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

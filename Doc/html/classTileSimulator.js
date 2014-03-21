@@ -4,6 +4,7 @@ var classTileSimulator =
     [ "~TileSimulator", "classTileSimulator.html#ae888f7fa1ad73f5876edd70719e99e5c", null ],
     [ "addBallShape", "classTileSimulator.html#ad1db783060a2d2af92e614042cab0767", null ],
     [ "addTile", "classTileSimulator.html#af5290bb6e13b9c9dccced4d275b7cac7", null ],
+    [ "clearTiles", "classTileSimulator.html#a7a2fafd2bfe81f55fa760d4d02d55066", null ],
     [ "initSimulator", "classTileSimulator.html#a952f2493568e720f37331119084f9dd3", null ],
     [ "setBallManager", "classTileSimulator.html#a6c90f655f570b9c80642007c6c97f1aa", null ],
     [ "simulateStep", "classTileSimulator.html#ae944141e1051b803018d6c4af47f2df9", null ],

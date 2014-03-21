@@ -1,4 +1,4 @@
-.TH "ConnectionInfo" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
+.TH "ConnectionInfo" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,37 +12,37 @@ ConnectionInfo \-
 
 .in +1c
 .ti -1c
-.RI "short \fBtcpSocketIdx\fP"
+.RI "IPaddress \fBaddress\fP"
 .br
-.RI "\fIIndex into the tcpSocket vector\&. \fP"
-.ti -1c
-.RI "short \fBudpSocketIdx\fP"
-.br
-.RI "\fIIndex into the udpSocket vector\&. \fP"
-.ti -1c
-.RI "short \fBtcpDataIdx\fP"
-.br
-.RI "\fIIndex into the tcpClientData vector\&. \fP"
-.ti -1c
-.RI "short \fBudpDataIdx\fP"
-.br
-.RI "\fIIndex into the udpClientData vector\&. \fP"
-.ti -1c
-.RI "short \fBudpChannel\fP"
-.br
-.RI "\fIThe associated UDP channel\&. \fP"
-.ti -1c
-.RI "short \fBclientIdx\fP"
-.br
-.RI "\fIIndex into the tcpClients vector\&. \fP"
+.RI "\fIThis connection's IPaddress\&. \fP"
 .ti -1c
 .RI "\fBProtocol\fP \fBprotocols\fP"
 .br
 .RI "\fIAssociated protocols\&. \fP"
 .ti -1c
-.RI "IPaddress \fBaddress\fP"
+.RI "int \fBtcpSocketIdx\fP"
 .br
-.RI "\fIThis connection's IPaddress\&. \fP"
+.RI "\fIIndex into the tcpSocket vector\&. \fP"
+.ti -1c
+.RI "int \fBudpSocketIdx\fP"
+.br
+.RI "\fIIndex into the udpSocket vector\&. \fP"
+.ti -1c
+.RI "int \fBtcpDataIdx\fP"
+.br
+.RI "\fIIndex into the tcpClientData vector\&. \fP"
+.ti -1c
+.RI "int \fBudpDataIdx\fP"
+.br
+.RI "\fIIndex into the udpClientData vector\&. \fP"
+.ti -1c
+.RI "int \fBudpChannel\fP"
+.br
+.RI "\fIThe associated UDP channel\&. \fP"
+.ti -1c
+.RI "int \fBclientIdx\fP"
+.br
+.RI "\fIIndex into the tcpClients vector\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -53,7 +53,7 @@ Internal state information packaging\&.
 
 .PP
 This connection's IPaddress\&. 
-.SS "short ConnectionInfo::clientIdx"
+.SS "int ConnectionInfo::clientIdx"
 
 .PP
 Index into the tcpClients vector\&. 
@@ -61,23 +61,23 @@ Index into the tcpClients vector\&.
 
 .PP
 Associated protocols\&. 
-.SS "short ConnectionInfo::tcpDataIdx"
+.SS "int ConnectionInfo::tcpDataIdx"
 
 .PP
 Index into the tcpClientData vector\&. 
-.SS "short ConnectionInfo::tcpSocketIdx"
+.SS "int ConnectionInfo::tcpSocketIdx"
 
 .PP
 Index into the tcpSocket vector\&. 
-.SS "short ConnectionInfo::udpChannel"
+.SS "int ConnectionInfo::udpChannel"
 
 .PP
 The associated UDP channel\&. 
-.SS "short ConnectionInfo::udpDataIdx"
+.SS "int ConnectionInfo::udpDataIdx"
 
 .PP
 Index into the udpClientData vector\&. 
-.SS "short ConnectionInfo::udpSocketIdx"
+.SS "int ConnectionInfo::udpSocketIdx"
 
 .PP
 Index into the udpSocket vector\&. 

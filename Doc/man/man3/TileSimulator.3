@@ -1,4 +1,4 @@
-.TH "TileSimulator" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
+.TH "TileSimulator" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -34,6 +34,9 @@ Inherits \fBSimulator\fP\&.
 .ti -1c
 .RI "void \fBsetBallManager\fP (\fBBallManager\fP *bM)"
 .br
+.ti -1c
+.RI "void \fBclearTiles\fP ()"
+.br
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -61,6 +64,8 @@ Inherits \fBSimulator\fP\&.
 .SS "btRigidBody * TileSimulator::addBallShape (Ogre::SceneNode *n, intr)\fC [virtual]\fP"
 
 .SS "btRigidBody * TileSimulator::addTile (Ogre::SceneNode *n, intx, inty, intz)"
+
+.SS "void TileSimulator::clearTiles ()"
 
 .SS "void TileSimulator::initSimulator ()\fC [virtual]\fP"
 

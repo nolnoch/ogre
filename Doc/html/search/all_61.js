@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['accept',['accept',['../classNetManager.html#a50f4e84864428bc19f0a06109a8b7b30',1,'NetManager']]],
+  ['acceptconnections',['acceptConnections',['../classNetManager.html#ad29fa15de0d876d7bd12558faa2afdc9',1,'NetManager']]],
   ['acceptnewclients',['acceptNewClients',['../classNetManager.html#a67d25cdb043a462709f1d29e071a5ce8',1,'NetManager']]],
   ['accepttcp',['acceptTCP',['../classNetManager.html#add2b0af706ca9c983f58c308f0577e5c',1,'NetManager']]],
   ['activetile',['activetile',['../TileSimulator_8h.html#a1fdc3b5d68c7dd5a0935219f2d26c9ab',1,'TileSimulator.h']]],

@@ -15,5 +15,6 @@ var searchData=
   ['bindudpsocket',['bindUDPSocket',['../classNetManager.html#a6c0ceb2fde3906dfe2e8d8527aae7a00',1,'NetManager']]],
   ['boing',['boing',['../classTileGame.html#a796c40847db5cd687417574064fbd90d',1,'TileGame']]],
   ['boxbound',['boxBound',['../classTileGame.html#a421f8bc0f90cf4acfa209bef5447e5eb',1,'TileGame']]],
+  ['broadcastudpinvitation',['broadcastUDPInvitation',['../classNetManager.html#a3a229856dc69831f0fb80b20c17fbebf',1,'NetManager']]],
   ['broadphase',['broadphase',['../classSimulator.html#abf328154008d231ebff7a42a58791e5b',1,'Simulator']]]
 ];

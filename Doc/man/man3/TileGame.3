@@ -1,4 +1,4 @@
-.TH "TileGame" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
+.TH "TileGame" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -60,7 +60,7 @@ Inherits \fBBaseGame\fP\&.
 .RI "virtual bool \fBmouseReleased\fP (const OIS::MouseEvent &arg, OIS::MouseButtonID id)"
 .br
 .ti -1c
-.RI "void \fBjoinServer\fP ()"
+.RI "void \fBshootBall\fP (int x, int y, int z, double force)"
 .br
 .ti -1c
 .RI "void \fBballSetup\fP (int cubeSize)"
@@ -75,7 +75,25 @@ Inherits \fBBaseGame\fP\&.
 .RI "void \fBsetLevel\fP (int num)"
 .br
 .ti -1c
+.RI "void \fBdrawPlayers\fP ()"
+.br
+.ti -1c
+.RI "void \fBmovePlayers\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdatePlayers\fP (double force=0, Ogre::Vector3 dir=Ogre::Vector3::ZERO)"
+.br
+.ti -1c
+.RI "void \fBupdateServer\fP (double force=0, Ogre::Vector3 dir=Ogre::Vector3::ZERO)"
+.br
+.ti -1c
 .RI "void \fBstartMultiplayer\fP ()"
+.br
+.ti -1c
+.RI "void \fBnotifyPlayers\fP ()"
+.br
+.ti -1c
+.RI "void \fBnotifyServer\fP ()"
 .br
 .ti -1c
 .RI "void \fBsimonSaysAnim\fP ()"
@@ -89,6 +107,9 @@ Inherits \fBBaseGame\fP\&.
 .br
 .ti -1c
 .RI "Ogre::Timer \fBtimer\fP"
+.br
+.ti -1c
+.RI "Ogre::Timer * \fBnetTimer\fP"
 .br
 .ti -1c
 .RI "Ogre::SceneNode * \fBheadNode\fP"
@@ -136,13 +157,37 @@ Inherits \fBBaseGame\fP\&.
 .RI "std::deque< Ogre::SceneNode * > \fBtileSceneNodes\fP"
 .br
 .ti -1c
+.RI "std::vector< Ogre::Entity * > \fBplayerEntities\fP"
+.br
+.ti -1c
+.RI "std::vector< Ogre::SceneNode * > \fBplayerNodes\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBPlayerData\fP * > \fBplayerData\fP"
+.br
+.ti -1c
 .RI "OgreBites::ParamsPanel * \fBscorePanel\fP"
+.br
+.ti -1c
+.RI "OgreBites::ParamsPanel * \fBplayersWaitingPanel\fP"
 .br
 .ti -1c
 .RI "OgreBites::Label * \fBcongratsPanel\fP"
 .br
 .ti -1c
 .RI "OgreBites::Label * \fBchargePanel\fP"
+.br
+.ti -1c
+.RI "OgreBites::Label * \fBclientAcceptDescPanel\fP"
+.br
+.ti -1c
+.RI "OgreBites::Label * \fBclientAcceptOptPanel\fP"
+.br
+.ti -1c
+.RI "OgreBites::Label * \fBserverStartPanel\fP"
+.br
+.ti -1c
+.RI "Ogre::Overlay * \fBcrosshairOverlay\fP"
 .br
 .ti -1c
 .RI "\fBTileSimulator\fP * \fBsim\fP"
@@ -196,6 +241,9 @@ Inherits \fBBaseGame\fP\&.
 .RI "bool \fBinviteAccepted\fP"
 .br
 .ti -1c
+.RI "bool \fBmultiplayerStarted\fP"
+.br
+.ti -1c
 .RI "int \fBscore\fP"
 .br
 .ti -1c
@@ -215,6 +263,9 @@ Inherits \fBBaseGame\fP\&.
 .br
 .ti -1c
 .RI "int \fBchargeShot\fP"
+.br
+.ti -1c
+.RI "int \fBnPlayers\fP"
 .br
 .ti -1c
 .RI "double \fBslowdownval\fP"
@@ -249,6 +300,8 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .PP
 Implements \fBBaseGame\fP\&.
+.SS "void TileGame::drawPlayers ()\fC [inline]\fP, \fC [protected]\fP"
+
 .SS "bool TileGame::frameRenderingQueued (const Ogre::FrameEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
 
 .PP
@@ -260,8 +313,6 @@ Reimplemented from \fBBaseGame\fP\&.
 .SS "Ogre::Timer* TileGame::getTimer (void)\fC [inline]\fP"
 
 .SS "Ogre::RenderWindow* TileGame::getWindow (void)\fC [inline]\fP"
-
-.SS "void TileGame::joinServer ()\fC [inline]\fP, \fC [protected]\fP"
 
 .SS "bool TileGame::keyPressed (const OIS::KeyEvent &arg)\fC [protected]\fP, \fC [virtual]\fP"
 
@@ -279,11 +330,23 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .PP
 Reimplemented from \fBBaseGame\fP\&.
+.SS "void TileGame::movePlayers ()\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "void TileGame::notifyPlayers ()\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "void TileGame::notifyServer ()\fC [inline]\fP, \fC [protected]\fP"
+
 .SS "void TileGame::setLevel (intnum)\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "void TileGame::shootBall (intx, inty, intz, doubleforce)\fC [inline]\fP, \fC [protected]\fP"
 
 .SS "void TileGame::simonSaysAnim ()\fC [inline]\fP, \fC [protected]\fP"
 
 .SS "void TileGame::startMultiplayer ()\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "void TileGame::updatePlayers (doubleforce = \fC0\fP, Ogre::Vector3dir = \fCOgre::Vector3::ZERO\fP)\fC [inline]\fP, \fC [protected]\fP"
+
+.SS "void TileGame::updateServer (doubleforce = \fC0\fP, Ogre::Vector3dir = \fCOgre::Vector3::ZERO\fP)\fC [inline]\fP, \fC [protected]\fP"
 
 .SH "Member Data Documentation"
 .PP 
@@ -297,13 +360,19 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "Ogre::PlaneBoundedVolume TileGame::boxBound\fC [protected]\fP"
 
-.SS "OgreBites::Label* TileGame::chargePanel\fC [protected]\fP"
+.SS "OgreBites::Label * TileGame::chargePanel\fC [protected]\fP"
 
 .SS "int TileGame::chargeShot\fC [protected]\fP"
+
+.SS "OgreBites::Label * TileGame::clientAcceptDescPanel\fC [protected]\fP"
+
+.SS "OgreBites::Label * TileGame::clientAcceptOptPanel\fC [protected]\fP"
 
 .SS "OgreBites::Label* TileGame::congratsPanel\fC [protected]\fP"
 
 .SS "bool TileGame::connected\fC [protected]\fP"
+
+.SS "Ogre::Overlay* TileGame::crosshairOverlay\fC [protected]\fP"
 
 .SS "int TileGame::currLevel\fC [protected]\fP"
 
@@ -331,21 +400,37 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "Ogre::Timer* TileGame::mTimer\fC [protected]\fP"
 
+.SS "bool TileGame::multiplayerStarted\fC [protected]\fP"
+
 .SS "\fBSoundFile\fP TileGame::music\fC [protected]\fP"
 
 .SS "bool TileGame::netActive\fC [protected]\fP"
 
 .SS "\fBNetManager\fP* TileGame::netMgr\fC [protected]\fP"
 
+.SS "Ogre::Timer * TileGame::netTimer\fC [protected]\fP"
+
+.SS "int TileGame::nPlayers\fC [protected]\fP"
+
 .SS "Ogre::Light* TileGame::panelLight\fC [protected]\fP"
 
 .SS "bool TileGame::paused\fC [protected]\fP"
+
+.SS "std::vector<\fBPlayerData\fP *> TileGame::playerData\fC [protected]\fP"
+
+.SS "std::vector<Ogre::Entity *> TileGame::playerEntities\fC [protected]\fP"
+
+.SS "std::vector<Ogre::SceneNode *> TileGame::playerNodes\fC [protected]\fP"
+
+.SS "OgreBites::ParamsPanel * TileGame::playersWaitingPanel\fC [protected]\fP"
 
 .SS "int TileGame::score\fC [protected]\fP"
 
 .SS "OgreBites::ParamsPanel* TileGame::scorePanel\fC [protected]\fP"
 
 .SS "bool TileGame::server\fC [protected]\fP"
+
+.SS "OgreBites::Label * TileGame::serverStartPanel\fC [protected]\fP"
 
 .SS "int TileGame::shotsFired\fC [protected]\fP"
 

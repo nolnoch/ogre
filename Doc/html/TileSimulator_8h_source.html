@@ -140,21 +140,22 @@ $(document).ready(function(){initNavTree('TileSimulator_8h_source.html','');});
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">virtual</span> btRigidBody* <a class="code" href="classTileSimulator.html#ad1db783060a2d2af92e614042cab0767">addBallShape</a>(Ogre::SceneNode *n, <span class="keywordtype">int</span> r);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  btRigidBody* <a class="code" href="classTileSimulator.html#af5290bb6e13b9c9dccced4d275b7cac7">addTile</a>(Ogre::SceneNode *n, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTileSimulator.html#a6c90f655f570b9c80642007c6c97f1aa">setBallManager</a>(<a class="code" href="classBallManager.html">BallManager</a> *bM);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classTileSimulator.html#abe7afed920e22486c1a19e162a601bca">tileCallback</a>(btManifoldPoint&amp; cp, <span class="keywordtype">void</span> *body0, <span class="keywordtype">void</span> *body1);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classTileSimulator.html#a58a909f82bf80b79e892f0057366af92">   41</a></span>&#160;  std::deque&lt;btRigidBody *&gt; <a class="code" href="classTileSimulator.html#a58a909f82bf80b79e892f0057366af92">tiles</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif // #ifndef __TileSimulator_h_</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTileSimulator.html#a7a2fafd2bfe81f55fa760d4d02d55066">clearTiles</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classTileSimulator.html#abe7afed920e22486c1a19e162a601bca">tileCallback</a>(btManifoldPoint&amp; cp, <span class="keywordtype">void</span> *body0, <span class="keywordtype">void</span> *body1);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classTileSimulator.html#a58a909f82bf80b79e892f0057366af92">   42</a></span>&#160;  std::deque&lt;btRigidBody *&gt; <a class="code" href="classTileSimulator.html#a58a909f82bf80b79e892f0057366af92">tiles</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif // #ifndef __TileSimulator_h_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="TileSimulator_8h.html">TileSimulator.h</a></li>
-    <li class="footer">Generated on Thu Mar 13 2014 04:57:23 for OGRE Game by
+    <li class="footer">Generated on Fri Mar 21 2014 03:57:31 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

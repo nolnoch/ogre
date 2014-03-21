@@ -1,4 +1,4 @@
-.TH "NetManager.h" 3 "Thu Mar 13 2014" "OGRE Game" \" -*- nroff -*-
+.TH "NetManager.h" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,7 +17,7 @@ Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the Uni
 .br
 \fC#include <iostream>\fP
 .br
-\fC#include <SDL/SDL_net\&.h>\fP
+\fC#include 'SDLnet/SDL_net\&.h'\fP
 .br
 
 .SS "Classes"
@@ -58,7 +58,25 @@ Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the Uni
 .RI "static const std::string \fBSTR_OPEN\fP ('TG_SERVER_OPEN')"
 .br
 .ti -1c
+.RI "static const std::string \fBSTR_ACPT\fP ('TG_SERVER_JOIN')"
+.br
+.ti -1c
 .RI "static const std::string \fBSTR_BEGIN\fP ('TG_GAME_BEGIN')"
+.br
+.ti -1c
+.RI "static const std::string \fBSTR_NXLVL\fP ('TG_NEXT_LEVEL')"
+.br
+.ti -1c
+.RI "static const std::string \fBSTR_TLHIT\fP ('TG_NEXT_TILE')"
+.br
+.ti -1c
+.RI "static const Uint32 \fBUINT_ADDPL\fP (0xFF000001)"
+.br
+.ti -1c
+.RI "static const Uint32 \fBUINT_UPDPL\fP (0xFF000010)"
+.br
+.ti -1c
+.RI "static const Uint32 \fBUINT_UPDSV\fP (0xFF000020)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -109,11 +127,23 @@ UDP bit flag\&.
 Combined bit flag\&. 
 .SH "Function Documentation"
 .PP 
+.SS "static const std::string STR_ACPT ('TG_SERVER_JOIN')\fC [static]\fP"
+
 .SS "static const std::string STR_BEGIN ('TG_GAME_BEGIN')\fC [static]\fP"
 
 .SS "static const std::string STR_DENY ('TG_SERVER_DENY')\fC [static]\fP"
 
+.SS "static const std::string STR_NXLVL ('TG_NEXT_LEVEL')\fC [static]\fP"
+
 .SS "static const std::string STR_OPEN ('TG_SERVER_OPEN')\fC [static]\fP"
+
+.SS "static const std::string STR_TLHIT ('TG_NEXT_TILE')\fC [static]\fP"
+
+.SS "static const Uint32 UINT_ADDPL (0xFF000001)\fC [static]\fP"
+
+.SS "static const Uint32 UINT_UPDPL (0xFF000010)\fC [static]\fP"
+
+.SS "static const Uint32 UINT_UPDSV (0xFF000020)\fC [static]\fP"
 
 .SH "Author"
 .PP 

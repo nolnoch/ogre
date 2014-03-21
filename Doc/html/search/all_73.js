@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['scanforactivity',['scanForActivity',['../classNetManager.html#a934ebfd8ca745a95263ba92c2ccf2b19',1,'NetManager']]],
+  ['scanforactivity',['scanForActivity',['../classNetManager.html#a2a4cfbc19eff3bb0692d704af706eb9f',1,'NetManager']]],
   ['scenemgr',['sceneMgr',['../classSimulator.html#ab5748cbb0ec57cd4922d2e88766fb8a2',1,'Simulator']]],
   ['score',['score',['../classTileGame.html#abba0100f7c52d2a9ae1bfa0f5bbee4a5',1,'TileGame']]],
   ['scorepanel',['scorePanel',['../classTileGame.html#a9a4d1b4dfacca55fdeacf454af04fa0c',1,'TileGame']]],
@@ -8,6 +8,7 @@ var searchData=
   ['sendudp',['sendUDP',['../classNetManager.html#ac0b9e9d77a598b14b6b30dc160ead039',1,'NetManager']]],
   ['sendudpv',['sendUDPV',['../classNetManager.html#a5c1d2504835ad09e97cc2fd05ed8f83a',1,'NetManager']]],
   ['server',['server',['../classTileGame.html#a8f1f5171595cb9819f47ad2c9849e810',1,'TileGame']]],
+  ['serverstartpanel',['serverStartPanel',['../classTileGame.html#a788abd4a926b8492ba5db8f4d87a41a7',1,'TileGame']]],
   ['setballmanager',['setBallManager',['../classTileSimulator.html#a6c90f655f570b9c80642007c6c97f1aa',1,'TileSimulator']]],
   ['setglobalball',['setGlobalBall',['../classBallManager.html#a7e16e93759654ab1511acf0696e49d44',1,'BallManager']]],
   ['sethost',['setHost',['../classNetManager.html#a47666370887fee3b2fa27ae7bff1065f',1,'NetManager']]],
@@ -19,6 +20,9 @@ var searchData=
   ['setupresources',['setupResources',['../classBaseGame.html#a5e0e6f03394f7d3c2a6b59e7f5f1a0ad',1,'BaseGame']]],
   ['setvolume',['setVolume',['../classSoundManager.html#a203b898b68db005daabc199622daf860',1,'SoundManager']]],
   ['setworldtransform',['setWorldTransform',['../classOgreMotionState.html#a1b923f3fb6eadf733bf3dcea718a36e0',1,'OgreMotionState']]],
+  ['shootball',['shootBall',['../classTileGame.html#a08e86412abbd596046bc2e9399dc9da8',1,'TileGame']]],
+  ['shotdir',['shotDir',['../structPlayerData.html#acab3f24dcc83136321f31dd719fb855e',1,'PlayerData']]],
+  ['shotforce',['shotForce',['../structPlayerData.html#a793f89049e5fbf15cefe903487a56265',1,'PlayerData']]],
   ['shotsfired',['shotsFired',['../classTileGame.html#a23df8d17a61584279dbec39ef31092cc',1,'TileGame']]],
   ['sim',['sim',['../classBallManager.html#a4916de0948df0af060f6ada4d21284a7',1,'BallManager::sim()'],['../classTileGame.html#a2225cb84303358e59c6093b8a999e085',1,'TileGame::sim()']]],
   ['simonsaysanim',['simonSaysAnim',['../classTileGame.html#aabd8c2eb7913022c30119846d57eaba5',1,'TileGame']]],
@@ -46,7 +50,10 @@ var searchData=
   ['stdc_5fheaders',['STDC_HEADERS',['../config_8h.html#a550e5c272cc3cf3814651721167dcd23',1,'config.h']]],
   ['stopclient',['stopClient',['../classNetManager.html#a55eb599a64a651d890641a256ab4db9a',1,'NetManager']]],
   ['stopserver',['stopServer',['../classNetManager.html#ac4d5cdb235713bea820ab5275a0da920',1,'NetManager']]],
+  ['str_5facpt',['STR_ACPT',['../NetManager_8h.html#a59af1e71042a1c1f7245b9f1355a9d49',1,'NetManager.h']]],
   ['str_5fbegin',['STR_BEGIN',['../NetManager_8h.html#a091b06ac88c35029c42a7a5d92a1ae16',1,'NetManager.h']]],
   ['str_5fdeny',['STR_DENY',['../NetManager_8h.html#a4cc69f51b723ed3756cb24529faacf94',1,'NetManager.h']]],
-  ['str_5fopen',['STR_OPEN',['../NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89',1,'NetManager.h']]]
+  ['str_5fnxlvl',['STR_NXLVL',['../NetManager_8h.html#ae26fc6d96c2e5c42864f42ae237d435f',1,'NetManager.h']]],
+  ['str_5fopen',['STR_OPEN',['../NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89',1,'NetManager.h']]],
+  ['str_5ftlhit',['STR_TLHIT',['../NetManager_8h.html#ad93bfb0e396e66ab5c3013ff12ea1ea2',1,'NetManager.h']]]
 ];

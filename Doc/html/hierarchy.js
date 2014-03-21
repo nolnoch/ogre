@@ -19,6 +19,7 @@ var hierarchy =
       [ "BaseGame", "classBaseGame.html", null ]
     ] ],
     [ "NetManager", "classNetManager.html", null ],
+    [ "PlayerData", "structPlayerData.html", null ],
     [ "SdkCameraMan", null, [
       [ "CameraMan", "classCameraMan.html", null ]
     ] ],

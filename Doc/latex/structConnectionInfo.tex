@@ -8,22 +8,22 @@
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-short \hyperlink{structConnectionInfo_a1e837b6519e7035ad689232289931e82}{tcp\-Socket\-Idx}
-\begin{DoxyCompactList}\small\item\em Index into the tcp\-Socket vector. \end{DoxyCompactList}\item 
-short \hyperlink{structConnectionInfo_ac52c36a648203e28b495cea6d7ad29ba}{udp\-Socket\-Idx}
-\begin{DoxyCompactList}\small\item\em Index into the udp\-Socket vector. \end{DoxyCompactList}\item 
-short \hyperlink{structConnectionInfo_ae74bd85133eb1b4c3cec7431c280fa13}{tcp\-Data\-Idx}
-\begin{DoxyCompactList}\small\item\em Index into the tcp\-Client\-Data vector. \end{DoxyCompactList}\item 
-short \hyperlink{structConnectionInfo_a77f71cc46ad9033a81184cae84170277}{udp\-Data\-Idx}
-\begin{DoxyCompactList}\small\item\em Index into the udp\-Client\-Data vector. \end{DoxyCompactList}\item 
-short \hyperlink{structConnectionInfo_a04b5d2e6b358b6b9337b75dbeb01197e}{udp\-Channel}
-\begin{DoxyCompactList}\small\item\em The associated U\-D\-P channel. \end{DoxyCompactList}\item 
-short \hyperlink{structConnectionInfo_a57fe4cd91d04afd5f802957aef5cd835}{client\-Idx}
-\begin{DoxyCompactList}\small\item\em Index into the tcp\-Clients vector. \end{DoxyCompactList}\item 
+I\-Paddress \hyperlink{structConnectionInfo_af014df0a6739ea51a6a532ec352f7848}{address}
+\begin{DoxyCompactList}\small\item\em This connection's I\-Paddress. \end{DoxyCompactList}\item 
 \hyperlink{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{Protocol} \hyperlink{structConnectionInfo_ad2f23f71b9b3e1a1ac56da62b7ef8ff0}{protocols}
 \begin{DoxyCompactList}\small\item\em Associated protocols. \end{DoxyCompactList}\item 
-I\-Paddress \hyperlink{structConnectionInfo_af014df0a6739ea51a6a532ec352f7848}{address}
-\begin{DoxyCompactList}\small\item\em This connection's I\-Paddress. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \hyperlink{structConnectionInfo_af7e2bde1acff96bc414aae0b7db9c6fe}{tcp\-Socket\-Idx}
+\begin{DoxyCompactList}\small\item\em Index into the tcp\-Socket vector. \end{DoxyCompactList}\item 
+int \hyperlink{structConnectionInfo_a976929d9eef61ec3aee6984376e3a3cc}{udp\-Socket\-Idx}
+\begin{DoxyCompactList}\small\item\em Index into the udp\-Socket vector. \end{DoxyCompactList}\item 
+int \hyperlink{structConnectionInfo_a5e710f945112e21b4f9d21f3ffff8ebf}{tcp\-Data\-Idx}
+\begin{DoxyCompactList}\small\item\em Index into the tcp\-Client\-Data vector. \end{DoxyCompactList}\item 
+int \hyperlink{structConnectionInfo_a765196ed390588341d9dc01606f5a6ed}{udp\-Data\-Idx}
+\begin{DoxyCompactList}\small\item\em Index into the udp\-Client\-Data vector. \end{DoxyCompactList}\item 
+int \hyperlink{structConnectionInfo_ac364b6c833eadbb548fdde4aa1cb691e}{udp\-Channel}
+\begin{DoxyCompactList}\small\item\em The associated U\-D\-P channel. \end{DoxyCompactList}\item 
+int \hyperlink{structConnectionInfo_aaa20ce6a0f056ef96bbca7282f34dd4c}{client\-Idx}
+\begin{DoxyCompactList}\small\item\em Index into the tcp\-Clients vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -37,9 +37,9 @@ Internal state information packaging.
 
 This connection's I\-Paddress. 
 
-\hypertarget{structConnectionInfo_a57fe4cd91d04afd5f802957aef5cd835}{\index{Connection\-Info@{Connection\-Info}!client\-Idx@{client\-Idx}}
+\hypertarget{structConnectionInfo_aaa20ce6a0f056ef96bbca7282f34dd4c}{\index{Connection\-Info@{Connection\-Info}!client\-Idx@{client\-Idx}}
 \index{client\-Idx@{client\-Idx}!ConnectionInfo@{Connection\-Info}}
-\subsubsection[{client\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}short Connection\-Info\-::client\-Idx}}\label{structConnectionInfo_a57fe4cd91d04afd5f802957aef5cd835}
+\subsubsection[{client\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}int Connection\-Info\-::client\-Idx}}\label{structConnectionInfo_aaa20ce6a0f056ef96bbca7282f34dd4c}
 
 
 Index into the tcp\-Clients vector. 
@@ -51,37 +51,37 @@ Index into the tcp\-Clients vector.
 
 Associated protocols. 
 
-\hypertarget{structConnectionInfo_ae74bd85133eb1b4c3cec7431c280fa13}{\index{Connection\-Info@{Connection\-Info}!tcp\-Data\-Idx@{tcp\-Data\-Idx}}
+\hypertarget{structConnectionInfo_a5e710f945112e21b4f9d21f3ffff8ebf}{\index{Connection\-Info@{Connection\-Info}!tcp\-Data\-Idx@{tcp\-Data\-Idx}}
 \index{tcp\-Data\-Idx@{tcp\-Data\-Idx}!ConnectionInfo@{Connection\-Info}}
-\subsubsection[{tcp\-Data\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}short Connection\-Info\-::tcp\-Data\-Idx}}\label{structConnectionInfo_ae74bd85133eb1b4c3cec7431c280fa13}
+\subsubsection[{tcp\-Data\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}int Connection\-Info\-::tcp\-Data\-Idx}}\label{structConnectionInfo_a5e710f945112e21b4f9d21f3ffff8ebf}
 
 
 Index into the tcp\-Client\-Data vector. 
 
-\hypertarget{structConnectionInfo_a1e837b6519e7035ad689232289931e82}{\index{Connection\-Info@{Connection\-Info}!tcp\-Socket\-Idx@{tcp\-Socket\-Idx}}
+\hypertarget{structConnectionInfo_af7e2bde1acff96bc414aae0b7db9c6fe}{\index{Connection\-Info@{Connection\-Info}!tcp\-Socket\-Idx@{tcp\-Socket\-Idx}}
 \index{tcp\-Socket\-Idx@{tcp\-Socket\-Idx}!ConnectionInfo@{Connection\-Info}}
-\subsubsection[{tcp\-Socket\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}short Connection\-Info\-::tcp\-Socket\-Idx}}\label{structConnectionInfo_a1e837b6519e7035ad689232289931e82}
+\subsubsection[{tcp\-Socket\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}int Connection\-Info\-::tcp\-Socket\-Idx}}\label{structConnectionInfo_af7e2bde1acff96bc414aae0b7db9c6fe}
 
 
 Index into the tcp\-Socket vector. 
 
-\hypertarget{structConnectionInfo_a04b5d2e6b358b6b9337b75dbeb01197e}{\index{Connection\-Info@{Connection\-Info}!udp\-Channel@{udp\-Channel}}
+\hypertarget{structConnectionInfo_ac364b6c833eadbb548fdde4aa1cb691e}{\index{Connection\-Info@{Connection\-Info}!udp\-Channel@{udp\-Channel}}
 \index{udp\-Channel@{udp\-Channel}!ConnectionInfo@{Connection\-Info}}
-\subsubsection[{udp\-Channel}]{\setlength{\rightskip}{0pt plus 5cm}short Connection\-Info\-::udp\-Channel}}\label{structConnectionInfo_a04b5d2e6b358b6b9337b75dbeb01197e}
+\subsubsection[{udp\-Channel}]{\setlength{\rightskip}{0pt plus 5cm}int Connection\-Info\-::udp\-Channel}}\label{structConnectionInfo_ac364b6c833eadbb548fdde4aa1cb691e}
 
 
 The associated U\-D\-P channel. 
 
-\hypertarget{structConnectionInfo_a77f71cc46ad9033a81184cae84170277}{\index{Connection\-Info@{Connection\-Info}!udp\-Data\-Idx@{udp\-Data\-Idx}}
+\hypertarget{structConnectionInfo_a765196ed390588341d9dc01606f5a6ed}{\index{Connection\-Info@{Connection\-Info}!udp\-Data\-Idx@{udp\-Data\-Idx}}
 \index{udp\-Data\-Idx@{udp\-Data\-Idx}!ConnectionInfo@{Connection\-Info}}
-\subsubsection[{udp\-Data\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}short Connection\-Info\-::udp\-Data\-Idx}}\label{structConnectionInfo_a77f71cc46ad9033a81184cae84170277}
+\subsubsection[{udp\-Data\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}int Connection\-Info\-::udp\-Data\-Idx}}\label{structConnectionInfo_a765196ed390588341d9dc01606f5a6ed}
 
 
 Index into the udp\-Client\-Data vector. 
 
-\hypertarget{structConnectionInfo_ac52c36a648203e28b495cea6d7ad29ba}{\index{Connection\-Info@{Connection\-Info}!udp\-Socket\-Idx@{udp\-Socket\-Idx}}
+\hypertarget{structConnectionInfo_a976929d9eef61ec3aee6984376e3a3cc}{\index{Connection\-Info@{Connection\-Info}!udp\-Socket\-Idx@{udp\-Socket\-Idx}}
 \index{udp\-Socket\-Idx@{udp\-Socket\-Idx}!ConnectionInfo@{Connection\-Info}}
-\subsubsection[{udp\-Socket\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}short Connection\-Info\-::udp\-Socket\-Idx}}\label{structConnectionInfo_ac52c36a648203e28b495cea6d7ad29ba}
+\subsubsection[{udp\-Socket\-Idx}]{\setlength{\rightskip}{0pt plus 5cm}int Connection\-Info\-::udp\-Socket\-Idx}}\label{structConnectionInfo_a976929d9eef61ec3aee6984376e3a3cc}
 
 
 Index into the udp\-Socket vector. 
