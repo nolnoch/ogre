@@ -1626,7 +1626,7 @@ void NetManager::rejectTCPClient(TCPsocket sock) {
  * @brief Rejects a prospective UDP client.
  *
  * Sends a rejection message and frees the socket.
- * @param sock The rejectee's associated packet.
+ * @param pack The rejectee's associated packet.
  */
 void NetManager::rejectUDPClient(UDPpacket *pack) {
   UDPpacket *packet;
