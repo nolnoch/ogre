@@ -432,10 +432,18 @@ protected:
     single.shotForce = force;
     single.shotDir = dir;
     single.velocity = mCameraMan->getVelocity();
-    memcpy(netMgr->udpServerData[0].input, &UINT_UPDSV, tagSize);
-    memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
-    netMgr->udpServerData[0].updated = true;
-    netMgr->messageServer(PROTOCOL_UDP);
+
+    if (force) {
+      memcpy(netMgr->tcpServerData.input, &STR_BLSHT, STR_BLSHT.size());
+      memcpy((netMgr->tcpServerData.input + STR_BLSHT.size() + 1), &single, pdSize);
+      netMgr->tcpServerData.updated = true;
+      netMgr->messageServer(PROTOCOL_TCP);
+    } else {
+      memcpy(netMgr->udpServerData[0].input, &UINT_UPDSV, tagSize);
+      memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
+      netMgr->udpServerData[0].updated = true;
+      netMgr->messageServer(PROTOCOL_UDP);
+    }
   }
 
   void startMultiplayer() {

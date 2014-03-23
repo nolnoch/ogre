@@ -448,7 +448,16 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             // Process TCP messages.
             if (netMgr->tcpClientData[i]->updated) {
               cmd = std::string(netMgr->tcpClientData[i]->output);
-              // Compare cmd to command tag or use raw data.
+
+              if (0 == cmd.find(STR_BLSHT)) {
+                char *buf = cmd.c_str();
+                Uint32 *data = (Uint32 *) buf + STR_BLSHT.length() + 1;
+                for (j = 0; j < nPlayers; j++) {
+                  if (data[0] == playerData[j]->host) {
+                    modifyPlayer(j, data);
+                  }
+                }
+              }
 
               netMgr->tcpClientData[i]->updated = false;
             }
