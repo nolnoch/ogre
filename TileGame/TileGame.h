@@ -113,7 +113,7 @@ protected:
 
 
   void shootBall(int idx, int x, int y, int z, double force) {
-    Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
+    Ogre::Vector3 direction = playerData[idx]->shotDir;
     Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
 
@@ -341,7 +341,7 @@ protected:
       playerOldData[i]->delta += 1;
 
       drawPos = newPos;
-      drawPos += playerData[i]->velocity * (delta) / 60.0;
+      drawPos += playerData[i]->velocity * delta / 60.0;
 
       oldDir = playerOldData[i]->oldDir;
       newDir = playerData[i]->newDir;
@@ -356,8 +356,10 @@ protected:
       //node->translate(delta);
 
       // Did they launch a ball?
-      if (playerData[i]->shotForce)
+      if (playerData[i]->shotForce) {
         shootBall(i, newPos.x, newPos.y, newPos.z, playerData[i]->shotForce);
+        playerData[i]->shotForce = 0;
+      }
     }
   }
 

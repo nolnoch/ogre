@@ -54,8 +54,8 @@ class Ball {
     }
 
     void applyForce(double f, Ogre::Vector3 dir) {
-      btScalar force = btScalar(f);
-      btVector3 direction = btVector3(dir.x, dir.y, dir.z);
+      btScalar force(f);
+      btVector3 direction(dir.x, dir.y, dir.z);
       btVector3 cImpulse = direction * force;
 
       rigidBody->activate(true);

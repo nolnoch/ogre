@@ -620,9 +620,9 @@ bool TileGame::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id 
 
     if (multiplayerStarted && connected) {
       if (!server)
-        updateServer(force, Ogre::Vector3(x, y, z));
+        updateServer(force, direction);
       else
-        updatePlayers(force, Ogre::Vector3(x, y, z));
+        updatePlayers(force, direction);
     }
   }
 
