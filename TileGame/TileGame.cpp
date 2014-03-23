@@ -473,7 +473,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     } else {                               /* Not yet in a multiplayer game. */
       // Server will broadcast game invitation every 8 seconds until launch.
       if (server && !connected && (ticks++ > broad_ticks)) {
-        if (!netMgr->broadcastUDPInvitation(16))
+        if (!netMgr->broadcastUDPInvitation())
           std::cout << "Failed to send broadcast." << std::endl;
         ticks = 0;
       }
@@ -545,7 +545,7 @@ bool TileGame::keyPressed( const OIS::KeyEvent &arg ) {
   else if (arg.key == OIS::KC_O) {
     if (netActive) {
       if (!server) {
-        if ((server = netMgr->multiPlayerInit(16))) {
+        if ((server = netMgr->multiPlayerInit())) {
           serverStartPanel = mTrayMgr->createLabel(OgreBites::TL_TOP,
               "ServerStartPanel", "Waiting for clients...", 300);
           mTrayMgr->getTrayContainer(OgreBites::TL_BOTTOMRIGHT)->show();
