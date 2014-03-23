@@ -1502,7 +1502,6 @@ void NetManager::readTCPSocket(int clientIdx) {
       dropClient(PROTOCOL_ALL, cData->host);
     }
   } else {
-    std::cout << "Received TCP packet from server." << std::endl;
     cData->updated = true;
   }
 }

@@ -448,13 +448,12 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             // Process TCP messages.
             if (netMgr->tcpClientData[i]->updated) {
               cmd = std::string(netMgr->tcpClientData[i]->output);
+              data = (Uint32 *) netMgr->tcpClientData[i]->output;
 
-              if (0 == cmd.find(STR_BLSHT)) {
-                const char *buf = cmd.c_str();
-                Uint32 *data = (Uint32 *) (buf + STR_BLSHT.length() + 1);
+              if ((data[0] == UINT_BLSHT) && (data[1] != netMgr->getIPnbo())) {
                 for (j = 0; j < nPlayers; j++) {
-                  if (data[0] == playerData[j]->host) {
-                    modifyPlayer(j, data);
+                  if (data[1] == playerData[j]->host) {
+                    modifyPlayer(j, ++data);
                   }
                 }
               }

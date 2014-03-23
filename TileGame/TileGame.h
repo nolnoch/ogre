@@ -434,8 +434,8 @@ protected:
     single.velocity = mCameraMan->getVelocity();
 
     if (force) {
-      memcpy(netMgr->tcpServerData.input, &STR_BLSHT, STR_BLSHT.size());
-      memcpy((netMgr->tcpServerData.input + STR_BLSHT.size() + 1), &single, pdSize);
+      memcpy(netMgr->tcpServerData.input, &UINT_BLSHT, tagSize);
+      memcpy((netMgr->tcpServerData.input + 4), &single, pdSize);
       netMgr->tcpServerData.updated = true;
       netMgr->messageServer(PROTOCOL_TCP);
     } else {
