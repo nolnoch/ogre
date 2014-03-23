@@ -332,11 +332,14 @@ protected:
     int i;
 
     for (i = 0; i < nPlayers; i++) {
+      double delta;
+
       // Update position.
       newPos = playerData[i]->newPos;
       oldPos = playerOldData[i]->oldPos;
-      double delta = playerOldData[i]->delta;
+      delta = playerOldData[i]->delta;
       playerOldData[i]->delta += 1;
+
       drawPos = newPos;
       drawPos += playerData[i]->velocity * (delta) / 60.0;
 
@@ -437,7 +440,7 @@ protected:
     playerOldData[j]->oldDir = playerData[j]->newDir;
     playerOldData[j]->delta = 0;
 
-    memcpy(playerData[j], ++data, sizeof(PlayerData));
+    memcpy(playerData[j], data, sizeof(PlayerData));
   }
 
   void notifyPlayers() {
