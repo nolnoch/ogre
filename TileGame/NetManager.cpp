@@ -373,6 +373,8 @@ void NetManager::dropClient(Protocol protocol, Uint32 host) {
     printError("NetManager: No server running, and thus no clients to drop.");
     return;
   }
+  std::vector<ConnectionInfo *>::iterator it;
+  bool found = false;
 
   ConnectionInfo *cInfo = lookupClient(host, false);
 
@@ -388,6 +390,14 @@ void NetManager::dropClient(Protocol protocol, Uint32 host) {
     unbindUDPSocket(client, cInfo->udpChannel);
 
     // TODO Implement reclaimable channels through bitmap or 2d array?
+  }
+  if (cInfo) {
+    for (it = netClients.begin(); it != netClients.end() && !found; it++) {
+      if ((*it) == cInfo) {
+        netClients.erase(it);
+        found = true;
+      }
+    }
   }
 }
 
@@ -1004,16 +1014,7 @@ bool NetManager::bindUDPSocket (UDPsocket sock, int channel, IPaddress *addr) {
  * @param channel The channel to be unbound.
  */
 void NetManager::unbindUDPSocket(UDPsocket sock, int channel) {
-  bool found;
-  std::vector<ConnectionInfo *>::iterator it;
-
   SDLNet_UDP_Unbind(sock, channel);
-
-  for (it = netClients.begin(); it != netClients.end() && !found; it++) {
-    if ((*it)->udpChannel == channel) {
-      netClients.erase(it);
-    }
-  }
 }
 
 /**

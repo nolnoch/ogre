@@ -31,6 +31,7 @@ public:
   void removeGlobalBall();
   bool isGlobalBall();
   void clearBalls();
+  int getNumberBallCollisions();
 
   TileSimulator* getSimulator();
 
@@ -41,6 +42,7 @@ private:
   std::vector<Ball *> mainBalls;
   TileSimulator *sim;
   bool globalBallActive;
+  int ballCollisions;
 };
 
 #endif /* BALLMANAGER_H_ */

@@ -20,6 +20,7 @@ BallManager::~BallManager() {
 
 bool BallManager::initBallManager() {
   sim->setBallManager(this);
+  ballCollisions = 0;
 
   return true;
 }
@@ -110,7 +111,25 @@ bool BallManager::checkCollisions(btRigidBody *aTile, void *body0, void *body1) 
       mball->lockPosition();
       hit = true;
     }
+    if(mball->checkRigidBody((btRigidBody*)body0))
+    {
+        std::vector<Ball *>::iterator it2;
+        for(it2 = mainBalls.begin(); it2 != mainBalls.end(); it2++)
+        {
+            if((*it2) != mball && (*it2)->checkRigidBody((btRigidBody*)body1))
+            {
+                ballCollisions++;
+            }
+        }
+    }
   }
 
   return hit;
+}
+
+int BallManager::getNumberBallCollisions()
+{
+    int buf = ballCollisions;
+    ballCollisions = 0;
+    return buf;
 }

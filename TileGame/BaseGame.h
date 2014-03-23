@@ -34,6 +34,8 @@ This source file is part of the
 #include <SdkTrays.h>
 #include <SdkCameraMan.h>
 
+#include "CameraMan.h"
+
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 #    define OGRE_IS_IOS 1
 #    include <OISMultiTouch.h>
@@ -94,7 +96,7 @@ protected:
 
     // OgreBites
     OgreBites::SdkTrayManager* mTrayMgr;
-    OgreBites::SdkCameraMan* mCameraMan;       // basic camera controller
+    CameraMan* mCameraMan;       // basic camera controller
     OgreBites::ParamsPanel* mDetailsPanel;     // sample details panel
     bool mCursorWasVisible;                    // was cursor visible before dialog appeared
     bool mShutDown;

@@ -21,7 +21,6 @@ This source file is part of the
 #include "BallManager.h"
 #include "SoundManager.h"
 #include "NetManager.h"
-#include "CameraMan.h"
 
 #include <vector>
 #include <string>
@@ -31,6 +30,8 @@ const static int PLANE_DIST = WALL_SIZE / 2;                        // the initi
 const static int NUM_TILES_ROW = 5;                                 // number of tiles in each row of a wall.
 const static int NUM_TILES_WALL = NUM_TILES_ROW * NUM_TILES_ROW;    // number of total tiles on a wall.
 const static int TILE_WIDTH = WALL_SIZE / NUM_TILES_ROW;
+const static int SWEEP_MS = 150;
+const static int BROAD_MS = 8000;
 
 int ticks = 0;
 
@@ -38,12 +39,18 @@ const Ogre::Quaternion RING_FLIP(Ogre::Degree(90), Ogre::Vector3::UNIT_X);
 
 struct PlayerData {
   Uint32 host;
-  Ogre::Vector3 newDir;
+  Ogre::Quaternion newDir;
   Ogre::Vector3 newPos;
   Ogre::Vector3 shotDir;
   double shotForce;
+  Ogre::Vector3 velocity;
 };
 
+struct PlayerOldData {
+  Ogre::Quaternion oldDir;
+  Ogre::Vector3 oldPos;
+  double delta;
+};
 
 class TileGame : public BaseGame
 {
@@ -63,6 +70,7 @@ protected:
   virtual void createFrameListener(void);
   virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
   virtual bool keyPressed( const OIS::KeyEvent &arg );
+  //virtual bool mouseMoved( const OIS::MouseEvent &arg );
   virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
   virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
 
@@ -81,6 +89,7 @@ protected:
   std::vector<Ogre::Entity *> playerEntities;
   std::vector<Ogre::SceneNode *> playerNodes;
   std::vector<PlayerData *> playerData;
+  std::vector<PlayerOldData *> playerOldData;
 
   OgreBites::ParamsPanel *scorePanel, *playersWaitingPanel;
   OgreBites::Label *congratsPanel, *chargePanel, *clientAcceptDescPanel,
@@ -93,12 +102,16 @@ protected:
   NetManager *netMgr;
 
   SoundFile boing, gong, music;
+  SoundFile chirp;
+  std::vector<SoundFile> noteSequence;
+  int noteIndex;
   bool paused, gameStart, gameDone, animDone, isCharging, connected, server,
   netActive, invitePending, inviteAccepted, multiplayerStarted;
   int score, shotsFired, currLevel, currTile, winTimer, tileCounter, chargeShot,
   nPlayers;
   double slowdownval;
   std::string invite;
+  int ballsounddelay;
 
 
   void shootBall(int x, int y, int z, double force) {
@@ -303,7 +316,7 @@ protected:
       ringEnt = mSceneMgr->createEntity("torus.mesh");
       ringNode->attachObject(ringEnt);
       ringNode->rotate(RING_FLIP);
-      ringNode->setDirection(playerData[i]->newDir);
+      ringNode->setOrientation(playerData[i]->newDir);
       ringNode->setScale(100, 100, 100);
       ringNode->setPosition(playerData[i]->newPos);
 
@@ -314,17 +327,32 @@ protected:
 
   void movePlayers() {
     std::ostringstream playerName;
-    Ogre::Vector3 oldPos, newPos, delta;
+    Ogre::Vector3 oldPos, newPos, drawPos;
+    Ogre::Quaternion newDir, oldDir, drawDir;
+    Ogre::Vector3 velocity;
     Ogre::SceneNode *node;
     int i;
 
     for (i = 0; i < nPlayers; i++) {
       // Update position.
       newPos = playerData[i]->newPos;
+      oldPos = playerOldData[i]->oldPos;
+      double delta = playerOldData[i]->delta;
+      playerOldData[i]->delta += 1;
+      drawPos = newPos;
+      drawPos += playerData[i]->velocity * (delta) / 60.0;
+
+      oldDir = playerOldData[i]->oldDir;
+      newDir = playerData[i]->newDir;
+      drawDir = newDir + (newDir - oldDir) * (delta / 10.0);
+
       playerName << playerData[i]->host;
       node = mSceneMgr->getSceneNode(playerName.str());
-      node->setDirection(playerData[i]->newDir);
-      node->setPosition(newPos);
+
+      node->setOrientation(drawDir);
+      node->pitch(Ogre::Degree(90));
+      node->setPosition(drawPos);
+      //node->translate(delta);
 
       // Did they launch a ball?
       if (playerData[i]->shotForce)
@@ -342,9 +370,10 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    single.newDir = mCamera->getDirection();
+    single.newDir = mCamera->getOrientation();
     single.shotForce = force;
     single.shotDir = dir;
+    single.velocity = mCameraMan->getVelocity();
     memcpy(netMgr->udpServerData[nPlayers].input, &UINT_UPDPL, tagSize);
     memcpy((netMgr->udpServerData[nPlayers].input + 4), &single, pdSize);
     netMgr->udpServerData[nPlayers].updated = true;
@@ -369,9 +398,10 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    single.newDir = mCamera->getDirection();
+    single.newDir = mCamera->getOrientation();
     single.shotForce = force;
     single.shotDir = dir;
+    single.velocity = mCameraMan->getVelocity();
     memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->udpServerData[0].updated = true;
@@ -400,7 +430,7 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    single.newDir = mCamera->getDirection();
+    single.newDir = mCamera->getOrientation();
     single.shotForce = 0;
     single.shotDir = Ogre::Vector3::ZERO;
     memcpy(netMgr->udpServerData[nPlayers].input, &UINT_ADDPL, tagSize);
@@ -427,7 +457,7 @@ protected:
     // Self
     single.host = netMgr->getIPnbo();
     single.newPos = mCamera->getPosition();
-    single.newDir = mCamera->getDirection();
+    single.newDir = mCamera->getOrientation();
     single.shotForce = 0;
     single.shotDir = Ogre::Vector3::ZERO;
     memcpy(netMgr->udpServerData[0].input, &UINT_ADDPL, tagSize);
@@ -458,6 +488,12 @@ protected:
 
     if(currTile >= -1) {
       if(currTime > animStart && currTime <= animEnd) {
+          if(currTile < noteSequence.size() && currTile >= 0) {
+            //soundMgr->playSound(noteSequence[currTile]);
+
+            soundMgr->playSound(noteSequence[currTile], tileSceneNodes[currTile]->_getDerivedPosition() , mCamera);
+
+          }
         // Revert previous tile to original texture
         if(currTile + 1 < tileEntities.size() && currTile >= -1) {
           tileEntities[currTile + 1]->setMaterialName("Examples/Chrome");
@@ -493,6 +529,7 @@ protected:
           panelLight->setPosition(0, 0, 0);
           panelLight->setSpotlightFalloff(0);
           panelLight->setAttenuation(4000, 0.0, 0.0001, 0.0000005);
+        
         } else {
           mSceneMgr->destroyLight(panelLight);
           panelLight = NULL;
@@ -500,7 +537,7 @@ protected:
 
         // moves on to the next tile.
         currTile--;
-        // std::cout << "c: " << currTile << "\n";
+       //std::cout << "c: " << currTile << "\n";
       }
     }
     else if (!animDone) {

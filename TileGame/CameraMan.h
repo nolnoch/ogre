@@ -22,8 +22,8 @@ class CameraMan : public OgreBites::SdkCameraMan
             if (mGoingUp) accel += mCamera->getUp();
             if (mGoingDown) accel -= mCamera->getUp();
 
-            //if (mGoingUp) accel += Ogre::Vector3(0, 1, 0);
-           // if (mGoingDown) accel -= Ogre::Vector3(0, 1, 0);
+            if (mGoingUp) accel += Ogre::Vector3(0, 1, 0);
+            if (mGoingDown) accel -= Ogre::Vector3(0, 1, 0);
 
             // if accelerating, try to reach top speed in a certain time
             Ogre::Real topSpeed = mFastMove ? mTopSpeed : mTopSpeed * 10;
@@ -91,5 +91,10 @@ class CameraMan : public OgreBites::SdkCameraMan
         else if (evt.key == OIS::KC_SPACE) mGoingUp = false;
         else if (evt.key == OIS::KC_LSHIFT) mGoingDown = false;
         else if (evt.key == OIS::KC_LCONTROL) mFastMove = false;
+    }
+
+    Ogre::Vector3 getVelocity()
+    {
+        return mVelocity;
     }
 };
