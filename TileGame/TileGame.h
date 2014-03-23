@@ -42,8 +42,8 @@ struct PlayerData {
   Ogre::Quaternion newDir;
   Ogre::Vector3 newPos;
   Ogre::Vector3 shotDir;
-  double shotForce;
   Ogre::Vector3 velocity;
+  double shotForce;
 };
 
 struct PlayerOldData {
@@ -79,8 +79,6 @@ protected:
   Ogre::Light* panelLight;
   Ogre::Vector3 mDirection;
   Ogre::Real mSpeed;
-  Ogre::PlaneBoundedVolume boxBound;
-  Ogre::Plane wallUp, wallDown, wallBack, wallFront, wallLeft, wallRight;
 
   std::deque<Ogre::Entity *> allTileEntities;
   std::deque<Ogre::SceneNode *> tileList;
@@ -114,18 +112,18 @@ protected:
   int ballsounddelay;
 
 
-  void shootBall(int x, int y, int z, double force) {
+  void shootBall(int idx, int x, int y, int z, double force) {
     Ogre::Vector3 direction = mCamera->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
     Ogre::SceneNode* nodepc = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     Ogre::Entity* ballMeshpc = mSceneMgr->createEntity("sphere.mesh");
 
-    if(ballMgr->isGlobalBall())
-      ballMgr->removeGlobalBall();
+    if (ballMgr->isPlayerBall(idx))
+      ballMgr->removePlayerBall(idx);
 
     ballMeshpc->setCastShadows(true);
     nodepc->attachObject(ballMeshpc);
-    ballMgr->setGlobalBall(ballMgr->addBall(nodepc, x, y, z, 100));
-    ballMgr->globalBall->applyForce(force, direction);
+    ballMgr->setPlayerBall(ballMgr->addBall(nodepc, x, y, z, 100), idx);
+    ballMgr->playerBalls[idx]->applyForce(force, direction);
   }
 
   void ballSetup (int cubeSize) {
@@ -356,7 +354,7 @@ protected:
 
       // Did they launch a ball?
       if (playerData[i]->shotForce)
-        shootBall(newPos.x, newPos.y, newPos.z, playerData[i]->shotForce);
+        shootBall(i, newPos.x, newPos.y, newPos.z, playerData[i]->shotForce);
     }
   }
 
@@ -418,6 +416,28 @@ protected:
     drawPlayers();
 
     multiplayerStarted = true;
+  }
+
+  void addPlayer(Uint32 *data) {
+    PlayerData *newPlayer = new PlayerData;
+    PlayerOldData *newOldPlayer = new PlayerOldData;
+
+    memcpy(newPlayer, data, sizeof(PlayerData));
+
+    newOldPlayer->oldPos = newPlayer->newPos;
+    newOldPlayer->oldDir = newPlayer->newDir;
+    newOldPlayer->delta = 0;
+
+    playerData.push_back(newPlayer);
+    playerOldData.push_back(newOldPlayer);
+  }
+
+  void modifyPlayer(int j, Uint32 *data) {
+    playerOldData[j]->oldPos = playerData[j]->newPos;
+    playerOldData[j]->oldDir = playerData[j]->newDir;
+    playerOldData[j]->delta = 0;
+
+    memcpy(playerData[j], ++data, sizeof(PlayerData));
   }
 
   void notifyPlayers() {
@@ -488,12 +508,12 @@ protected:
 
     if(currTile >= -1) {
       if(currTime > animStart && currTime <= animEnd) {
-          if(currTile < noteSequence.size() && currTile >= 0) {
-            //soundMgr->playSound(noteSequence[currTile]);
+        if(currTile < noteSequence.size() && currTile >= 0) {
+          //soundMgr->playSound(noteSequence[currTile]);
 
-            soundMgr->playSound(noteSequence[currTile], tileSceneNodes[currTile]->_getDerivedPosition() , mCamera);
+          soundMgr->playSound(noteSequence[currTile], tileSceneNodes[currTile]->_getDerivedPosition() , mCamera);
 
-          }
+        }
         // Revert previous tile to original texture
         if(currTile + 1 < tileEntities.size() && currTile >= -1) {
           tileEntities[currTile + 1]->setMaterialName("Examples/Chrome");
@@ -529,7 +549,7 @@ protected:
           panelLight->setPosition(0, 0, 0);
           panelLight->setSpotlightFalloff(0);
           panelLight->setAttenuation(4000, 0.0, 0.0001, 0.0000005);
-        
+
         } else {
           mSceneMgr->destroyLight(panelLight);
           panelLight = NULL;
@@ -537,7 +557,7 @@ protected:
 
         // moves on to the next tile.
         currTile--;
-       //std::cout << "c: " << currTile << "\n";
+        //std::cout << "c: " << currTile << "\n";
       }
     }
     else if (!animDone) {

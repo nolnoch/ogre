@@ -18,18 +18,23 @@ class TileSimulator;
 class BallManager {
 public:
   Ball *globalBall;
+  std::vector<Ball *> playerBalls;
 
   BallManager(TileSimulator *sim);
   virtual ~BallManager();
 
   bool initBallManager();
+  void initMultiplayer(int nPlayers);
   void setGlobalBall(Ball *ball);
+  void setPlayerBall(Ball *ball, int idx);
   Ball* addBall(Ogre::SceneNode* n, int x, int y, int z, int r);
   Ball* addMainBall(Ogre::SceneNode* n, int x, int y, int z, int r);
   void enableGravity();
   void removeBall(Ball* rmBall);
   void removeGlobalBall();
+  void removePlayerBall(int idx);
   bool isGlobalBall();
+  bool isPlayerBall(int idx);
   void clearBalls();
   int getNumberBallCollisions();
 
@@ -40,6 +45,7 @@ public:
 private:
   std::vector<Ball *> ballList;
   std::vector<Ball *> mainBalls;
+  std::vector<bool> playerBallsActive;
   TileSimulator *sim;
   bool globalBallActive;
   int ballCollisions;

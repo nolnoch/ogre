@@ -20,7 +20,6 @@
 #include "SDLnet/SDL_net.h"
 
 
-
 /* ****************************************************************************
  * Global Structures
  */
@@ -189,7 +188,7 @@ private:
     PORT_DEFAULT        = 51215,
     CHANNEL_AUTO        = -1,
     CHANNEL_DEFAULT     = 1,
-    CHANNEL_MAX         = 2,    // Low for testing. Set to 6+ before launch.
+    CHANNEL_MAX         = 32,
     SOCKET_TCP_MAX      = 12,
     SOCKET_UDP_MAX      = 12,
     SOCKET_ALL_MAX      = SOCKET_TCP_MAX + SOCKET_UDP_MAX,

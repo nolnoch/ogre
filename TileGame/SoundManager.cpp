@@ -11,7 +11,6 @@ std::vector<Sound> SoundManager::activeSounds(0);
 void channelDoneWrapper(int);
 // Registers the callback
 void channelDoneWrapper(int channel) {
-  std::cout << " callback! " << std::endl;
   SoundManager manager;
   manager.channelDone(channel);
 }
@@ -47,7 +46,6 @@ void SoundManager::channelDone(int channel) {
   for(int i = 0; i < activeSounds.size(); i++) {
     Sound *s = &(activeSounds[i]);
     if(s->channel == channel) {
-      std::cout << " channel " << channel << " array size " << activeSounds.size() <<  std::endl;
       s->active = false;
     }
   }

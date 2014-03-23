@@ -10,6 +10,7 @@
 BallManager::BallManager(TileSimulator *sim):
 sim(sim),
 globalBall(0),
+ballCollisions(0),
 globalBallActive(false)
 {
 }
@@ -20,14 +21,23 @@ BallManager::~BallManager() {
 
 bool BallManager::initBallManager() {
   sim->setBallManager(this);
-  ballCollisions = 0;
 
   return true;
+}
+
+void BallManager::initMultiplayer(int nPlayers) {
+  playerBalls.assign(nPlayers, NULL);
+  playerBallsActive.assign(nPlayers, false);
 }
 
 void BallManager::setGlobalBall(Ball *ball) {
   globalBall = ball;
   globalBallActive = true;
+}
+
+void BallManager::setPlayerBall(Ball *ball, int idx) {
+  playerBalls[idx] = ball;
+  playerBallsActive[idx] = true;
 }
 
 Ball* BallManager::addBall(Ogre::SceneNode* n, int x, int y, int z, int r) {
@@ -49,6 +59,7 @@ Ball* BallManager::addMainBall(Ogre::SceneNode* n, int x, int y, int z, int r) {
 
 void BallManager::enableGravity() {
   std::vector<Ball *>::iterator it;
+
   for (it = ballList.begin(); it != ballList.end(); it++) {
     (*it)->enableGravity();
   }
@@ -56,6 +67,7 @@ void BallManager::enableGravity() {
 
 void BallManager::removeBall(Ball* rmBall) {
   bool found = false;
+
   std::vector<Ball *>::iterator it;
   for (it = ballList.begin(); it != ballList.end() && !found; it++) {
     if ((*it) == rmBall) {
@@ -76,12 +88,23 @@ void BallManager::removeGlobalBall() {
   globalBallActive = false;
 }
 
+void BallManager::removePlayerBall(int idx) {
+  removeBall(playerBalls[idx]);
+  playerBalls[idx] = NULL;
+  playerBallsActive[idx] = false;
+}
+
 bool BallManager::isGlobalBall() {
   return globalBallActive;
 }
 
+bool BallManager::isPlayerBall(int idx) {
+  return playerBallsActive[idx];
+}
+
 void BallManager::clearBalls() {
   std::vector<Ball *>::iterator it;
+
   for (it = ballList.begin(); it != ballList.end(); it++) {
     btRigidBody* ballBody = (*it)->getRigidBody();
     sim->getDynamicsWorld().removeRigidBody(ballBody);
@@ -113,23 +136,22 @@ bool BallManager::checkCollisions(btRigidBody *aTile, void *body0, void *body1) 
     }
     if(mball->checkRigidBody((btRigidBody*)body0))
     {
-        std::vector<Ball *>::iterator it2;
-        for(it2 = mainBalls.begin(); it2 != mainBalls.end(); it2++)
+      std::vector<Ball *>::iterator it2;
+      for(it2 = mainBalls.begin(); it2 != mainBalls.end(); it2++)
+      {
+        if((*it2) != mball && (*it2)->checkRigidBody((btRigidBody*)body1))
         {
-            if((*it2) != mball && (*it2)->checkRigidBody((btRigidBody*)body1))
-            {
-                ballCollisions++;
-            }
+          ballCollisions++;
         }
+      }
     }
   }
 
   return hit;
 }
 
-int BallManager::getNumberBallCollisions()
-{
-    int buf = ballCollisions;
-    ballCollisions = 0;
-    return buf;
+int BallManager::getNumberBallCollisions() {
+  int buf = ballCollisions;
+  ballCollisions = 0;
+  return buf;
 }
