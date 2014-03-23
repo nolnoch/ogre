@@ -77,6 +77,7 @@ static const std::string STR_TLHIT("TG_NEXT_TILE");
 static const Uint32 UINT_ADDPL(0xFF000001);
 static const Uint32 UINT_UPDPL(0xFF000010);
 static const Uint32 UINT_UPDSV(0xFF000020);
+static const Uint32 UINT_UPDBL(0xFF000030);
 
 
 

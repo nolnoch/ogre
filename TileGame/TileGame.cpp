@@ -435,7 +435,7 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
             // Process UDP messages.
             if (netMgr->udpClientData[i]->updated) {
               data = (Uint32 *) netMgr->udpClientData[i]->output;
-              if ((data[0] == UINT_UPDPL) && (data[1] != netMgr->getIPnbo())) {
+              if ((data[0] == UINT_UPDSV) && (data[1] != netMgr->getIPnbo())) {
                 for (j = 0; j < nPlayers; j++) {
                   if (data[1] == playerData[j]->host) {
                     modifyPlayer(j, ++data);

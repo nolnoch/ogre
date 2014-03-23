@@ -52,6 +52,38 @@ struct PlayerOldData {
   double delta;
 };
 
+/* Since we should not have the physics sim running on clients, the server needs
+ * to keep track of and distribute all ball locations and velocities. This
+ * struct theoretically can handle up to 27 balls at one time by using 64 bits
+ * per ball and keeping track of how many balls/64-bit fields should be read.
+ *
+ * Per ball:
+ *  11 bits - x position interpreted as integer (max 2048)
+ *  11 bits - y position interpreted as integer (max 2048)
+ *  11 bits - z position interpreted as integer (max 2048)
+ *  10 bits - x velocity interpreted as integer (max 1024)
+ *  10 bits - y velocity interpreted as integer (max 1024)
+ *  10 bits - z velocity interpreted as integer (max 1024)
+ *   1 bit  - padding
+ *
+ * This is very low-level and slightly hacky, but it could allow us to update
+ * all balls with only 220 bytes every single network update. It is possible
+ * to update all balls with full Vector3s, but it would require 652 bytes per
+ * update (for 27 balls).
+ *
+ * The current network buffer size is 128 bytes. This can change but must be
+ * lower than the MTU (maximum transmission unit) set by the hardware and the
+ * network. This is commonly 1500 bytes but can be as low as 500. Size also
+ * slows down the transmission. We can discuss and/or test.
+ */
+struct BallData {
+  int numBalls;                     //   4 bytes
+  Uint64 posAndVel[27];             // 216 bytes
+
+  // Alternate
+  // Ogre::Vector3 posAndVel[54];   // 648 bytes
+};
+
 class TileGame : public BaseGame
 {
 public:
@@ -405,7 +437,7 @@ protected:
     single.shotForce = force;
     single.shotDir = dir;
     single.velocity = mCameraMan->getVelocity();
-    memcpy(netMgr->udpServerData[0].input, &UINT_UPDPL, tagSize);
+    memcpy(netMgr->udpServerData[0].input, &UINT_UPDSV, tagSize);
     memcpy((netMgr->udpServerData[0].input + 4), &single, pdSize);
     netMgr->udpServerData[0].updated = true;
     netMgr->messageServer(PROTOCOL_UDP);
@@ -444,6 +476,11 @@ protected:
     playerOldData[j]->delta = 0;
 
     memcpy(playerData[j], data, sizeof(PlayerData));
+
+    std::cout << "Updated player." << std::endl;
+    if (playerData[j]->shotForce) {
+      std::cout << "*** SHOT FIRED ***" << std::endl;
+    }
   }
 
   void notifyPlayers() {
