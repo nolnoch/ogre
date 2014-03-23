@@ -377,7 +377,8 @@ protected:
 
       oldDir = playerOldData[i]->oldDir;
       newDir = playerData[i]->newDir;
-      drawDir = newDir + (newDir - oldDir) * (delta / 10.0);
+      // drawDir = newDir + (newDir - oldDir) * (delta / 10.0);
+      drawDir = Ogre::Quaternion::Slerp(delta * 0.1f, oldDir, newDir);
 
       playerName << playerData[i]->host;
       node = mSceneMgr->getSceneNode(playerName.str());
@@ -386,12 +387,6 @@ protected:
       node->pitch(Ogre::Degree(90));
       node->setPosition(drawPos);
       //node->translate(delta);
-
-      // Did they launch a ball?
-      if (playerData[i]->shotForce) {
-        shootBall(i, newPos.x, newPos.y, newPos.z, playerData[i]->shotForce);
-        playerData[i]->shotForce = 0;
-      }
     }
   }
 
@@ -477,9 +472,11 @@ protected:
 
     memcpy(playerData[j], data, sizeof(PlayerData));
 
-    std::cout << "Updated player." << std::endl;
+    // Did they launch a ball?  Trigger now before buffer overwritten!
     if (playerData[j]->shotForce) {
-      std::cout << "*** SHOT FIRED ***" << std::endl;
+      Ogre::Vector3 newPos = playerData[j]->newPos;
+      shootBall(j, newPos.x, newPos.y, newPos.z, playerData[j]->shotForce);
+      playerData[j]->shotForce = 0;
     }
   }
 
