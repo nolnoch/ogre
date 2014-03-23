@@ -419,6 +419,7 @@ protected:
 
     setLevel(1);
     drawPlayers();
+    ballMgr->initMultiplayer(nPlayers);
 
     multiplayerStarted = true;
   }

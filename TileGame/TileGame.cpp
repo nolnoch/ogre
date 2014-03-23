@@ -605,7 +605,7 @@ bool TileGame::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id 
     double force = chargeShot * 0.85f;
     chargeShot = 0;
 
-    if(ballMgr->isGlobalBall())
+    if (ballMgr->isGlobalBall())
       ballMgr->removeGlobalBall();
 
     int x = mCamera->getPosition().x;
