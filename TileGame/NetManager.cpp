@@ -243,7 +243,7 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
       if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
         sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], buf, len);
       }
-      if (protocol & (netClients[i]->protocols & PROTOCOL_UDP)) {
+      if (protocol & netClients[i]->protocols & PROTOCOL_UDP) {
         UDPpacket *pack = craftUDPpacket(buf, len);
         if (pack) {
           sendUDP(udpSockets[netClients[i]->udpSocketIdx],
@@ -256,11 +256,12 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
     UDPpacket *pack;
 
     for (i = 0; i < netClients.size(); i++) {
-      if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
+      if (protocol & netClients[i]->protocols & PROTOCOL_TCP) {
         data = tcpServerData.input;
         sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], data, length);
+        tcpServerData.updated = false;
       }
-      if (protocol & (netClients[i]->protocols & PROTOCOL_UDP)) {
+      if (protocol & netClients[i]->protocols & PROTOCOL_UDP) {
         for (j = 0; j < MESSAGE_COUNT; j++) {
           if (udpServerData[j].updated) {
             data = udpServerData[j].input;
@@ -316,6 +317,7 @@ void NetManager::messageServer(Protocol protocol, const char *buf, int len) {
     if (protocol & PROTOCOL_TCP) {
       data = tcpServerData.input;
       sendTCP(tcpSockets[netServer.tcpSocketIdx], data, length);
+      tcpServerData.updated = false;
     }
     if (protocol & PROTOCOL_UDP) {
       data = udpServerData[0].input;
@@ -351,12 +353,15 @@ void NetManager::messageClient(Protocol protocol, int clientDataIdx, char *buf, 
     cInfo = lookupClient(tcpClientData[clientDataIdx]->host, false);
     TCPsocket client = tcpSockets[cInfo->tcpSocketIdx];
     sendTCP(client, buf, len);
+    tcpClientData[clientDataIdx]->updated = false;
   } else if (protocol & PROTOCOL_UDP) {
     cInfo = lookupClient(udpClientData[clientDataIdx]->host, false);
     UDPpacket *pack = craftUDPpacket(buf, len);
     UDPsocket client = udpSockets[cInfo->udpSocketIdx];
-    if (pack)
+    if (pack) {
       sendUDP(client, cInfo->udpChannel, pack);
+      udpClientData[clientDataIdx]->updated = false;
+    }
   }
 }
 
