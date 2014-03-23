@@ -450,8 +450,8 @@ bool TileGame::frameRenderingQueued(const Ogre::FrameEvent& evt) {
               cmd = std::string(netMgr->tcpClientData[i]->output);
 
               if (0 == cmd.find(STR_BLSHT)) {
-                char *buf = cmd.c_str();
-                Uint32 *data = (Uint32 *) buf + STR_BLSHT.length() + 1;
+                const char *buf = cmd.c_str();
+                Uint32 *data = (Uint32 *) (buf + STR_BLSHT.length() + 1);
                 for (j = 0; j < nPlayers; j++) {
                   if (data[0] == playerData[j]->host) {
                     modifyPlayer(j, data);
