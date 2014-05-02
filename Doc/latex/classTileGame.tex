@@ -45,7 +45,7 @@ virtual bool \hyperlink{classTileGame_a1826b5a7db94eb11037a46c5d57dfc4f}{mouse\-
 \item 
 virtual bool \hyperlink{classTileGame_ab7a0cbe5c9d1f41fa3b16486437511e4}{mouse\-Released} (const O\-I\-S\-::\-Mouse\-Event \&arg, O\-I\-S\-::\-Mouse\-Button\-I\-D id)
 \item 
-void \hyperlink{classTileGame_a08e86412abbd596046bc2e9399dc9da8}{shoot\-Ball} (int x, int y, int z, double force)
+void \hyperlink{classTileGame_ab5fd23a93e7eb13a2664ba3275035adc}{shoot\-Ball} (int idx, int x, int y, int z, double force)
 \item 
 void \hyperlink{classTileGame_a512ac0031cfe85e79ca0a53582492240}{ball\-Setup} (int cube\-Size)
 \item 
@@ -64,6 +64,10 @@ void \hyperlink{classTileGame_a9b89da15c9725ec718bc294119841043}{update\-Players
 void \hyperlink{classTileGame_ad4923a2d2eace2ebf9c9d38728c3e181}{update\-Server} (double force=0, Ogre\-::\-Vector3 dir=Ogre\-::\-Vector3\-::\-Z\-E\-R\-O)
 \item 
 void \hyperlink{classTileGame_a1ee23b22f33fa11b9bb4854d16d19653}{start\-Multiplayer} ()
+\item 
+void \hyperlink{classTileGame_a41c96eb8d5df658a523723a90500a5ff}{add\-Player} (Uint32 $\ast$data)
+\item 
+void \hyperlink{classTileGame_afd1851188c581afc0f1846104c6ce7da}{modify\-Player} (int j, Uint32 $\ast$data)
 \item 
 void \hyperlink{classTileGame_a60decbb2167d26695a7eb7c50c7effa1}{notify\-Players} ()
 \item 
@@ -88,20 +92,6 @@ Ogre\-::\-Vector3 \hyperlink{classTileGame_a3ce67ed5bc51aa139c087e1bdd5b7fe0}{m\
 \item 
 Ogre\-::\-Real \hyperlink{classTileGame_a247769c14e679af78f5d877510e3b7ca}{m\-Speed}
 \item 
-Ogre\-::\-Plane\-Bounded\-Volume \hyperlink{classTileGame_a421f8bc0f90cf4acfa209bef5447e5eb}{box\-Bound}
-\item 
-Ogre\-::\-Plane \hyperlink{classTileGame_a3679e7a4d3981c56c087f23f94b3b0ec}{wall\-Up}
-\item 
-Ogre\-::\-Plane \hyperlink{classTileGame_af1834b17a2460b1613d93be25492113c}{wall\-Down}
-\item 
-Ogre\-::\-Plane \hyperlink{classTileGame_a3c37c43bfc4c0387a3f29f783e4f436a}{wall\-Back}
-\item 
-Ogre\-::\-Plane \hyperlink{classTileGame_a97846181582b43470f0a1394e0dfcad8}{wall\-Front}
-\item 
-Ogre\-::\-Plane \hyperlink{classTileGame_a92cc3d1944d2bd572198479508722577}{wall\-Left}
-\item 
-Ogre\-::\-Plane \hyperlink{classTileGame_ae7de21d4feafcb1cc6f2d0434ddcfa9c}{wall\-Right}
-\item 
 std\-::deque$<$ Ogre\-::\-Entity $\ast$ $>$ \hyperlink{classTileGame_a0308b658e89712b0dfbe5998495f9cec}{all\-Tile\-Entities}
 \item 
 std\-::deque$<$ Ogre\-::\-Scene\-Node $\ast$ $>$ \hyperlink{classTileGame_ad9bec31020eaa7dc719d8e9b8af20ee2}{tile\-List}
@@ -115,6 +105,8 @@ std\-::vector$<$ Ogre\-::\-Entity $\ast$ $>$ \hyperlink{classTileGame_a30a9864bb
 std\-::vector$<$ Ogre\-::\-Scene\-Node $\ast$ $>$ \hyperlink{classTileGame_ab261f06fa3d89f8af2223ffe1a56337a}{player\-Nodes}
 \item 
 std\-::vector$<$ \hyperlink{structPlayerData}{Player\-Data} $\ast$ $>$ \hyperlink{classTileGame_adc02f822e33b2d8a77693301d050bb91}{player\-Data}
+\item 
+std\-::vector$<$ \hyperlink{structPlayerOldData}{Player\-Old\-Data} $\ast$ $>$ \hyperlink{classTileGame_a0a931a016e78d8aaaa5eb7543565bd31}{player\-Old\-Data}
 \item 
 Ogre\-Bites\-::\-Params\-Panel $\ast$ \hyperlink{classTileGame_a9a4d1b4dfacca55fdeacf454af04fa0c}{score\-Panel}
 \item 
@@ -145,6 +137,12 @@ Ogre\-::\-Overlay $\ast$ \hyperlink{classTileGame_a11747d7250c1ef16b13a14a84edbf
 \hyperlink{SoundManager_8h_a05cf79926d9921eb07e70e460b021307}{Sound\-File} \hyperlink{classTileGame_a6912a91d6b7eb2e88033d8571e3daecb}{gong}
 \item 
 \hyperlink{SoundManager_8h_a05cf79926d9921eb07e70e460b021307}{Sound\-File} \hyperlink{classTileGame_a6622c980107331b95697d74839dde768}{music}
+\item 
+\hyperlink{SoundManager_8h_a05cf79926d9921eb07e70e460b021307}{Sound\-File} \hyperlink{classTileGame_a24c9cc7591c2ff3ffc6a50b64453c181}{chirp}
+\item 
+std\-::vector$<$ \hyperlink{SoundManager_8h_a05cf79926d9921eb07e70e460b021307}{Sound\-File} $>$ \hyperlink{classTileGame_a89f75175ed666995704d8bad09762612}{note\-Sequence}
+\item 
+int \hyperlink{classTileGame_ae301ffc70ac15755e4fd6f8561aeaf30}{note\-Index}
 \item 
 bool \hyperlink{classTileGame_ac76eb85a5597f84146e49c92f7edc877}{paused}
 \item 
@@ -187,6 +185,8 @@ int \hyperlink{classTileGame_a232f92064d80b722b022a3845be35b9e}{n\-Players}
 double \hyperlink{classTileGame_a8b95ee0f509c6e7b170f392d755d2e59}{slowdownval}
 \item 
 std\-::string \hyperlink{classTileGame_a2aeaa1575631d37600e5c66bb2388a7b}{invite}
+\item 
+int \hyperlink{classTileGame_ad2760c41885714fa60f8c8b6fd0276b2}{ballsounddelay}
 \end{DoxyCompactItemize}
 
 
@@ -208,6 +208,13 @@ std\-::string \hyperlink{classTileGame_a2aeaa1575631d37600e5c66bb2388a7b}{invite
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classTileGame_a41c96eb8d5df658a523723a90500a5ff}{\index{Tile\-Game@{Tile\-Game}!add\-Player@{add\-Player}}
+\index{add\-Player@{add\-Player}!TileGame@{Tile\-Game}}
+\subsubsection[{add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Tile\-Game\-::add\-Player (
+\begin{DoxyParamCaption}
+\item[{Uint32 $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classTileGame_a41c96eb8d5df658a523723a90500a5ff}
 \hypertarget{classTileGame_a512ac0031cfe85e79ca0a53582492240}{\index{Tile\-Game@{Tile\-Game}!ball\-Setup@{ball\-Setup}}
 \index{ball\-Setup@{ball\-Setup}!TileGame@{Tile\-Game}}
 \subsubsection[{ball\-Setup}]{\setlength{\rightskip}{0pt plus 5cm}void Tile\-Game\-::ball\-Setup (
@@ -330,6 +337,14 @@ Reimplemented from \hyperlink{classBaseGame_a6b658a490b6aa454639c8080d503ac0a}{B
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classTileGame_a55045a99dda1545c4043ab6da75d2432}
+\hypertarget{classTileGame_afd1851188c581afc0f1846104c6ce7da}{\index{Tile\-Game@{Tile\-Game}!modify\-Player@{modify\-Player}}
+\index{modify\-Player@{modify\-Player}!TileGame@{Tile\-Game}}
+\subsubsection[{modify\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Tile\-Game\-::modify\-Player (
+\begin{DoxyParamCaption}
+\item[{int}]{j, }
+\item[{Uint32 $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classTileGame_afd1851188c581afc0f1846104c6ce7da}
 \hypertarget{classTileGame_a1826b5a7db94eb11037a46c5d57dfc4f}{\index{Tile\-Game@{Tile\-Game}!mouse\-Pressed@{mouse\-Pressed}}
 \index{mouse\-Pressed@{mouse\-Pressed}!TileGame@{Tile\-Game}}
 \subsubsection[{mouse\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}bool Tile\-Game\-::mouse\-Pressed (
@@ -382,16 +397,17 @@ Reimplemented from \hyperlink{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}{B
 \item[{int}]{num}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classTileGame_ab59731a2c682beeda91ad1a89229a3f0}
-\hypertarget{classTileGame_a08e86412abbd596046bc2e9399dc9da8}{\index{Tile\-Game@{Tile\-Game}!shoot\-Ball@{shoot\-Ball}}
+\hypertarget{classTileGame_ab5fd23a93e7eb13a2664ba3275035adc}{\index{Tile\-Game@{Tile\-Game}!shoot\-Ball@{shoot\-Ball}}
 \index{shoot\-Ball@{shoot\-Ball}!TileGame@{Tile\-Game}}
 \subsubsection[{shoot\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}void Tile\-Game\-::shoot\-Ball (
 \begin{DoxyParamCaption}
+\item[{int}]{idx, }
 \item[{int}]{x, }
 \item[{int}]{y, }
 \item[{int}]{z, }
 \item[{double}]{force}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classTileGame_a08e86412abbd596046bc2e9399dc9da8}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classTileGame_ab5fd23a93e7eb13a2664ba3275035adc}
 \hypertarget{classTileGame_aabd8c2eb7913022c30119846d57eaba5}{\index{Tile\-Game@{Tile\-Game}!simon\-Says\-Anim@{simon\-Says\-Anim}}
 \index{simon\-Says\-Anim@{simon\-Says\-Anim}!TileGame@{Tile\-Game}}
 \subsubsection[{simon\-Says\-Anim}]{\setlength{\rightskip}{0pt plus 5cm}void Tile\-Game\-::simon\-Says\-Anim (
@@ -434,18 +450,21 @@ Reimplemented from \hyperlink{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}{B
 \hypertarget{classTileGame_a7fe1ce6963e7ac2bd5022e653368c0ed}{\index{Tile\-Game@{Tile\-Game}!ball\-Mgr@{ball\-Mgr}}
 \index{ball\-Mgr@{ball\-Mgr}!TileGame@{Tile\-Game}}
 \subsubsection[{ball\-Mgr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ball\-Manager}$\ast$ Tile\-Game\-::ball\-Mgr\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a7fe1ce6963e7ac2bd5022e653368c0ed}
+\hypertarget{classTileGame_ad2760c41885714fa60f8c8b6fd0276b2}{\index{Tile\-Game@{Tile\-Game}!ballsounddelay@{ballsounddelay}}
+\index{ballsounddelay@{ballsounddelay}!TileGame@{Tile\-Game}}
+\subsubsection[{ballsounddelay}]{\setlength{\rightskip}{0pt plus 5cm}int Tile\-Game\-::ballsounddelay\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_ad2760c41885714fa60f8c8b6fd0276b2}
 \hypertarget{classTileGame_a796c40847db5cd687417574064fbd90d}{\index{Tile\-Game@{Tile\-Game}!boing@{boing}}
 \index{boing@{boing}!TileGame@{Tile\-Game}}
 \subsubsection[{boing}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sound\-File} Tile\-Game\-::boing\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a796c40847db5cd687417574064fbd90d}
-\hypertarget{classTileGame_a421f8bc0f90cf4acfa209bef5447e5eb}{\index{Tile\-Game@{Tile\-Game}!box\-Bound@{box\-Bound}}
-\index{box\-Bound@{box\-Bound}!TileGame@{Tile\-Game}}
-\subsubsection[{box\-Bound}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Plane\-Bounded\-Volume Tile\-Game\-::box\-Bound\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a421f8bc0f90cf4acfa209bef5447e5eb}
 \hypertarget{classTileGame_ab63beac85c1df6056bd1a097e43cea34}{\index{Tile\-Game@{Tile\-Game}!charge\-Panel@{charge\-Panel}}
 \index{charge\-Panel@{charge\-Panel}!TileGame@{Tile\-Game}}
 \subsubsection[{charge\-Panel}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-Bites\-::\-Label $\ast$ Tile\-Game\-::charge\-Panel\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_ab63beac85c1df6056bd1a097e43cea34}
 \hypertarget{classTileGame_a1a8592c70c05bb2197c9b3cb0a33478e}{\index{Tile\-Game@{Tile\-Game}!charge\-Shot@{charge\-Shot}}
 \index{charge\-Shot@{charge\-Shot}!TileGame@{Tile\-Game}}
 \subsubsection[{charge\-Shot}]{\setlength{\rightskip}{0pt plus 5cm}int Tile\-Game\-::charge\-Shot\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a1a8592c70c05bb2197c9b3cb0a33478e}
+\hypertarget{classTileGame_a24c9cc7591c2ff3ffc6a50b64453c181}{\index{Tile\-Game@{Tile\-Game}!chirp@{chirp}}
+\index{chirp@{chirp}!TileGame@{Tile\-Game}}
+\subsubsection[{chirp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sound\-File} Tile\-Game\-::chirp\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a24c9cc7591c2ff3ffc6a50b64453c181}
 \hypertarget{classTileGame_a0b1acda06716401a6a6a1936d111e187}{\index{Tile\-Game@{Tile\-Game}!client\-Accept\-Desc\-Panel@{client\-Accept\-Desc\-Panel}}
 \index{client\-Accept\-Desc\-Panel@{client\-Accept\-Desc\-Panel}!TileGame@{Tile\-Game}}
 \subsubsection[{client\-Accept\-Desc\-Panel}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-Bites\-::\-Label $\ast$ Tile\-Game\-::client\-Accept\-Desc\-Panel\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a0b1acda06716401a6a6a1936d111e187}
@@ -515,6 +534,12 @@ Reimplemented from \hyperlink{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}{B
 \hypertarget{classTileGame_a0193bc10ab8efe7cbf37ec7d41378b55}{\index{Tile\-Game@{Tile\-Game}!net\-Timer@{net\-Timer}}
 \index{net\-Timer@{net\-Timer}!TileGame@{Tile\-Game}}
 \subsubsection[{net\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Timer $\ast$ Tile\-Game\-::net\-Timer\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a0193bc10ab8efe7cbf37ec7d41378b55}
+\hypertarget{classTileGame_ae301ffc70ac15755e4fd6f8561aeaf30}{\index{Tile\-Game@{Tile\-Game}!note\-Index@{note\-Index}}
+\index{note\-Index@{note\-Index}!TileGame@{Tile\-Game}}
+\subsubsection[{note\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Tile\-Game\-::note\-Index\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_ae301ffc70ac15755e4fd6f8561aeaf30}
+\hypertarget{classTileGame_a89f75175ed666995704d8bad09762612}{\index{Tile\-Game@{Tile\-Game}!note\-Sequence@{note\-Sequence}}
+\index{note\-Sequence@{note\-Sequence}!TileGame@{Tile\-Game}}
+\subsubsection[{note\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Sound\-File}$>$ Tile\-Game\-::note\-Sequence\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a89f75175ed666995704d8bad09762612}
 \hypertarget{classTileGame_a232f92064d80b722b022a3845be35b9e}{\index{Tile\-Game@{Tile\-Game}!n\-Players@{n\-Players}}
 \index{n\-Players@{n\-Players}!TileGame@{Tile\-Game}}
 \subsubsection[{n\-Players}]{\setlength{\rightskip}{0pt plus 5cm}int Tile\-Game\-::n\-Players\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a232f92064d80b722b022a3845be35b9e}
@@ -533,6 +558,9 @@ Reimplemented from \hyperlink{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}{B
 \hypertarget{classTileGame_ab261f06fa3d89f8af2223ffe1a56337a}{\index{Tile\-Game@{Tile\-Game}!player\-Nodes@{player\-Nodes}}
 \index{player\-Nodes@{player\-Nodes}!TileGame@{Tile\-Game}}
 \subsubsection[{player\-Nodes}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$Ogre\-::\-Scene\-Node $\ast$$>$ Tile\-Game\-::player\-Nodes\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_ab261f06fa3d89f8af2223ffe1a56337a}
+\hypertarget{classTileGame_a0a931a016e78d8aaaa5eb7543565bd31}{\index{Tile\-Game@{Tile\-Game}!player\-Old\-Data@{player\-Old\-Data}}
+\index{player\-Old\-Data@{player\-Old\-Data}!TileGame@{Tile\-Game}}
+\subsubsection[{player\-Old\-Data}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Player\-Old\-Data} $\ast$$>$ Tile\-Game\-::player\-Old\-Data\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a0a931a016e78d8aaaa5eb7543565bd31}
 \hypertarget{classTileGame_a6ec622cd0062396ffa3e929702fc870d}{\index{Tile\-Game@{Tile\-Game}!players\-Waiting\-Panel@{players\-Waiting\-Panel}}
 \index{players\-Waiting\-Panel@{players\-Waiting\-Panel}!TileGame@{Tile\-Game}}
 \subsubsection[{players\-Waiting\-Panel}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-Bites\-::\-Params\-Panel $\ast$ Tile\-Game\-::players\-Waiting\-Panel\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a6ec622cd0062396ffa3e929702fc870d}
@@ -575,24 +603,6 @@ Reimplemented from \hyperlink{classBaseGame_a8b98e28df7c7ea23e2bcd389d140ad76}{B
 \hypertarget{classTileGame_adbfc142c4bd14007f4aec65b164bbea7}{\index{Tile\-Game@{Tile\-Game}!timer@{timer}}
 \index{timer@{timer}!TileGame@{Tile\-Game}}
 \subsubsection[{timer}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Timer Tile\-Game\-::timer\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_adbfc142c4bd14007f4aec65b164bbea7}
-\hypertarget{classTileGame_a3c37c43bfc4c0387a3f29f783e4f436a}{\index{Tile\-Game@{Tile\-Game}!wall\-Back@{wall\-Back}}
-\index{wall\-Back@{wall\-Back}!TileGame@{Tile\-Game}}
-\subsubsection[{wall\-Back}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Plane Tile\-Game\-::wall\-Back\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a3c37c43bfc4c0387a3f29f783e4f436a}
-\hypertarget{classTileGame_af1834b17a2460b1613d93be25492113c}{\index{Tile\-Game@{Tile\-Game}!wall\-Down@{wall\-Down}}
-\index{wall\-Down@{wall\-Down}!TileGame@{Tile\-Game}}
-\subsubsection[{wall\-Down}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Plane Tile\-Game\-::wall\-Down\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_af1834b17a2460b1613d93be25492113c}
-\hypertarget{classTileGame_a97846181582b43470f0a1394e0dfcad8}{\index{Tile\-Game@{Tile\-Game}!wall\-Front@{wall\-Front}}
-\index{wall\-Front@{wall\-Front}!TileGame@{Tile\-Game}}
-\subsubsection[{wall\-Front}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Plane Tile\-Game\-::wall\-Front\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a97846181582b43470f0a1394e0dfcad8}
-\hypertarget{classTileGame_a92cc3d1944d2bd572198479508722577}{\index{Tile\-Game@{Tile\-Game}!wall\-Left@{wall\-Left}}
-\index{wall\-Left@{wall\-Left}!TileGame@{Tile\-Game}}
-\subsubsection[{wall\-Left}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Plane Tile\-Game\-::wall\-Left\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a92cc3d1944d2bd572198479508722577}
-\hypertarget{classTileGame_ae7de21d4feafcb1cc6f2d0434ddcfa9c}{\index{Tile\-Game@{Tile\-Game}!wall\-Right@{wall\-Right}}
-\index{wall\-Right@{wall\-Right}!TileGame@{Tile\-Game}}
-\subsubsection[{wall\-Right}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Plane Tile\-Game\-::wall\-Right\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_ae7de21d4feafcb1cc6f2d0434ddcfa9c}
-\hypertarget{classTileGame_a3679e7a4d3981c56c087f23f94b3b0ec}{\index{Tile\-Game@{Tile\-Game}!wall\-Up@{wall\-Up}}
-\index{wall\-Up@{wall\-Up}!TileGame@{Tile\-Game}}
-\subsubsection[{wall\-Up}]{\setlength{\rightskip}{0pt plus 5cm}Ogre\-::\-Plane Tile\-Game\-::wall\-Up\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a3679e7a4d3981c56c087f23f94b3b0ec}
 \hypertarget{classTileGame_a05d9bbf0aebd4822ed518804eeb899fa}{\index{Tile\-Game@{Tile\-Game}!win\-Timer@{win\-Timer}}
 \index{win\-Timer@{win\-Timer}!TileGame@{Tile\-Game}}
 \subsubsection[{win\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}int Tile\-Game\-::win\-Timer\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTileGame_a05d9bbf0aebd4822ed518804eeb899fa}

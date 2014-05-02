@@ -5,8 +5,25 @@
  *
  * @brief Networking wrapper for SDL_net created for OGRE engine use in CS 354R
  * at the University of Texas at Austin, taught by Don Fussell in Spring 2014.
+ * This wrapper \b requires SDL_Net v1.2.8 for retrieving the user's local IP
+ * address.  Compile as a static library or remove that functionality if the
+ * required version is not present on your system.
  *
- * @copyright GNU Public License
+ * @copyright Copyright (C) 2014  Wade Burch
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 #ifndef NETMANAGER_H_
@@ -23,6 +40,7 @@
 /* ****************************************************************************
  * Global Structures
  */
+
 /**
  * Allows integer manipulations of flags, but signals to users that the value
  * should be chosen from the PROTOCOL_XXX enumerated values.
@@ -67,7 +85,11 @@ struct ClientData {
   char input[128];                    //!< Target for automatic data pulls.
 };
 
-
+/**
+ * @name Packet Tags
+ * TCP and UDP packet opening tags for quick message handling.
+ */
+//!@{
 static const std::string STR_DENY("TG_SERVER_DENY");
 static const std::string STR_OPEN("TG_SERVER_OPEN");
 static const std::string STR_ACPT("TG_SERVER_JOIN");
@@ -78,7 +100,9 @@ static const Uint32 UINT_ADDPL(0xFF000001);
 static const Uint32 UINT_UPDPL(0xFF000010);
 static const Uint32 UINT_UPDSV(0xFF000020);
 static const Uint32 UINT_UPDBL(0xFF000030);
+static const Uint32 UINT_UPDPB(0xFF000040);
 static const Uint32 UINT_BLSHT(0xFF0001FF);
+//!@}
 
 
 
@@ -196,7 +220,7 @@ private:
     SOCKET_ALL_MAX      = SOCKET_TCP_MAX + SOCKET_UDP_MAX,
     SOCKET_SELF         = SOCKET_ALL_MAX + 1,
     MESSAGE_COUNT       = 10,
-    MESSAGE_LENGTH      = 128,
+    MESSAGE_LENGTH      = 256,
     MASK_DEPTH          = 24
     ///@}
   };

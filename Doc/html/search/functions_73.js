@@ -8,6 +8,7 @@ var searchData=
   ['setglobalball',['setGlobalBall',['../classBallManager.html#a7e16e93759654ab1511acf0696e49d44',1,'BallManager']]],
   ['sethost',['setHost',['../classNetManager.html#a47666370887fee3b2fa27ae7bff1065f',1,'NetManager']]],
   ['setlevel',['setLevel',['../classTileGame.html#ab59731a2c682beeda91ad1a89229a3f0',1,'TileGame']]],
+  ['setplayerball',['setPlayerBall',['../classBallManager.html#a815ef99a0ff8519df4761be2866e190d',1,'BallManager']]],
   ['setport',['setPort',['../classNetManager.html#af5db4e28511390202b17f6d711f42d83',1,'NetManager']]],
   ['setposition',['setPosition',['../classBall.html#afe626f0cd58bb4e6e604f18be11ae6ca',1,'Ball']]],
   ['setprotocol',['setProtocol',['../classNetManager.html#af370ee8343ff23121c0c2f180c34dabc',1,'NetManager']]],
@@ -15,7 +16,7 @@ var searchData=
   ['setupresources',['setupResources',['../classBaseGame.html#a5e0e6f03394f7d3c2a6b59e7f5f1a0ad',1,'BaseGame']]],
   ['setvolume',['setVolume',['../classSoundManager.html#a203b898b68db005daabc199622daf860',1,'SoundManager']]],
   ['setworldtransform',['setWorldTransform',['../classOgreMotionState.html#a1b923f3fb6eadf733bf3dcea718a36e0',1,'OgreMotionState']]],
-  ['shootball',['shootBall',['../classTileGame.html#a08e86412abbd596046bc2e9399dc9da8',1,'TileGame']]],
+  ['shootball',['shootBall',['../classTileGame.html#ab5fd23a93e7eb13a2664ba3275035adc',1,'TileGame']]],
   ['simonsaysanim',['simonSaysAnim',['../classTileGame.html#aabd8c2eb7913022c30119846d57eaba5',1,'TileGame']]],
   ['simulatestep',['simulateStep',['../classSimulator.html#a6abe3ee406909ab7f03930dfa537a42b',1,'Simulator::simulateStep()'],['../classTileSimulator.html#ae944141e1051b803018d6c4af47f2df9',1,'TileSimulator::simulateStep()']]],
   ['simulator',['Simulator',['../classSimulator.html#a031573bfcfe2e0f5c9539bcc1c7fc5d9',1,'Simulator']]],
@@ -31,5 +32,5 @@ var searchData=
   ['str_5fdeny',['STR_DENY',['../NetManager_8h.html#a4cc69f51b723ed3756cb24529faacf94',1,'NetManager.h']]],
   ['str_5fnxlvl',['STR_NXLVL',['../NetManager_8h.html#ae26fc6d96c2e5c42864f42ae237d435f',1,'NetManager.h']]],
   ['str_5fopen',['STR_OPEN',['../NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89',1,'NetManager.h']]],
-  ['str_5ftlhit',['STR_TLHIT',['../NetManager_8h.html#ad93bfb0e396e66ab5c3013ff12ea1ea2',1,'NetManager.h']]]
+  ['str_5ftlhit',['STR_TLHIT',['../NetManager_8h.html#a17cea74ffa44b9438751cd7d5020f532',1,'NetManager.h']]]
 ];

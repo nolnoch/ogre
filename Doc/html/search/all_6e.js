@@ -25,13 +25,16 @@ var searchData=
   ['nettestclient_2ecpp',['NetTestClient.cpp',['../NetTestClient_8cpp.html',1,'']]],
   ['nettestserver_2ecpp',['NetTestServer.cpp',['../NetTestServer_8cpp.html',1,'']]],
   ['nettimer',['netTimer',['../classTileGame.html#a0193bc10ab8efe7cbf37ec7d41378b55',1,'TileGame']]],
-  ['newdir',['newDir',['../structPlayerData.html#a24adab3caa5143343ef885fc71c449de',1,'PlayerData']]],
+  ['newdir',['newDir',['../structPlayerData.html#a1ba2a05ce9b43b34334163b84e975c4b',1,'PlayerData']]],
   ['newpos',['newPos',['../structPlayerData.html#ab63193631eb26d16924e7b81aab109be',1,'PlayerData']]],
   ['nextudpchannel',['nextUDPChannel',['../classNetManager.html#a7505bdde90a24b85b6cb1d8d81404c5f',1,'NetManager']]],
   ['node',['node',['../classBall.html#af1e78462805ffd11789b6e6d3940068f',1,'Ball']]],
+  ['noteindex',['noteIndex',['../classTileGame.html#ae301ffc70ac15755e4fd6f8561aeaf30',1,'TileGame']]],
+  ['notesequence',['noteSequence',['../classTileGame.html#a89f75175ed666995704d8bad09762612',1,'TileGame']]],
   ['notifyplayers',['notifyPlayers',['../classTileGame.html#a60decbb2167d26695a7eb7c50c7effa1',1,'TileGame']]],
   ['notifyserver',['notifyServer',['../classTileGame.html#a433bc18f76fb4c0b4465c638696ffe3c',1,'TileGame']]],
   ['nplayers',['nPlayers',['../classTileGame.html#a232f92064d80b722b022a3845be35b9e',1,'TileGame']]],
   ['num_5ftiles_5frow',['NUM_TILES_ROW',['../TileGame_8h.html#a1ee1f1650c9b3637a34b45af7bc9571c',1,'TileGame.h']]],
-  ['num_5ftiles_5fwall',['NUM_TILES_WALL',['../TileGame_8h.html#a9886187819d57faaaf244a02b0ec4f65',1,'TileGame.h']]]
+  ['num_5ftiles_5fwall',['NUM_TILES_WALL',['../TileGame_8h.html#a9886187819d57faaaf244a02b0ec4f65',1,'TileGame.h']]],
+  ['numballs',['numBalls',['../structBallData.html#adbec846205500562d917df9695a85134',1,'BallData']]]
 ];

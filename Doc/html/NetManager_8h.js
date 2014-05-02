@@ -14,8 +14,11 @@ var NetManager_8h =
     [ "STR_DENY", "NetManager_8h.html#a4cc69f51b723ed3756cb24529faacf94", null ],
     [ "STR_NXLVL", "NetManager_8h.html#ae26fc6d96c2e5c42864f42ae237d435f", null ],
     [ "STR_OPEN", "NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89", null ],
-    [ "STR_TLHIT", "NetManager_8h.html#ad93bfb0e396e66ab5c3013ff12ea1ea2", null ],
+    [ "STR_TLHIT", "NetManager_8h.html#a17cea74ffa44b9438751cd7d5020f532", null ],
     [ "UINT_ADDPL", "NetManager_8h.html#ac80e04d2db459bedde1b3279e6c7dfc4", null ],
+    [ "UINT_BLSHT", "NetManager_8h.html#a97a18320db547241b150b44391f24dc5", null ],
+    [ "UINT_UPDBL", "NetManager_8h.html#ac63a8fcf36c407e8cc1693e8890a0d3f", null ],
+    [ "UINT_UPDPB", "NetManager_8h.html#a9f740c8f94d6ae8ef523749e7fa9c20a", null ],
     [ "UINT_UPDPL", "NetManager_8h.html#a19065404c496b4308fc16886cf744ec8", null ],
     [ "UINT_UPDSV", "NetManager_8h.html#a204b3917ebafa4878ad546a580aa1b49", null ]
 ];

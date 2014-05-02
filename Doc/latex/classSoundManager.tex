@@ -22,9 +22,15 @@ int \hyperlink{classSoundManager_a013d883ce7fce00a50ffcc18b0336e16}{get\-Volume}
 \item 
 void \hyperlink{classSoundManager_a203b898b68db005daabc199622daf860}{set\-Volume} (double vol)
 \item 
+void \hyperlink{classSoundManager_af7708a26e281f838114f6b1e494dca7e}{raise\-Volume} ()
+\item 
+void \hyperlink{classSoundManager_a0c4febd5fbca1712fba50ed70c2e513f}{lower\-Volume} ()
+\item 
 void \hyperlink{classSoundManager_a6265e3f73b56fea0cab813cd0447d310}{play\-Music} ()
 \item 
 void \hyperlink{classSoundManager_a77322f5a208b15ba5495c57103b302e5}{play\-Sound} (int chunk)
+\item 
+void \hyperlink{classSoundManager_aba891af2b8adbc2d0d17471b92b52fb3}{play\-Sound} (int chunk, Ogre\-::\-Vector3 sound\-Position, Ogre\-::\-Camera $\ast$m\-Camera)
 \item 
 void \hyperlink{classSoundManager_a5071bf5e87394afdb1e4148227ffc3ea}{pause\-Music} ()
 \item 
@@ -33,6 +39,17 @@ void \hyperlink{classSoundManager_ae8afa6738d1e3cb81ed90216574a08f4}{mute} ()
 void \hyperlink{classSoundManager_adb6bd13299469546885f7469680a2699}{unmute} ()
 \item 
 void \hyperlink{classSoundManager_a316417bb0eb4ee5c84d7ed62cdd08705}{toggle\-Sound} ()
+\item 
+void \hyperlink{classSoundManager_a7f322297e6afd43b53fa082a9f027a2b}{update\-Sounds} (Ogre\-::\-Camera $\ast$m\-Camera)
+\item 
+void \hyperlink{classSoundManager_ae9598ffd36be9daa0b542e54ceca4fe4}{channel\-Done} (int channel)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classSoundManager_a853d33720f1d07d10d81771217d6aad1}{calc\-Distance} (Ogre\-::\-Vector3 cam\-Position, Ogre\-::\-Vector3 sound\-Position)
+\item 
+int \hyperlink{classSoundManager_aa39dc3ca78b74a7eb8d3535ff9a50f0d}{calc\-Panning} (Ogre\-::\-Camera $\ast$m\-Camera, Ogre\-::\-Vector3 sound\-Position)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -46,6 +63,11 @@ bool \hyperlink{classSoundManager_a448beccb044e3cbdbe72262f73bd464c}{music\-Play
 Mix\-\_\-\-Music $\ast$ \hyperlink{classSoundManager_add68d7295ec04f3d1fb351199ef943a3}{music}
 \item 
 std\-::vector$<$ Mix\-\_\-\-Chunk $\ast$ $>$ \hyperlink{classSoundManager_a591ec09cf6486bc6ff62c458b1718630}{chunks}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\-::vector$<$ \hyperlink{structSound}{Sound} $>$ \hyperlink{classSoundManager_a31f26ed9971efa0d30d57cdd2b60854f}{active\-Sounds}
 \end{DoxyCompactItemize}
 
 
@@ -67,6 +89,29 @@ std\-::vector$<$ Mix\-\_\-\-Chunk $\ast$ $>$ \hyperlink{classSoundManager_a591ec
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classSoundManager_a853d33720f1d07d10d81771217d6aad1}{\index{Sound\-Manager@{Sound\-Manager}!calc\-Distance@{calc\-Distance}}
+\index{calc\-Distance@{calc\-Distance}!SoundManager@{Sound\-Manager}}
+\subsubsection[{calc\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}int Sound\-Manager\-::calc\-Distance (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Vector3}]{cam\-Position, }
+\item[{Ogre\-::\-Vector3}]{sound\-Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_a853d33720f1d07d10d81771217d6aad1}
+\hypertarget{classSoundManager_aa39dc3ca78b74a7eb8d3535ff9a50f0d}{\index{Sound\-Manager@{Sound\-Manager}!calc\-Panning@{calc\-Panning}}
+\index{calc\-Panning@{calc\-Panning}!SoundManager@{Sound\-Manager}}
+\subsubsection[{calc\-Panning}]{\setlength{\rightskip}{0pt plus 5cm}int Sound\-Manager\-::calc\-Panning (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Camera $\ast$}]{m\-Camera, }
+\item[{Ogre\-::\-Vector3}]{sound\-Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_aa39dc3ca78b74a7eb8d3535ff9a50f0d}
+\hypertarget{classSoundManager_ae9598ffd36be9daa0b542e54ceca4fe4}{\index{Sound\-Manager@{Sound\-Manager}!channel\-Done@{channel\-Done}}
+\index{channel\-Done@{channel\-Done}!SoundManager@{Sound\-Manager}}
+\subsubsection[{channel\-Done}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::channel\-Done (
+\begin{DoxyParamCaption}
+\item[{int}]{channel}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_ae9598ffd36be9daa0b542e54ceca4fe4}
 \hypertarget{classSoundManager_a013d883ce7fce00a50ffcc18b0336e16}{\index{Sound\-Manager@{Sound\-Manager}!get\-Volume@{get\-Volume}}
 \index{get\-Volume@{get\-Volume}!SoundManager@{Sound\-Manager}}
 \subsubsection[{get\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}int Sound\-Manager\-::get\-Volume (
@@ -95,6 +140,13 @@ std\-::vector$<$ Mix\-\_\-\-Chunk $\ast$ $>$ \hyperlink{classSoundManager_a591ec
 \item[{const char $\ast$}]{name}
 \end{DoxyParamCaption}
 )}}\label{classSoundManager_abaa5592584989a7c430b4c0bb74af36b}
+\hypertarget{classSoundManager_a0c4febd5fbca1712fba50ed70c2e513f}{\index{Sound\-Manager@{Sound\-Manager}!lower\-Volume@{lower\-Volume}}
+\index{lower\-Volume@{lower\-Volume}!SoundManager@{Sound\-Manager}}
+\subsubsection[{lower\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::lower\-Volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a0c4febd5fbca1712fba50ed70c2e513f}
 \hypertarget{classSoundManager_ae8afa6738d1e3cb81ed90216574a08f4}{\index{Sound\-Manager@{Sound\-Manager}!mute@{mute}}
 \index{mute@{mute}!SoundManager@{Sound\-Manager}}
 \subsubsection[{mute}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::mute (
@@ -123,6 +175,22 @@ std\-::vector$<$ Mix\-\_\-\-Chunk $\ast$ $>$ \hyperlink{classSoundManager_a591ec
 \item[{int}]{chunk}
 \end{DoxyParamCaption}
 )}}\label{classSoundManager_a77322f5a208b15ba5495c57103b302e5}
+\hypertarget{classSoundManager_aba891af2b8adbc2d0d17471b92b52fb3}{\index{Sound\-Manager@{Sound\-Manager}!play\-Sound@{play\-Sound}}
+\index{play\-Sound@{play\-Sound}!SoundManager@{Sound\-Manager}}
+\subsubsection[{play\-Sound}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::play\-Sound (
+\begin{DoxyParamCaption}
+\item[{int}]{chunk, }
+\item[{Ogre\-::\-Vector3}]{sound\-Position, }
+\item[{Ogre\-::\-Camera $\ast$}]{m\-Camera}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_aba891af2b8adbc2d0d17471b92b52fb3}
+\hypertarget{classSoundManager_af7708a26e281f838114f6b1e494dca7e}{\index{Sound\-Manager@{Sound\-Manager}!raise\-Volume@{raise\-Volume}}
+\index{raise\-Volume@{raise\-Volume}!SoundManager@{Sound\-Manager}}
+\subsubsection[{raise\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::raise\-Volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_af7708a26e281f838114f6b1e494dca7e}
 \hypertarget{classSoundManager_a203b898b68db005daabc199622daf860}{\index{Sound\-Manager@{Sound\-Manager}!set\-Volume@{set\-Volume}}
 \index{set\-Volume@{set\-Volume}!SoundManager@{Sound\-Manager}}
 \subsubsection[{set\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::set\-Volume (
@@ -144,9 +212,19 @@ std\-::vector$<$ Mix\-\_\-\-Chunk $\ast$ $>$ \hyperlink{classSoundManager_a591ec
 {}
 \end{DoxyParamCaption}
 )}}\label{classSoundManager_adb6bd13299469546885f7469680a2699}
+\hypertarget{classSoundManager_a7f322297e6afd43b53fa082a9f027a2b}{\index{Sound\-Manager@{Sound\-Manager}!update\-Sounds@{update\-Sounds}}
+\index{update\-Sounds@{update\-Sounds}!SoundManager@{Sound\-Manager}}
+\subsubsection[{update\-Sounds}]{\setlength{\rightskip}{0pt plus 5cm}void Sound\-Manager\-::update\-Sounds (
+\begin{DoxyParamCaption}
+\item[{Ogre\-::\-Camera $\ast$}]{m\-Camera}
+\end{DoxyParamCaption}
+)}}\label{classSoundManager_a7f322297e6afd43b53fa082a9f027a2b}
 
 
 \subsection{Member Data Documentation}
+\hypertarget{classSoundManager_a31f26ed9971efa0d30d57cdd2b60854f}{\index{Sound\-Manager@{Sound\-Manager}!active\-Sounds@{active\-Sounds}}
+\index{active\-Sounds@{active\-Sounds}!SoundManager@{Sound\-Manager}}
+\subsubsection[{active\-Sounds}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ {\bf Sound} $>$ Sound\-Manager\-::active\-Sounds\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{classSoundManager_a31f26ed9971efa0d30d57cdd2b60854f}
 \hypertarget{classSoundManager_a591ec09cf6486bc6ff62c458b1718630}{\index{Sound\-Manager@{Sound\-Manager}!chunks@{chunks}}
 \index{chunks@{chunks}!SoundManager@{Sound\-Manager}}
 \subsubsection[{chunks}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$Mix\-\_\-\-Chunk $\ast$$>$ Sound\-Manager\-::chunks\hspace{0.3cm}{\ttfamily [private]}}}\label{classSoundManager_a591ec09cf6486bc6ff62c458b1718630}

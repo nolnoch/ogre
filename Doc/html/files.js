@@ -24,7 +24,7 @@ var files =
     ] ],
     [ "Simulator.cpp", "Simulator_8cpp.html", null ],
     [ "Simulator.h", "Simulator_8h.html", "Simulator_8h" ],
-    [ "SoundManager.cpp", "SoundManager_8cpp.html", null ],
+    [ "SoundManager.cpp", "SoundManager_8cpp.html", "SoundManager_8cpp" ],
     [ "SoundManager.h", "SoundManager_8h.html", "SoundManager_8h" ],
     [ "TileGame.cpp", "TileGame_8cpp.html", "TileGame_8cpp" ],
     [ "TileGame.h", "TileGame_8h.html", "TileGame_8h" ],

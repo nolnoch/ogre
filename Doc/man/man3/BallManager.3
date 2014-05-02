@@ -1,4 +1,4 @@
-.TH "BallManager" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
+.TH "BallManager" 3 "Wed Apr 2 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,7 +21,13 @@ BallManager \-
 .RI "bool \fBinitBallManager\fP ()"
 .br
 .ti -1c
+.RI "void \fBinitMultiplayer\fP (int nPlayers)"
+.br
+.ti -1c
 .RI "void \fBsetGlobalBall\fP (\fBBall\fP *ball)"
+.br
+.ti -1c
+.RI "void \fBsetPlayerBall\fP (\fBBall\fP *ball, int idx)"
 .br
 .ti -1c
 .RI "\fBBall\fP * \fBaddBall\fP (Ogre::SceneNode *n, int x, int y, int z, int r)"
@@ -39,10 +45,19 @@ BallManager \-
 .RI "void \fBremoveGlobalBall\fP ()"
 .br
 .ti -1c
+.RI "void \fBremovePlayerBall\fP (int idx)"
+.br
+.ti -1c
 .RI "bool \fBisGlobalBall\fP ()"
 .br
 .ti -1c
+.RI "bool \fBisPlayerBall\fP (int idx)"
+.br
+.ti -1c
 .RI "void \fBclearBalls\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetNumberBallCollisions\fP ()"
 .br
 .ti -1c
 .RI "\fBTileSimulator\fP * \fBgetSimulator\fP ()"
@@ -57,6 +72,9 @@ BallManager \-
 .ti -1c
 .RI "\fBBall\fP * \fBglobalBall\fP"
 .br
+.ti -1c
+.RI "std::vector< \fBBall\fP * > \fBplayerBalls\fP"
+.br
 .in -1c
 .SS "Private Attributes"
 
@@ -68,10 +86,16 @@ BallManager \-
 .RI "std::vector< \fBBall\fP * > \fBmainBalls\fP"
 .br
 .ti -1c
+.RI "std::vector< bool > \fBplayerBallsActive\fP"
+.br
+.ti -1c
 .RI "\fBTileSimulator\fP * \fBsim\fP"
 .br
 .ti -1c
 .RI "bool \fBglobalBallActive\fP"
+.br
+.ti -1c
+.RI "int \fBballCollisions\fP"
 .br
 .in -1c
 .SH "Constructor & Destructor Documentation"
@@ -92,20 +116,32 @@ BallManager \-
 
 .SS "void BallManager::enableGravity ()"
 
+.SS "int BallManager::getNumberBallCollisions ()"
+
 .SS "\fBTileSimulator\fP * BallManager::getSimulator ()"
 
 .SS "bool BallManager::initBallManager ()"
 
+.SS "void BallManager::initMultiplayer (intnPlayers)"
+
 .SS "bool BallManager::isGlobalBall ()"
+
+.SS "bool BallManager::isPlayerBall (intidx)"
 
 .SS "void BallManager::removeBall (\fBBall\fP *rmBall)"
 
 .SS "void BallManager::removeGlobalBall ()"
 
+.SS "void BallManager::removePlayerBall (intidx)"
+
 .SS "void BallManager::setGlobalBall (\fBBall\fP *ball)"
+
+.SS "void BallManager::setPlayerBall (\fBBall\fP *ball, intidx)"
 
 .SH "Member Data Documentation"
 .PP 
+.SS "int BallManager::ballCollisions\fC [private]\fP"
+
 .SS "std::vector<\fBBall\fP *> BallManager::ballList\fC [private]\fP"
 
 .SS "\fBBall\fP* BallManager::globalBall"
@@ -113,6 +149,10 @@ BallManager \-
 .SS "bool BallManager::globalBallActive\fC [private]\fP"
 
 .SS "std::vector<\fBBall\fP *> BallManager::mainBalls\fC [private]\fP"
+
+.SS "std::vector<\fBBall\fP *> BallManager::playerBalls"
+
+.SS "std::vector<bool> BallManager::playerBallsActive\fC [private]\fP"
 
 .SS "\fBTileSimulator\fP* BallManager::sim\fC [private]\fP"
 

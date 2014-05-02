@@ -1,4 +1,4 @@
-.TH "SoundManager" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
+.TH "SoundManager" 3 "Wed Apr 2 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -33,10 +33,19 @@ SoundManager \-
 .RI "void \fBsetVolume\fP (double vol)"
 .br
 .ti -1c
+.RI "void \fBraiseVolume\fP ()"
+.br
+.ti -1c
+.RI "void \fBlowerVolume\fP ()"
+.br
+.ti -1c
 .RI "void \fBplayMusic\fP ()"
 .br
 .ti -1c
 .RI "void \fBplaySound\fP (int chunk)"
+.br
+.ti -1c
+.RI "void \fBplaySound\fP (int chunk, Ogre::Vector3 soundPosition, Ogre::Camera *mCamera)"
 .br
 .ti -1c
 .RI "void \fBpauseMusic\fP ()"
@@ -49,6 +58,22 @@ SoundManager \-
 .br
 .ti -1c
 .RI "void \fBtoggleSound\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateSounds\fP (Ogre::Camera *mCamera)"
+.br
+.ti -1c
+.RI "void \fBchannelDone\fP (int channel)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBcalcDistance\fP (Ogre::Vector3 camPosition, Ogre::Vector3 soundPosition)"
+.br
+.ti -1c
+.RI "int \fBcalcPanning\fP (Ogre::Camera *mCamera, Ogre::Vector3 soundPosition)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -70,6 +95,13 @@ SoundManager \-
 .RI "std::vector< Mix_Chunk * > \fBchunks\fP"
 .br
 .in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static std::vector< \fBSound\fP > \fBactiveSounds\fP"
+.br
+.in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "SoundManager::SoundManager ()"
@@ -78,6 +110,12 @@ SoundManager \-
 
 .SH "Member Function Documentation"
 .PP 
+.SS "int SoundManager::calcDistance (Ogre::Vector3camPosition, Ogre::Vector3soundPosition)\fC [private]\fP"
+
+.SS "int SoundManager::calcPanning (Ogre::Camera *mCamera, Ogre::Vector3soundPosition)\fC [private]\fP"
+
+.SS "void SoundManager::channelDone (intchannel)"
+
 .SS "int SoundManager::getVolume ()"
 
 .SS "bool SoundManager::initSoundManager ()"
@@ -85,6 +123,8 @@ SoundManager \-
 .SS "bool SoundManager::loadMusic (const char *name)"
 
 .SS "int SoundManager::loadSound (const char *name)"
+
+.SS "void SoundManager::lowerVolume ()"
 
 .SS "void SoundManager::mute ()"
 
@@ -94,14 +134,22 @@ SoundManager \-
 
 .SS "void SoundManager::playSound (intchunk)"
 
+.SS "void SoundManager::playSound (intchunk, Ogre::Vector3soundPosition, Ogre::Camera *mCamera)"
+
+.SS "void SoundManager::raiseVolume ()"
+
 .SS "void SoundManager::setVolume (doublevol)"
 
 .SS "void SoundManager::toggleSound ()"
 
 .SS "void SoundManager::unmute ()"
 
+.SS "void SoundManager::updateSounds (Ogre::Camera *mCamera)"
+
 .SH "Member Data Documentation"
 .PP 
+.SS "std::vector< \fBSound\fP > SoundManager::activeSounds\fC [static]\fP, \fC [private]\fP"
+
 .SS "std::vector<Mix_Chunk *> SoundManager::chunks\fC [private]\fP"
 
 .SS "bool SoundManager::initialized\fC [private]\fP"

@@ -8,6 +8,7 @@ var searchData=
   ['addmainball',['addMainBall',['../classBallManager.html#a1eed74d1d8c6070187774fd23f79fa91',1,'BallManager']]],
   ['addnetworkinfo',['addNetworkInfo',['../classNetManager.html#af1228963af244b0fc75d6de780da719e',1,'NetManager']]],
   ['addplanebound',['addPlaneBound',['../classSimulator.html#a043aa34df7dbd5046ed56407ba9b44de',1,'Simulator']]],
+  ['addplayer',['addPlayer',['../classTileGame.html#a41c96eb8d5df658a523723a90500a5ff',1,'TileGame']]],
   ['addprotocol',['addProtocol',['../classNetManager.html#a444e45de6f806c4c27d7f9915f898329',1,'NetManager']]],
   ['addtile',['addTile',['../classTileSimulator.html#af5290bb6e13b9c9dccced4d275b7cac7',1,'TileSimulator']]],
   ['addudpclient',['addUDPClient',['../classNetManager.html#aff05c27b852dddd386e788bed7fa6d12',1,'NetManager']]],

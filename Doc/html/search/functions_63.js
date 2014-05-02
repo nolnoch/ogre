@@ -1,6 +1,10 @@
 var searchData=
 [
+  ['calcdistance',['calcDistance',['../classSoundManager.html#a853d33720f1d07d10d81771217d6aad1',1,'SoundManager']]],
+  ['calcpanning',['calcPanning',['../classSoundManager.html#aa39dc3ca78b74a7eb8d3535ff9a50f0d',1,'SoundManager']]],
   ['cameraman',['CameraMan',['../classCameraMan.html#a2336426531ac8a981c0428a920b2c68f',1,'CameraMan']]],
+  ['channeldone',['channelDone',['../classSoundManager.html#ae9598ffd36be9daa0b542e54ceca4fe4',1,'SoundManager']]],
+  ['channeldonewrapper',['channelDoneWrapper',['../SoundManager_8cpp.html#ae18a2552580367085dc73ae50b26726f',1,'SoundManager.cpp']]],
   ['checkcollisions',['checkCollisions',['../classBallManager.html#aaaa28fd371dc2b04d5973f0a8ef6f956',1,'BallManager']]],
   ['checkrigidbody',['checkRigidBody',['../classBall.html#a6364b72dcbf707a3ff649fdf731936d4',1,'Ball']]],
   ['checksockets',['checkSockets',['../classNetManager.html#afa6cebf021e8d3444f1904ad22c4e5b7',1,'NetManager']]],

@@ -119,41 +119,63 @@ $(document).ready(function(){initNavTree('SoundManager_8h_source.html','');});
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;SDL/SDL.h&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;SDL/SDL_mixer.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"> #include &quot;<a class="code" href="BaseGame_8h.html">BaseGame.h</a>&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">   18</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classSoundManager.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSoundManager.html">SoundManager</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classSoundManager.html#abcc1fbf3488be5788a42c9a4fe56df35">SoundManager</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classSoundManager.html#ad5dbf8eab22db48ff8f3db51b02f8938">~SoundManager</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classSoundManager.html#ad1787c39537a0fc19215e7baacf04439">initSoundManager</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classSoundManager.html#a57caed0509fdbe4710de7b5f7d4de201">loadMusic</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classSoundManager.html#abaa5592584989a7c430b4c0bb74af36b">loadSound</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classSoundManager.html#a013d883ce7fce00a50ffcc18b0336e16">getVolume</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a203b898b68db005daabc199622daf860">setVolume</a>(<span class="keywordtype">double</span> vol);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a6265e3f73b56fea0cab813cd0447d310">playMusic</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a77322f5a208b15ba5495c57103b302e5">playSound</a>(<span class="keywordtype">int</span> chunk);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a5071bf5e87394afdb1e4148227ffc3ea">pauseMusic</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#ae8afa6738d1e3cb81ed90216574a08f4">mute</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#adb6bd13299469546885f7469680a2699">unmute</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a316417bb0eb4ee5c84d7ed62cdd08705">toggleSound</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classSoundManager.html#a099128ef18dacf43acd4942aedf712a2">   38</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classSoundManager.html#a099128ef18dacf43acd4942aedf712a2">sounding</a>, <a class="code" href="classSoundManager.html#a4d95e056b1fe09c91fc601e8062b9b9b">initialized</a>, <a class="code" href="classSoundManager.html#a448beccb044e3cbdbe72262f73bd464c">musicPlaying</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classSoundManager.html#add68d7295ec04f3d1fb351199ef943a3">   39</a></span>&#160;  Mix_Music *<a class="code" href="classSoundManager.html#add68d7295ec04f3d1fb351199ef943a3">music</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classSoundManager.html#a591ec09cf6486bc6ff62c458b1718630">   40</a></span>&#160;  std::vector&lt;Mix_Chunk *&gt; <a class="code" href="classSoundManager.html#a591ec09cf6486bc6ff62c458b1718630">chunks</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SOUNDMANAGER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="structSound.html">   22</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="structSound.html#a7032f013c11da2c354a6e41020e170a7">   23</a></span>&#160;   Ogre::Vector3 <a class="code" href="structSound.html#a7032f013c11da2c354a6e41020e170a7">soundPosition</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="structSound.html#a658d91b8d31c3420cf6106fcb6eaa223">   24</a></span>&#160;   Mix_Chunk * <a class="code" href="structSound.html#a658d91b8d31c3420cf6106fcb6eaa223">chunk</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="structSound.html#a259757aea073ec5c56a23955d56bf21b">   25</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="structSound.html#a259757aea073ec5c56a23955d56bf21b">distance</a>; <span class="comment">// this is the volume, which is based on the distance it is from a vector</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="structSound.html#af3895edf5a39772f1de32cfbfff90909">   26</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="structSound.html#af3895edf5a39772f1de32cfbfff90909">channel</a>; <span class="comment">// channel this sound is being played at.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="structSound.html#aada15bf9ccd1e956b92f5e772134705f">   27</a></span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="structSound.html#aada15bf9ccd1e956b92f5e772134705f">active</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <a class="code" href="structSound.html">Sound</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classSoundManager.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSoundManager.html">SoundManager</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classSoundManager.html#abcc1fbf3488be5788a42c9a4fe56df35">SoundManager</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classSoundManager.html#ad5dbf8eab22db48ff8f3db51b02f8938">~SoundManager</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classSoundManager.html#ad1787c39537a0fc19215e7baacf04439">initSoundManager</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classSoundManager.html#a57caed0509fdbe4710de7b5f7d4de201">loadMusic</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classSoundManager.html#abaa5592584989a7c430b4c0bb74af36b">loadSound</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classSoundManager.html#a013d883ce7fce00a50ffcc18b0336e16">getVolume</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a203b898b68db005daabc199622daf860">setVolume</a>(<span class="keywordtype">double</span> vol);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#af7708a26e281f838114f6b1e494dca7e">raiseVolume</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a0c4febd5fbca1712fba50ed70c2e513f">lowerVolume</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a6265e3f73b56fea0cab813cd0447d310">playMusic</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a77322f5a208b15ba5495c57103b302e5">playSound</a>(<span class="keywordtype">int</span> chunk);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a77322f5a208b15ba5495c57103b302e5">playSound</a>(<span class="keywordtype">int</span> chunk, Ogre::Vector3 soundPosition, Ogre::Camera* mCamera);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a5071bf5e87394afdb1e4148227ffc3ea">pauseMusic</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#ae8afa6738d1e3cb81ed90216574a08f4">mute</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#adb6bd13299469546885f7469680a2699">unmute</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a316417bb0eb4ee5c84d7ed62cdd08705">toggleSound</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#a7f322297e6afd43b53fa082a9f027a2b">updateSounds</a>(Ogre::Camera* mCamera);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//  void updatesounds(Ogre::Vector3 camPosition);</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSoundManager.html#ae9598ffd36be9daa0b542e54ceca4fe4">channelDone</a>(<span class="keywordtype">int</span> channel);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classSoundManager.html#a099128ef18dacf43acd4942aedf712a2">   52</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classSoundManager.html#a099128ef18dacf43acd4942aedf712a2">sounding</a>, <a class="code" href="classSoundManager.html#a4d95e056b1fe09c91fc601e8062b9b9b">initialized</a>, <a class="code" href="classSoundManager.html#a448beccb044e3cbdbe72262f73bd464c">musicPlaying</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classSoundManager.html#add68d7295ec04f3d1fb351199ef943a3">   53</a></span>&#160;  Mix_Music *<a class="code" href="classSoundManager.html#add68d7295ec04f3d1fb351199ef943a3">music</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classSoundManager.html#a591ec09cf6486bc6ff62c458b1718630">   54</a></span>&#160;  std::vector&lt;Mix_Chunk *&gt; <a class="code" href="classSoundManager.html#a591ec09cf6486bc6ff62c458b1718630">chunks</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classSoundManager.html#a31f26ed9971efa0d30d57cdd2b60854f">   55</a></span>&#160;  <span class="keyword">static</span> std::vector&lt;Sound&gt; <a class="code" href="classSoundManager.html#a31f26ed9971efa0d30d57cdd2b60854f">activeSounds</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// Calculates sound attenuation using the distance of two vectors</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classSoundManager.html#a853d33720f1d07d10d81771217d6aad1">calcDistance</a>(Ogre::Vector3 camPosition, Ogre::Vector3 soundPosition);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Calculates sound orientation</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classSoundManager.html#aa39dc3ca78b74a7eb8d3535ff9a50f0d">calcPanning</a>(Ogre::Camera* mCamera, Ogre::Vector3 soundPosition);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SOUNDMANAGER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="SoundManager_8h.html">SoundManager.h</a></li>
-    <li class="footer">Generated on Fri Mar 21 2014 03:59:51 for OGRE Game by
+    <li class="footer">Generated on Wed Apr 2 2014 12:44:04 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

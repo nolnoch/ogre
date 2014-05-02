@@ -3,7 +3,7 @@
 }
 
 
-Networking wrapper for S\-D\-L\-\_\-net created for O\-G\-R\-E engine use in C\-S 354\-R at the University of Texas at Austin, taught by Don Fussell in Spring 2014.  
+Networking wrapper for S\-D\-L\-\_\-net created for O\-G\-R\-E engine use in C\-S 354\-R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. This wrapper {\bfseries requires} S\-D\-L\-\_\-\-Net v1.\-2.\-8 for retrieving the user's local I\-P address. Compile as a static library or remove that functionality if the required version is not present on your system.  
 
 
 {\ttfamily \#include $<$vector$>$}\\*
@@ -38,7 +38,8 @@ enum \{ \\*
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
-\begin{DoxyCompactItemize}
+\begin{Indent}{\bf Packet Tags}\par
+{\em T\-C\-P and U\-D\-P packet opening tags for quick message handling. }\begin{DoxyCompactItemize}
 \item 
 static const std\-::string \hyperlink{NetManager_8h_a4cc69f51b723ed3756cb24529faacf94}{S\-T\-R\-\_\-\-D\-E\-N\-Y} (\char`\"{}T\-G\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-D\-E\-N\-Y\char`\"{})
 \item 
@@ -50,27 +51,38 @@ static const std\-::string \hyperlink{NetManager_8h_a091b06ac88c35029c42a7a5d92a
 \item 
 static const std\-::string \hyperlink{NetManager_8h_ae26fc6d96c2e5c42864f42ae237d435f}{S\-T\-R\-\_\-\-N\-X\-L\-V\-L} (\char`\"{}T\-G\-\_\-\-N\-E\-X\-T\-\_\-\-L\-E\-V\-E\-L\char`\"{})
 \item 
-static const std\-::string \hyperlink{NetManager_8h_ad93bfb0e396e66ab5c3013ff12ea1ea2}{S\-T\-R\-\_\-\-T\-L\-H\-I\-T} (\char`\"{}T\-G\-\_\-\-N\-E\-X\-T\-\_\-\-T\-I\-L\-E\char`\"{})
+static const std\-::string \hyperlink{NetManager_8h_a17cea74ffa44b9438751cd7d5020f532}{S\-T\-R\-\_\-\-T\-L\-H\-I\-T} (\char`\"{}T\-G\-\_\-\-T\-I\-L\-E\-\_\-\-H\-I\-T\char`\"{})
 \item 
 static const Uint32 \hyperlink{NetManager_8h_ac80e04d2db459bedde1b3279e6c7dfc4}{U\-I\-N\-T\-\_\-\-A\-D\-D\-P\-L} (0x\-F\-F000001)
 \item 
 static const Uint32 \hyperlink{NetManager_8h_a19065404c496b4308fc16886cf744ec8}{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-L} (0x\-F\-F000010)
 \item 
 static const Uint32 \hyperlink{NetManager_8h_a204b3917ebafa4878ad546a580aa1b49}{U\-I\-N\-T\-\_\-\-U\-P\-D\-S\-V} (0x\-F\-F000020)
+\item 
+static const Uint32 \hyperlink{NetManager_8h_ac63a8fcf36c407e8cc1693e8890a0d3f}{U\-I\-N\-T\-\_\-\-U\-P\-D\-B\-L} (0x\-F\-F000030)
+\item 
+static const Uint32 \hyperlink{NetManager_8h_a9f740c8f94d6ae8ef523749e7fa9c20a}{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-B} (0x\-F\-F000040)
+\item 
+static const Uint32 \hyperlink{NetManager_8h_a97a18320db547241b150b44391f24dc5}{U\-I\-N\-T\-\_\-\-B\-L\-S\-H\-T} (0x\-F\-F0001\-F\-F)
 \end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Detailed Description}
-Networking wrapper for S\-D\-L\-\_\-net created for O\-G\-R\-E engine use in C\-S 354\-R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. \begin{DoxyDate}{Date}
+Networking wrapper for S\-D\-L\-\_\-net created for O\-G\-R\-E engine use in C\-S 354\-R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. This wrapper {\bfseries requires} S\-D\-L\-\_\-\-Net v1.\-2.\-8 for retrieving the user's local I\-P address. Compile as a static library or remove that functionality if the required version is not present on your system. \begin{DoxyDate}{Date}
 March 7, 2014 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Author}
 Wade Burch (\href{mailto:nolnoch@cs.utexas.edu}{\tt nolnoch@cs.\-utexas.\-edu})
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
-G\-N\-U Public License 
+Copyright (C) 2014 Wade Burch
 \end{DoxyCopyright}
+This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details.
+
+You should have received a copy of the G\-N\-U General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, M\-A 02110-\/1301 U\-S\-A. 
 
 \subsection{Typedef Documentation}
 \hypertarget{NetManager_8h_a9af285d1232beed01f31aac5d3a5469f}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!Protocol@{Protocol}}
@@ -133,13 +145,13 @@ Flags exposed to the user for function calls. \begin{Desc}
 \item[{\char`\"{}T\-G\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-O\-P\-E\-N\char`\"{}}]{}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_af6a130ab206e6c62fe162b8d44e30b89}
-\hypertarget{NetManager_8h_ad93bfb0e396e66ab5c3013ff12ea1ea2}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!S\-T\-R\-\_\-\-T\-L\-H\-I\-T@{S\-T\-R\-\_\-\-T\-L\-H\-I\-T}}
+\hypertarget{NetManager_8h_a17cea74ffa44b9438751cd7d5020f532}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!S\-T\-R\-\_\-\-T\-L\-H\-I\-T@{S\-T\-R\-\_\-\-T\-L\-H\-I\-T}}
 \index{S\-T\-R\-\_\-\-T\-L\-H\-I\-T@{S\-T\-R\-\_\-\-T\-L\-H\-I\-T}!NetManager.h@{Net\-Manager.\-h}}
 \subsubsection[{S\-T\-R\-\_\-\-T\-L\-H\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}static const std\-::string S\-T\-R\-\_\-\-T\-L\-H\-I\-T (
 \begin{DoxyParamCaption}
-\item[{\char`\"{}T\-G\-\_\-\-N\-E\-X\-T\-\_\-\-T\-I\-L\-E\char`\"{}}]{}
+\item[{\char`\"{}T\-G\-\_\-\-T\-I\-L\-E\-\_\-\-H\-I\-T\char`\"{}}]{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_ad93bfb0e396e66ab5c3013ff12ea1ea2}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_a17cea74ffa44b9438751cd7d5020f532}
 \hypertarget{NetManager_8h_ac80e04d2db459bedde1b3279e6c7dfc4}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!U\-I\-N\-T\-\_\-\-A\-D\-D\-P\-L@{U\-I\-N\-T\-\_\-\-A\-D\-D\-P\-L}}
 \index{U\-I\-N\-T\-\_\-\-A\-D\-D\-P\-L@{U\-I\-N\-T\-\_\-\-A\-D\-D\-P\-L}!NetManager.h@{Net\-Manager.\-h}}
 \subsubsection[{U\-I\-N\-T\-\_\-\-A\-D\-D\-P\-L}]{\setlength{\rightskip}{0pt plus 5cm}static const Uint32 U\-I\-N\-T\-\_\-\-A\-D\-D\-P\-L (
@@ -147,6 +159,27 @@ Flags exposed to the user for function calls. \begin{Desc}
 \item[{0x\-F\-F000001}]{}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_ac80e04d2db459bedde1b3279e6c7dfc4}
+\hypertarget{NetManager_8h_a97a18320db547241b150b44391f24dc5}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!U\-I\-N\-T\-\_\-\-B\-L\-S\-H\-T@{U\-I\-N\-T\-\_\-\-B\-L\-S\-H\-T}}
+\index{U\-I\-N\-T\-\_\-\-B\-L\-S\-H\-T@{U\-I\-N\-T\-\_\-\-B\-L\-S\-H\-T}!NetManager.h@{Net\-Manager.\-h}}
+\subsubsection[{U\-I\-N\-T\-\_\-\-B\-L\-S\-H\-T}]{\setlength{\rightskip}{0pt plus 5cm}static const Uint32 U\-I\-N\-T\-\_\-\-B\-L\-S\-H\-T (
+\begin{DoxyParamCaption}
+\item[{0x\-F\-F0001\-F\-F}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_a97a18320db547241b150b44391f24dc5}
+\hypertarget{NetManager_8h_ac63a8fcf36c407e8cc1693e8890a0d3f}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!U\-I\-N\-T\-\_\-\-U\-P\-D\-B\-L@{U\-I\-N\-T\-\_\-\-U\-P\-D\-B\-L}}
+\index{U\-I\-N\-T\-\_\-\-U\-P\-D\-B\-L@{U\-I\-N\-T\-\_\-\-U\-P\-D\-B\-L}!NetManager.h@{Net\-Manager.\-h}}
+\subsubsection[{U\-I\-N\-T\-\_\-\-U\-P\-D\-B\-L}]{\setlength{\rightskip}{0pt plus 5cm}static const Uint32 U\-I\-N\-T\-\_\-\-U\-P\-D\-B\-L (
+\begin{DoxyParamCaption}
+\item[{0x\-F\-F000030}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_ac63a8fcf36c407e8cc1693e8890a0d3f}
+\hypertarget{NetManager_8h_a9f740c8f94d6ae8ef523749e7fa9c20a}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-B@{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-B}}
+\index{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-B@{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-B}!NetManager.h@{Net\-Manager.\-h}}
+\subsubsection[{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-B}]{\setlength{\rightskip}{0pt plus 5cm}static const Uint32 U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-B (
+\begin{DoxyParamCaption}
+\item[{0x\-F\-F000040}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{NetManager_8h_a9f740c8f94d6ae8ef523749e7fa9c20a}
 \hypertarget{NetManager_8h_a19065404c496b4308fc16886cf744ec8}{\index{Net\-Manager.\-h@{Net\-Manager.\-h}!U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-L@{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-L}}
 \index{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-L@{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-L}!NetManager.h@{Net\-Manager.\-h}}
 \subsubsection[{U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-L}]{\setlength{\rightskip}{0pt plus 5cm}static const Uint32 U\-I\-N\-T\-\_\-\-U\-P\-D\-P\-L (

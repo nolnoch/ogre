@@ -160,8 +160,8 @@ $(document).ready(function(){initNavTree('Ball_8h_source.html','');});
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classBall.html#a902a1e615fa1c0f9b91c700a90f4f475">   56</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBall.html#a902a1e615fa1c0f9b91c700a90f4f475">applyForce</a>(<span class="keywordtype">double</span> f, Ogre::Vector3 dir) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      btScalar force = btScalar(f);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      btVector3 direction = btVector3(dir.x, dir.y, dir.z);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      btScalar force(f);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      btVector3 direction(dir.x, dir.y, dir.z);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      btVector3 cImpulse = direction * force;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="classBall.html#aa692f8be903d336bb9908482c464ff4b">rigidBody</a>-&gt;activate(<span class="keyword">true</span>);</div>
@@ -193,7 +193,7 @@ $(document).ready(function(){initNavTree('Ball_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="Ball_8h.html">Ball.h</a></li>
-    <li class="footer">Generated on Fri Mar 21 2014 03:59:51 for OGRE Game by
+    <li class="footer">Generated on Wed Apr 2 2014 12:44:04 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

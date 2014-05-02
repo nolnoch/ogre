@@ -1,10 +1,10 @@
-.TH "NetManager.cpp" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
+.TH "NetManager.cpp" 3 "Wed Apr 2 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 NetManager.cpp \- 
 .PP
-Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014\&.  
+Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014\&. This wrapper \fBrequires\fP SDL_Net v1\&.2\&.8 for retrieving the user's local IP address\&. Compile as a static library or remove that functionality if the required version is not present on your system\&.  
 
 .SH SYNOPSIS
 .br
@@ -21,7 +21,7 @@ Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the Uni
 .in -1c
 .SH "Detailed Description"
 .PP 
-Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014\&. 
+Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014\&. This wrapper \fBrequires\fP SDL_Net v1\&.2\&.8 for retrieving the user's local IP address\&. Compile as a static library or remove that functionality if the required version is not present on your system\&. 
 
 \fBDate:\fP
 .RS 4
@@ -35,10 +35,14 @@ Wade Burch (nolnoch@cs.utexas.edu)
 .PP
 \fBCopyright:\fP
 .RS 4
-GNU Public License 
+Copyright (C) 2014 Wade Burch
 .RE
 .PP
-
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version\&.
+.PP
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\&. See the GNU General Public License for more details\&.
+.PP
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc\&., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\&. 
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define LOCALHOST_NBO   16777343"

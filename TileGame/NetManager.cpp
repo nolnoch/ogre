@@ -5,8 +5,25 @@
  *
  * @brief Networking wrapper for SDL_net created for OGRE engine use in CS 354R
  * at the University of Texas at Austin, taught by Don Fussell in Spring 2014.
+ * This wrapper \b requires SDL_Net v1.2.8 for retrieving the user's local IP
+ * address.  Compile as a static library or remove that functionality if the
+ * required version is not present on your system.
  *
- * @copyright GNU Public License
+ * @copyright  Copyright (C) 2014  Wade Burch
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 #include "NetManager.h"
@@ -238,13 +255,15 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
     return;
   }
 
-  if (buf && (0 < len) && (len < MESSAGE_LENGTH)) {
+  if (buf && (0 <= len) && (len < MESSAGE_LENGTH)) {
+    length = len ? : strlen(buf);
+
     for (i = 0; i < netClients.size(); i++) {
       if (protocol & (netClients[i]->protocols & PROTOCOL_TCP)) {
-        sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], buf, len);
+        sendTCP(tcpSockets[netClients[i]->tcpSocketIdx], buf, length);
       }
       if (protocol & netClients[i]->protocols & PROTOCOL_UDP) {
-        UDPpacket *pack = craftUDPpacket(buf, len);
+        UDPpacket *pack = craftUDPpacket(buf, length);
         if (pack) {
           sendUDP(udpSockets[netClients[i]->udpSocketIdx],
               netClients[i]->udpChannel, pack);
@@ -270,10 +289,12 @@ void NetManager::messageClients(Protocol protocol, const char *buf, int len) {
               sendUDP(udpSockets[netClients[i]->udpSocketIdx],
                   netClients[i]->udpChannel, pack);
             }
-            udpServerData[j].updated = false;
           }
         }
       }
+    }
+    for (j = 0; j < MESSAGE_COUNT; j++) {
+      udpServerData[j].updated = false;
     }
   }
 }
@@ -301,12 +322,14 @@ void NetManager::messageServer(Protocol protocol, const char *buf, int len) {
     return;
   }
 
-  if (buf && (0 < len) && (len < MESSAGE_LENGTH)) {
+  if (buf && (0 <= len) && (len < MESSAGE_LENGTH)) {
+    length = len ? : strlen(buf);
+
     if (protocol & PROTOCOL_TCP) {
-      sendTCP(tcpSockets[netServer.tcpSocketIdx], buf, len);
+      sendTCP(tcpSockets[netServer.tcpSocketIdx], buf, length);
     }
     if (protocol & PROTOCOL_UDP) {
-      UDPpacket *pack = craftUDPpacket(buf, len);
+      UDPpacket *pack = craftUDPpacket(buf, length);
       if (pack) {
         sendUDP(udpSockets[netServer.udpSocketIdx], netServer.udpChannel, pack);
       }
@@ -1740,6 +1763,10 @@ void NetManager::clearFlags(int state) {
   netStatus ^= mask;
 }
 
+/**
+ * @brief Displays a formatted message in the terminal.
+ * @param errorText The message to be printed.
+ */
 void NetManager::printError(std::string errorText) {
   std::cout << "[ NetManager ]*********************************************"
       "**************\n" << std::endl;

@@ -163,8 +163,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a1826b5a7db94eb11037a46c5d57dfc4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7a0cbe5c9d1f41fa3b16486437511e4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#ab7a0cbe5c9d1f41fa3b16486437511e4">mouseReleased</a> (const OIS::MouseEvent &amp;arg, OIS::MouseButtonID id)</td></tr>
 <tr class="separator:ab7a0cbe5c9d1f41fa3b16486437511e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08e86412abbd596046bc2e9399dc9da8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a08e86412abbd596046bc2e9399dc9da8">shootBall</a> (int x, int y, int z, double force)</td></tr>
-<tr class="separator:a08e86412abbd596046bc2e9399dc9da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5fd23a93e7eb13a2664ba3275035adc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#ab5fd23a93e7eb13a2664ba3275035adc">shootBall</a> (int idx, int x, int y, int z, double force)</td></tr>
+<tr class="separator:ab5fd23a93e7eb13a2664ba3275035adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a512ac0031cfe85e79ca0a53582492240"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a512ac0031cfe85e79ca0a53582492240">ballSetup</a> (int cubeSize)</td></tr>
 <tr class="separator:a512ac0031cfe85e79ca0a53582492240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1da6c5e8d396ebdfe05c2eedf28a2ca8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a1da6c5e8d396ebdfe05c2eedf28a2ca8">levelSetup</a> (int num)</td></tr>
@@ -183,6 +183,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ad4923a2d2eace2ebf9c9d38728c3e181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ee23b22f33fa11b9bb4854d16d19653"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a1ee23b22f33fa11b9bb4854d16d19653">startMultiplayer</a> ()</td></tr>
 <tr class="separator:a1ee23b22f33fa11b9bb4854d16d19653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c96eb8d5df658a523723a90500a5ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a41c96eb8d5df658a523723a90500a5ff">addPlayer</a> (Uint32 *data)</td></tr>
+<tr class="separator:a41c96eb8d5df658a523723a90500a5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1851188c581afc0f1846104c6ce7da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#afd1851188c581afc0f1846104c6ce7da">modifyPlayer</a> (int j, Uint32 *data)</td></tr>
+<tr class="separator:afd1851188c581afc0f1846104c6ce7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60decbb2167d26695a7eb7c50c7effa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a60decbb2167d26695a7eb7c50c7effa1">notifyPlayers</a> ()</td></tr>
 <tr class="separator:a60decbb2167d26695a7eb7c50c7effa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a433bc18f76fb4c0b4465c638696ffe3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a433bc18f76fb4c0b4465c638696ffe3c">notifyServer</a> ()</td></tr>
@@ -229,20 +233,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a3ce67ed5bc51aa139c087e1bdd5b7fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a247769c14e679af78f5d877510e3b7ca"><td class="memItemLeft" align="right" valign="top">Ogre::Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a247769c14e679af78f5d877510e3b7ca">mSpeed</a></td></tr>
 <tr class="separator:a247769c14e679af78f5d877510e3b7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a421f8bc0f90cf4acfa209bef5447e5eb"><td class="memItemLeft" align="right" valign="top">Ogre::PlaneBoundedVolume&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a421f8bc0f90cf4acfa209bef5447e5eb">boxBound</a></td></tr>
-<tr class="separator:a421f8bc0f90cf4acfa209bef5447e5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3679e7a4d3981c56c087f23f94b3b0ec"><td class="memItemLeft" align="right" valign="top">Ogre::Plane&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a3679e7a4d3981c56c087f23f94b3b0ec">wallUp</a></td></tr>
-<tr class="separator:a3679e7a4d3981c56c087f23f94b3b0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1834b17a2460b1613d93be25492113c"><td class="memItemLeft" align="right" valign="top">Ogre::Plane&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#af1834b17a2460b1613d93be25492113c">wallDown</a></td></tr>
-<tr class="separator:af1834b17a2460b1613d93be25492113c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c37c43bfc4c0387a3f29f783e4f436a"><td class="memItemLeft" align="right" valign="top">Ogre::Plane&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a3c37c43bfc4c0387a3f29f783e4f436a">wallBack</a></td></tr>
-<tr class="separator:a3c37c43bfc4c0387a3f29f783e4f436a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97846181582b43470f0a1394e0dfcad8"><td class="memItemLeft" align="right" valign="top">Ogre::Plane&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a97846181582b43470f0a1394e0dfcad8">wallFront</a></td></tr>
-<tr class="separator:a97846181582b43470f0a1394e0dfcad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92cc3d1944d2bd572198479508722577"><td class="memItemLeft" align="right" valign="top">Ogre::Plane&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a92cc3d1944d2bd572198479508722577">wallLeft</a></td></tr>
-<tr class="separator:a92cc3d1944d2bd572198479508722577"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7de21d4feafcb1cc6f2d0434ddcfa9c"><td class="memItemLeft" align="right" valign="top">Ogre::Plane&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#ae7de21d4feafcb1cc6f2d0434ddcfa9c">wallRight</a></td></tr>
-<tr class="separator:ae7de21d4feafcb1cc6f2d0434ddcfa9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0308b658e89712b0dfbe5998495f9cec"><td class="memItemLeft" align="right" valign="top">std::deque&lt; Ogre::Entity * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a0308b658e89712b0dfbe5998495f9cec">allTileEntities</a></td></tr>
 <tr class="separator:a0308b658e89712b0dfbe5998495f9cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9bec31020eaa7dc719d8e9b8af20ee2"><td class="memItemLeft" align="right" valign="top">std::deque&lt; Ogre::SceneNode * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#ad9bec31020eaa7dc719d8e9b8af20ee2">tileList</a></td></tr>
@@ -257,6 +247,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ab261f06fa3d89f8af2223ffe1a56337a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc02f822e33b2d8a77693301d050bb91"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structPlayerData.html">PlayerData</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#adc02f822e33b2d8a77693301d050bb91">playerData</a></td></tr>
 <tr class="separator:adc02f822e33b2d8a77693301d050bb91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a931a016e78d8aaaa5eb7543565bd31"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structPlayerOldData.html">PlayerOldData</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a0a931a016e78d8aaaa5eb7543565bd31">playerOldData</a></td></tr>
+<tr class="separator:a0a931a016e78d8aaaa5eb7543565bd31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a4d1b4dfacca55fdeacf454af04fa0c"><td class="memItemLeft" align="right" valign="top">OgreBites::ParamsPanel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a9a4d1b4dfacca55fdeacf454af04fa0c">scorePanel</a></td></tr>
 <tr class="separator:a9a4d1b4dfacca55fdeacf454af04fa0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ec622cd0062396ffa3e929702fc870d"><td class="memItemLeft" align="right" valign="top">OgreBites::ParamsPanel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a6ec622cd0062396ffa3e929702fc870d">playersWaitingPanel</a></td></tr>
@@ -287,6 +279,12 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a6912a91d6b7eb2e88033d8571e3daecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6622c980107331b95697d74839dde768"><td class="memItemLeft" align="right" valign="top"><a class="el" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a6622c980107331b95697d74839dde768">music</a></td></tr>
 <tr class="separator:a6622c980107331b95697d74839dde768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c9cc7591c2ff3ffc6a50b64453c181"><td class="memItemLeft" align="right" valign="top"><a class="el" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a24c9cc7591c2ff3ffc6a50b64453c181">chirp</a></td></tr>
+<tr class="separator:a24c9cc7591c2ff3ffc6a50b64453c181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89f75175ed666995704d8bad09762612"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a89f75175ed666995704d8bad09762612">noteSequence</a></td></tr>
+<tr class="separator:a89f75175ed666995704d8bad09762612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae301ffc70ac15755e4fd6f8561aeaf30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#ae301ffc70ac15755e4fd6f8561aeaf30">noteIndex</a></td></tr>
+<tr class="separator:ae301ffc70ac15755e4fd6f8561aeaf30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac76eb85a5597f84146e49c92f7edc877"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#ac76eb85a5597f84146e49c92f7edc877">paused</a></td></tr>
 <tr class="separator:ac76eb85a5597f84146e49c92f7edc877"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a276db8a3e88eea0914e6f6262791ee89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a276db8a3e88eea0914e6f6262791ee89">gameStart</a></td></tr>
@@ -329,6 +327,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a8b95ee0f509c6e7b170f392d755d2e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2aeaa1575631d37600e5c66bb2388a7b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#a2aeaa1575631d37600e5c66bb2388a7b">invite</a></td></tr>
 <tr class="separator:a2aeaa1575631d37600e5c66bb2388a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2760c41885714fa60f8c8b6fd0276b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTileGame.html#ad2760c41885714fa60f8c8b6fd0276b2">ballsounddelay</a></td></tr>
+<tr class="separator:ad2760c41885714fa60f8c8b6fd0276b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classBaseGame"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classBaseGame')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classBaseGame.html">BaseGame</a></td></tr>
 <tr class="memitem:a22226146323391088351624576b7891c inherit pro_attribs_classBaseGame"><td class="memItemLeft" align="right" valign="top">Ogre::Root *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseGame.html#a22226146323391088351624576b7891c">mRoot</a></td></tr>
 <tr class="separator:a22226146323391088351624576b7891c inherit pro_attribs_classBaseGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -344,8 +344,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a696add997f2185f90c0ed6f5dc6af20a inherit pro_attribs_classBaseGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7629d875df44ac5a66f408c859115801 inherit pro_attribs_classBaseGame"><td class="memItemLeft" align="right" valign="top">OgreBites::SdkTrayManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseGame.html#a7629d875df44ac5a66f408c859115801">mTrayMgr</a></td></tr>
 <tr class="separator:a7629d875df44ac5a66f408c859115801 inherit pro_attribs_classBaseGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7263f984ab72533f785c1db9f0bc447e inherit pro_attribs_classBaseGame"><td class="memItemLeft" align="right" valign="top">OgreBites::SdkCameraMan *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseGame.html#a7263f984ab72533f785c1db9f0bc447e">mCameraMan</a></td></tr>
-<tr class="separator:a7263f984ab72533f785c1db9f0bc447e inherit pro_attribs_classBaseGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5ab169e4c7bd09bb624fb2875a7306 inherit pro_attribs_classBaseGame"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCameraMan.html">CameraMan</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseGame.html#a5d5ab169e4c7bd09bb624fb2875a7306">mCameraMan</a></td></tr>
+<tr class="separator:a5d5ab169e4c7bd09bb624fb2875a7306 inherit pro_attribs_classBaseGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac68de06a1542fc8d4c67ade85a1753c1 inherit pro_attribs_classBaseGame"><td class="memItemLeft" align="right" valign="top">OgreBites::ParamsPanel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseGame.html#ac68de06a1542fc8d4c67ade85a1753c1">mDetailsPanel</a></td></tr>
 <tr class="separator:ac68de06a1542fc8d4c67ade85a1753c1 inherit pro_attribs_classBaseGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c4ba8734fb3fee6254afc155062d59c inherit pro_attribs_classBaseGame"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseGame.html#a1c4ba8734fb3fee6254afc155062d59c">mCursorWasVisible</a></td></tr>
@@ -401,6 +401,30 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a41c96eb8d5df658a523723a90500a5ff"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TileGame::addPlayer </td>
+          <td>(</td>
+          <td class="paramtype">Uint32 *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a512ac0031cfe85e79ca0a53582492240"></a>
 <div class="memitem">
 <div class="memproto">
@@ -747,6 +771,40 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="afd1851188c581afc0f1846104c6ce7da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TileGame::modifyPlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint32 *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a1826b5a7db94eb11037a46c5d57dfc4f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -912,7 +970,7 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a08e86412abbd596046bc2e9399dc9da8"></a>
+<a class="anchor" id="ab5fd23a93e7eb13a2664ba3275035adc"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -922,6 +980,12 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void TileGame::shootBall </td>
           <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>x</em>, </td>
         </tr>
@@ -1133,7 +1197,7 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a796c40847db5cd687417574064fbd90d"></a>
+<a class="anchor" id="ad2760c41885714fa60f8c8b6fd0276b2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -1141,7 +1205,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a> TileGame::boing</td>
+          <td class="memname">int TileGame::ballsounddelay</td>
         </tr>
       </table>
   </td>
@@ -1153,7 +1217,7 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a421f8bc0f90cf4acfa209bef5447e5eb"></a>
+<a class="anchor" id="a796c40847db5cd687417574064fbd90d"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -1161,7 +1225,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Ogre::PlaneBoundedVolume TileGame::boxBound</td>
+          <td class="memname"><a class="el" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a> TileGame::boing</td>
         </tr>
       </table>
   </td>
@@ -1202,6 +1266,26 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int TileGame::chargeShot</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a24c9cc7591c2ff3ffc6a50b64453c181"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a> TileGame::chirp</td>
         </tr>
       </table>
   </td>
@@ -1673,6 +1757,46 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae301ffc70ac15755e4fd6f8561aeaf30"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TileGame::noteIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a89f75175ed666995704d8bad09762612"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="SoundManager_8h.html#a05cf79926d9921eb07e70e460b021307">SoundFile</a>&gt; TileGame::noteSequence</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a232f92064d80b722b022a3845be35b9e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1782,6 +1906,26 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt;Ogre::SceneNode *&gt; TileGame::playerNodes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0a931a016e78d8aaaa5eb7543565bd31"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structPlayerOldData.html">PlayerOldData</a> *&gt; TileGame::playerOldData</td>
         </tr>
       </table>
   </td>
@@ -2073,126 +2217,6 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3c37c43bfc4c0387a3f29f783e4f436a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ogre::Plane TileGame::wallBack</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="af1834b17a2460b1613d93be25492113c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ogre::Plane TileGame::wallDown</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a97846181582b43470f0a1394e0dfcad8"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ogre::Plane TileGame::wallFront</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a92cc3d1944d2bd572198479508722577"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ogre::Plane TileGame::wallLeft</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae7de21d4feafcb1cc6f2d0434ddcfa9c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ogre::Plane TileGame::wallRight</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a3679e7a4d3981c56c087f23f94b3b0ec"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ogre::Plane TileGame::wallUp</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a05d9bbf0aebd4822ed518804eeb899fa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2223,7 +2247,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classTileGame.html">TileGame</a></li>
-    <li class="footer">Generated on Fri Mar 21 2014 03:59:51 for OGRE Game by
+    <li class="footer">Generated on Wed Apr 2 2014 12:44:04 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

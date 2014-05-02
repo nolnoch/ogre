@@ -3,7 +3,7 @@ var searchData=
   ['mainballs',['mainBalls',['../classBallManager.html#a3de8a29f89c02241ef9dd1bc85bcb6f8',1,'BallManager']]],
   ['mass',['mass',['../classBall.html#aee2035d202321b658c0869f1e885766b',1,'Ball']]],
   ['mcamera',['mCamera',['../classBaseGame.html#ad3c279cdf94f77cd1652ad142a498a04',1,'BaseGame']]],
-  ['mcameraman',['mCameraMan',['../classBaseGame.html#a7263f984ab72533f785c1db9f0bc447e',1,'BaseGame']]],
+  ['mcameraman',['mCameraMan',['../classBaseGame.html#a5d5ab169e4c7bd09bb624fb2875a7306',1,'BaseGame']]],
   ['mcursorwasvisible',['mCursorWasVisible',['../classBaseGame.html#a1c4ba8734fb3fee6254afc155062d59c',1,'BaseGame']]],
   ['mdetailspanel',['mDetailsPanel',['../classBaseGame.html#ac68de06a1542fc8d4c67ade85a1753c1',1,'BaseGame']]],
   ['mdirection',['mDirection',['../classTileGame.html#a3ce67ed5bc51aa139c087e1bdd5b7fe0',1,'TileGame']]],

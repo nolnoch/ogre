@@ -128,8 +128,8 @@ $(document).ready(function(){initNavTree('CameraMan_8h_source.html','');});
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">if</span> (mGoingUp) accel += mCamera-&gt;getUp();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">if</span> (mGoingDown) accel -= mCamera-&gt;getUp();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">//if (mGoingUp) accel += Ogre::Vector3(0, 1, 0);</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;           <span class="comment">// if (mGoingDown) accel -= Ogre::Vector3(0, 1, 0);</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">if</span> (mGoingUp) accel += Ogre::Vector3(0, 1, 0);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> (mGoingDown) accel -= Ogre::Vector3(0, 1, 0);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="comment">// if accelerating, try to reach top speed in a certain time</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            Ogre::Real topSpeed = mFastMove ? mTopSpeed : mTopSpeed * 10;</div>
@@ -198,14 +198,19 @@ $(document).ready(function(){initNavTree('CameraMan_8h_source.html','');});
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (evt.key == OIS::KC_LSHIFT) mGoingDown = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (evt.key == OIS::KC_LCONTROL) mFastMove = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="classCameraMan.html#a48cc2a6369c4ba7a46446513327b4c17">   96</a></span>&#160;    Ogre::Vector3 <a class="code" href="classCameraMan.html#a48cc2a6369c4ba7a46446513327b4c17">getVelocity</a>()</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> mVelocity;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="CameraMan_8h.html">CameraMan.h</a></li>
-    <li class="footer">Generated on Fri Mar 21 2014 03:59:51 for OGRE Game by
+    <li class="footer">Generated on Wed Apr 2 2014 12:44:04 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

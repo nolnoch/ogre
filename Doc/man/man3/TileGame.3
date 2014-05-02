@@ -1,4 +1,4 @@
-.TH "TileGame" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
+.TH "TileGame" 3 "Wed Apr 2 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -60,7 +60,7 @@ Inherits \fBBaseGame\fP\&.
 .RI "virtual bool \fBmouseReleased\fP (const OIS::MouseEvent &arg, OIS::MouseButtonID id)"
 .br
 .ti -1c
-.RI "void \fBshootBall\fP (int x, int y, int z, double force)"
+.RI "void \fBshootBall\fP (int idx, int x, int y, int z, double force)"
 .br
 .ti -1c
 .RI "void \fBballSetup\fP (int cubeSize)"
@@ -88,6 +88,12 @@ Inherits \fBBaseGame\fP\&.
 .br
 .ti -1c
 .RI "void \fBstartMultiplayer\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddPlayer\fP (Uint32 *data)"
+.br
+.ti -1c
+.RI "void \fBmodifyPlayer\fP (int j, Uint32 *data)"
 .br
 .ti -1c
 .RI "void \fBnotifyPlayers\fP ()"
@@ -124,27 +130,6 @@ Inherits \fBBaseGame\fP\&.
 .RI "Ogre::Real \fBmSpeed\fP"
 .br
 .ti -1c
-.RI "Ogre::PlaneBoundedVolume \fBboxBound\fP"
-.br
-.ti -1c
-.RI "Ogre::Plane \fBwallUp\fP"
-.br
-.ti -1c
-.RI "Ogre::Plane \fBwallDown\fP"
-.br
-.ti -1c
-.RI "Ogre::Plane \fBwallBack\fP"
-.br
-.ti -1c
-.RI "Ogre::Plane \fBwallFront\fP"
-.br
-.ti -1c
-.RI "Ogre::Plane \fBwallLeft\fP"
-.br
-.ti -1c
-.RI "Ogre::Plane \fBwallRight\fP"
-.br
-.ti -1c
 .RI "std::deque< Ogre::Entity * > \fBallTileEntities\fP"
 .br
 .ti -1c
@@ -164,6 +149,9 @@ Inherits \fBBaseGame\fP\&.
 .br
 .ti -1c
 .RI "std::vector< \fBPlayerData\fP * > \fBplayerData\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBPlayerOldData\fP * > \fBplayerOldData\fP"
 .br
 .ti -1c
 .RI "OgreBites::ParamsPanel * \fBscorePanel\fP"
@@ -209,6 +197,15 @@ Inherits \fBBaseGame\fP\&.
 .br
 .ti -1c
 .RI "\fBSoundFile\fP \fBmusic\fP"
+.br
+.ti -1c
+.RI "\fBSoundFile\fP \fBchirp\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBSoundFile\fP > \fBnoteSequence\fP"
+.br
+.ti -1c
+.RI "int \fBnoteIndex\fP"
 .br
 .ti -1c
 .RI "bool \fBpaused\fP"
@@ -273,6 +270,9 @@ Inherits \fBBaseGame\fP\&.
 .ti -1c
 .RI "std::string \fBinvite\fP"
 .br
+.ti -1c
+.RI "int \fBballsounddelay\fP"
+.br
 .in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
@@ -282,6 +282,8 @@ Inherits \fBBaseGame\fP\&.
 
 .SH "Member Function Documentation"
 .PP 
+.SS "void TileGame::addPlayer (Uint32 *data)\fC [inline]\fP, \fC [protected]\fP"
+
 .SS "void TileGame::ballSetup (intcubeSize)\fC [inline]\fP, \fC [protected]\fP"
 
 .SS "bool TileGame::configure (void)\fC [protected]\fP, \fC [virtual]\fP"
@@ -322,6 +324,8 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "void TileGame::levelTearDown ()\fC [inline]\fP, \fC [protected]\fP"
 
+.SS "void TileGame::modifyPlayer (intj, Uint32 *data)\fC [inline]\fP, \fC [protected]\fP"
+
 .SS "bool TileGame::mousePressed (const OIS::MouseEvent &arg, OIS::MouseButtonIDid)\fC [protected]\fP, \fC [virtual]\fP"
 
 .PP
@@ -338,7 +342,7 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "void TileGame::setLevel (intnum)\fC [inline]\fP, \fC [protected]\fP"
 
-.SS "void TileGame::shootBall (intx, inty, intz, doubleforce)\fC [inline]\fP, \fC [protected]\fP"
+.SS "void TileGame::shootBall (intidx, intx, inty, intz, doubleforce)\fC [inline]\fP, \fC [protected]\fP"
 
 .SS "void TileGame::simonSaysAnim ()\fC [inline]\fP, \fC [protected]\fP"
 
@@ -356,13 +360,15 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "\fBBallManager\fP* TileGame::ballMgr\fC [protected]\fP"
 
-.SS "\fBSoundFile\fP TileGame::boing\fC [protected]\fP"
+.SS "int TileGame::ballsounddelay\fC [protected]\fP"
 
-.SS "Ogre::PlaneBoundedVolume TileGame::boxBound\fC [protected]\fP"
+.SS "\fBSoundFile\fP TileGame::boing\fC [protected]\fP"
 
 .SS "OgreBites::Label * TileGame::chargePanel\fC [protected]\fP"
 
 .SS "int TileGame::chargeShot\fC [protected]\fP"
+
+.SS "\fBSoundFile\fP TileGame::chirp\fC [protected]\fP"
 
 .SS "OgreBites::Label * TileGame::clientAcceptDescPanel\fC [protected]\fP"
 
@@ -410,6 +416,10 @@ Reimplemented from \fBBaseGame\fP\&.
 
 .SS "Ogre::Timer * TileGame::netTimer\fC [protected]\fP"
 
+.SS "int TileGame::noteIndex\fC [protected]\fP"
+
+.SS "std::vector<\fBSoundFile\fP> TileGame::noteSequence\fC [protected]\fP"
+
 .SS "int TileGame::nPlayers\fC [protected]\fP"
 
 .SS "Ogre::Light* TileGame::panelLight\fC [protected]\fP"
@@ -421,6 +431,8 @@ Reimplemented from \fBBaseGame\fP\&.
 .SS "std::vector<Ogre::Entity *> TileGame::playerEntities\fC [protected]\fP"
 
 .SS "std::vector<Ogre::SceneNode *> TileGame::playerNodes\fC [protected]\fP"
+
+.SS "std::vector<\fBPlayerOldData\fP *> TileGame::playerOldData\fC [protected]\fP"
 
 .SS "OgreBites::ParamsPanel * TileGame::playersWaitingPanel\fC [protected]\fP"
 
@@ -449,18 +461,6 @@ Reimplemented from \fBBaseGame\fP\&.
 .SS "std::deque<Ogre::SceneNode *> TileGame::tileSceneNodes\fC [protected]\fP"
 
 .SS "Ogre::Timer TileGame::timer\fC [protected]\fP"
-
-.SS "Ogre::Plane TileGame::wallBack\fC [protected]\fP"
-
-.SS "Ogre::Plane TileGame::wallDown\fC [protected]\fP"
-
-.SS "Ogre::Plane TileGame::wallFront\fC [protected]\fP"
-
-.SS "Ogre::Plane TileGame::wallLeft\fC [protected]\fP"
-
-.SS "Ogre::Plane TileGame::wallRight\fC [protected]\fP"
-
-.SS "Ogre::Plane TileGame::wallUp\fC [protected]\fP"
 
 .SS "int TileGame::winTimer\fC [protected]\fP"
 

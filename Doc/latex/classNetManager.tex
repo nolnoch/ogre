@@ -123,14 +123,14 @@ enum \{ \\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a5150417e381f56f6b4f892317b81ee46}{C\-H\-A\-N\-N\-E\-L\-\_\-\-A\-U\-T\-O} = -\/1, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a7df70a5b62f06128f0ff3f384a0b92bc}{C\-H\-A\-N\-N\-E\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T} = 1, 
 \\*
-\hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a}{C\-H\-A\-N\-N\-E\-L\-\_\-\-M\-A\-X} = 2, 
+\hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4aaaddd3791ef3f85dca8b925e7802c87a}{C\-H\-A\-N\-N\-E\-L\-\_\-\-M\-A\-X} = 32, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a48f9a5042eea9148c10b1a683a6a7a8c}{S\-O\-C\-K\-E\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X} = 12, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a196032ad459bdec0b3e39931946e4459}{S\-O\-C\-K\-E\-T\-\_\-\-U\-D\-P\-\_\-\-M\-A\-X} = 12, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4aff793bc930c9023ebf61eb7e0388b3bb}{S\-O\-C\-K\-E\-T\-\_\-\-A\-L\-L\-\_\-\-M\-A\-X} = S\-O\-C\-K\-E\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X + S\-O\-C\-K\-E\-T\-\_\-\-U\-D\-P\-\_\-\-M\-A\-X, 
 \\*
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a2e78ae862faab68c752a933ad0910c34}{S\-O\-C\-K\-E\-T\-\_\-\-S\-E\-L\-F} = S\-O\-C\-K\-E\-T\-\_\-\-A\-L\-L\-\_\-\-M\-A\-X + 1, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a9b24c9f03c8e0db705a1b43cc83fb35e}{M\-E\-S\-S\-A\-G\-E\-\_\-\-C\-O\-U\-N\-T} = 10, 
-\hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e}{M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-T\-H} = 128, 
+\hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a055fb3f90b053c968f55687c3e63a17e}{M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-T\-H} = 256, 
 \hyperlink{classNetManager_a8b6ac33bda181fb28896229528cd62b4a1a864782d81ae2d897fa60f33f745cda}{M\-A\-S\-K\-\_\-\-D\-E\-P\-T\-H} = 24
  \}
 \end{DoxyCompactItemize}
@@ -237,7 +237,7 @@ bool \hyperlink{classNetManager_aa5616571aa520977c221d8a8a6471a1f}{status\-Check
 void \hyperlink{classNetManager_a9f55bdec9b5c974d26354e680aa48d1e}{clear\-Flags} (int state)
 \begin{DoxyCompactList}\small\item\em Clears a given bit mask of state flags from the internal net\-Status. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_af47665c6082b5f038350dcf4610929bf}{print\-Error} (std\-::string error\-Text)
-\item 
+\begin{DoxyCompactList}\small\item\em Displays a formatted message in the terminal. \end{DoxyCompactList}\item 
 void \hyperlink{classNetManager_a60e404905712ff726f1a4f0e2542d06c}{reset\-Manager} ()
 \begin{DoxyCompactList}\small\item\em Clears all vectors and resets all data members to default values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
@@ -1091,6 +1091,15 @@ True for activity, false for no activity.
 \item[{std\-::string}]{error\-Text}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetManager_af47665c6082b5f038350dcf4610929bf}
+
+
+Displays a formatted message in the terminal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error\-Text} & The message to be printed. \\
+\hline
+\end{DoxyParams}
 \hypertarget{classNetManager_a5927d55003a434ec69d8909dffe88575}{\index{Net\-Manager@{Net\-Manager}!process\-Packet\-Data@{process\-Packet\-Data}}
 \index{process\-Packet\-Data@{process\-Packet\-Data}!NetManager@{Net\-Manager}}
 \subsubsection[{process\-Packet\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Manager\-::process\-Packet\-Data (

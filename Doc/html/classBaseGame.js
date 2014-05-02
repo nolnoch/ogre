@@ -23,7 +23,7 @@ var classBaseGame =
     [ "windowClosed", "classBaseGame.html#adf1c158b4a92810f50c6c626be0d4757", null ],
     [ "windowResized", "classBaseGame.html#abac0b7115e172de2675b4bf09ba8ed47", null ],
     [ "mCamera", "classBaseGame.html#ad3c279cdf94f77cd1652ad142a498a04", null ],
-    [ "mCameraMan", "classBaseGame.html#a7263f984ab72533f785c1db9f0bc447e", null ],
+    [ "mCameraMan", "classBaseGame.html#a5d5ab169e4c7bd09bb624fb2875a7306", null ],
     [ "mCursorWasVisible", "classBaseGame.html#a1c4ba8734fb3fee6254afc155062d59c", null ],
     [ "mDetailsPanel", "classBaseGame.html#ac68de06a1542fc8d4c67ade85a1753c1", null ],
     [ "mInputManager", "classBaseGame.html#abbc23b121d9cfee4a9c9f54b560f754f", null ],

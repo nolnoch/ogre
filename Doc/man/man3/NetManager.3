@@ -1,4 +1,4 @@
-.TH "NetManager" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
+.TH "NetManager" 3 "Wed Apr 2 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -190,7 +190,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 
 .in +1c
 .ti -1c
-.RI "enum { \fBNET_UNINITIALIZED\fP = 0, \fBNET_INITIALIZED\fP = 1, \fBNET_WAITING\fP = 2, \fBNET_RESOLVED\fP = 4, \fBNET_TCP_OPEN\fP = 8, \fBNET_UDP_OPEN\fP = 16, \fBNET_TCP_ACCEPT\fP = 32, \fBNET_UDP_BOUND\fP = 64, \fBPORT_RANDOM\fP = 0, \fBPORT_DEFAULT\fP = 51215, \fBCHANNEL_AUTO\fP = -1, \fBCHANNEL_DEFAULT\fP = 1, \fBCHANNEL_MAX\fP = 2, \fBSOCKET_TCP_MAX\fP = 12, \fBSOCKET_UDP_MAX\fP = 12, \fBSOCKET_ALL_MAX\fP = SOCKET_TCP_MAX + SOCKET_UDP_MAX, \fBSOCKET_SELF\fP = SOCKET_ALL_MAX + 1, \fBMESSAGE_COUNT\fP = 10, \fBMESSAGE_LENGTH\fP = 128, \fBMASK_DEPTH\fP = 24 }"
+.RI "enum { \fBNET_UNINITIALIZED\fP = 0, \fBNET_INITIALIZED\fP = 1, \fBNET_WAITING\fP = 2, \fBNET_RESOLVED\fP = 4, \fBNET_TCP_OPEN\fP = 8, \fBNET_UDP_OPEN\fP = 16, \fBNET_TCP_ACCEPT\fP = 32, \fBNET_UDP_BOUND\fP = 64, \fBPORT_RANDOM\fP = 0, \fBPORT_DEFAULT\fP = 51215, \fBCHANNEL_AUTO\fP = -1, \fBCHANNEL_DEFAULT\fP = 1, \fBCHANNEL_MAX\fP = 32, \fBSOCKET_TCP_MAX\fP = 12, \fBSOCKET_UDP_MAX\fP = 12, \fBSOCKET_ALL_MAX\fP = SOCKET_TCP_MAX + SOCKET_UDP_MAX, \fBSOCKET_SELF\fP = SOCKET_ALL_MAX + 1, \fBMESSAGE_COUNT\fP = 10, \fBMESSAGE_LENGTH\fP = 256, \fBMASK_DEPTH\fP = 24 }"
 .br
 .in -1c
 .PP
@@ -404,6 +404,7 @@ Networking wrapper for SDL_net for use in OGRE or similar engines\&.
 .ti -1c
 .RI "void \fBprintError\fP (std::string errorText)"
 .br
+.RI "\fIDisplays a formatted message in the terminal\&. \fP"
 .ti -1c
 .RI "void \fBresetManager\fP ()"
 .br
@@ -1075,6 +1076,13 @@ True for activity, false for no activity\&.
 .PP
 
 .SS "void NetManager::printError (std::stringerrorText)\fC [private]\fP"
+
+.PP
+Displays a formatted message in the terminal\&. \fBParameters:\fP
+.RS 4
+\fIerrorText\fP The message to be printed\&. 
+.RE
+.PP
 
 .SS "void NetManager::processPacketData (const char *data)\fC [private]\fP"
 

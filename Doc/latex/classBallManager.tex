@@ -14,7 +14,11 @@ virtual \hyperlink{classBallManager_a1fbda83b56ce78f9fa2c0b3e1d287456}{$\sim$\-B
 \item 
 bool \hyperlink{classBallManager_af6eb7ce1ec14906c50ab69fa46eb8b11}{init\-Ball\-Manager} ()
 \item 
+void \hyperlink{classBallManager_a6b5c8383ec352bfe7c70c469b4e9a31c}{init\-Multiplayer} (int n\-Players)
+\item 
 void \hyperlink{classBallManager_a7e16e93759654ab1511acf0696e49d44}{set\-Global\-Ball} (\hyperlink{classBall}{Ball} $\ast$ball)
+\item 
+void \hyperlink{classBallManager_a815ef99a0ff8519df4761be2866e190d}{set\-Player\-Ball} (\hyperlink{classBall}{Ball} $\ast$ball, int idx)
 \item 
 \hyperlink{classBall}{Ball} $\ast$ \hyperlink{classBallManager_a0391fe48835ab1816ef8f180ff8b42eb}{add\-Ball} (Ogre\-::\-Scene\-Node $\ast$n, int x, int y, int z, int r)
 \item 
@@ -26,9 +30,15 @@ void \hyperlink{classBallManager_aa79158dcf4c003391de0fe8750a6d0ab}{remove\-Ball
 \item 
 void \hyperlink{classBallManager_a03aa05fe5f1a7badf3028a2749596eb1}{remove\-Global\-Ball} ()
 \item 
+void \hyperlink{classBallManager_aed24becd95e79961c36c662a19015f6d}{remove\-Player\-Ball} (int idx)
+\item 
 bool \hyperlink{classBallManager_a72cf25f9ffa0152ca83103ed96ce1fe9}{is\-Global\-Ball} ()
 \item 
+bool \hyperlink{classBallManager_a97d94a1b04f158a695211022b0377d2a}{is\-Player\-Ball} (int idx)
+\item 
 void \hyperlink{classBallManager_af51544444357484c9e58bd63f443de57}{clear\-Balls} ()
+\item 
+int \hyperlink{classBallManager_a248e05bd9da981386a3f22ed5f4476a6}{get\-Number\-Ball\-Collisions} ()
 \item 
 \hyperlink{classTileSimulator}{Tile\-Simulator} $\ast$ \hyperlink{classBallManager_a73c4e097e977317ebdb53c32fe72441b}{get\-Simulator} ()
 \item 
@@ -38,6 +48,8 @@ bool \hyperlink{classBallManager_aaaa28fd371dc2b04d5973f0a8ef6f956}{check\-Colli
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classBall}{Ball} $\ast$ \hyperlink{classBallManager_a9fbb6953ccffca39d124c4867a03d6e5}{global\-Ball}
+\item 
+std\-::vector$<$ \hyperlink{classBall}{Ball} $\ast$ $>$ \hyperlink{classBallManager_aa5d4641a04755987d725c8df64ce5c84}{player\-Balls}
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -46,9 +58,13 @@ std\-::vector$<$ \hyperlink{classBall}{Ball} $\ast$ $>$ \hyperlink{classBallMana
 \item 
 std\-::vector$<$ \hyperlink{classBall}{Ball} $\ast$ $>$ \hyperlink{classBallManager_a3de8a29f89c02241ef9dd1bc85bcb6f8}{main\-Balls}
 \item 
+std\-::vector$<$ bool $>$ \hyperlink{classBallManager_a1deaf66727d7a5e399712de6412379f2}{player\-Balls\-Active}
+\item 
 \hyperlink{classTileSimulator}{Tile\-Simulator} $\ast$ \hyperlink{classBallManager_a4916de0948df0af060f6ada4d21284a7}{sim}
 \item 
 bool \hyperlink{classBallManager_a4f86decb02dc070a4ddf4d408620acf4}{global\-Ball\-Active}
+\item 
+int \hyperlink{classBallManager_aeb2e197deeeb39af34ceef5e0f7f5535}{ball\-Collisions}
 \end{DoxyCompactItemize}
 
 
@@ -115,6 +131,13 @@ bool \hyperlink{classBallManager_a4f86decb02dc070a4ddf4d408620acf4}{global\-Ball
 {}
 \end{DoxyParamCaption}
 )}}\label{classBallManager_a318d172c88d6e423c1d3f8dc3d5d9557}
+\hypertarget{classBallManager_a248e05bd9da981386a3f22ed5f4476a6}{\index{Ball\-Manager@{Ball\-Manager}!get\-Number\-Ball\-Collisions@{get\-Number\-Ball\-Collisions}}
+\index{get\-Number\-Ball\-Collisions@{get\-Number\-Ball\-Collisions}!BallManager@{Ball\-Manager}}
+\subsubsection[{get\-Number\-Ball\-Collisions}]{\setlength{\rightskip}{0pt plus 5cm}int Ball\-Manager\-::get\-Number\-Ball\-Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classBallManager_a248e05bd9da981386a3f22ed5f4476a6}
 \hypertarget{classBallManager_a73c4e097e977317ebdb53c32fe72441b}{\index{Ball\-Manager@{Ball\-Manager}!get\-Simulator@{get\-Simulator}}
 \index{get\-Simulator@{get\-Simulator}!BallManager@{Ball\-Manager}}
 \subsubsection[{get\-Simulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tile\-Simulator} $\ast$ Ball\-Manager\-::get\-Simulator (
@@ -129,6 +152,13 @@ bool \hyperlink{classBallManager_a4f86decb02dc070a4ddf4d408620acf4}{global\-Ball
 {}
 \end{DoxyParamCaption}
 )}}\label{classBallManager_af6eb7ce1ec14906c50ab69fa46eb8b11}
+\hypertarget{classBallManager_a6b5c8383ec352bfe7c70c469b4e9a31c}{\index{Ball\-Manager@{Ball\-Manager}!init\-Multiplayer@{init\-Multiplayer}}
+\index{init\-Multiplayer@{init\-Multiplayer}!BallManager@{Ball\-Manager}}
+\subsubsection[{init\-Multiplayer}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-Manager\-::init\-Multiplayer (
+\begin{DoxyParamCaption}
+\item[{int}]{n\-Players}
+\end{DoxyParamCaption}
+)}}\label{classBallManager_a6b5c8383ec352bfe7c70c469b4e9a31c}
 \hypertarget{classBallManager_a72cf25f9ffa0152ca83103ed96ce1fe9}{\index{Ball\-Manager@{Ball\-Manager}!is\-Global\-Ball@{is\-Global\-Ball}}
 \index{is\-Global\-Ball@{is\-Global\-Ball}!BallManager@{Ball\-Manager}}
 \subsubsection[{is\-Global\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}bool Ball\-Manager\-::is\-Global\-Ball (
@@ -136,6 +166,13 @@ bool \hyperlink{classBallManager_a4f86decb02dc070a4ddf4d408620acf4}{global\-Ball
 {}
 \end{DoxyParamCaption}
 )}}\label{classBallManager_a72cf25f9ffa0152ca83103ed96ce1fe9}
+\hypertarget{classBallManager_a97d94a1b04f158a695211022b0377d2a}{\index{Ball\-Manager@{Ball\-Manager}!is\-Player\-Ball@{is\-Player\-Ball}}
+\index{is\-Player\-Ball@{is\-Player\-Ball}!BallManager@{Ball\-Manager}}
+\subsubsection[{is\-Player\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}bool Ball\-Manager\-::is\-Player\-Ball (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)}}\label{classBallManager_a97d94a1b04f158a695211022b0377d2a}
 \hypertarget{classBallManager_aa79158dcf4c003391de0fe8750a6d0ab}{\index{Ball\-Manager@{Ball\-Manager}!remove\-Ball@{remove\-Ball}}
 \index{remove\-Ball@{remove\-Ball}!BallManager@{Ball\-Manager}}
 \subsubsection[{remove\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-Manager\-::remove\-Ball (
@@ -150,6 +187,13 @@ bool \hyperlink{classBallManager_a4f86decb02dc070a4ddf4d408620acf4}{global\-Ball
 {}
 \end{DoxyParamCaption}
 )}}\label{classBallManager_a03aa05fe5f1a7badf3028a2749596eb1}
+\hypertarget{classBallManager_aed24becd95e79961c36c662a19015f6d}{\index{Ball\-Manager@{Ball\-Manager}!remove\-Player\-Ball@{remove\-Player\-Ball}}
+\index{remove\-Player\-Ball@{remove\-Player\-Ball}!BallManager@{Ball\-Manager}}
+\subsubsection[{remove\-Player\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-Manager\-::remove\-Player\-Ball (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)}}\label{classBallManager_aed24becd95e79961c36c662a19015f6d}
 \hypertarget{classBallManager_a7e16e93759654ab1511acf0696e49d44}{\index{Ball\-Manager@{Ball\-Manager}!set\-Global\-Ball@{set\-Global\-Ball}}
 \index{set\-Global\-Ball@{set\-Global\-Ball}!BallManager@{Ball\-Manager}}
 \subsubsection[{set\-Global\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-Manager\-::set\-Global\-Ball (
@@ -157,9 +201,20 @@ bool \hyperlink{classBallManager_a4f86decb02dc070a4ddf4d408620acf4}{global\-Ball
 \item[{{\bf Ball} $\ast$}]{ball}
 \end{DoxyParamCaption}
 )}}\label{classBallManager_a7e16e93759654ab1511acf0696e49d44}
+\hypertarget{classBallManager_a815ef99a0ff8519df4761be2866e190d}{\index{Ball\-Manager@{Ball\-Manager}!set\-Player\-Ball@{set\-Player\-Ball}}
+\index{set\-Player\-Ball@{set\-Player\-Ball}!BallManager@{Ball\-Manager}}
+\subsubsection[{set\-Player\-Ball}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-Manager\-::set\-Player\-Ball (
+\begin{DoxyParamCaption}
+\item[{{\bf Ball} $\ast$}]{ball, }
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)}}\label{classBallManager_a815ef99a0ff8519df4761be2866e190d}
 
 
 \subsection{Member Data Documentation}
+\hypertarget{classBallManager_aeb2e197deeeb39af34ceef5e0f7f5535}{\index{Ball\-Manager@{Ball\-Manager}!ball\-Collisions@{ball\-Collisions}}
+\index{ball\-Collisions@{ball\-Collisions}!BallManager@{Ball\-Manager}}
+\subsubsection[{ball\-Collisions}]{\setlength{\rightskip}{0pt plus 5cm}int Ball\-Manager\-::ball\-Collisions\hspace{0.3cm}{\ttfamily [private]}}}\label{classBallManager_aeb2e197deeeb39af34ceef5e0f7f5535}
 \hypertarget{classBallManager_a7a32cb0f1dce0a3c51430ead4918a21e}{\index{Ball\-Manager@{Ball\-Manager}!ball\-List@{ball\-List}}
 \index{ball\-List@{ball\-List}!BallManager@{Ball\-Manager}}
 \subsubsection[{ball\-List}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Ball} $\ast$$>$ Ball\-Manager\-::ball\-List\hspace{0.3cm}{\ttfamily [private]}}}\label{classBallManager_a7a32cb0f1dce0a3c51430ead4918a21e}
@@ -172,6 +227,12 @@ bool \hyperlink{classBallManager_a4f86decb02dc070a4ddf4d408620acf4}{global\-Ball
 \hypertarget{classBallManager_a3de8a29f89c02241ef9dd1bc85bcb6f8}{\index{Ball\-Manager@{Ball\-Manager}!main\-Balls@{main\-Balls}}
 \index{main\-Balls@{main\-Balls}!BallManager@{Ball\-Manager}}
 \subsubsection[{main\-Balls}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Ball} $\ast$$>$ Ball\-Manager\-::main\-Balls\hspace{0.3cm}{\ttfamily [private]}}}\label{classBallManager_a3de8a29f89c02241ef9dd1bc85bcb6f8}
+\hypertarget{classBallManager_aa5d4641a04755987d725c8df64ce5c84}{\index{Ball\-Manager@{Ball\-Manager}!player\-Balls@{player\-Balls}}
+\index{player\-Balls@{player\-Balls}!BallManager@{Ball\-Manager}}
+\subsubsection[{player\-Balls}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Ball} $\ast$$>$ Ball\-Manager\-::player\-Balls}}\label{classBallManager_aa5d4641a04755987d725c8df64ce5c84}
+\hypertarget{classBallManager_a1deaf66727d7a5e399712de6412379f2}{\index{Ball\-Manager@{Ball\-Manager}!player\-Balls\-Active@{player\-Balls\-Active}}
+\index{player\-Balls\-Active@{player\-Balls\-Active}!BallManager@{Ball\-Manager}}
+\subsubsection[{player\-Balls\-Active}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$bool$>$ Ball\-Manager\-::player\-Balls\-Active\hspace{0.3cm}{\ttfamily [private]}}}\label{classBallManager_a1deaf66727d7a5e399712de6412379f2}
 \hypertarget{classBallManager_a4916de0948df0af060f6ada4d21284a7}{\index{Ball\-Manager@{Ball\-Manager}!sim@{sim}}
 \index{sim@{sim}!BallManager@{Ball\-Manager}}
 \subsubsection[{sim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tile\-Simulator}$\ast$ Ball\-Manager\-::sim\hspace{0.3cm}{\ttfamily [private]}}}\label{classBallManager_a4916de0948df0af060f6ada4d21284a7}

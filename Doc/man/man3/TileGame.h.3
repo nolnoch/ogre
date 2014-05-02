@@ -1,4 +1,4 @@
-.TH "TileGame.h" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
+.TH "TileGame.h" 3 "Wed Apr 2 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,8 +14,6 @@ TileGame.h \-
 .br
 \fC#include 'NetManager\&.h'\fP
 .br
-\fC#include 'CameraMan\&.h'\fP
-.br
 \fC#include <vector>\fP
 .br
 \fC#include <string>\fP
@@ -26,6 +24,12 @@ TileGame.h \-
 .in +1c
 .ti -1c
 .RI "struct \fBPlayerData\fP"
+.br
+.ti -1c
+.RI "struct \fBPlayerOldData\fP"
+.br
+.ti -1c
+.RI "struct \fBBallData\fP"
 .br
 .ti -1c
 .RI "class \fBTileGame\fP"
@@ -57,6 +61,12 @@ TileGame.h \-
 .RI "static const int \fBTILE_WIDTH\fP = \fBWALL_SIZE\fP / \fBNUM_TILES_ROW\fP"
 .br
 .ti -1c
+.RI "static const int \fBSWEEP_MS\fP = 150"
+.br
+.ti -1c
+.RI "static const int \fBBROAD_MS\fP = 8000"
+.br
+.ti -1c
 .RI "int \fBticks\fP = 0"
 .br
 .in -1c
@@ -66,11 +76,15 @@ TileGame.h \-
 
 .SH "Variable Documentation"
 .PP 
+.SS "const int BROAD_MS = 8000\fC [static]\fP"
+
 .SS "const int NUM_TILES_ROW = 5\fC [static]\fP"
 
 .SS "const int NUM_TILES_WALL = \fBNUM_TILES_ROW\fP * \fBNUM_TILES_ROW\fP\fC [static]\fP"
 
 .SS "const int PLANE_DIST = \fBWALL_SIZE\fP / 2\fC [static]\fP"
+
+.SS "const int SWEEP_MS = 150\fC [static]\fP"
 
 .SS "int ticks = 0"
 

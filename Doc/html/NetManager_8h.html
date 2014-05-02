@@ -103,14 +103,13 @@ $(document).ready(function(){initNavTree('NetManager_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">NetManager.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014.  
+<p>Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. This wrapper <b>requires</b> SDL_Net v1.2.8 for retrieving the user's local IP address. Compile as a static library or remove that functionality if the required version is not present on your system.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
@@ -150,6 +149,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Packet Tags</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>TCP and UDP packet opening tags for quick message handling. </p>
+</div></td></tr>
 <tr class="memitem:a4cc69f51b723ed3756cb24529faacf94"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a4cc69f51b723ed3756cb24529faacf94">STR_DENY</a> (&quot;TG_SERVER_DENY&quot;)</td></tr>
 <tr class="separator:a4cc69f51b723ed3756cb24529faacf94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6a130ab206e6c62fe162b8d44e30b89"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#af6a130ab206e6c62fe162b8d44e30b89">STR_OPEN</a> (&quot;TG_SERVER_OPEN&quot;)</td></tr>
@@ -160,20 +162,29 @@ Functions</h2></td></tr>
 <tr class="separator:a091b06ac88c35029c42a7a5d92a1ae16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae26fc6d96c2e5c42864f42ae237d435f"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#ae26fc6d96c2e5c42864f42ae237d435f">STR_NXLVL</a> (&quot;TG_NEXT_LEVEL&quot;)</td></tr>
 <tr class="separator:ae26fc6d96c2e5c42864f42ae237d435f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad93bfb0e396e66ab5c3013ff12ea1ea2"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#ad93bfb0e396e66ab5c3013ff12ea1ea2">STR_TLHIT</a> (&quot;TG_NEXT_TILE&quot;)</td></tr>
-<tr class="separator:ad93bfb0e396e66ab5c3013ff12ea1ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17cea74ffa44b9438751cd7d5020f532"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a17cea74ffa44b9438751cd7d5020f532">STR_TLHIT</a> (&quot;TG_TILE_HIT&quot;)</td></tr>
+<tr class="separator:a17cea74ffa44b9438751cd7d5020f532"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac80e04d2db459bedde1b3279e6c7dfc4"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#ac80e04d2db459bedde1b3279e6c7dfc4">UINT_ADDPL</a> (0xFF000001)</td></tr>
 <tr class="separator:ac80e04d2db459bedde1b3279e6c7dfc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19065404c496b4308fc16886cf744ec8"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a19065404c496b4308fc16886cf744ec8">UINT_UPDPL</a> (0xFF000010)</td></tr>
 <tr class="separator:a19065404c496b4308fc16886cf744ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a204b3917ebafa4878ad546a580aa1b49"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a204b3917ebafa4878ad546a580aa1b49">UINT_UPDSV</a> (0xFF000020)</td></tr>
 <tr class="separator:a204b3917ebafa4878ad546a580aa1b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63a8fcf36c407e8cc1693e8890a0d3f"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#ac63a8fcf36c407e8cc1693e8890a0d3f">UINT_UPDBL</a> (0xFF000030)</td></tr>
+<tr class="separator:ac63a8fcf36c407e8cc1693e8890a0d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f740c8f94d6ae8ef523749e7fa9c20a"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a9f740c8f94d6ae8ef523749e7fa9c20a">UINT_UPDPB</a> (0xFF000040)</td></tr>
+<tr class="separator:a9f740c8f94d6ae8ef523749e7fa9c20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a18320db547241b150b44391f24dc5"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NetManager_8h.html#a97a18320db547241b150b44391f24dc5">UINT_BLSHT</a> (0xFF0001FF)</td></tr>
+<tr class="separator:a97a18320db547241b150b44391f24dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. </p>
+<div class="textblock"><p>Networking wrapper for SDL_net created for OGRE engine use in CS 354R at the University of Texas at Austin, taught by Don Fussell in Spring 2014. This wrapper <b>requires</b> SDL_Net v1.2.8 for retrieving the user's local IP address. Compile as a static library or remove that functionality if the required version is not present on your system. </p>
 <dl class="section date"><dt>Date</dt><dd>March 7, 2014 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Wade Burch (<a href="#" onclick="location.href='mai'+'lto:'+'nol'+'no'+'ch@'+'cs'+'.ut'+'ex'+'as.'+'ed'+'u'; return false;">nolno<span style="display: none;">.nosp@m.</span>ch@c<span style="display: none;">.nosp@m.</span>s.ute<span style="display: none;">.nosp@m.</span>xas.<span style="display: none;">.nosp@m.</span>edu</a>)</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) 2014 Wade Burch</dd></dl>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="a9af285d1232beed01f31aac5d3a5469f"></a>
 <div class="memitem">
@@ -340,7 +351,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad93bfb0e396e66ab5c3013ff12ea1ea2"></a>
+<a class="anchor" id="a17cea74ffa44b9438751cd7d5020f532"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -350,7 +361,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">static const std::string STR_TLHIT </td>
           <td>(</td>
-          <td class="paramtype">&quot;TG_NEXT_TILE&quot;&#160;</td>
+          <td class="paramtype">&quot;TG_TILE_HIT&quot;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -375,6 +386,78 @@ Functions</h2></td></tr>
           <td class="memname">static const Uint32 UINT_ADDPL </td>
           <td>(</td>
           <td class="paramtype">0xFF000001&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a97a18320db547241b150b44391f24dc5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const Uint32 UINT_BLSHT </td>
+          <td>(</td>
+          <td class="paramtype">0xFF0001FF&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac63a8fcf36c407e8cc1693e8890a0d3f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const Uint32 UINT_UPDBL </td>
+          <td>(</td>
+          <td class="paramtype">0xFF000030&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9f740c8f94d6ae8ef523749e7fa9c20a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const Uint32 UINT_UPDPB </td>
+          <td>(</td>
+          <td class="paramtype">0xFF000040&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -442,7 +525,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="NetManager_8h.html">NetManager.h</a></li>
-    <li class="footer">Generated on Fri Mar 21 2014 03:59:51 for OGRE Game by
+    <li class="footer">Generated on Wed Apr 2 2014 12:44:04 for OGRE Game by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

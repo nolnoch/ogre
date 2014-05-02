@@ -1,7 +1,10 @@
 var searchData=
 [
+  ['channel',['channel',['../structSound.html#af3895edf5a39772f1de32cfbfff90909',1,'Sound']]],
   ['chargepanel',['chargePanel',['../classTileGame.html#ab63beac85c1df6056bd1a097e43cea34',1,'TileGame']]],
   ['chargeshot',['chargeShot',['../classTileGame.html#a1a8592c70c05bb2197c9b3cb0a33478e',1,'TileGame']]],
+  ['chirp',['chirp',['../classTileGame.html#a24c9cc7591c2ff3ffc6a50b64453c181',1,'TileGame']]],
+  ['chunk',['chunk',['../structSound.html#a658d91b8d31c3420cf6106fcb6eaa223',1,'Sound']]],
   ['chunks',['chunks',['../classSoundManager.html#a591ec09cf6486bc6ff62c458b1718630',1,'SoundManager']]],
   ['clientacceptdescpanel',['clientAcceptDescPanel',['../classTileGame.html#a0b1acda06716401a6a6a1936d111e187',1,'TileGame']]],
   ['clientacceptoptpanel',['clientAcceptOptPanel',['../classTileGame.html#ab768d0250251800d81ff2d85d1c2c324',1,'TileGame']]],

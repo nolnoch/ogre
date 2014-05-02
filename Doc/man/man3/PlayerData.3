@@ -1,4 +1,4 @@
-.TH "PlayerData" 3 "Fri Mar 21 2014" "OGRE Game" \" -*- nroff -*-
+.TH "PlayerData" 3 "Wed Apr 2 2014" "OGRE Game" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,13 +15,16 @@ PlayerData \-
 .RI "Uint32 \fBhost\fP"
 .br
 .ti -1c
-.RI "Ogre::Vector3 \fBnewDir\fP"
+.RI "Ogre::Quaternion \fBnewDir\fP"
 .br
 .ti -1c
 .RI "Ogre::Vector3 \fBnewPos\fP"
 .br
 .ti -1c
 .RI "Ogre::Vector3 \fBshotDir\fP"
+.br
+.ti -1c
+.RI "Ogre::Vector3 \fBvelocity\fP"
 .br
 .ti -1c
 .RI "double \fBshotForce\fP"
@@ -31,13 +34,15 @@ PlayerData \-
 .PP 
 .SS "Uint32 PlayerData::host"
 
-.SS "Ogre::Vector3 PlayerData::newDir"
+.SS "Ogre::Quaternion PlayerData::newDir"
 
 .SS "Ogre::Vector3 PlayerData::newPos"
 
 .SS "Ogre::Vector3 PlayerData::shotDir"
 
 .SS "double PlayerData::shotForce"
+
+.SS "Ogre::Vector3 PlayerData::velocity"
 
 
 .SH "Author"

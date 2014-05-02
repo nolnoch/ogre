@@ -6,5 +6,6 @@ var searchData=
   ['loadresources',['loadResources',['../classBaseGame.html#af120c71b5b2da400dce56d91f7e2960d',1,'BaseGame']]],
   ['loadsound',['loadSound',['../classSoundManager.html#abaa5592584989a7c430b4c0bb74af36b',1,'SoundManager']]],
   ['lockposition',['lockPosition',['../classBall.html#aca417b802b8bd765d6a06adc64b4cd1c',1,'Ball']]],
-  ['lookupclient',['lookupClient',['../classNetManager.html#afd504716ee545b2961db863abc7b229a',1,'NetManager']]]
+  ['lookupclient',['lookupClient',['../classNetManager.html#afd504716ee545b2961db863abc7b229a',1,'NetManager']]],
+  ['lowervolume',['lowerVolume',['../classSoundManager.html#a0c4febd5fbca1712fba50ed70c2e513f',1,'SoundManager']]]
 ];
